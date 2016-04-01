@@ -1,15 +1,11 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    const Config = Components.CardConfig;
-    const CardCss = {};
-    CardCss.type = Components.BaseConfig.TYPES.css;
-
-    CardCss.css = [
+    var css = [
 
         {
             selector: "th-card",
             declaration: [
-                "background-color: " + Components.BaseConfig.COLORS.white,
+                "background-color: " + Core.Theme.COLORS.white,
                 "font-size: 1.6rem",
                 "display:block",
                 "padding:1rem"
@@ -39,7 +35,12 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     ];
 
-    Components.CardCss = CardCss;
+    // add to css renderer
+    Core.Css.add({
+        id: 'th-card',
+        css: css
+    });
+
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

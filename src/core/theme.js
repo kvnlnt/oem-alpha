@@ -3,7 +3,7 @@ ToolhouseUI.Components = (function(Core) {
     var Theme = {};
 
     // Theme Colors
-    Theme.COLORS = {};
+    var COLORS = {};
     COLORS.black = '#000000';
     COLORS.grey1 = '#111111';
     COLORS.grey2 = '#222222';
@@ -22,6 +22,7 @@ ToolhouseUI.Components = (function(Core) {
     COLORS.white = '#FFFFFF';
     COLORS.alert = 'red';
     COLORS.success = 'green';
+    Theme.COLORS = COLORS;
 
     // exports
     Core.Theme = Theme;

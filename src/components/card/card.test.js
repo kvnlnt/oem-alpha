@@ -1,11 +1,11 @@
-ToolhouseUI.Components = (function(Components) {
+// ToolhouseUI.Components = (function(Components) {
 
-    const CardTest = {};
-    CardTest.type = Components.BaseConfig.TYPES.test;
-    Components.CardTest = CardTest;
-    return Components;
+//     const CardTest = {};
+//     CardTest.type = Components.BaseConfig.TYPES.test;
+//     Components.CardTest = CardTest;
+//     return Components;
 
-})(ToolhouseUI.Components || {});
+// })(ToolhouseUI.Components || {});
 
 // const Test = require('./test');
 // const Card = require('./card');

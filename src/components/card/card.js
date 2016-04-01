@@ -9,6 +9,3 @@ ToolhouseUI.Components = (function(Components, Core) {
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);
-
-var card = Object.create(ToolhouseUI.Components.Card);
-card.init();

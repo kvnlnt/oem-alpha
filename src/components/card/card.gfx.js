@@ -1,8 +1,8 @@
-ToolhouseUI.Components = (function(Components) {
+// ToolhouseUI.Components = (function(Components) {
 
-    const CardGfx = {};
-    CardGfx.type = Components.BaseConfig.TYPES.gfx;
-    Components.CardGfx = CardGfx;
-    return Components;
+//     const CardGfx = {};
+//     CardGfx.type = Components.BaseConfig.TYPES.gfx;
+//     Components.CardGfx = CardGfx;
+//     return Components;
 
-})(ToolhouseUI.Components || {});
+// })(ToolhouseUI.Components || {});

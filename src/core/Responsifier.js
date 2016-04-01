@@ -2,44 +2,50 @@
 
      var Responsifier = {};
 
+    // components
+     Responsifier.components = [];
+
      // breakpoints
      Responsifier.BREAKPOINTS = [];
      Responsifier.BREAKPOINTS.push({
          "klass": "mobile",
-         range: [0, 720]
+         range: [0, 300]
      });
      Responsifier.BREAKPOINTS.push({
          "klass": "tablet",
-         range: [721, 960]
+         range: [301, 500]
      });
      Responsifier.BREAKPOINTS.push({
          "klass": "desktop",
-         range: [961, 10000]
+         range: [501, 10000]
      });
-
-     // components
-     Responsifier.components = [];
 
      // initialize
      Responsifier.init = function() {
-        Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, this.responsify, this);
-        Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, this.responsify, this);
+        Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
         return this;
      };
 
      Responsifier.responsify = function() {
-        console.log(this.components[0].name);
 
-        // var width = this.dom.offsetWidth;
-        // var klass = this.breakpoints[0]; // default
-        // for (var i = 0; i < this.breakpoints.length; i++) {
-        //     var breakpoint = this.breakpoints[i];
-        //     this.dom.classList.remove(breakpoint.klass);
-        //     if (width >= breakpoint.range[0] && width <= breakpoint.range[1]) {
-        //         this.dom.classList.add(breakpoint.klass);
-        //         this.breakpoint = breakpoint.klass;
-        //     }
-        // }
+        // loop all components        
+        for(var i = 0; i < Responsifier.components.length; i++){
+
+            var component = Responsifier.components[i];
+            var el = component.getEl();
+            var breakpoints = component.getBreakpoints();
+            var width = $(el).width();
+
+            // calc current components classes based on it's breakpoints
+            for (var b = 0; b < breakpoints.length; b++) {
+                var breakpoint = breakpoints[b];
+                el.classList.remove(breakpoint.klass);
+                if (width >= breakpoint.range[0] && width <= breakpoint.range[1]) {
+                    el.classList.add(breakpoint.klass);
+                }
+            }
+
+        }
 
         return this;
      };
@@ -49,10 +55,11 @@
          return this;
      };
 
-     // auto start
-     Responsifier.init();
+    // run after all components have been collected
+    Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
+    Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.responsify);
 
-     Core.Responsifier = Responsifier;
-     return Core;
+    Core.Responsifier = Responsifier;
+    return Core;
 
  })(ToolhouseUI.Core || {});

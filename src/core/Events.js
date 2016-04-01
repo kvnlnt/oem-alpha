@@ -5,9 +5,10 @@ ToolhouseUI.Core = (function(Core){
     $window = $(window);
 
     var EVENTS = {
-        "DOCUMENT_READY":"DOCUMENT_READY",
-        "WINDOW_RESIZED":"WINDOW_RESIZED",
-        "WINDOW_SCROLL":"WINDOW_SCROLL"
+        DOCUMENT_READY:"DOCUMENT_READY",
+        WINDOW_RESIZED:"WINDOW_RESIZED",
+        WINDOW_SCROLL:"WINDOW_SCROLL",
+        COMPONENTS_COLLECTED:"COMPONENTS_COLLECTED"
     };
 
     var Events = new ToolhouseUI.Core.EventBus();
