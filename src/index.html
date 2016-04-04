@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css">
 
+    <!-- POLYFILL -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
     <!-- CORE -->
     <script src="./core/Namespacer.js"></script>
     <script src="./core/Logger.js"></script>
-    <script src="./core/Polyfiller.js"></script>
     <script src="./core/Debounce.js"></script>
-    <script src="./core/Dom.js"></script>
     <script src="./core/EventBus.js"></script>
     <script src="./core/Events.js"></script>
     <script src="./core/Css.js"></script>
@@ -50,12 +51,11 @@
 
     <!-- Card Component -->
     <h1 id="Card">Card</h1>
-    <th-card>
-        <header>Header</header>
-        <body>Body</body>
-        <footer>Footer</footer>
-    </th-card>
-    <th-card-doc></th-card-doc>
+    <div class="th-card">
+        <div>Header</div>
+        <div>Body</div>
+        <div>Footer</div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"></script>

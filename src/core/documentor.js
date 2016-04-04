@@ -1,7 +1,5 @@
 ToolhouseUI.Core = (function(Core, Components){
 
-    const $ = Core.Dom;
-
     function collectComponent(component){
         ToolhouseUI.docs = [];
         var selector = new Components[component]().selector; // quickly get selector

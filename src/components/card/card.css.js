@@ -3,7 +3,7 @@ ToolhouseUI.Components = (function(Components, Core) {
     var css = [
 
         {
-            selector: "th-card",
+            selector: "th-card, .th-card",
             declaration: [
                 "background-color: " + Core.Theme.COLORS.white,
                 "font-size: 1.6rem",
@@ -13,21 +13,21 @@ ToolhouseUI.Components = (function(Components, Core) {
         },
 
         {
-            selector: "th-card.mobile",
+            selector: "th-card.mobile, .th-card.mobile",
             declaration: [
                 "border:1px solid black"
             ]
         },
 
         {
-            selector: "th-card.tablet",
+            selector: "th-card.tablet, .th-card.tablet",
             declaration: [
                 "border:3px solid black"
             ]
         },
 
         {
-            selector: "th-card.desktop",
+            selector: "th-card.desktop, .th-card.desktop",
             declaration: [
                 "border:5px solid black"
             ]

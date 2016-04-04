@@ -34,7 +34,7 @@
             var component = Responsifier.components[i];
             var el = component.getEl();
             var breakpoints = component.getBreakpoints();
-            var width = $(el).width();
+            var width = el.offsetWidth;
 
             // calc current components classes based on it's breakpoints
             for (var b = 0; b < breakpoints.length; b++) {

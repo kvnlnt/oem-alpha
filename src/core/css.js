@@ -1,6 +1,4 @@
-ToolhouseUI.Core = (function(Core) {
-
-    var $ = Core.Dom;
+ToolhouseUI.Core = (function(Core) { 
 
     var Css = {};
     Css.collection = [];
@@ -42,13 +40,18 @@ ToolhouseUI.Core = (function(Core) {
      * @return     {Object}         - self
      */
     Css.renderStyleTag = function(id, css) {
-        var $head = $("head");
-        var $style = $("<style></style>");
-        $style.attr({
-            id: id
-        });
-        $style.html(this.renderCss(css));
-        $head.append($style);
+        var _head = document.getElementsByTagName('head')[0];
+        var _style = document.createElement("style");
+        _style.setAttribute("type", "text/css");
+        _style.setAttribute("id", id);
+        // XXX: this is for IE8
+        // we have to try catch this because polyfills don't account for cssText
+        try {
+             _style.innerHTML = this.renderCss(css);
+         } catch(err) {
+            _style.styleSheet.cssText = this.renderCss(css);
+         }
+        _head.appendChild(_style);
         return this;
     };
 

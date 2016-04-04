@@ -13,12 +13,12 @@ ToolhouseUI.Components = (function(Core, Collections) {
      * @return     {Object}     return self
      */
     Collector.addComponent = function(selector, component) {
-         Collector.components.push({
-            selector:selector,
-            component:component
-         });
-         return this;
-     };
+        Collector.components.push({
+            selector: selector,
+            component: component
+        });
+        return this;
+    };
 
     /**
      * Collect a component
@@ -27,25 +27,29 @@ ToolhouseUI.Components = (function(Core, Collections) {
      * @param      {string}     selector   - base selector text
      * @param      {Component}  component  - Object of compoent
      */
-    Collector.collect = function(selector, component){
+    Collector.collect = function(selector, component) {
+
+        // init vars
+        var cssSelector = "." + selector;
+        var tagSelector = selector;
+        var el;
 
         // create collection of this selector type
-        if(typeof Collections[selector] === "undefined") Collections[selector] = [];
+        if (typeof Collections[selector] === "undefined") Collections[selector] = [];
 
         // find all components
         // create and store instances of each
-        var cssSelector = "."+selector;
-        var tagSelector = selector;
-        $components = $(cssSelector + "," + tagSelector);
-        $components.each(function(i, el){
+        _components = document.querySelectorAll(cssSelector + "," + tagSelector);
+        for (var i = 0; i < _components.length; i++) {
+            el = _components[i];
             var instance = Object.create(component, {
-                el:{
-                    value:el
+                el: {
+                    value: el
                 }
             });
             instance.init();
             Collections[selector].push(instance);
-        });
+        }
 
         // go tell it on the mountain
         Core.Events.dispatch(Core.EVENTS.COMPONENTS_COLLECTED, this);
@@ -57,9 +61,9 @@ ToolhouseUI.Components = (function(Core, Collections) {
      *
      * @method     collectAll
      */
-    Collector.collectAll = function(){
+    Collector.collectAll = function() {
         var component;
-        for(var i = 0; i < Collector.components.length; i++){
+        for (var i = 0; i < Collector.components.length; i++) {
             component = Collector.components[i];
             Collector.collect(component.selector, component.component);
         }

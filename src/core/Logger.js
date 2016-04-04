@@ -1,8 +1,10 @@
 ToolhouseUI.Core = (function(Core){
 
     function Log() {
-        if(console){
+        try {
             console.log.apply(console, arguments);
+        } catch(err){
+            // noop
         }
     };
 
