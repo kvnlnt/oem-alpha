@@ -15,30 +15,23 @@ ToolhouseUI.Core = (function(Core) {
         var cssConfig;
         var css = [];
 
-        // convert image configs to css configs
+        // concat all css definitions
         for(var i in imageConfigs){
-            imageConfig = imageConfigs[i];
-            selector = i;
-            cssConfig = {};
-            cssConfig.selector = 'th-image-'+i + ',' + '.th-image-'+i;
-            cssConfig.declaration = [
-                'background-image: url('+imageConfig.image+')',
-                'background-repeat: no-repeat',
-                'width:' + imageConfig.width,
-                'height:' + imageConfig.height
-            ];
-            css.push(cssConfig);
+            for(var x = 0; x < imageConfigs[i].length; x++){
+                css.push(imageConfigs[i][x]);
+            }
         }
 
+        // render definition
         Core.Css.add({
-            id: selector,
+            id: 'th-images',
             css: css
         });
 
     };
 
     // do this automatically
-    Gfx.renderThemeImages(Core.Theme.IMAGE);
+    Gfx.renderThemeImages(Core.Theme.IMAGES);
 
     Core.Gfx = Gfx;
     return Core;

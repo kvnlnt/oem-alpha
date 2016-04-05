@@ -22,14 +22,14 @@ ToolhouseUI.Components = (function(Components, Core) {
         {
             selector: "th-card.tablet, .th-card.tablet",
             declaration: [
-                "border:3px solid black"
+                "border:10px solid black"
             ]
         },
 
         {
             selector: "th-card.desktop, .th-card.desktop",
             declaration: [
-                "border:5px solid black"
+                "border:20px solid black"
             ]
         }
 
