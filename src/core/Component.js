@@ -5,7 +5,7 @@ ToolhouseUI.Core = (function(Core) {
     Component.name = "Component";
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
-    Component.init = function(el){
+    Component.init = function(){
         Core.Responsifier.addComponent(this);
     };
 

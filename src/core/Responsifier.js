@@ -2,52 +2,81 @@
 
      var Responsifier = {};
 
-    // components
+     // components
      Responsifier.components = [];
 
      // breakpoints
-     Responsifier.BREAKPOINTS = [];
-     Responsifier.BREAKPOINTS.push({
-         "klass": "mobile",
-         range: [0, 300]
-     });
-     Responsifier.BREAKPOINTS.push({
-         "klass": "tablet",
-         range: [301, 500]
-     });
-     Responsifier.BREAKPOINTS.push({
-         "klass": "desktop",
-         range: [501, 10000]
-     });
+     // USAGE:
+     // breakpoints = [{
+     //    "klass": "skinny",
+     //     width: [0, 300]
+     // }, 
+     // {
+     //    "klass": "short",
+     //     height: [50, 300]
+     // }]
+     // Component.setBreakpoints(breakpoints);
+     Responsifier.BREAKPOINTS = [{
+        "klass": "mobile",
+         width: [0, 300]
+     }, 
+     {
+        "klass": "short",
+         height: [50, 300]
+     },
+     {
+        "klass": "tablet",
+         width: [301, 500]
+     }, {
+        "klass": "desktop",
+        width: [501, '*']
+     }];
 
      // initialize
      Responsifier.init = function() {
-        Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
-        return this;
+         Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
+         return this;
      };
 
      Responsifier.responsify = function() {
 
-        // loop all components        
-        for(var i = 0; i < Responsifier.components.length; i++){
+         // loop all components        
+         for (var i = 0; i < Responsifier.components.length; i++) {
 
-            var component = Responsifier.components[i];
-            var el = component.getEl();
-            var breakpoints = component.getBreakpoints();
-            var width = el.offsetWidth;
+             var component = Responsifier.components[i]; // current component
+             var el = component.getEl(); // current element
+             var breakpoints = component.getBreakpoints(); // current breakpoints
+             var width = el.offsetWidth; // element width
+             var height = el.offsetHeight; // element height
 
-            // calc current components classes based on it's breakpoints
-            for (var b = 0; b < breakpoints.length; b++) {
-                var breakpoint = breakpoints[b];
-                el.classList.remove(breakpoint.klass);
-                if (width >= breakpoint.range[0] && width <= breakpoint.range[1]) {
+             // calc current components classes based on it's breakpoints
+             for (var b = 0; b < breakpoints.length; b++) {
+
+                // current breakpoint
+                 var breakpoint = breakpoints[b];
+
+                 // reset application of current klass
+                 el.classList.remove(breakpoint.klass);
+
+                 // apply width ranges
+                 if (breakpoint.hasOwnProperty('width') && 
+                    width >= breakpoint.width[0] && 
+                    (width <= breakpoint.width[1] || breakpoint.width[1] === '*')) {
                     el.classList.add(breakpoint.klass);
-                }
-            }
+                 }
 
-        }
+                 // apply height ranges
+                 if (breakpoint.hasOwnProperty('height') && 
+                    height >= breakpoint.height[0] && 
+                    (height <= breakpoint.height[1] || breakpoint.height[1] === '*')) {
+                    el.classList.add(breakpoint.klass);
+                 }
 
-        return this;
+             }
+
+         }
+
+         return this;
      };
 
      Responsifier.addComponent = function(component) {
@@ -55,11 +84,11 @@
          return this;
      };
 
-    // run after all components have been collected
-    Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
-    Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.responsify);
+     // run after all components have been collected
+     Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
+     Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.responsify);
 
-    Core.Responsifier = Responsifier;
-    return Core;
+     Core.Responsifier = Responsifier;
+     return Core;
 
  })(ToolhouseUI.Core || {});

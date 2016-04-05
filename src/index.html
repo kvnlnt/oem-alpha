@@ -3,12 +3,13 @@
 
 <head>
     <title>Toolhouse UI</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css"/> -->
 
     <!-- POLYFILL -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <!--[if lte IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><![endif]-->
 
     <!-- CORE -->
     <script src="./core/Namespacer.js"></script>
@@ -21,6 +22,7 @@
     <script src="./core/Component.js"></script>
     <script src="./core/Collector.js"></script>
     <script src="./core/Theme.js"></script>
+    <script src="./core/Gfx.js"></script>
 
     <!-- COMPONENTS -->
 
@@ -43,11 +45,16 @@
     <!-- Card -->
     <script src="./components/card/card.css.js"></script>
     <script src="./components/card/card.js"></script>
+    <script src="./components/card/card.logic.js"></script>
     <script src="./components/card/card.collector.js"></script>
 
 </head>
 
 <body>
+
+    <!-- Image Component -->
+    <h1 id="Image">Image</h1>
+    <div class="th-image th-image-toolhouse"></div>
 
     <!-- Card Component -->
     <h1 id="Card">Card</h1>
@@ -56,10 +63,10 @@
         <div>Body</div>
         <div>Footer</div>
     </div>
-
+<!-- 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/css.min.js"></script> -->
 </body>
 
 </html>

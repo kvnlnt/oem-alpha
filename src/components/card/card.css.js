@@ -6,9 +6,9 @@ ToolhouseUI.Components = (function(Components, Core) {
             selector: "th-card, .th-card",
             declaration: [
                 "background-color: " + Core.Theme.COLORS.white,
-                "font-size: 1.6rem",
+                "font-size: 22px",
                 "display:block",
-                "padding:1rem"
+                "padding:10px"
             ]
         },
 
