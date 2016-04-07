@@ -5,17 +5,7 @@
      // components
      Responsifier.components = [];
 
-     // breakpoints
-     // USAGE:
-     // breakpoints = [{
-     //    "klass": "skinny",
-     //     width: [0, 300]
-     // }, 
-     // {
-     //    "klass": "short",
-     //     height: [50, 300]
-     // }]
-     // Component.setBreakpoints(breakpoints);
+     // default breakpoints
      Responsifier.BREAKPOINTS = [{
         "klass": "mobile",
          width: [0, 300]
@@ -38,6 +28,12 @@
          return this;
      };
 
+     /**
+      * Loops and adds classes based on breakpoints
+      *
+      * @method     responsify
+      * @return     {Object}  { description_of_the_return_value }
+      */
      Responsifier.responsify = function() {
 
          // loop all components        
@@ -79,6 +75,13 @@
          return this;
      };
 
+     /**
+      * Add a responsive component
+      *
+      * @method     addComponent
+      * @param      {<type>}  component  { description }
+      * @return     {Object}  { description_of_the_return_value }
+      */
      Responsifier.addComponent = function(component) {
          Responsifier.components.push(component);
          return this;

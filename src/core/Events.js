@@ -9,17 +9,20 @@ ToolhouseUI.Core = (function(Core) {
 
     var Events = new ToolhouseUI.Core.EventBus();
 
+    // when all dom content is loaded
     document.addEventListener("DOMContentLoaded", function(event) {
         Events.dispatch(EVENTS.DOCUMENT_READY, this);
         Core.Log(EVENTS.DOCUMENT_READY);
     });
 
-    window.addEventListener("resize", Core.Debounce(function() {
+    // when the window is resized
+    window.addEventListener("resize", Core.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_RESIZED, this);
         Core.Log(EVENTS.WINDOW_RESIZED);
     }, 250), true);
     
-    window.addEventListener("scroll", Core.Debounce(function() {
+    // when the window is scrolled
+    window.addEventListener("scroll", Core.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_SCROLLED, this);
         Core.Log(EVENTS.WINDOW_SCROLLED);
     }, 250), true);
