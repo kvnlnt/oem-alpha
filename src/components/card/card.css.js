@@ -1,35 +1,40 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var css = [
+    var CardCss = {};
+    CardCss.id = 'th-card-css';
+    CardCss.css = [
 
         {
             selector: "th-card, .th-card",
             declaration: [
-                "background-color: " + Core.Theme.COLORS.white,
-                "font-size: 22px",
+                "background-color: " + Core.Theme.COLORS.greyD,
+                "font-size: 16px",
                 "display:block",
-                "padding:10px"
+                "padding:10px",
+                "text-align:center",
+                "border:1px solid" + Core.Theme.COLORS.greyA
             ]
         },
 
         {
             selector: "th-card.mobile, .th-card.mobile",
             declaration: [
-                "border:1px solid black"
+                
             ]
         },
 
         {
             selector: "th-card.tablet, .th-card.tablet",
             declaration: [
-                "border:10px solid black"
+                "text-align:left"
             ]
         },
 
         {
             selector: "th-card.desktop, .th-card.desktop",
             declaration: [
-                "border:20px solid black"
+                "font-size:24px;",
+                "text-align:left"
             ]
         }
 
@@ -37,10 +42,11 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: 'th-card',
-        css: css
+        id: CardCss.id,
+        css: CardCss.css
     });
 
+    Components.CardCss = CardCss;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

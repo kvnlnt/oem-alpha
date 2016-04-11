@@ -9,7 +9,7 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: 'th-image',
+        id: 'th-image-css',
         css: css
     });
 

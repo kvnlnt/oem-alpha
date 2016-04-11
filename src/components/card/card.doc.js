@@ -1,12 +1,17 @@
-// ToolhouseUI.Components = (function(Components) {
+ToolhouseUI.Components = (function(Components, Core) {
 
-//     const CardDoc = Object.create(Components.BaseDoc);
-//     CardDoc.type = Components.BaseConfig.TYPES.doc;
-//     CardDoc.klass = Components.Card;
-//     CardDoc.selector = 'th-card-doc';
-//     CardDoc.descr = "Card component",
-//     CardDoc.breakpoints = Components.Card.breakpoints;
-//     Components.CardDoc = CardDoc;
-//     return Components;
+    // Card component
+    var CardDoc = Object.create(Core.Documentor); // call super constructor
+    CardDoc.name = "Cards";
+    CardDoc.testComponent = 'th-card-doc';
+    
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+        CardDoc.docCss(Components.CardCss);
+        CardDoc.docJs(Components.Card);
+    });
 
-// })(ToolhouseUI.Components || {});
+    // exports
+    Components.CardDoc = CardDoc;
+    return Components;
+
+})(ToolhouseUI.Components || {}, ToolhouseUI.Core);

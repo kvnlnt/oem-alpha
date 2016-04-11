@@ -57,7 +57,7 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: 'th-base',
+        id: 'th-base-css',
         css: css
     });
 

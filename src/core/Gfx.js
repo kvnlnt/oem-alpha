@@ -24,7 +24,7 @@ ToolhouseUI.Core = (function(Core) {
 
         // render definition
         Core.Css.add({
-            id: 'th-images',
+            id: 'th-images-css',
             css: css
         });
 

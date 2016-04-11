@@ -2,17 +2,119 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // Card component
     var CardTest = Object.create(Core.Test); // call super constructor
+    CardTest.name = "Tests";
     CardTest.testComponent = 'th-card-test';
 
-    // tests come first
+    /**
+     * Test mobile responsive
+     *
+     * @method     isMobileResponsive
+     */
     CardTest.isMobileResponsive = function(){
-        CardTest.assert(true, true, 'is mobile response');
-        CardTest.assert(true, false, 'is mobile response');
+        
+        // create test container
+        var testComponent = document.querySelector("."+CardTest.testComponent);
+        var testContainer = document.createElement("div");
+        testContainer.style.width = '200px';
+        testComponent.appendChild(testContainer);
+
+        // create test element
+        var thCard = document.createElement("div");
+        thCard.classList.add('th-card');
+        testContainer.appendChild(thCard);
+
+        var card = Object.create(Components.Card, {
+            el: {
+                value: thCard
+            }
+        });
+
+        // test
+        card.init();
+        Core.Responsifier.responsify();
+        CardTest.assert('is mobile response', thCard.classList.contains('mobile'), true);
+
+        // clean up
+        testComponent.removeChild(testContainer);
+
     };
 
+    /**
+     * Test tablet responsive
+     *
+     * @method     isTabletResponsive
+     */
+    CardTest.isTabletResponsive = function(){
+
+        // create test container
+        var testComponent = document.querySelector("."+CardTest.testComponent);
+        var testContainer = document.createElement("div");
+        testContainer.style.width = '400px';
+        testComponent.appendChild(testContainer);
+
+        // create test element
+        var thCard = document.createElement("div");
+        thCard.classList.add('th-card');
+        testContainer.appendChild(thCard);
+
+        var card = Object.create(Components.Card, {
+            el: {
+                value: thCard
+            }
+        });
+
+        // test
+        card.init();
+        Core.Responsifier.responsify();
+        CardTest.assert('is tablet response', thCard.classList.contains('tablet'), true);
+
+        // clean up
+        testComponent.removeChild(testContainer);
+
+    };
+
+    /**
+     * Test desktop responsive
+     *
+     * @method     isDesktopResponsive
+     */
+    CardTest.isDesktopResponsive = function(){
+        
+        // create test container
+        var testComponent = document.querySelector("."+CardTest.testComponent);
+        var testContainer = document.createElement("div");
+        testContainer.style.width = '600px';
+        testComponent.appendChild(testContainer);
+
+        // create test element
+        var thCard = document.createElement("div");
+        thCard.classList.add('th-card');
+        testContainer.appendChild(thCard);
+
+        var card = Object.create(Components.Card, {
+            el: {
+                value: thCard
+            }
+        });
+
+        // test
+        card.init();
+        Core.Responsifier.responsify();
+        CardTest.assert('is desktop response', thCard.classList.contains('desktop'), true);
+
+        // clean up
+        testComponent.removeChild(testContainer);
+
+    };
+
+    /**
+     * Run tests
+     */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
         CardTest.runTestSuite([
-            CardTest.isMobileResponsive
+            CardTest.isMobileResponsive,
+            CardTest.isTabletResponsive,
+            CardTest.isDesktopResponsive
         ]);
     });
 
@@ -21,59 +123,3 @@ ToolhouseUI.Components = (function(Components, Core) {
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);
-
-// ToolhouseUI.Components = (function(Components) {
-
-//     const CardTest = {};
-//     CardTest.type = Components.BaseConfig.TYPES.test;
-//     Components.CardTest = CardTest;
-//     return Components;
-
-// })(ToolhouseUI.Components || {});
-
-// const Test = require('./test');
-// const Card = require('./card');
-// const Css = require('./card.test.css');
-
-// class CardTest extends Test {
-
-//     constructor(options){
-//       super(options);
-//       this.run([
-//         this.isMobileResponsive,
-//         this.isTabletResponsive,
-//         this.isDesktopResponsive
-//       ])
-//       .render();
-//     }
-
-//     isMobileResponsive(){
-//       var card = new Card({dom:document.createElement("th-card")});
-//       this.dom.className = "";
-//       this.dom.classList.add('mobile');
-//       this.dom.appendChild(card.dom);
-//       card.responsify();
-//       this.assert(true, card.dom.classList.contains('mobile'), "is mobile responsive");
-//     }
-
-//     isTabletResponsive(){
-//       var card = new Card({dom:document.createElement("th-card")});
-//       this.dom.className = "";
-//       this.dom.classList.add('tablet');
-//       this.dom.appendChild(card.dom);
-//       card.responsify();
-//       this.assert(true, card.dom.classList.contains('tablet'), "is tablet responsive");
-//     }
-
-//     isDesktopResponsive(){
-//       var card = new Card({dom:document.createElement("th-card")});
-//       this.dom.className = "";
-//       this.dom.classList.add('desktop');
-//       this.dom.appendChild(card.dom);
-//       card.responsify();
-//       this.assert(true, card.dom.classList.contains('desktop'), "is desktop responsive");
-//     }
-
-// };
-
-// module.exports = CardTest;

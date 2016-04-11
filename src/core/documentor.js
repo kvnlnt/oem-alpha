@@ -1,27 +1,38 @@
-// ToolhouseUI.Core = (function(Core, Components){
+ToolhouseUI.Core = (function(Core) {
 
-//     function collectComponent(component){
-//         ToolhouseUI.docs = [];
-//         var selector = new Components[component]().selector; // quickly get selector
-//         $components = $(selector);
-//         $components.each(function(i, el){
-//             var instance = new Components[component]({dom:el});
-//             instance.doc();
-//             ToolhouseUI.docs.push(instance);
-//         });
-//     }
+    var Documentor = {};
+    Documentor.name = null;
+    Documentor.testComponent = null;
 
-//     function init(){
+    // noop
+    Documentor.docHtml = function(){
+    };
 
-//         // collect all component docs
-//         for(var component in Components){
-//             if(Components[component].type === Core.Component.TYPE.doc) collectComponent(component);
-//         }
-        
-//     }
+    Documentor.docCss = function(cssConfig){
+        var css = Core.Css.renderCss(cssConfig.css);
+        var pre = document.createElement("pre");
+        var code = document.createElement("code");
+        code.setAttribute('data-language', 'css');
+        var el = document.querySelector("."+this.testComponent+".css");
+        code.innerHTML = css;
+        pre.appendChild(code);
+        el.appendChild(pre);
+    };
 
-//     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, init);
+    Documentor.docJs = function(js){
+        Core.Log('js');
+    };
 
-//     return Core;
+    var css = [];
 
-// })(ToolhouseUI.Core || {}, ToolhouseUI.Components);
+    // add to css renderer
+    Core.Css.add({
+        id: 'th-doc-css',
+        css: css
+    });
+
+    Core.Documentor = Documentor;
+    return Core;
+
+})(ToolhouseUI.Core || {});
+
