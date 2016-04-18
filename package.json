@@ -4,24 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node oem"
+    "start": "node ./dev/cli"
   },
   "author": "",
   "license": "ISC",
   "builds": {
     "Core": [
-      "Namespacer.js",
-      "Logger.js",
-      "Device.js",
-      "Util.js",
-      "EventBus.js",
-      "Events.js",
-      "Css.js",
-      "Responsifier.js",
-      "Component.js",
-      "Collector.js",
-      "Theme.js",
-      "Gfx.js"
+      "src/core/Namespacer.js",
+      "src/core/Logger.js",
+      "src/core/Device.js",
+      "src/core/Util.js",
+      "src/core/EventBus.js",
+      "src/core/Events.js",
+      "src/core/Css.js",
+      "src/core/Responsifier.js",
+      "src/core/Component.js",
+      "src/core/Collector.js",
+      "src/core/Theme.js",
+      "src/core/Gfx.js"
     ],
     "Kitchen Sink": []
   },
