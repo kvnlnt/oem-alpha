@@ -4,18 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node oem",
-    "create new component": "",
-    "dev a certain component": "",
-    "build a certain component": "",
-    "build a certain build": "",
-    "run designer": "",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node oem"
   },
   "author": "",
   "license": "ISC",
   "builds": {
-    "core": [
+    "Core": [
       "Namespacer.js",
       "Logger.js",
       "Device.js",
@@ -29,7 +23,7 @@
       "Theme.js",
       "Gfx.js"
     ],
-    "all": []
+    "Kitchen Sink": []
   },
   "devDependencies": {
     "colors": "^1.1.2",
