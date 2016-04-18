@@ -1,6 +1,11 @@
+DECISIONS
 RWD, Self Documenting, Testable, Composable, Mediated, Cross Browser IE*+ componentns
 
 - keeping css in js code allows for:
     - reflection
     - variables and calculations
     - self documentation and reflection which helps testing and evolution
+
+
+TODO
+internationalization

@@ -4,9 +4,37 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server src -p 7001 -o",
+    "start": "node oem",
+    "create new component": "",
+    "dev a certain component": "",
+    "build a certain component": "",
+    "build a certain build": "",
+    "run designer": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "builds": {
+    "core": [
+      "Namespacer.js",
+      "Logger.js",
+      "Device.js",
+      "Util.js",
+      "EventBus.js",
+      "Events.js",
+      "Css.js",
+      "Responsifier.js",
+      "Component.js",
+      "Collector.js",
+      "Theme.js",
+      "Gfx.js"
+    ],
+    "all": []
+  },
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "glob": "^7.0.3",
+    "humanize": "0.0.9",
+    "inquirer": "^1.0.2"
+  }
 }
