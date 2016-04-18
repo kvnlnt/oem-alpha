@@ -6,8 +6,25 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css"/>
-    <link href="oem.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        body {
+            padding:20px;
+        } 
+
+        h2.oem {
+            font-size: 20px;
+            color: #666666;
+            text-transform: uppercase;
+        }
+
+        h3.oem {
+            font-size: 16px;
+            color: #666666;
+            text-transform: uppercase;
+        }
+    </style>
 
     <!-- POLYFILL -->
     <!--[if lte IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><![endif]-->
@@ -25,25 +42,17 @@
     <script src="./core/Collector.js"></script>
     <script src="./core/Theme.js"></script>
     <script src="./core/Gfx.js"></script>
-    <script src="./core/Documentor.js"></script>
 
     <!-- COMPONENTS -->
 
     <!-- Base -->
-    <script src="./components/base/base.css.js"></script>
-
-    <!-- Image -->
-    <script src="./components/image/image.css.js"></script>
-    <script src="./components/image/image.js"></script>
-    <script src="./components/image/image.logic.js"></script>
-    <script src="./components/image/image.collector.js"></script>
+    <script src="./components/base/base.view.js"></script>
 
     <!-- Card -->
-    <script src="./components/card/card.css.js"></script>
-    <script src="./components/card/card.logic.js"></script>
-    <script src="./components/card/card.js"></script>
+    <script src="./components/card/card.model.js"></script>
+    <script src="./components/card/card.view.js"></script>
+    <script src="./components/card/card.controller.js"></script>
     <script src="./components/card/card.collector.js"></script>
-    <script src="./components/card/card.doc.js"></script>
 
     <!-- TESTS -->
     <script src="./core/Test.js"></script>

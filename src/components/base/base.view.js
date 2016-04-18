@@ -1,6 +1,8 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var css = [
+    var View = {};
+    View.id = 'th-base-view';
+    View.css = [
 
         {
             selector: "*",
@@ -57,10 +59,11 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: 'th-base-css',
-        css: css
+        id: View.id,
+        css: View.css
     });
 
+    Components.View = View;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

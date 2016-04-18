@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server src -p 7001",
+    "dev": "http-server src -p 7001 -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

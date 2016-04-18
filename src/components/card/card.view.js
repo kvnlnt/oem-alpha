@@ -1,8 +1,8 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var CardCss = {};
-    CardCss.id = 'th-card-css';
-    CardCss.css = [
+    var CardView = {};
+    CardView.id = 'th-card-css';
+    CardView.css = [
 
         {
             selector: "th-card, .th-card",
@@ -42,11 +42,11 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: CardCss.id,
-        css: CardCss.css
+        id: CardView.id,
+        css: CardView.css
     });
 
-    Components.CardCss = CardCss;
+    Components.CardView = CardView;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

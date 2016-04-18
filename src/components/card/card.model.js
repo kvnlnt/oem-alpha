@@ -1,8 +1,12 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    const DocCss = {};
-    DocCss.type = Core.Component.TYPE.css;
-    Components.DocCss = DocCss;
+    var CardModel = {};
+
+    CardModel.test = function(){
+        return 'test';
+    };
+
+    Components.CardModel = CardModel;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);
