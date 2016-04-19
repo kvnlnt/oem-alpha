@@ -1,34 +1,48 @@
 {
-  "name": "toolhouse-ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ./dev/cli"
-  },
-  "author": "",
-  "license": "ISC",
-  "builds": {
-    "Core": [
-      "src/core/Namespacer.js",
-      "src/core/Logger.js",
-      "src/core/Device.js",
-      "src/core/Util.js",
-      "src/core/EventBus.js",
-      "src/core/Events.js",
-      "src/core/Css.js",
-      "src/core/Responsifier.js",
-      "src/core/Component.js",
-      "src/core/Collector.js",
-      "src/core/Theme.js",
-      "src/core/Gfx.js"
-    ],
-    "Kitchen Sink": []
-  },
-  "devDependencies": {
-    "colors": "^1.1.2",
-    "glob": "^7.0.3",
-    "humanize": "0.0.9",
-    "inquirer": "^1.0.2"
-  }
+   "name":"oem",
+   "version":"1.0.0",
+   "description":"",
+   "main":"./dev/cli.js",
+   "scripts":{
+      "start":"node ./oem/cli"
+   },
+   "author":"Toolhouse Inc.",
+   "license":"ISC",
+   "builds":{
+      "all":[
+         "card"
+      ]
+   },
+   "registry":{
+      "core":[
+         "src/core/Namespacer.js",
+         "src/core/Logger.js",
+         "src/core/Device.js",
+         "src/core/Util.js",
+         "src/core/EventBus.js",
+         "src/core/Events.js",
+         "src/core/Css.js",
+         "src/core/Responsifier.js",
+         "src/core/Component.js",
+         "src/core/Collector.js",
+         "src/core/Theme.js",
+         "src/core/Gfx.js",
+         "src/core/View.js"
+      ],
+      "components":{
+         "card":[
+            "src/card/card.gfx.js",
+            "src/card/card.model.js",
+            "src/card/card.view.js",
+            "src/card/card.controller.js",
+            "src/card/card.collector.js"
+         ]
+      }
+   },
+   "devDependencies":{
+      "colors":"^1.1.2",
+      "glob":"^7.0.3",
+      "humanize":"0.0.9",
+      "inquirer":"^1.0.2"
+   }
 }
