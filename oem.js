@@ -5,13 +5,6 @@ var http = require('http');
 var colors = require('colors');
 var exec = require('child_process').exec;
 
-var TASKS = {};
-TASKS.START_DEVELOPING_COMPONENT = "Start Developing A Component";
-TASKS.START_A_BUILD = "Start A Deployment";
-TASKS.START_PATTERN_LIBRARY = "Start The Pattern Library";
-TASKS.START_NEW_COMPONENT = "Start A New Component";
-TASKS.START_NEW_DEPLOYMENT = "Start A New Deployment";
-
 // content type enums
 var CONTENT_TYPE = {};
 CONTENT_TYPE.HTML = "text/html";
@@ -24,6 +17,7 @@ CONTENT_TYPE.CSS = "text/css";
 var ARG = {};
 ARG.HELP = 'help';
 ARG.DEVELOP = 'develop';
+ARG.NEW = 'new';
 
 // cli args
 var ARGS = process.argv.filter(function(arg, i){ return i > 1; });
@@ -54,7 +48,7 @@ ComponentDevelopmentServer.prototype = {
     start: function () {
         var that = this;
         this.server = http
-        .createServer(this.handleRequests.bind(this))
+        .createServer(this.handleServerRequests.bind(this))
         .listen(this.port, function() {
             console.log(" OEM ".inverse.green, "http://localhost:" + that.port);
             var cmd = 'open http://localhost:'+that.port;
@@ -70,7 +64,7 @@ ComponentDevelopmentServer.prototype = {
      * @param  {[type]} res [description]
      * @return {[type]}     [description]
      */
-    handleRequests: function(req, res) {
+    handleServerRequests: function(req, res) {
 
         if (req.url === "/") {
 
@@ -154,14 +148,23 @@ ComponentDevelopmentServer.prototype = {
      * @param      {<type>}  answers  { description }
      */
     getJsFiles: function () {
+
+        // component configuration files
         var srcFiles = pkg.oem.development[this.component].configuration.map(function(config){
             return pkg.oem.configurations[config];
         });
 
-        var testFiles = pkg.oem.development[this.component].tests;
+        // test core and component test files
+        var testFiles = [];
+        testFiles.push("./src/core/Test.js");
+        testFiles.push(pkg.oem.development[this.component].tests);
 
-        var jsFiles = [].concat(...srcFiles).concat(testFiles);
-        return jsFiles;
+        // flatten arrays
+        var allFiles = []
+        .concat(...srcFiles)
+        .concat(testFiles);
+
+        return allFiles;
     }
 
 };
@@ -183,8 +186,10 @@ function showHelp(){
     console.log(ARG.HELP.bold, "            Usage documentation");
     console.log(ARG.DEVELOP.bold, "         Launch development server for a component");
     console.log("   Arguments:".italic, "   [Component Name] [Port - Defaults to 7001]");
-    console.log("   Example:".italic, "     node develop card".blue);
-    console.log();
+    console.log("   Example:".italic, "     node oem develop card".blue);
+    console.log(ARG.NEW.bold, "             Create new component");
+    console.log("   Arguments:".italic, "   [Component Name]. Note: Use dashes for multiple words");
+    console.log("   Example:".italic, "     node oem new component-name".blue);
     console.log();
 }
 

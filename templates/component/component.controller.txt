@@ -1,0 +1,12 @@
+ToolhouseUI.Components = (function(Components, Core) {
+
+    // Card component
+    var <!-- component-class --> = Object.create(Core.Component); // call super constructor.
+    <!-- component-class -->.name = "<!-- component-class -->";
+    Core.Util.extend(<!-- component-class -->, Components.<!-- component-class -->Model);
+    
+    // exports
+    Components.<!-- component-class --> = <!-- component-class -->;
+    return Components;
+
+})(ToolhouseUI.Components || {}, ToolhouseUI.Core);

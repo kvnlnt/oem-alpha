@@ -25,7 +25,6 @@
           "card"
         ],
         "tests": [
-          "./src/core/Test.js",
           "./src/components/card/card.test.js"
         ],
         "demo": "./src/components/card/card.demo.html"

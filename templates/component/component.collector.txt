@@ -1,0 +1,4 @@
+ToolhouseUI.Components = (function(Components, Core) {
+    Core.Collector.addComponent('<!-- component-name -->', Components.<!-- component-class -->);
+    return Components;
+})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
