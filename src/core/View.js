@@ -64,6 +64,6 @@ ToolhouseUI.Components = (function(Core) {
     });
 
     Core.View = View;
-    return Components;
+    return Core;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(ToolhouseUI.Core || {});
