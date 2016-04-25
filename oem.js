@@ -3,6 +3,7 @@ var path = require('path');
 var pkg = require('./package');
 var http = require('http');
 var colors = require('colors');
+var exec = require('child_process').exec;
 
 var TASKS = {};
 TASKS.START_DEVELOPING_COMPONENT = "Start Developing A Component";
@@ -27,12 +28,19 @@ ARG.DEVELOP = 'develop';
 // cli args
 var ARGS = process.argv.filter(function(arg, i){ return i > 1; });
 
+/**
+ * Component Development Server
+ *
+ * @class
+ * @param      {<type>}  component  { description }
+ * @param      {<type>}  port       { description }
+ */
 var ComponentDevelopmentServer = function (component, port) {
     this.component = component;
     this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
     this.template = fs.readFileSync("./templates/development/component.html", 'utf8');
-    this.demoHtml = fs.readFileSync(pkg.oem.development[this.component].demo, 'utf8');
+    this.demoHtml = pkg.oem.development[this.component].demo;
     this.server;
 };
 
@@ -49,6 +57,10 @@ ComponentDevelopmentServer.prototype = {
         .createServer(this.handleRequests.bind(this))
         .listen(this.port, function() {
             console.log(" OEM ".inverse.green, "http://localhost:" + that.port);
+            var cmd = 'open http://localhost:'+that.port;
+            exec(cmd, function(error, stdout, stderr) {
+              // command output is in stdout
+            });
         });
     },
 
@@ -63,8 +75,9 @@ ComponentDevelopmentServer.prototype = {
         if (req.url === "/") {
 
             var template;
+            var demoHtml = fs.readFileSync(this.demoHtml, 'utf8');
             template = this.template
-            .replace("<!-- HTML -->", this.demoHtml)
+            .replace("<!-- HTML -->", demoHtml, 'utf8')
             .replace("<!-- JS -->", this.wrapInScriptTag(this.jsFiles));
             res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
             res.write(template);
