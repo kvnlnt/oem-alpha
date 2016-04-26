@@ -1,7 +1,7 @@
 ToolhouseUI.Components = (function(Components) {
 
-    const COMPONENT_CLASSGfx = {};
-    Components.COMPONENT_CLASSGfx = COMPONENT_CLASSGfx;
+    const KevinGfx = {};
+    Components.KevinGfx = KevinGfx;
     return Components;
 
 })(ToolhouseUI.Components || {});

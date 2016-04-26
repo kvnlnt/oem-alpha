@@ -1,12 +1,12 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var COMPONENT_CLASSModel = {};
+    var %CLASS%Model = {};
 
-    COMPONENT_CLASSModel.test = function(){
+    %CLASS%Model.test = function(){
         return 'test';
     };
 
-    Components.COMPONENT_CLASSModel = COMPONENT_CLASSModel;
+    Components.%CLASS%Model = %CLASS%Model;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);
