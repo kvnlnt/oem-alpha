@@ -2,7 +2,7 @@
     "name": "oem",
     "version": "1.0.0",
     "description": "",
-    "main": "dev/cli.js",
+    "main": "cli/oem.js",
     "scripts": {
         "start": "node ./oem"
     },
@@ -28,16 +28,6 @@
                     "./src/components/card/card.test.js"
                 ],
                 "demo": "./src/components/card/card.demo.html"
-            },
-            "kevin": {
-                "configuration": [
-                    "core",
-                    "kevin"
-                ],
-                "tests": [
-                    "./src/components/kevin/kevin.test.js"
-                ],
-                "demo": "./src/components/kevin/kevin.demo.html"
             }
         },
         "configurations": {
@@ -62,13 +52,6 @@
                 "./src/components/card/card.view.js",
                 "./src/components/card/card.controller.js",
                 "./src/components/card/card.collector.js"
-            ],
-            "kevin": [
-                "./src/components/kevin/kevin.gfx.js",
-                "./src/components/kevin/kevin.model.js",
-                "./src/components/kevin/kevin.view.js",
-                "./src/components/kevin/kevin.controller.js",
-                "./src/components/kevin/kevin.collector.js"
             ]
         }
     },
