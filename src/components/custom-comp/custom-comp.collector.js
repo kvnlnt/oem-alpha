@@ -1,4 +1,4 @@
 ToolhouseUI.Components = (function(Components, Core) {
-    Core.Collector.addComponent('COMPONENT_NAME', Components.COMPONENT_CLASS);
+    Core.Collector.addComponent('custom-comp', Components.CustomComp);
     return Components;
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

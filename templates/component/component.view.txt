@@ -1,40 +1,12 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var CardView = {};
-    CardView.id = 'th-card-css';
-    CardView.css = [
+    var COMPONENT_CLASSView = {};
+    COMPONENT_CLASSView.id = 'COMPONENT_NAME-css';
+    COMPONENT_CLASSView.css = [
 
         {
-            selector: "th-card, .th-card",
+            selector: "COMPONENT_NAME, .COMPONENT_NAME",
             declaration: [
-                "background-color: " + Core.Theme.COLORS.greyD,
-                "font-size: 16px",
-                "display:block",
-                "padding:10px",
-                "text-align:center",
-                "border:1px solid" + Core.Theme.COLORS.greyA
-            ]
-        },
-
-        {
-            selector: "th-card.mobile, .th-card.mobile",
-            declaration: [
-                
-            ]
-        },
-
-        {
-            selector: "th-card.tablet, .th-card.tablet",
-            declaration: [
-                "text-align:left"
-            ]
-        },
-
-        {
-            selector: "th-card.desktop, .th-card.desktop",
-            declaration: [
-                "font-size:24px;",
-                "text-align:left"
             ]
         }
 
@@ -42,11 +14,11 @@ ToolhouseUI.Components = (function(Components, Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: CardView.id,
-        css: CardView.css
+        id: COMPONENT_CLASSView.id,
+        css: COMPONENT_CLASSView.css
     });
 
-    Components.CardView = CardView;
+    Components.CardView = COMPONENT_CLASSView;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

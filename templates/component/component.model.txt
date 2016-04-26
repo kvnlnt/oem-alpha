@@ -1,12 +1,12 @@
 ToolhouseUI.Components = (function(Components, Core) {
 
-    var CardModel = {};
+    var COMPONENT_CLASSModel = {};
 
-    CardModel.test = function(){
+    COMPONENT_CLASSModel.test = function(){
         return 'test';
     };
 
-    Components.CardModel = CardModel;
+    Components.COMPONENT_CLASSModel = COMPONENT_CLASSModel;
     return Components;
 
 })(ToolhouseUI.Components || {}, ToolhouseUI.Core);

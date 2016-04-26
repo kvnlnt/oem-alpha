@@ -166,7 +166,56 @@ ComponentDevelopmentServer.prototype = {
 
         return allFiles;
     }
+};
 
+/**
+ * Create Component
+ */
+var CreateComponent = function(componentName){
+    this.componentName = componentName;
+    this.componentClass = this.convertNameToClass(componentName);
+    this.componentDir = './src/components/'+this.componentName;
+    this
+    .createDirectory()
+    .copyFiles();
+};
+
+CreateComponent.prototype = {
+
+    createDirectory: function(){
+        console.log('create component', this.componentName, this.componentClass);
+        try {
+            fs.mkdirSync(this.componentDir);
+        } catch (err) {
+            if(err) console.log("ERROR".red, err);
+        }
+        return this;
+    },
+
+    renderTemplate: function(str){
+        console.log(this.componentName, this.componentClass);
+        return str
+        .replace('COMPONENT_NAME', this.componentName)
+        .replace('COMPONENT_CLASS', this.componentClass);
+    },
+
+    copyFiles: function(){
+
+        // collector js
+        var collector = fs.readFileSync('./templates/component/component.collector.txt', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/' + this.componentName + '.collector.js', this.renderTemplate(collector));
+
+        // controller js
+        var controller = fs.readFileSync('./templates/component/component.controller.txt', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/' + this.componentName + '.controller.js', this.renderTemplate(controller));
+
+
+    },
+    convertNameToClass: function(name){
+        return name.split('-').map(function(segment){
+            return segment.charAt(0).toUpperCase() + segment.slice(1);
+        }).join('');
+    }
 };
 
 /**
@@ -203,6 +252,9 @@ try {
             break;
         case ARG.HELP:
             showHelp();
+            break;
+        case ARG.NEW:
+            var newComponent = new CreateComponent(ARGS[1]);
             break;
         default:
             showHelp();
