@@ -3,14 +3,8 @@ const fs = require("fs");
 const http = require('http');
 const exec = require('child_process').exec;
 const path = require('path');
-
-// content type enums
-const CONTENT_TYPE = {};
-CONTENT_TYPE.HTML = "text/html";
-CONTENT_TYPE.JS = "application/javascript";
-CONTENT_TYPE.PNG = "image/png";
-CONTENT_TYPE.JPG = "image/jpg";
-CONTENT_TYPE.CSS = "text/css";
+const Config = require('./config');
+const CONTENT_TYPE = Config.CONTENT_TYPE;
 
 /**
  * Component Development Server
@@ -19,7 +13,6 @@ const DevelopServer = function (component, port) {
     this.component = component;
     this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
-    this.template = fs.readFileSync("./templates/development/component.html", 'utf8');
     this.demoHtml = pkg.oem.development[this.component].demo;
     this.server;
 };
@@ -53,16 +46,15 @@ DevelopServer.prototype = {
     handleServerRequests: function(req, res) {
 
         if (req.url === "/") {
-
-            var template;
+            var that = this;
             var demoHtml = fs.readFileSync(this.demoHtml, 'utf8');
-            template = this.template
-            .replace("<!-- HTML -->", demoHtml, 'utf8')
-            .replace("<!-- JS -->", this.wrapInScriptTag(this.jsFiles));
-            res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
-            res.write(template);
-            res.end();
-
+            var template = fs.readFile("./templates/development/main.html", 'utf8', function(err, data){
+                data = data.replace("<!-- HTML -->", demoHtml, 'utf8')
+                .replace("<!-- JS -->", that.wrapInScriptTag(that.jsFiles));
+                res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
+                res.write(data);
+                res.end();
+            });
         // else serve asset
         } else {
 

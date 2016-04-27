@@ -1,6 +1,6 @@
 ToolhouseUI.Components = (function(Components) {
 
-    const CardGfx = {};
+    var CardGfx = {};
     Components.CardGfx = CardGfx;
     return Components;
 

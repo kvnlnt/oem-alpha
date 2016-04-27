@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css"/>
+
     <style>
         body {
             padding:20px;
@@ -37,6 +38,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/css.min.js"></script>
+    <script>
+
+        function init () {
+
+            // setup html demos
+            // this protects them from the responsifier adding classes on load but failing to keep it up since 
+            // rainbow colorizes and changes the demo's html
+            var demoHtmlBlocks = document.querySelectorAll(".demoHtml");
+            var demoHtml;
+            var htmlBlock;
+            var preTag, codeTag;
+            for (var i = 0; i < demoHtmlBlocks.length; i++) {
+                htmlBlock = demoHtmlBlocks[i];
+                demoHtml = htmlBlock.value;
+                codeTag = document.createElement("code");
+                codeTag.setAttribute("data-language", "html");
+                codeTag.innerHTML = demoHtml;
+                preTag = document.createElement("pre");
+                preTag.appendChild(codeTag);
+                htmlBlock.parentNode.replaceChild(preTag, htmlBlock);
+            }
+        }
+
+        // collect on document ready
+        ToolhouseUI.Core.Events.addEventListener(ToolhouseUI.Core.EVENTS.DOCUMENT_READY, init);
+
+    </script>
 
 </body>
 
