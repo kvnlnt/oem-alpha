@@ -7,7 +7,6 @@
 
 const fs = require("fs");
 const pkg = require('./package');
-const colors = require('colors');
 const exec = require('child_process').exec;
 const DevelopServer = require('./cli/develop').DevelopServer;
 const CreateComponent = require('./cli/new').CreateComponent;
@@ -35,5 +34,5 @@ try {
             Help.show();
     }
 } catch(err) {
-    console.log('ERROR'.red, err);
+    console.log('ERROR', err);
 }
