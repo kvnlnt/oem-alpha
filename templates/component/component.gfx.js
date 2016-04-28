@@ -1,7 +1,7 @@
-ToolhouseUI.Components = (function(Components) {
+oem.Components = (function(Components) {
 
     const %CLASS%Gfx = {};
     Components.%CLASS%Gfx = %CLASS%Gfx;
     return Components;
 
-})(ToolhouseUI.Components || {});
+})(oem.Components || {});

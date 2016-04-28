@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
-    Core.Collector.addComponent('th-card', Components.Card);
+oem.Components = (function(Components, Core) {
+    Core.Collector.addComponent('oem-card', Components.Card);
     return Components;
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

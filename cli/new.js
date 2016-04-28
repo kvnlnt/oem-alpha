@@ -1,13 +1,14 @@
 const fs = require("fs");
 const pkg = require('../package');
-const DevelopServer = require('./develop').DevelopServer;
+const Config = require('./config');
+const CLI = Config.CLI;
 
 /**
  * Component Creator
  */
 const CreateComponent = function(componentName){
     this.fileName = componentName;
-    this.componentName = 'th-' + componentName;
+    this.componentName = 'oem-' + componentName;
     this.componentClass = this.convertNameToClass(componentName);
     this.componentDir = './src/components/'+this.fileName;
     this
@@ -23,10 +24,10 @@ CreateComponent.prototype = {
         // console.log('create component', this.componentName, this.componentClass);
         try {
             fs.mkdirSync(this.componentDir);
+            return this;
         } catch (err) {
             if(err) console.log("ERROR".red, err);
         }
-        return this;
     },
 
     renderTemplate: function(str){
@@ -94,8 +95,8 @@ CreateComponent.prototype = {
     },
 
     launch: function(){
-        var developServer = new DevelopServer(this.fileName);
-        developServer.start();
+        console.log(CLI.oem, "  OEM  ", "new");
+        console.log('Component', this.fileName, 'has been created');
     },
 
     convertNameToClass: function(name){

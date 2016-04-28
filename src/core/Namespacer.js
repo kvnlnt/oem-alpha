@@ -1,4 +1,4 @@
-window.ToolhouseUI = {};
-window.ToolhouseUI.Core = {};
-window.ToolhouseUI.Components = {};
-window.ToolhouseUI.Collections = {};
+window.oem = {};
+window.oem.Core = {};
+window.oem.Components = {};
+window.oem.Collections = {};

@@ -7,11 +7,8 @@ const CLI = Config.CLI;
  * @return {[type]} [description]
  */
 function show(){
-    console.log('\x1b[36m%s\x1b[0m', "info");
     console.log();
-    console.log(CLI.oem, "         ");
-    console.log(CLI.oem, "   OEM   ");
-    console.log(CLI.oem, "         ");
+    console.log(CLI.oem, "  OEM  ", "help");
     console.log();
     console.log(CLI.section, "USAGE");
     console.log("");

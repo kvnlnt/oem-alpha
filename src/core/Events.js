@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core) {
+oem.Core = (function(Core) {
 
     var EVENTS = {
         DOCUMENT_READY: "DOCUMENT_READY",
@@ -7,7 +7,7 @@ ToolhouseUI.Core = (function(Core) {
         COMPONENTS_COLLECTED: "COMPONENTS_COLLECTED"
     };
 
-    var Events = new ToolhouseUI.Core.EventBus();
+    var Events = new oem.Core.EventBus();
 
     // when all dom content is loaded
     document.addEventListener("DOMContentLoaded", function(event) {
@@ -31,4 +31,4 @@ ToolhouseUI.Core = (function(Core) {
     Core.Events = Events;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

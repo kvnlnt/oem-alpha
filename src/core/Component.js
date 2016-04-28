@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core) {
+oem.Core = (function(Core) {
 
     var Component = {};
     Component.el = null;
@@ -40,5 +40,5 @@ ToolhouseUI.Core = (function(Core) {
     return Core;
     
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});
 

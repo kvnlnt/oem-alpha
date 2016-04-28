@@ -1,4 +1,4 @@
-// ToolhouseUI.Core = (function(Core) {
+// oem.Core = (function(Core) {
 
 //     Core.Introspect = {
 //         getFuncArgs: function(func) {
@@ -45,4 +45,4 @@
 
 //     return Core;
 
-// })(ToolhouseUI.Core || {});
+// })(oem.Core || {});

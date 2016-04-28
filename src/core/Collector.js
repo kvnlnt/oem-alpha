@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Core, Collections) {
+oem.Core = (function(Core, Collections) {
 
     // Card component
     var Collector = {};
@@ -76,4 +76,4 @@ ToolhouseUI.Components = (function(Core, Collections) {
     Core.Collector = Collector;
     return Core;
 
-})(ToolhouseUI.Core, ToolhouseUI.Collections);
+})(oem.Core, oem.Collections);

@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core){
+oem.Core = (function(Core){
 
     function Log() {
         try {
@@ -11,4 +11,4 @@ ToolhouseUI.Core = (function(Core){
     Core.Log = Log;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

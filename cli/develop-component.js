@@ -9,15 +9,16 @@ const CONTENT_TYPE = Config.CONTENT_TYPE;
 /**
  * Component Development Server
  */
-const DevelopServer = function (component, port) {
+const DevelopComponent = function (component, port) {
     this.component = component;
     this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
     this.demoHtml = pkg.oem.development[this.component].demo;
     this.server;
+    this.start();
 };
 
-DevelopServer.prototype = {
+DevelopComponent.prototype = {
 
     /**
      * Main CLI prompt
@@ -147,5 +148,5 @@ DevelopServer.prototype = {
 };
 
 module.exports = {
-    DevelopServer:DevelopServer
+    DevelopComponent:DevelopComponent
 };

@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     var %CLASS%View = {};
     %CLASS%View.id = '%NAME%-css';
@@ -22,4 +22,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.CardView = %CLASS%View;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

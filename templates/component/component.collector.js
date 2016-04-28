@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
     Core.Collector.addComponent('%NAME%', Components.%CLASS%);
     return Components;
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

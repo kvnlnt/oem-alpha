@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     var CardModel = {};
 
@@ -9,4 +9,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.CardModel = CardModel;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

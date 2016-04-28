@@ -1,4 +1,4 @@
- ToolhouseUI.Core = (function(Core) {
+ oem.Core = (function(Core) {
 
      var Responsifier = {};
 
@@ -94,4 +94,4 @@
      Core.Responsifier = Responsifier;
      return Core;
 
- })(ToolhouseUI.Core || {});
+ })(oem.Core || {});

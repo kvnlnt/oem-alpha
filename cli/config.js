@@ -3,6 +3,7 @@ const ARG = {};
 ARG.HELP = 'help';
 ARG.DEVELOP = 'develop';
 ARG.NEW = 'new';
+ARG.REMOVE = 'remove';
 
 // content type enums
 const CONTENT_TYPE = {};

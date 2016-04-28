@@ -1,7 +1,7 @@
-ToolhouseUI.Components = (function(Components) {
+oem.Components = (function(Components) {
 
     var CardGfx = {};
     Components.CardGfx = CardGfx;
     return Components;
 
-})(ToolhouseUI.Components || {});
+})(oem.Components || {});

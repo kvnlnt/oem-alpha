@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core) {
+oem.Core = (function(Core) {
 
     var Test = {};
     Test.name = null;
@@ -17,12 +17,11 @@ ToolhouseUI.Core = (function(Core) {
             testSuite[i]();
         }
         
-
-
     };
 
     Test.assert = function(msg, a, b){
         var ul = document.querySelector('.' + this.testComponent + ' ul');
+        ul.classList.add('oem');
         var li;
         if(a === b){
             li = document.createElement('li');
@@ -50,7 +49,7 @@ ToolhouseUI.Core = (function(Core) {
         {
             selector: ".test-pass",
             declaration: [
-                "color:grey"
+                "color:black"
             ]
         },
         ,
@@ -65,12 +64,12 @@ ToolhouseUI.Core = (function(Core) {
 
     // add to css renderer
     Core.Css.add({
-        id: 'th-test-css',
+        id: 'oem-test-css',
         css: css
     });
 
     Core.Test = Test;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});
 

@@ -1,7 +1,7 @@
-ToolhouseUI.Components = (function(Core) {
+oem.Components = (function(Core) {
 
     var View = {};
-    View.id = 'th-view';
+    View.id = 'oem-view';
     View.css = [
 
         {
@@ -66,4 +66,4 @@ ToolhouseUI.Components = (function(Core) {
     Core.View = View;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

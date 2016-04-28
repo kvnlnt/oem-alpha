@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     // Card component
     var %CLASS% = Object.create(Core.Component); // call super constructor.
@@ -9,4 +9,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.%CLASS% = %CLASS%;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

@@ -24,7 +24,7 @@
 // EventBus.dispatch(type, target, args ...)
 
 // for debugging purpose, it just prints out the added listeners
-ToolhouseUI.Core = (function(Core){
+oem.Core = (function(Core){
 
     function EventBus() {
         this.listeners = {};
@@ -124,5 +124,5 @@ ToolhouseUI.Core = (function(Core){
     Core.EventBus = EventBus;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});
 

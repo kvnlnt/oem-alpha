@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core) { 
+oem.Core = (function(Core) { 
 
     var Css = {};
     Css.collection = [];
@@ -74,4 +74,4 @@ ToolhouseUI.Core = (function(Core) {
     Core.Css = Css;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

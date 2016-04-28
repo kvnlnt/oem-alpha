@@ -1,4 +1,4 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     // %CLASS% component
     var %CLASS%Test = Object.create(Core.Test); // call super constructor
@@ -27,4 +27,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.%CLASS%Test = %CLASS%Test;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

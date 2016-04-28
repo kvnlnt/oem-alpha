@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core){
+oem.Core = (function(Core){
 
     // Module
     var Util = {};
@@ -63,4 +63,4 @@ ToolhouseUI.Core = (function(Core){
     Core.Util = Util;
     return Core;
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

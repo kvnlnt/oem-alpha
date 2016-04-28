@@ -1,4 +1,4 @@
-ToolhouseUI.Core = (function(Core) {
+oem.Core = (function(Core) {
 
     var Gfx = {};
 
@@ -24,7 +24,7 @@ ToolhouseUI.Core = (function(Core) {
 
         // render definition
         Core.Css.add({
-            id: 'th-images-css',
+            id: 'oem-images-css',
             css: css
         });
 
@@ -37,4 +37,4 @@ ToolhouseUI.Core = (function(Core) {
     return Core;
     
 
-})(ToolhouseUI.Core || {});
+})(oem.Core || {});

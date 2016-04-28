@@ -1,11 +1,11 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     var CardView = {};
-    CardView.id = 'th-card-css';
+    CardView.id = 'oem-card-css';
     CardView.css = [
 
         {
-            selector: "th-card, .th-card",
+            selector: "oem-card, .oem-card",
             declaration: [
                 "background-color: " + Core.Theme.COLORS.white,
                 "font-size: 16px",
@@ -17,21 +17,21 @@ ToolhouseUI.Components = (function(Components, Core) {
         },
 
         {
-            selector: "th-card.mobile, .th-card.mobile",
+            selector: "oem-card.mobile, .oem-card.mobile",
             declaration: [
                 
             ]
         },
 
         {
-            selector: "th-card.tablet, .th-card.tablet",
+            selector: "oem-card.tablet, .oem-card.tablet",
             declaration: [
                 "text-align:left"
             ]
         },
 
         {
-            selector: "th-card.desktop, .th-card.desktop",
+            selector: "oem-card.desktop, .oem-card.desktop",
             declaration: [
                 "font-size:24px;",
                 "text-align:left"
@@ -49,4 +49,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.CardView = CardView;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);

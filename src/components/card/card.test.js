@@ -1,9 +1,9 @@
-ToolhouseUI.Components = (function(Components, Core) {
+oem.Components = (function(Components, Core) {
 
     // Card component
     var CardTest = Object.create(Core.Test); // call super constructor
     CardTest.name = "Tests";
-    CardTest.testComponent = 'th-card-test';
+    CardTest.testComponent = 'oem-card-test';
 
     /**
      * Test mobile responsive
@@ -20,7 +20,7 @@ ToolhouseUI.Components = (function(Components, Core) {
 
         // create test element
         var thCard = document.createElement("div");
-        thCard.classList.add('th-card');
+        thCard.classList.add('oem-card');
         testContainer.appendChild(thCard);
 
         var card = Object.create(Components.Card, {
@@ -54,7 +54,7 @@ ToolhouseUI.Components = (function(Components, Core) {
 
         // create test element
         var thCard = document.createElement("div");
-        thCard.classList.add('th-card');
+        thCard.classList.add('oem-card');
         testContainer.appendChild(thCard);
 
         var card = Object.create(Components.Card, {
@@ -88,7 +88,7 @@ ToolhouseUI.Components = (function(Components, Core) {
 
         // create test element
         var thCard = document.createElement("div");
-        thCard.classList.add('th-card');
+        thCard.classList.add('oem-card');
         testContainer.appendChild(thCard);
 
         var card = Object.create(Components.Card, {
@@ -122,4 +122,4 @@ ToolhouseUI.Components = (function(Components, Core) {
     Components.CardTest = CardTest;
     return Components;
 
-})(ToolhouseUI.Components || {}, ToolhouseUI.Core);
+})(oem.Components || {}, oem.Core);
