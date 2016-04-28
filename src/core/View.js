@@ -7,7 +7,7 @@ ToolhouseUI.Components = (function(Core) {
         {
             selector: "*",
             declaration: [
-                "transition: all 0.5s",
+                "transition: all 0.25s",
             ]
         }, 
         {

@@ -29,7 +29,7 @@ DevelopServer.prototype = {
         this.server = http
         .createServer(this.handleServerRequests.bind(this))
         .listen(this.port, function() {
-            console.log(" OEM ".inverse.green, "http://localhost:" + that.port);
+            console.log(" OEM ", "http://localhost:" + that.port);
             var cmd = 'open http://localhost:'+that.port;
             exec(cmd, function(error, stdout, stderr) {
               // command output is in stdout

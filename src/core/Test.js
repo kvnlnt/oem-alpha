@@ -27,10 +27,12 @@ ToolhouseUI.Core = (function(Core) {
         if(a === b){
             li = document.createElement('li');
             li.classList.add('test-pass');
+            li.classList.add('oem');
             li.innerHTML = "&#10003; " + msg;
         } else {
             li = document.createElement('li');
             li.classList.add('test-fail');
+            li.classList.add('oem');
             li.innerHTML = "&#10007; " + msg;
         }
         ul.appendChild(li);
