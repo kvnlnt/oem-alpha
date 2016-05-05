@@ -36,7 +36,7 @@ RemoveComponent.prototype = {
         delete pkg.oem.development[this.fileName];
         delete pkg.oem.configurations[this.fileName];
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
-        console.log(CLI.oem, "  OEM  ", "remove");
+        console.log(CLI.oem, "  OEM  ", "REMOVE");
         console.log('Component', this.fileName, 'has been removed');
         return this;
     }
@@ -45,4 +45,4 @@ RemoveComponent.prototype = {
 
 module.exports = {
     RemoveComponent: RemoveComponent
-}
+};

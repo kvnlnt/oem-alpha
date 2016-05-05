@@ -1,6 +1,7 @@
 // argument enums
 const ARG = {};
 ARG.HELP = 'help';
+ARG.LIST = 'list';
 ARG.DEVELOP = 'develop';
 ARG.NEW = 'new';
 ARG.REMOVE = 'remove';
@@ -16,7 +17,7 @@ CONTENT_TYPE.CSS = "text/css";
 const CLI = {};
 CLI.FgRed = "\x1b[31m%s\x1b[0m";
 CLI.FgBlack = "\x1b[30m%s\x1b[0m";
-CLI.section = "\x1b[37;m%s\x1b[0m";
+CLI.section = "\x1b[33;m%s\x1b[0m";
 CLI.oem = "\x1b[47;30m%s\x1b[0m";
 
 module.exports = {

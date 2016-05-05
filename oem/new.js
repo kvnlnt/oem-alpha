@@ -95,7 +95,7 @@ CreateComponent.prototype = {
     },
 
     launch: function(){
-        console.log(CLI.oem, "  OEM  ", "new");
+        console.log(CLI.oem, "  OEM  ", "NEW");
         console.log('Component', this.fileName, 'has been created');
     },
 
@@ -108,4 +108,4 @@ CreateComponent.prototype = {
 
 module.exports = {
     CreateComponent: CreateComponent
-}
+};

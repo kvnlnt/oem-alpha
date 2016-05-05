@@ -8,7 +8,9 @@ const CLI = Config.CLI;
  */
 function show(){
     console.log();
-    console.log(CLI.oem, "  OEM  ", "help");
+    console.log(CLI.oem, "       ");
+    console.log(CLI.oem, "  OEM  ", "HELP");
+    console.log(CLI.oem, "       ");
     console.log();
     console.log(CLI.section, "USAGE");
     console.log("");
@@ -28,4 +30,4 @@ function show(){
 
 module.exports = {
     show:show
-}
+};

@@ -12,6 +12,7 @@ const DevelopComponent = require('./oem/develop-component').DevelopComponent;
 const DevelopCore = require('./oem/develop-core').DevelopCore;
 const CreateComponent = require('./oem/new').CreateComponent;
 const RemoveComponent = require('./oem/remove').RemoveComponent;
+const List = require('./oem/list').List;
 const Help = require('./oem/help');
 const Config = require('./oem/config');
 const ARG = Config.ARG;
@@ -21,6 +22,9 @@ const CLI = Config.CLI;
 // actions
 try {
     switch(ARGS[0]){
+        case ARG.LIST:
+            var list = new List();
+            break;
         case ARG.DEVELOP:
             if(ARGS[1] === void 0) throw 'please specify a component';
             if(ARGS[1] === "core"){
