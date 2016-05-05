@@ -141,7 +141,7 @@ DevelopComponent.prototype = {
         // flatten arrays
         var allFiles = []
         .concat(...srcFiles)
-        .concat(testFiles);
+        .concat(...testFiles);
 
         return allFiles;
     }

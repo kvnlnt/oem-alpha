@@ -19,6 +19,17 @@
             ]
         },
         "development": {
+            "core": {
+                "configuration": [
+                    "core"
+                ],
+                "tests": [
+                    "./src/core/Collector.test.js",
+                    "./src/core/Component.test.js",
+                    "./src/core/Css.test.js"
+                ],
+                "demo": "./templates/core/core.demo.html"
+            },
             "card": {
                 "configuration": [
                     "core",

@@ -4,10 +4,15 @@ oem.Core = (function(Core) {
     Test.name = null;
     Test.testComponent = null;
 
-    Test.runTestSuite = function(testSuite){
+    Test.runTestSuite = function(testSuiteName, testSuite){
 
         // create container
+        var testSuiteName = testSuiteName || '';
         var el = document.querySelector('.' + this.testComponent);
+        var h3 = document.createElement('h3');
+        h3.classList.add('oem');
+        h3.innerText = testSuiteName;
+        el.appendChild(h3);
         var ul = document.createElement('ul');
         el.appendChild(ul);
         function noop(){ return false; }

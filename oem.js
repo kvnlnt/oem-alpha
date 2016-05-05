@@ -8,8 +8,7 @@
 const fs = require("fs");
 const pkg = require('./package');
 const exec = require('child_process').exec;
-const DevelopComponent = require('./oem/develop-component').DevelopComponent;
-const DevelopCore = require('./oem/develop-core').DevelopCore;
+const DevelopComponent = require('./oem/develop').DevelopComponent;
 const CreateComponent = require('./oem/new').CreateComponent;
 const RemoveComponent = require('./oem/remove').RemoveComponent;
 const List = require('./oem/list').List;
@@ -27,12 +26,8 @@ try {
             break;
         case ARG.DEVELOP:
             if(ARGS[1] === void 0) throw 'please specify a component';
-            if(ARGS[1] === "core"){
-                var developCore = new DevelopCore(ARGS[2]);
-            } else {
-                if(pkg.oem.development[ARGS[1]] === void 0) throw 'no such component exists, check package.json';
-                var developComponent = new DevelopComponent(ARGS[1], ARGS[2]);
-            }
+            if(pkg.oem.development[ARGS[1]] === void 0) throw 'no such component exists, check package.json';
+            var developComponent = new DevelopComponent(ARGS[1], ARGS[2]);
             break;
         case ARG.HELP:
             Help.show();

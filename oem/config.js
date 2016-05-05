@@ -5,6 +5,7 @@ ARG.LIST = 'list';
 ARG.DEVELOP = 'develop';
 ARG.NEW = 'new';
 ARG.REMOVE = 'remove';
+ARG.DEPLOY = 'deploy';
 
 // content type enums
 const CONTENT_TYPE = {};
@@ -16,6 +17,7 @@ CONTENT_TYPE.CSS = "text/css";
 
 const CLI = {};
 CLI.FgRed = "\x1b[31m%s\x1b[0m";
+CLI.FgYellow = "\x1b[33;m%s\x1b[0m";
 CLI.FgBlack = "\x1b[30m%s\x1b[0m";
 CLI.section = "\x1b[33;m%s\x1b[0m";
 CLI.oem = "\x1b[47;30m%s\x1b[0m";
