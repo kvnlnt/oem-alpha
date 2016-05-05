@@ -111,7 +111,7 @@ oem.Components = (function(Components, Core) {
      * Run tests
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
-        CardTest.runTestSuite([
+        CardTest.runTestSuite('Card', [
             CardTest.isMobileResponsive,
             CardTest.isTabletResponsive,
             CardTest.isDesktopResponsive

@@ -18,7 +18,7 @@ oem.Components = (function(Components, Core) {
      * Run tests
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
-        ListTest.runTestSuite([
+        ListTest.runTestSuite('List', [
             ListTest.exampleIsWorking
         ]);
     });
