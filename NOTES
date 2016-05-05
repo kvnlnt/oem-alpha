@@ -10,3 +10,13 @@ RWD, Self Documenting, Testable, Composable, Mediated, Cross Browser IE*+ compon
 TODO
 internationalization
 test core
+
+METHODOLOGIES:
+"smacks" css
+https://smacss.com/book/categorizing
+
+REFERENCES
+http://youmightnotneedjquery.com/ - reference jquery dependency
+http://html5please.com/#polyfill - reference polyfills
+http://clearleft.com/thinks/382 - component libraries
+https://robots.thoughtbot.com/introducing-empties-unstyled-components - "empties" compoennt library

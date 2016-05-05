@@ -28,10 +28,25 @@
                     "./src/components/card/card.test.js"
                 ],
                 "demo": "./src/components/card/card.demo.html"
+            },
+            "list": {
+                "configuration": [
+                    "core",
+                    "list"
+                ],
+                "tests": [
+                    "./src/components/list/list.test.js"
+                ],
+                "demo": "./src/components/list/list.demo.html"
             }
         },
         "configurations": {
             "core": [
+                "./src/core/polyfills/QuerySelector.js",
+                "./src/core/polyfills/EventListeners.js",
+                "./src/core/polyfills/ClassList.js",
+                "./src/core/polyfills/ArrayMap.js",
+                "./src/core/polyfills/ObjectCreate.js",
                 "./src/core/Namespacer.js",
                 "./src/core/Logger.js",
                 "./src/core/Device.js",
@@ -52,6 +67,13 @@
                 "./src/components/card/card.view.js",
                 "./src/components/card/card.controller.js",
                 "./src/components/card/card.collector.js"
+            ],
+            "list": [
+                "./src/components/list/list.gfx.js",
+                "./src/components/list/list.model.js",
+                "./src/components/list/list.view.js",
+                "./src/components/list/list.controller.js",
+                "./src/components/list/list.collector.js"
             ]
         }
     },

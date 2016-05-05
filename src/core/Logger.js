@@ -4,6 +4,7 @@ oem.Core = (function(Core){
         try {
             console.log.apply(console, arguments);
         } catch(err){
+            // alert(err);
             // noop
         }
     };
