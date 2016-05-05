@@ -1,92 +1,95 @@
 {
-    "name": "oem",
-    "version": "1.0.0",
-    "description": "",
-    "main": "cli/oem.js",
-    "scripts": {
-        "start": "node ./oem"
+  "name": "oem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli/oem.js",
+  "scripts": {
+    "start": "node ./oem"
+  },
+  "author": "Toolhouse Inc.",
+  "license": "ISC",
+  "oem": {
+    "deployment": {
+      "all": [
+        "core",
+        "card"
+      ],
+      "toolhouse.com": [
+        "core"
+      ]
     },
-    "author": "Toolhouse Inc.",
-    "license": "ISC",
-    "oem": {
-        "deployment": {
-            "all": [
-                "core",
-                "card"
-            ],
-            "toolhouse.com": [
-                "core"
-            ]
-        },
-        "development": {
-            "core": {
-                "configuration": [
-                    "core"
-                ],
-                "tests": [
-                    "./src/core/Collector.test.js",
-                    "./src/core/Component.test.js",
-                    "./src/core/Css.test.js"
-                ],
-                "demo": "./templates/core/core.demo.html"
-            },
-            "card": {
-                "configuration": [
-                    "core",
-                    "card"
-                ],
-                "tests": [
-                    "./src/components/card/card.test.js"
-                ],
-                "demo": "./src/components/card/card.demo.html"
-            },
-            "list": {
-                "configuration": [
-                    "core",
-                    "list"
-                ],
-                "tests": [
-                    "./src/components/list/list.test.js"
-                ],
-                "demo": "./src/components/list/list.demo.html"
-            }
-        },
-        "configurations": {
-            "core": [
-                "./src/core/polyfills/QuerySelector.js",
-                "./src/core/polyfills/EventListeners.js",
-                "./src/core/polyfills/ClassList.js",
-                "./src/core/polyfills/ArrayMap.js",
-                "./src/core/polyfills/ObjectCreate.js",
-                "./src/core/Namespacer.js",
-                "./src/core/Logger.js",
-                "./src/core/Device.js",
-                "./src/core/Util.js",
-                "./src/core/EventBus.js",
-                "./src/core/Events.js",
-                "./src/core/Css.js",
-                "./src/core/Responsifier.js",
-                "./src/core/Component.js",
-                "./src/core/Collector.js",
-                "./src/core/Theme.js",
-                "./src/core/Gfx.js",
-                "./src/core/View.js"
-            ],
-            "card": [
-                "./src/components/card/card.gfx.js",
-                "./src/components/card/card.model.js",
-                "./src/components/card/card.view.js",
-                "./src/components/card/card.controller.js",
-                "./src/components/card/card.collector.js"
-            ],
-            "list": [
-                "./src/components/list/list.gfx.js",
-                "./src/components/list/list.model.js",
-                "./src/components/list/list.view.js",
-                "./src/components/list/list.controller.js",
-                "./src/components/list/list.collector.js"
-            ]
-        }
+    "development": {
+      "core": {
+        "configuration": [
+          "core"
+        ],
+        "tests": [
+          "./src/core/Collector.test.js",
+          "./src/core/Component.test.js",
+          "./src/core/Css.test.js"
+        ],
+        "demo": "./templates/core/core.demo.html"
+      },
+      "card": {
+        "configuration": [
+          "core",
+          "card"
+        ],
+        "tests": [
+          "./src/components/card/card.test.js"
+        ],
+        "demo": "./src/components/card/card.demo.html"
+      },
+      "list": {
+        "configuration": [
+          "core",
+          "list"
+        ],
+        "tests": [
+          "./src/components/list/list.test.js"
+        ],
+        "demo": "./src/components/list/list.demo.html"
+      }
     },
-    "devDependencies": {}
+    "configurations": {
+      "core": [
+        "./src/core/polyfills/QuerySelector.js",
+        "./src/core/polyfills/EventListeners.js",
+        "./src/core/polyfills/ClassList.js",
+        "./src/core/polyfills/ArrayMap.js",
+        "./src/core/polyfills/ObjectCreate.js",
+        "./src/core/Namespacer.js",
+        "./src/core/Logger.js",
+        "./src/core/Device.js",
+        "./src/core/Util.js",
+        "./src/core/EventBus.js",
+        "./src/core/Events.js",
+        "./src/core/Css.js",
+        "./src/core/Responsifier.js",
+        "./src/core/Component.js",
+        "./src/core/Collector.js",
+        "./src/core/Theme.js",
+        "./src/core/Gfx.js",
+        "./src/core/View.js"
+      ],
+      "card": [
+        "./src/components/card/card.gfx.js",
+        "./src/components/card/card.model.js",
+        "./src/components/card/card.view.js",
+        "./src/components/card/card.controller.js",
+        "./src/components/card/card.collector.js"
+      ],
+      "list": [
+        "./src/components/list/list.gfx.js",
+        "./src/components/list/list.model.js",
+        "./src/components/list/list.view.js",
+        "./src/components/list/list.controller.js",
+        "./src/components/list/list.collector.js"
+      ]
+    }
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "uglify-js": "^2.6.2"
+  }
 }

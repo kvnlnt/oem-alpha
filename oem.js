@@ -11,6 +11,7 @@ const exec = require('child_process').exec;
 const DevelopComponent = require('./oem/develop').DevelopComponent;
 const CreateComponent = require('./oem/new').CreateComponent;
 const RemoveComponent = require('./oem/remove').RemoveComponent;
+const Deployment = require('./oem/deploy').Deployment;
 const List = require('./oem/list').List;
 const Help = require('./oem/help');
 const Config = require('./oem/config');
@@ -37,6 +38,11 @@ try {
             break;
         case ARG.REMOVE:
             var removeComponent = new RemoveComponent(ARGS[1]);
+            break;
+        case ARG.DEPLOY:
+            if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';
+            if(pkg.oem.deployment[ARGS[1]] === void 0) throw 'no such deployment exists, check package.json';
+            var deployment = new Deployment(ARGS[1]);
             break;
         default:
             Help.show();
