@@ -8,16 +8,21 @@
 const fs = require("fs");
 const pkg = require('./package');
 const exec = require('child_process').exec;
-const DevelopComponent = require('./oem/develop').DevelopComponent;
-const CreateComponent = require('./oem/new').CreateComponent;
-const RemoveComponent = require('./oem/remove').RemoveComponent;
-const Deployment = require('./oem/deploy').Deployment;
-const List = require('./oem/list').List;
-const Help = require('./oem/help');
-const Config = require('./oem/config');
-const ARG = Config.ARG;
+const DevelopComponent = require('./oem/options/develop').DevelopComponent;
+const CreateComponent = require('./oem/options/new').CreateComponent;
+const RemoveComponent = require('./oem/options/remove').RemoveComponent;
+const Deployment = require('./oem/options/deploy').Deployment;
+const List = require('./oem/options/list').List;
+const Help = require('./oem/options/help');
 const ARGS = process.argv.filter(function(arg, i){ return i > 1; });
-const CLI = Config.CLI;
+
+const ARG = {};
+ARG.HELP = 'help';
+ARG.LIST = 'list';
+ARG.DEVELOP = 'develop';
+ARG.NEW = 'new';
+ARG.REMOVE = 'remove';
+ARG.DEPLOY = 'deploy';
 
 // actions
 try {

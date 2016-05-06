@@ -1,10 +1,16 @@
-const pkg = require('../package');
+const pkg = require('../../package');
 const fs = require("fs");
 const http = require('http');
 const exec = require('child_process').exec;
 const path = require('path');
-const Config = require('./config');
-const CONTENT_TYPE = Config.CONTENT_TYPE;
+
+// content type enums
+const CONTENT_TYPE = {};
+CONTENT_TYPE.HTML = "text/html";
+CONTENT_TYPE.JS = "application/javascript";
+CONTENT_TYPE.PNG = "image/png";
+CONTENT_TYPE.JPG = "image/jpg";
+CONTENT_TYPE.CSS = "text/css";
 
 /**
  * Component Development Server

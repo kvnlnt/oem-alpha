@@ -1,4 +1,4 @@
-const pkg = require('../package');
+const pkg = require('../../package');
 const fs = require('fs');
 var UglifyJS = require("uglify-js");
 

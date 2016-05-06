@@ -1,7 +1,5 @@
 const fs = require("fs");
-const pkg = require('../package');
-const Config = require('./config');
-const CLI = Config.CLI;
+const pkg = require('../../package');
 
 /**
  * Component Creator
