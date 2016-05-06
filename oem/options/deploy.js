@@ -1,6 +1,7 @@
 const pkg = require('../../package');
 const fs = require('fs');
-var UglifyJS = require("uglify-js");
+const UglifyJS = require("uglify-js");
+const chalk = require('chalk');
 
 /**
  * Component Development Server
@@ -10,7 +11,9 @@ const Deployment = function (config) {
     this.directory = './deploy/'+this.config;
     this.jsFile = this.directory + "/oem.js";
     this.jsFileMinified = this.directory + "/oem.min.js";
-    this.start();
+    this
+    .start()
+    .reply();
 };
 
 Deployment.prototype = {
@@ -44,6 +47,21 @@ Deployment.prototype = {
         var minifiedFileContents = UglifyJS.minify(this.jsFile);
         fs.writeFileSync(this.jsFileMinified, minifiedFileContents.code);
 
+        return this;
+
+    },
+
+    reply: function(){
+        console.log("");
+        console.log("");
+        console.log(chalk.bgRed("       "));
+        console.log(chalk.black.bgRed("  OEM  "), " DEPLOY ");
+        console.log(chalk.bgRed("       "));
+        console.log("");
+        console.log("");
+        console.log('Deployed', chalk.red(this.config), ', see files in ./deploy/'+this.config + ' folder');
+        console.log("");
+        console.log("");
     },
 
     concatFiles: function(fileList){

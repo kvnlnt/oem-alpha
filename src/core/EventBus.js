@@ -24,7 +24,7 @@
 // EventBus.dispatch(type, target, args ...)
 
 // for debugging purpose, it just prints out the added listeners
-oem.Core = (function(Core){
+oem.Core = (function(Core) {
 
     function EventBus() {
         this.listeners = {};
@@ -107,17 +107,8 @@ oem.Core = (function(Core){
                 }
             }
         },
-        getEvents: function() {
-            var str = "";
-            for (var type in this.listeners) {
-                var numOfCallbacks = this.listeners[type].length;
-                for (var i = 0; i < numOfCallbacks; i++) {
-                    var listener = this.listeners[type][i];
-                    str += listener.scope && listener.scope.className ? listener.scope.className : "anonymous";
-                    str += " listen for '" + type + "'\n";
-                }
-            }
-            return str;
+        getListeners: function() {
+            return this.listeners;
         }
     };
 
@@ -125,4 +116,3 @@ oem.Core = (function(Core){
     return Core;
 
 })(oem.Core || {});
-

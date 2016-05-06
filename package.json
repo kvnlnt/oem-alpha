@@ -26,7 +26,11 @@
                 "tests": [
                     "./src/core/Collector.test.js",
                     "./src/core/Component.test.js",
-                    "./src/core/Css.test.js"
+                    "./src/core/Css.test.js",
+                    "./src/core/Events.test.js",
+                    "./src/core/EventBus.test.js",
+                    "./src/core/Util.test.js",
+                    "./src/core/Responsifier.test.js"
                 ],
                 "demo": "./oem/templates/core/core.demo.html"
             },
