@@ -1,4 +1,5 @@
-#<div style="background-color:red;padding:15px;color:white;margin:20px 0; display:inline-block; font-weight:normal;">OEM</div>
+#OEM
+
 
 OEM is a web component development framework. It has two parts: `core` and `components`. The Core *is* the OEM framework while the `components` are the web components. 
 
