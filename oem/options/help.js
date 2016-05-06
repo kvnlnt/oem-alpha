@@ -52,6 +52,8 @@ function show(){
     console.log("      Example:", "    node oem deploy all");
     console.log("");
     console.log("");
+    console.log("");
+    console.log("");
 }
 
 module.exports = {

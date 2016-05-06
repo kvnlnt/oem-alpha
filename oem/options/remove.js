@@ -1,5 +1,6 @@
 const fs = require("fs");
 const pkg = require('../../package');
+const chalk = require('chalk');
 
 /**
  * Component Creator
@@ -9,7 +10,8 @@ const RemoveComponent = function(componentName) {
     this.componentDir = './src/components/' + this.fileName;
     this
         .removeDirectory()
-        .updatePackageJson();
+        .updatePackageJson()
+        .reply();
 };
 
 RemoveComponent.prototype = {
@@ -34,9 +36,20 @@ RemoveComponent.prototype = {
         delete pkg.oem.development[this.fileName];
         delete pkg.oem.configurations[this.fileName];
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
-        console.log(CLI.oem, "  OEM  ", "REMOVE");
-        console.log('Component', this.fileName, 'has been removed');
         return this;
+    },
+
+    reply: function(){
+        console.log("");
+        console.log("");
+        console.log(chalk.bgRed("       "));
+        console.log(chalk.black.bgRed("  OEM  "), " REMOVE ");
+        console.log(chalk.bgRed("       "));
+        console.log("");
+        console.log("");
+        console.log('Component', chalk.red(this.fileName), 'has been removed');
+        console.log("");
+        console.log("");
     }
 
 };

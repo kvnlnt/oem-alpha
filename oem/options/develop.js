@@ -3,6 +3,7 @@ const fs = require("fs");
 const http = require('http');
 const exec = require('child_process').exec;
 const path = require('path');
+const chalk = require('chalk');
 
 // content type enums
 const CONTENT_TYPE = {};
@@ -36,11 +37,25 @@ DevelopComponent.prototype = {
         this.server = http
         .createServer(this.handleServerRequests.bind(this))
         .listen(this.port, function() {
-            console.log(" OEM ", "http://localhost:" + that.port);
+
+            console.log("");
+            console.log("");
+            console.log(chalk.bgRed("       "));
+            console.log(chalk.black.bgRed("  OEM  "), " DEVELOP ");
+            console.log(chalk.bgRed("       "));
+            console.log("");
+            console.log("");
+
+            console.log("Component:", that.component);
+            console.log("Server:","http://localhost:" + that.port);
             var cmd = 'open http://localhost:'+that.port;
             exec(cmd, function(error, stdout, stderr) {
               // command output is in stdout
             });
+
+            console.log("");
+            console.log("");
+
         });
     },
 
@@ -55,9 +70,10 @@ DevelopComponent.prototype = {
         if (req.url === "/") {
             var that = this;
             var demoHtml = fs.readFileSync(this.demoHtml, 'utf8');
-            var template = fs.readFile("./templates/development/main.html", 'utf8', function(err, data){
+            var template = fs.readFile("./oem/templates/development/main.html", 'utf8', function(err, data){
                 data = data.replace("<!-- HTML -->", demoHtml, 'utf8')
                 .replace("<!-- JS -->", that.wrapInScriptTag(that.jsFiles));
+                console.log(chalk.gray("Served: "), './');
                 res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
                 res.write(data);
                 res.end();
@@ -81,6 +97,7 @@ DevelopComponent.prototype = {
                         res.end();
                     }
                 } else {
+                    console.log(chalk.gray("Served: "), filePath);
                     res.writeHead(200, { 'Content-Type': contentType });
                     res.end(content, 'utf-8');
                 }

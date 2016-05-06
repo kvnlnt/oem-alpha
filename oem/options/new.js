@@ -1,5 +1,6 @@
 const fs = require("fs");
 const pkg = require('../../package');
+const chalk = require('chalk');
 
 /**
  * Component Creator
@@ -37,31 +38,31 @@ CreateComponent.prototype = {
     copyAndFormatTemplates: function(){
 
         // collector
-        var collector = fs.readFileSync("./templates/component/component.collector.js", "utf8");
+        var collector = fs.readFileSync("./oem/templates/component/component.collector.js", "utf8");
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.collector.js', this.renderTemplate(collector));
 
         // controller
-        var controller = fs.readFileSync('./templates/component/component.controller.js', 'utf-8');
+        var controller = fs.readFileSync('./oem/templates/component/component.controller.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.controller.js', this.renderTemplate(controller));
 
         // demo
-        var demo = fs.readFileSync('./templates/component/component.demo.html', 'utf-8');
+        var demo = fs.readFileSync('./oem/templates/component/component.demo.html', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.demo.html', this.renderTemplate(demo));
 
         // gfx
-        var gfx = fs.readFileSync('./templates/component/component.gfx.js', 'utf-8');
+        var gfx = fs.readFileSync('./oem/templates/component/component.gfx.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.gfx.js', this.renderTemplate(gfx));
 
         // model
-        var model = fs.readFileSync('./templates/component/component.model.js', 'utf-8');
+        var model = fs.readFileSync('./oem/templates/component/component.model.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.model.js', this.renderTemplate(model));
 
         // test
-        var test = fs.readFileSync('./templates/component/component.test.js', 'utf-8');
+        var test = fs.readFileSync('./oem/templates/component/component.test.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.test.js', this.renderTemplate(test));
 
         // view
-        var view = fs.readFileSync('./templates/component/component.view.js', 'utf-8');
+        var view = fs.readFileSync('./oem/templates/component/component.view.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/' + this.fileName + '.view.js', this.renderTemplate(view));
 
         return this;
@@ -93,8 +94,16 @@ CreateComponent.prototype = {
     },
 
     launch: function(){
-        console.log(CLI.oem, "  OEM  ", "NEW");
-        console.log('Component', this.fileName, 'has been created');
+        console.log("");
+        console.log("");
+        console.log(chalk.bgRed("       "));
+        console.log(chalk.black.bgRed("  OEM  "), " NEW ");
+        console.log(chalk.bgRed("       "));
+        console.log("");
+        console.log("");
+        console.log('Component', chalk.red(this.fileName), 'has been created');
+        console.log("");
+        console.log("");
     },
 
     convertNameToClass: function(name){
