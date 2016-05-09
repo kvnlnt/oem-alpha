@@ -37,6 +37,10 @@ oem.Core = (function(Core, Collections) {
         // create collection of this selector type
         if (typeof Collections[selector] === "undefined") Collections[selector] = [];
 
+        // if this selector has already been collected, reset it
+        // calling collect on a component is the same as "recollecting"
+        if(Collections[selector].length > 0) Collections[selector] = [];
+
         // find all components
         // create and store instances of each
         _components = document.querySelectorAll(cssSelector + "," + tagSelector);

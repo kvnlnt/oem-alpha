@@ -53,6 +53,16 @@
                     "./src/components/accordion/accordion.test.js"
                 ],
                 "demo": "./src/components/accordion/accordion.demo.html"
+            },
+            "text-input": {
+                "configuration": [
+                    "core",
+                    "text-input"
+                ],
+                "tests": [
+                    "./src/components/text-input/text-input.test.js"
+                ],
+                "demo": "./src/components/text-input/text-input.demo.html"
             }
         },
         "configurations": {
@@ -75,7 +85,8 @@
                 "./src/core/Collector.js",
                 "./src/core/Theme.js",
                 "./src/core/Gfx.js",
-                "./src/core/View.js"
+                "./src/core/View.js",
+                "./src/core/Validator.js"
             ],
             "card": [
                 "./src/components/card/card.gfx.js",
@@ -90,6 +101,13 @@
                 "./src/components/accordion/accordion.view.js",
                 "./src/components/accordion/accordion.controller.js",
                 "./src/components/accordion/accordion.collector.js"
+            ],
+            "text-input": [
+                "./src/components/text-input/text-input.gfx.js",
+                "./src/components/text-input/text-input.model.js",
+                "./src/components/text-input/text-input.view.js",
+                "./src/components/text-input/text-input.controller.js",
+                "./src/components/text-input/text-input.collector.js"
             ]
         }
     },

@@ -30,9 +30,18 @@ Each development entry is a configuation used by the `develop` utility. It lists
 These are nothing more than collections of files. Both the `deploy` and `develop` utilties reference these configuraitons. Configurations can be used to overwrite functionality and are automatically added and removed with the `create` and `remove` utilities (be careful about name collisions).
 
 ## Justification
-Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunetly, we need the features and functionality these tools provide in order to efficiently produce a modern web application. So why build/host your own? The efficiencies drawn from the community is short lived and introduces limitations that only adds complexity. To generate your own efficiency you need to take control of the evolution of your own applications.
+Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunetly, we need the features and functionality these tools provide in order to efficiently produce a modern web application. 
 
-By hosting your own framework, you can tightly control:
+Today's applications often contain more clientside than serverside code. Some applications are 100% "clientside" and connect to a variety of backend services. This clientside code is often untested or even worse, untestable (without some refactoring). Frameworks help us because they can abstract away core functionality and offer us the reliability of having been tested. There are two basic types of clientside (javascript) frameworks:
+
+1. application logic (Angular, React, Backbone, Ember, etc.)
+2. component library (Bootrap, Foundation, Semantic UI, etc.)
+
+OEM falls under the component library category. There are many great libraries in existence. The efficiencies drawn from a component library are only leveraged if you use the components "as designed". Your needs will often exceed a component's limitations and working around them only adds to the complexity you where trying to avoid in the first place. This ends up as broken interfaces, long dev cycles, complex troubleshooting and unhappy clients. 
+
+Once you decide you need a component library, there are two options, "build" or "buy" (or adopt). OEM is a framework that provides you with the tools you build your own component framework. Your ability to create your own testable, highly customizable components allows you to take control of the quality, efficiency and evolution of your own applications and their workflow.
+
+By building your own component library, you can tightly control:
 
 - UI/UX
 - Device support
@@ -94,7 +103,9 @@ Tests are a part of the development cycle. Each component has a `*.demo.html` an
 - test core
 - data attributes
 - development overwrites
-- deployment overwrites
+- deployment overwrite structure
+- validation
+- recollection - solved in collector line:42?
 
 ## REFERENCES
 - "smacks" css https://smacss.com/book/categorizing

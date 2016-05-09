@@ -5,12 +5,6 @@ oem.Components = (function(Core) {
     View.css = [
 
         {
-            selector: "*",
-            declaration: [
-                "transition: all 0.25s",
-            ]
-        }, 
-        {
             selector: "body",
             declaration: [
                 "font-size:16px",
