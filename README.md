@@ -1,5 +1,4 @@
-#OEM
-
+ ![Alt text](logo.png)
 
 OEM is a web component development framework. It has two parts: `core` and `components`. The Core *is* the OEM framework while the `components` are the web components. 
 
