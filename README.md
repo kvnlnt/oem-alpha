@@ -28,7 +28,7 @@ Each deployment entry is configuration used by the `deploy` utility. Each config
 Each development entry is a configuation used by the `develop` utility. It lists the required `oem.configuration`s as well as tests to run and the demo file to be used.
 
 ### oem.configurations
-These are nothing more than collections of files. Both the `deploy` and `develop` utilties reference these configuraitons. Configurations can be used to overwrite functionality and are automatically added and removed with the `new` and `remove` utilities (be careful about name collisions).
+These are nothing more than collections of files. Both the `deploy` and `develop` utilties reference these configuraitons. Configurations can be used to overwrite functionality and are automatically added and removed with the `create` and `remove` utilities (be careful about name collisions).
 
 ## Justification
 Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunetly, we need the features and functionality these tools provide in order to efficiently produce a modern web application. So why build/host your own? The efficiencies drawn from the community is short lived and introduces limitations that only adds complexity. To generate your own efficiency you need to take control of the evolution of your own applications.
@@ -66,6 +66,12 @@ This control will allow us to:
 
 ## Code Patterns
 Like webpack, OEM's final artifact is a single javascript file. Each component has an individual markup structure and implements varioius abilities exposed by the core as well as their own unique functionality.
+
+     - oem namespace
+     - oem.Core
+     - oem.Components
+     - oem.Collections
+     - [el].oem
 
 ### Core
 The Core provides the following features and abilities:

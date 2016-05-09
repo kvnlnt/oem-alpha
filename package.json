@@ -44,19 +44,20 @@
                 ],
                 "demo": "./src/components/card/card.demo.html"
             },
-            "list": {
+            "accordion": {
                 "configuration": [
                     "core",
-                    "list"
+                    "accordion"
                 ],
                 "tests": [
-                    "./src/components/list/list.test.js"
+                    "./src/components/accordion/accordion.test.js"
                 ],
-                "demo": "./src/components/list/list.demo.html"
+                "demo": "./src/components/accordion/accordion.demo.html"
             }
         },
         "configurations": {
             "core": [
+                "./src/core/polyfills/Bind.js",
                 "./src/core/polyfills/QuerySelector.js",
                 "./src/core/polyfills/EventListeners.js",
                 "./src/core/polyfills/ClassList.js",
@@ -83,12 +84,12 @@
                 "./src/components/card/card.controller.js",
                 "./src/components/card/card.collector.js"
             ],
-            "list": [
-                "./src/components/list/list.gfx.js",
-                "./src/components/list/list.model.js",
-                "./src/components/list/list.view.js",
-                "./src/components/list/list.controller.js",
-                "./src/components/list/list.collector.js"
+            "accordion": [
+                "./src/components/accordion/accordion.gfx.js",
+                "./src/components/accordion/accordion.model.js",
+                "./src/components/accordion/accordion.view.js",
+                "./src/components/accordion/accordion.controller.js",
+                "./src/components/accordion/accordion.collector.js"
             ]
         }
     },

@@ -9,7 +9,7 @@ const fs = require("fs");
 const pkg = require('./package');
 const exec = require('child_process').exec;
 const DevelopComponent = require('./oem/options/develop').DevelopComponent;
-const CreateComponent = require('./oem/options/new').CreateComponent;
+const CreateComponent = require('./oem/options/create').CreateComponent;
 const RemoveComponent = require('./oem/options/remove').RemoveComponent;
 const Deployment = require('./oem/options/deploy').Deployment;
 const List = require('./oem/options/list').List;
@@ -20,7 +20,7 @@ const ARG = {};
 ARG.HELP = 'help';
 ARG.LIST = 'list';
 ARG.DEVELOP = 'develop';
-ARG.NEW = 'new';
+ARG.CREATE = 'create';
 ARG.REMOVE = 'remove';
 ARG.DEPLOY = 'deploy';
 
@@ -38,7 +38,7 @@ try {
         case ARG.HELP:
             Help.show();
             break;
-        case ARG.NEW:
+        case ARG.CREATE:
             var newComponent = new CreateComponent(ARGS[1]);
             break;
         case ARG.REMOVE:

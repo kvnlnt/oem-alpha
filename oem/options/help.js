@@ -33,7 +33,7 @@ function show(){
     console.log("      Arguments:", "  [Component Name] [Port - Defaults to 7001]");
     console.log("      Example:", "    node oem develop card");
     console.log();
-    console.log(chalk.red("   new"));
+    console.log(chalk.red("   create"));
     console.log("");
     console.log("      Purpose:", "    creates and registers new component");
     console.log("      Arguments:", "  [Component Name - lowercase, no spaces, uses dashes if necessary]");

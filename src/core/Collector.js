@@ -47,7 +47,13 @@ oem.Core = (function(Core, Collections) {
                     value: el
                 }
             });
+
+            // call initializer
             instance.init();
+
+            // attach this object instance to the element so we can use all it's 
+            // features through the dom element
+            el.oem = instance;
             Collections[selector].push(instance);
         }
 

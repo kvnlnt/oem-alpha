@@ -97,7 +97,7 @@ CreateComponent.prototype = {
         console.log("");
         console.log("");
         console.log(chalk.bgRed("       "));
-        console.log(chalk.black.bgRed("  OEM  "), " NEW ");
+        console.log(chalk.black.bgRed("  OEM  "), " CREATE ");
         console.log(chalk.bgRed("       "));
         console.log("");
         console.log("");
