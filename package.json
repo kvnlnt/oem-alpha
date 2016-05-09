@@ -68,6 +68,7 @@
         "configurations": {
             "core": [
                 "./src/core/polyfills/Bind.js",
+                "./src/core/polyfills/Dataset.js",
                 "./src/core/polyfills/QuerySelector.js",
                 "./src/core/polyfills/EventListeners.js",
                 "./src/core/polyfills/ClassList.js",

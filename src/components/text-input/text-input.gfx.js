@@ -1,6 +1,6 @@
 oem.Components = (function(Components) {
 
-    const TextInputGfx = {};
+    var TextInputGfx = {};
     Components.TextInputGfx = TextInputGfx;
     return Components;
 

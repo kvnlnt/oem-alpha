@@ -1,6 +1,6 @@
 oem.Components = (function(Components) {
 
-    const %CLASS%Gfx = {};
+    var %CLASS%Gfx = {};
     Components.%CLASS%Gfx = %CLASS%Gfx;
     return Components;
 
