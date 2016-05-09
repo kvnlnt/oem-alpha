@@ -24,6 +24,20 @@
 <h3 class="oem">Html</h3>
 <textarea class="demoHtml">
 <div class="oem-text-input">
+    <!-- label is used by Core/Validator.js -->
+    <label for="firstName">First Name</label>
+    <!-- name attribute is used by Core/Validator.js -->
+    <input type="text" name="firstName" placeholder="First Name" />
+    <div class="help"></div>
+    <!-- validation errors are rendered as "li"s here -->
+    <ul class="errors"></ul>
+    <!-- Core/Validator.js configuration block. -->
+    <!-- data-validation is the validation to be run and data-settings are it's arguments. -->
+    <!-- see Core/Validator.js for all validations options -->
+    <div class="validations">
+        <div data-validation="minLength" data-settings="3">First name must be at least 3 Characters</div>
+        <div data-validation="maxLength" data-settings="6">First name must be less than 6 Characters</div>
+    </div>
 </div>
 </textarea>
 
