@@ -44,7 +44,7 @@
                     "./src/core/Util.test.js",
                     "./src/core/Responsifier.test.js"
                 ],
-                "demo": "./oem/templates/core/core.demo.html"
+                "demo": "./src/core/demo.html"
             },
             "card": {
                 "configuration": [
