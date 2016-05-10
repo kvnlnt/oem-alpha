@@ -11,25 +11,30 @@
     "oem": {
         "deployment": {
             "all": {
-                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "card"
                 ]
             },
-            "toolhouse.com": {
-                "theme": "./src/themes/Default.js",
+            "toolhouse-com": {
                 "configuration": [
+                    "core",
                     "card"
+                ],
+                "customization": [
+                    {
+                        "replace":"./src/core/Theme.js",
+                        "with":"./src/core/Theme.js"
+                    }
                 ]
             }
         },
         "development": {
             "core": {
-                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core"
                 ],
+                "customization": [],
                 "tests": [
                     "./src/core/Collector.test.js",
                     "./src/core/Component.test.js",
@@ -42,33 +47,33 @@
                 "demo": "./oem/templates/core/core.demo.html"
             },
             "card": {
-                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "card"
                 ],
+                "customization": [],
                 "tests": [
                     "./src/components/card/card.test.js"
                 ],
                 "demo": "./src/components/card/card.demo.html"
             },
             "accordion": {
-                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "accordion"
                 ],
+                "customization": [],
                 "tests": [
                     "./src/components/accordion/accordion.test.js"
                 ],
                 "demo": "./src/components/accordion/accordion.demo.html"
             },
             "text-input": {
-                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "text-input"
                 ],
+                "customization": [],
                 "tests": [
                     "./src/components/text-input/text-input.test.js"
                 ],
@@ -85,6 +90,7 @@
                 "./src/core/polyfills/ArrayMap.js",
                 "./src/core/polyfills/ObjectCreate.js",
                 "./src/core/Namespacer.js",
+                "./src/core/Theme.js",
                 "./src/core/Logger.js",
                 "./src/core/Device.js",
                 "./src/core/Util.js",

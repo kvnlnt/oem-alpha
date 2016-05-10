@@ -32,13 +32,21 @@ Deployment.prototype = {
 
         // flatten arrays
         var allFiles = []
-        .concat(namespacer)
-        .concat(theme)
         .concat(...srcFiles);
 
-        // add theme
-        var theme = pkg.oem.development[this.config].theme;
-        allFiles.splice(allFiles.indexOf('./src/core/Namespacer.js')+1, 0, theme);
+        // implement customization overwrites
+        if(pkg.oem.deployment[this.config].hasOwnProperty('customization')){
+            var customizations = pkg.oem.deployment[this.config].customization;
+            var customization;
+            var indexOfFileToReplace;
+            for(var i = 0; i < customizations.length; i = i + 1){
+                customization = customizations[i];
+                indexOfFileToReplace = allFiles.indexOf(customization.replace);
+                if(indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
+            }          
+        }
+
+        console.log(allFiles);
 
         // concat file contents
         var concatedFileContents = this.concatFiles(allFiles);
