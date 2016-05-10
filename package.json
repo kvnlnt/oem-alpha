@@ -10,16 +10,23 @@
     "license": "ISC",
     "oem": {
         "deployment": {
-            "all": [
-                "core",
-                "card"
-            ],
-            "toolhouse.com": [
-                "core"
-            ]
+            "all": {
+                "theme": "./src/themes/Default.js",
+                "configuration": [
+                    "core",
+                    "card"
+                ]
+            },
+            "toolhouse.com": {
+                "theme": "./src/themes/Default.js",
+                "configuration": [
+                    "card"
+                ]
+            }
         },
         "development": {
             "core": {
+                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core"
                 ],
@@ -35,6 +42,7 @@
                 "demo": "./oem/templates/core/core.demo.html"
             },
             "card": {
+                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "card"
@@ -45,6 +53,7 @@
                 "demo": "./src/components/card/card.demo.html"
             },
             "accordion": {
+                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "accordion"
@@ -55,6 +64,7 @@
                 "demo": "./src/components/accordion/accordion.demo.html"
             },
             "text-input": {
+                "theme": "./src/themes/Default.js",
                 "configuration": [
                     "core",
                     "text-input"
@@ -84,10 +94,10 @@
                 "./src/core/Responsifier.js",
                 "./src/core/Component.js",
                 "./src/core/Collector.js",
-                "./src/core/Theme.js",
                 "./src/core/Gfx.js",
                 "./src/core/View.js",
-                "./src/core/Validator.js"
+                "./src/core/Validator.js",
+                "./src/core/Field.js"
             ],
             "card": [
                 "./src/components/card/card.gfx.js",

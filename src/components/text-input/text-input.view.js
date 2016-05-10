@@ -5,6 +5,13 @@ oem.Components = (function(Components, Core) {
     TextInputView.css = [
 
         {
+            selector: ".oem-text-input .help",
+            declaration: [
+                "font-size:12px",
+            ]
+        },
+
+        {
             selector: ".oem-text-input .validations",
             declaration: [
                 "display:none"

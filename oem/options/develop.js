@@ -166,6 +166,10 @@ DevelopComponent.prototype = {
         .concat(...srcFiles)
         .concat(...testFiles);
 
+        // add theme
+        var theme = pkg.oem.development[this.component].theme;
+        allFiles.splice(allFiles.indexOf('./src/core/Namespacer.js')+1, 0, theme);
+
         return allFiles;
     }
 };

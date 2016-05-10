@@ -26,12 +26,19 @@ Deployment.prototype = {
     start: function () {
 
         // get all source files
-        var srcFiles = pkg.oem.deployment[this.config].map(function(config){
+        var srcFiles = pkg.oem.deployment[this.config].configuration.map(function(config){
             return pkg.oem.configurations[config];
         });
 
         // flatten arrays
-        var allFiles = [].concat(...srcFiles);
+        var allFiles = []
+        .concat(namespacer)
+        .concat(theme)
+        .concat(...srcFiles);
+
+        // add theme
+        var theme = pkg.oem.development[this.config].theme;
+        allFiles.splice(allFiles.indexOf('./src/core/Namespacer.js')+1, 0, theme);
 
         // concat file contents
         var concatedFileContents = this.concatFiles(allFiles);

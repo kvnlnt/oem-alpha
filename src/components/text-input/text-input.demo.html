@@ -1,11 +1,14 @@
 <!-- Card Component -->
+<img class="oem logo" src="./oem/logo.png"/>
 <h1 id="TextInput" class="oem">TextInput</h1>
 
 <h2 class="oem">Example</h2>
 <div class="oem-text-input">
     <label for="firstName">First Name</label>
+    <div class="help">
+        Please enter your first name
+    </div>
     <input type="text" name="firstName" placeholder="First Name" />
-    <div class="help"></div>
     <ul class="errors"></ul>
     <div class="validations">
         <div data-validation="minLength" data-settings="3">First name must be at least 3 Characters</div>
@@ -24,19 +27,25 @@
 <h3 class="oem">Html</h3>
 <textarea class="demoHtml">
 <div class="oem-text-input">
-    <!-- label is used by Core/Validator.js -->
+    <!-- label is used by component -->
     <label for="firstName">First Name</label>
-    <!-- name attribute is used by Core/Validator.js -->
+    <!-- name attribute is used by component -->
     <input type="text" name="firstName" placeholder="First Name" />
     <div class="help"></div>
-    <!-- validation errors are rendered as "li"s here -->
+    <!-- errors are rendered here as "li"s -->
     <ul class="errors"></ul>
-    <!-- Core/Validator.js configuration block. -->
-    <!-- data-validation is the validation to be run and data-settings are it's arguments. -->
-    <!-- see Core/Validator.js for all validations options -->
+    <!-- Translates to validation api -->
+    <!-- 1. data-validation = validator.minLength -->
+    <!-- 2. data-settings = minLength argument -->
+    <!-- 3. Message = custom message -->
+    <!-- See Core/Validator.js  for details -->
     <div class="validations">
-        <div data-validation="minLength" data-settings="3">First name must be at least 3 Characters</div>
-        <div data-validation="maxLength" data-settings="6">First name must be less than 6 Characters</div>
+        <div data-validation="minLength" data-settings="3">
+            First name must be at least 3 Characters
+        </div>
+        <div data-validation="maxLength" data-settings="6">
+            First name must be less than 6 Characters
+        </div>
     </div>
 </div>
 </textarea>
