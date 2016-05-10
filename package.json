@@ -13,10 +13,12 @@
             "all": {
                 "configuration": [
                     "core",
-                    "card"
+                    "accordion",
+                    "card",
+                    "text-input"
                 ]
             },
-            "toolhouse-com": {
+            "toolhouse.com": {
                 "configuration": [
                     "core",
                     "card"

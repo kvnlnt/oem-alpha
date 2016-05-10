@@ -11,8 +11,9 @@ const Deployment = function (config) {
     this.directory = './deploy/'+this.config;
     this.jsFile = this.directory + "/oem.js";
     this.jsFileMinified = this.directory + "/oem.min.js";
+    this.jsFiles = this.getJsFiles();
     this
-    .start()
+    .deploy()
     .reply();
 };
 
@@ -23,8 +24,39 @@ Deployment.prototype = {
      *
      * @method     start
      */
-    start: function () {
+    deploy: function () {
 
+        // concat file contents
+        var concatedFileContents = this.concatFiles(this.jsFiles);
+
+        // recreate directory
+        this.deleteFolderRecursive(this.directory);
+        fs.mkdirSync(this.directory);
+
+        // write javascript file
+        fs.writeFileSync(this.jsFile, concatedFileContents);
+
+        // write minified version
+        var minifiedFileContents = UglifyJS.minify(this.jsFile);
+        fs.writeFileSync(this.jsFileMinified, minifiedFileContents.code);
+
+        // write html file
+        var template = fs.readFileSync('./oem/templates/deployment/main.html', 'utf-8');
+        var html = '';
+        html += '<dl class="oem-accordion">\n';
+        pkg.oem.deployment[this.config].configuration.forEach(function(config){
+            html += '<dt>'+config+'</dt>\n';
+            html += '<dd>'+config+'</dd>\n';
+        });
+        html += '</dl>';
+        template = template.replace("<!-- HTML -->", html, 'utf8')
+        fs.writeFileSync(this.directory + '/index.html', template);
+
+        return this;
+
+    },
+
+    getJsFiles: function(){
         // get all source files
         var srcFiles = pkg.oem.deployment[this.config].configuration.map(function(config){
             return pkg.oem.configurations[config];
@@ -45,25 +77,7 @@ Deployment.prototype = {
                 if(indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
             }          
         }
-
-        console.log(allFiles);
-
-        // concat file contents
-        var concatedFileContents = this.concatFiles(allFiles);
-
-        // recreate directory
-        this.deleteFolderRecursive(this.directory);
-        fs.mkdirSync(this.directory);
-
-        // write javascript file
-        fs.writeFileSync(this.jsFile, concatedFileContents);
-
-        // write minified version
-        var minifiedFileContents = UglifyJS.minify(this.jsFile);
-        fs.writeFileSync(this.jsFileMinified, minifiedFileContents.code);
-
-        return this;
-
+        return allFiles;
     },
 
     reply: function(){
