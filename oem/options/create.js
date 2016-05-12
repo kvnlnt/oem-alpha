@@ -27,7 +27,7 @@ CreateComponent.prototype = {
             fs.mkdirSync(this.demoDir);
             return this;
         } catch (err) {
-            if(err) console.log("ERROR".red, err);
+            if(err) console.log("ERROR".bold, err);
         }
     },
 
@@ -98,12 +98,12 @@ CreateComponent.prototype = {
     launch: function(){
         console.log("");
         console.log("");
-        console.log(chalk.bgRed("       "));
-        console.log(chalk.black.bgRed("  OEM  "), " CREATE ");
-        console.log(chalk.bgRed("       "));
+        console.log(chalk.bgWhite("       "));
+        console.log(chalk.black.bgWhite("  OEM  "), " CREATE ");
+        console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log('Component', chalk.red(this.fileName), 'has been created');
+        console.log('Component', chalk.bold(this.fileName), 'has been created');
         console.log("");
         console.log("");
     },

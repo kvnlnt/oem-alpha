@@ -80,16 +80,6 @@
                     "./src/components/text-input/test.js"
                 ],
                 "demo": "./oem/templates/demos/text-input/demo.html"
-            },
-            "kevin": {
-                "configuration": [
-                    "core",
-                    "kevin"
-                ],
-                "tests": [
-                    "./src/components/kevin/kevin.test.js"
-                ],
-                "demo": "./oem/templates/demos/kevin/demo.html"
             }
         },
         "configurations": {
@@ -137,13 +127,6 @@
                 "./src/components/text-input/view.js",
                 "./src/components/text-input/controller.js",
                 "./src/components/text-input/collector.js"
-            ],
-            "kevin": [
-                "./src/components/kevin/gfx.js",
-                "./src/components/kevin/model.js",
-                "./src/components/kevin/view.js",
-                "./src/components/kevin/controller.js",
-                "./src/components/kevin/collector.js"
             ]
         }
     },

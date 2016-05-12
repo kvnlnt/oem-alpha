@@ -43,12 +43,12 @@ RemoveComponent.prototype = {
     reply: function(){
         console.log("");
         console.log("");
-        console.log(chalk.bgRed("       "));
-        console.log(chalk.black.bgRed("  OEM  "), " REMOVE ");
-        console.log(chalk.bgRed("       "));
+        console.log(chalk.bgWhite("       "));
+        console.log(chalk.black.bgWhite("  OEM  "), " REMOVE ");
+        console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log('Component', chalk.red(this.fileName), 'has been removed');
+        console.log('Component', chalk.bold(this.fileName), 'has been removed');
         console.log("");
         console.log("");
     }

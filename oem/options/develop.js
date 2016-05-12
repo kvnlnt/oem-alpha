@@ -40,9 +40,9 @@ DevelopComponent.prototype = {
 
             console.log("");
             console.log("");
-            console.log(chalk.bgRed("       "));
-            console.log(chalk.black.bgRed("  OEM  "), " DEVELOP ");
-            console.log(chalk.bgRed("       "));
+            console.log(chalk.bgWhite("       "));
+            console.log(chalk.black.bgWhite("  OEM  "), " DEVELOP ");
+            console.log(chalk.bgWhite("       "));
             console.log("");
             console.log("");
 

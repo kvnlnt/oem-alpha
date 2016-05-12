@@ -13,9 +13,9 @@ List.prototype = {
 
         console.log("");
         console.log("");
-        console.log(chalk.bgRed("       "));
-        console.log(chalk.black.bgRed("  OEM  "), " LIST ");
-        console.log(chalk.bgRed("       "));
+        console.log(chalk.bgWhite("       "));
+        console.log(chalk.black.bgWhite("  OEM  "), " LIST ");
+        console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
 

@@ -83,12 +83,12 @@ Deployment.prototype = {
     reply: function(){
         console.log("");
         console.log("");
-        console.log(chalk.bgRed("       "));
-        console.log(chalk.black.bgRed("  OEM  "), " DEPLOY ");
-        console.log(chalk.bgRed("       "));
+        console.log(chalk.bgWhite("       "));
+        console.log(chalk.black.bgWhite("  OEM  "), " DEPLOY ");
+        console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log('Deployed', chalk.red(this.config), ', see files in ./deploy/'+this.config + ' folder');
+        console.log('Deployed', chalk.bold(this.config), ', see files in ./deploy/'+this.config + ' folder');
         console.log("");
         console.log("");
     },
