@@ -25,8 +25,8 @@
                 ],
                 "customization": [
                     {
-                        "replace":"./src/core/Theme.js",
-                        "with":"./src/core/Theme.js"
+                        "replace": "./src/core/Theme.js",
+                        "with": "./src/core/Theme.js"
                     }
                 ]
             }
@@ -46,7 +46,7 @@
                     "./src/core/Util.test.js",
                     "./src/core/Responsifier.test.js"
                 ],
-                "demo": "./src/core/demo.html"
+                "demo": "./oem/templates/demos/core/test.html"
             },
             "card": {
                 "configuration": [
@@ -55,9 +55,9 @@
                 ],
                 "customization": [],
                 "tests": [
-                    "./src/components/card/card.test.js"
+                    "./src/components/card/test.js"
                 ],
-                "demo": "./src/components/card/card.demo.html"
+                "demo": "./oem/templates/demos/card/demo.html"
             },
             "accordion": {
                 "configuration": [
@@ -66,9 +66,9 @@
                 ],
                 "customization": [],
                 "tests": [
-                    "./src/components/accordion/accordion.test.js"
+                    "./src/components/accordion/test.js"
                 ],
-                "demo": "./src/components/accordion/accordion.demo.html"
+                "demo": "./oem/templates/demos/accordion/demo.html"
             },
             "text-input": {
                 "configuration": [
@@ -77,9 +77,19 @@
                 ],
                 "customization": [],
                 "tests": [
-                    "./src/components/text-input/text-input.test.js"
+                    "./src/components/text-input/test.js"
                 ],
-                "demo": "./src/components/text-input/text-input.demo.html"
+                "demo": "./oem/templates/demos/text-input/demo.html"
+            },
+            "kevin": {
+                "configuration": [
+                    "core",
+                    "kevin"
+                ],
+                "tests": [
+                    "./src/components/kevin/kevin.test.js"
+                ],
+                "demo": "./oem/templates/demos/kevin/demo.html"
             }
         },
         "configurations": {
@@ -108,25 +118,32 @@
                 "./src/core/Field.js"
             ],
             "card": [
-                "./src/components/card/card.gfx.js",
-                "./src/components/card/card.model.js",
-                "./src/components/card/card.view.js",
-                "./src/components/card/card.controller.js",
-                "./src/components/card/card.collector.js"
+                "./src/components/card/gfx.js",
+                "./src/components/card/model.js",
+                "./src/components/card/view.js",
+                "./src/components/card/controller.js",
+                "./src/components/card/collector.js"
             ],
             "accordion": [
-                "./src/components/accordion/accordion.gfx.js",
-                "./src/components/accordion/accordion.model.js",
-                "./src/components/accordion/accordion.view.js",
-                "./src/components/accordion/accordion.controller.js",
-                "./src/components/accordion/accordion.collector.js"
+                "./src/components/accordion/gfx.js",
+                "./src/components/accordion/model.js",
+                "./src/components/accordion/view.js",
+                "./src/components/accordion/controller.js",
+                "./src/components/accordion/collector.js"
             ],
             "text-input": [
-                "./src/components/text-input/text-input.gfx.js",
-                "./src/components/text-input/text-input.model.js",
-                "./src/components/text-input/text-input.view.js",
-                "./src/components/text-input/text-input.controller.js",
-                "./src/components/text-input/text-input.collector.js"
+                "./src/components/text-input/gfx.js",
+                "./src/components/text-input/model.js",
+                "./src/components/text-input/view.js",
+                "./src/components/text-input/controller.js",
+                "./src/components/text-input/collector.js"
+            ],
+            "kevin": [
+                "./src/components/kevin/gfx.js",
+                "./src/components/kevin/model.js",
+                "./src/components/kevin/view.js",
+                "./src/components/kevin/controller.js",
+                "./src/components/kevin/collector.js"
             ]
         }
     },

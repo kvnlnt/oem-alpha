@@ -43,9 +43,9 @@ Deployment.prototype = {
         // write html file
         var template = fs.readFileSync('./oem/templates/deployment/main.html', 'utf-8');
         var html = '';
-        html += '<dl class="oem-accordion">\n';
+        html += '<dl class="oem oem-pattern-list">\n';
         pkg.oem.deployment[this.config].configuration.forEach(function(config){
-            html += '<dt>'+config+'</dt>\n';
+            html += '<dt><h2 class="oem">'+config+'<h2></dt>\n';
             html += '<dd>'+config+'</dd>\n';
         });
         html += '</dl>';

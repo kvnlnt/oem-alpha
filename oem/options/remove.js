@@ -8,16 +8,17 @@ const chalk = require('chalk');
 const RemoveComponent = function(componentName) {
     this.fileName = componentName;
     this.componentDir = './src/components/' + this.fileName;
+    this.demoDir = './oem/templates/demos/' + this.fileName;
     this
-        .removeDirectory()
+        .removeDirectory(this.componentDir)
+        .removeDirectory(this.demoDir)
         .updatePackageJson()
         .reply();
 };
 
 RemoveComponent.prototype = {
 
-    removeDirectory: function() {
-        var path = this.componentDir;
+    removeDirectory: function(path) {
         if (fs.existsSync(path)) {
             fs.readdirSync(path).forEach(function(file, index) {
                 var curPath = path + "/" + file;

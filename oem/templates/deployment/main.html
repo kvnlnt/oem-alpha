@@ -38,11 +38,26 @@
             margin:0;
             list-style: none;
         }
+
+        .oem-pattern-list dt {
+            cursor: pointer;
+            padding: 5px 20px;
+        }
+
+        .oem-pattern-list dt:hover {
+            background-color: #f6f6f6;
+        }
+
+        .oem-pattern-list dd {
+            display: none;
+        }
     </style>
 
 </head>
 
 <body>
+    <h1 class="oem">Deployment</h1>
+    <p class="oem">The following components were deployed. Click a component title to preview. <button>Toggle All</button></p>
     <!-- HTML -->
     <script src="oem.js"></script>
 </body>

@@ -178,7 +178,7 @@ DevelopComponent.prototype = {
             }          
         }
 
-        console.log(allFiles);
+        // console.log(allFiles);
 
         return allFiles;
     }
