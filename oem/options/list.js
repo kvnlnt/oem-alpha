@@ -19,7 +19,7 @@ List.prototype = {
         console.log("");
         console.log("");
 
-        Object.keys(pkg.oem.configurations).sort().forEach(function(configuration){
+        Object.keys(pkg.oem.components).sort().forEach(function(configuration){
             console.log(configuration);
         });
 

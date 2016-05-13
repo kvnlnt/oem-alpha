@@ -8,10 +8,10 @@ const chalk = require('chalk');
 const RemoveComponent = function(componentName) {
     this.fileName = componentName;
     this.componentDir = './src/components/' + this.fileName;
-    this.demoDir = './oem/templates/demos/' + this.fileName;
+    this.templatesDir = './oem/templates/components/' + this.fileName;
     this
         .removeDirectory(this.componentDir)
-        .removeDirectory(this.demoDir)
+        .removeDirectory(this.templatesDir)
         .updatePackageJson()
         .reply();
 };
@@ -35,7 +35,7 @@ RemoveComponent.prototype = {
 
     updatePackageJson: function() {
         delete pkg.oem.development[this.fileName];
-        delete pkg.oem.configurations[this.fileName];
+        delete pkg.oem.components[this.fileName];
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
         return this;
     },

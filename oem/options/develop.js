@@ -20,7 +20,7 @@ const DevelopComponent = function (component, port) {
     this.component = component;
     this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
-    this.demoHtml = pkg.oem.development[this.component].demo;
+    this.template = pkg.oem.components[this.component].templates.demo;
     this.server;
     this.start();
 };
@@ -69,9 +69,9 @@ DevelopComponent.prototype = {
 
         if (req.url === "/") {
             var that = this;
-            var demoHtml = fs.readFileSync(this.demoHtml, 'utf8');
-            var template = fs.readFile("./oem/templates/development/main.html", 'utf8', function(err, data){
-                data = data.replace("<!-- HTML -->", demoHtml, 'utf8')
+            var template = fs.readFileSync(this.template, 'utf8');
+            fs.readFile("./oem/templates/development/main.html", 'utf8', function(err, data){
+                data = data.replace("<!-- HTML -->", template, 'utf8')
                 .replace("<!-- JS -->", that.wrapInScriptTag(that.jsFiles));
                 console.log(chalk.gray("Served: "), './');
                 res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
@@ -152,14 +152,14 @@ DevelopComponent.prototype = {
     getJsFiles: function () {
 
         // component configuration files
-        var srcFiles = pkg.oem.development[this.component].configuration.map(function(config){
-            return pkg.oem.configurations[config];
+        var srcFiles = pkg.oem.development[this.component].components.map(function(component){
+            return pkg.oem.components[component].files;
         });
 
         // test core and component test files
         var testFiles = [];
         testFiles.push("./src/core/Test.js");
-        testFiles.push(pkg.oem.development[this.component].tests);
+        testFiles.push(pkg.oem.components[this.component].tests);
 
         // flatten arrays
         var allFiles = []
@@ -167,8 +167,8 @@ DevelopComponent.prototype = {
         .concat(...testFiles);
 
         // implement customization overwrites
-        if(pkg.oem.development[this.component].hasOwnProperty('customization')){
-            var customizations = pkg.oem.development[this.component].customization;
+        if(pkg.oem.development[this.component].hasOwnProperty('customizations')){
+            var customizations = pkg.oem.development[this.component].customizations;
             var customization;
             var indexOfFileToReplace;
             for(var i = 0; i < customizations.length; i = i + 1){

@@ -11,19 +11,20 @@
     "oem": {
         "deployment": {
             "all": {
-                "configuration": [
+                "components": [
                     "core",
                     "accordion",
                     "card",
                     "text-input"
-                ]
+                ],
+                "customizations": []
             },
             "toolhouse.com": {
-                "configuration": [
+                "components": [
                     "core",
                     "card"
                 ],
-                "customization": [
+                "customizations": [
                     {
                         "replace": "./src/core/Theme.js",
                         "with": "./src/core/Theme.js"
@@ -33,10 +34,59 @@
         },
         "development": {
             "core": {
-                "configuration": [
+                "components": [
                     "core"
                 ],
-                "customization": [],
+                "customizations": []
+            },
+            "card": {
+                "components": [
+                    "core",
+                    "card"
+                ],
+                "customizations": []
+            },
+            "accordion": {
+                "components": [
+                    "core",
+                    "accordion"
+                ],
+                "customizations": []
+            },
+            "text-input": {
+                "components": [
+                    "core",
+                    "text-input"
+                ],
+                "customizations": []
+            }
+        },
+        "components": {
+            "core": {
+                "files": [
+                    "./src/core/polyfills/Bind.js",
+                    "./src/core/polyfills/Dataset.js",
+                    "./src/core/polyfills/QuerySelector.js",
+                    "./src/core/polyfills/EventListeners.js",
+                    "./src/core/polyfills/ClassList.js",
+                    "./src/core/polyfills/ArrayMap.js",
+                    "./src/core/polyfills/ObjectCreate.js",
+                    "./src/core/Namespacer.js",
+                    "./src/core/Theme.js",
+                    "./src/core/Logger.js",
+                    "./src/core/Device.js",
+                    "./src/core/Util.js",
+                    "./src/core/EventBus.js",
+                    "./src/core/Events.js",
+                    "./src/core/Css.js",
+                    "./src/core/Responsifier.js",
+                    "./src/core/Component.js",
+                    "./src/core/Collector.js",
+                    "./src/core/Gfx.js",
+                    "./src/core/View.js",
+                    "./src/core/Validator.js",
+                    "./src/core/Field.js"
+                ],
                 "tests": [
                     "./src/core/Collector.test.js",
                     "./src/core/Component.test.js",
@@ -46,88 +96,55 @@
                     "./src/core/Util.test.js",
                     "./src/core/Responsifier.test.js"
                 ],
-                "demo": "./oem/templates/demos/core/test.html"
+                "templates": {
+                    "demo": "./oem/templates/components/core/test.html"
+                }
             },
             "card": {
-                "configuration": [
-                    "core",
-                    "card"
+                "files": [
+                    "./src/components/card/gfx.js",
+                    "./src/components/card/model.js",
+                    "./src/components/card/view.js",
+                    "./src/components/card/controller.js",
+                    "./src/components/card/collector.js"
                 ],
-                "customization": [],
                 "tests": [
                     "./src/components/card/test.js"
                 ],
-                "demo": "./oem/templates/demos/card/demo.html"
+                "templates": {
+                    "demo": "./oem/templates/components/card/demo.html"
+                }
             },
             "accordion": {
-                "configuration": [
-                    "core",
-                    "accordion"
+                "files": [
+                    "./src/components/accordion/gfx.js",
+                    "./src/components/accordion/model.js",
+                    "./src/components/accordion/view.js",
+                    "./src/components/accordion/controller.js",
+                    "./src/components/accordion/collector.js"
                 ],
-                "customization": [],
                 "tests": [
                     "./src/components/accordion/test.js"
                 ],
-                "demo": "./oem/templates/demos/accordion/demo.html"
+                "templates": {
+                    "demo": "./oem/templates/components/accordion/demo.html"
+                }
             },
             "text-input": {
-                "configuration": [
-                    "core",
-                    "text-input"
+                "files": [
+                    "./src/components/text-input/gfx.js",
+                    "./src/components/text-input/model.js",
+                    "./src/components/text-input/view.js",
+                    "./src/components/text-input/controller.js",
+                    "./src/components/text-input/collector.js"
                 ],
-                "customization": [],
                 "tests": [
                     "./src/components/text-input/test.js"
                 ],
-                "demo": "./oem/templates/demos/text-input/demo.html"
+                "templates": {
+                    "demo": "./oem/templates/components/text-input/demo.html"
+                }
             }
-        },
-        "configurations": {
-            "core": [
-                "./src/core/polyfills/Bind.js",
-                "./src/core/polyfills/Dataset.js",
-                "./src/core/polyfills/QuerySelector.js",
-                "./src/core/polyfills/EventListeners.js",
-                "./src/core/polyfills/ClassList.js",
-                "./src/core/polyfills/ArrayMap.js",
-                "./src/core/polyfills/ObjectCreate.js",
-                "./src/core/Namespacer.js",
-                "./src/core/Theme.js",
-                "./src/core/Logger.js",
-                "./src/core/Device.js",
-                "./src/core/Util.js",
-                "./src/core/EventBus.js",
-                "./src/core/Events.js",
-                "./src/core/Css.js",
-                "./src/core/Responsifier.js",
-                "./src/core/Component.js",
-                "./src/core/Collector.js",
-                "./src/core/Gfx.js",
-                "./src/core/View.js",
-                "./src/core/Validator.js",
-                "./src/core/Field.js"
-            ],
-            "card": [
-                "./src/components/card/gfx.js",
-                "./src/components/card/model.js",
-                "./src/components/card/view.js",
-                "./src/components/card/controller.js",
-                "./src/components/card/collector.js"
-            ],
-            "accordion": [
-                "./src/components/accordion/gfx.js",
-                "./src/components/accordion/model.js",
-                "./src/components/accordion/view.js",
-                "./src/components/accordion/controller.js",
-                "./src/components/accordion/collector.js"
-            ],
-            "text-input": [
-                "./src/components/text-input/gfx.js",
-                "./src/components/text-input/model.js",
-                "./src/components/text-input/view.js",
-                "./src/components/text-input/controller.js",
-                "./src/components/text-input/collector.js"
-            ]
         }
     },
     "devDependencies": {},

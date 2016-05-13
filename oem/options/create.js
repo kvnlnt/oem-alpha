@@ -10,7 +10,7 @@ const CreateComponent = function(componentName){
     this.componentName = 'oem-' + componentName;
     this.componentClass = this.convertNameToClass(componentName);
     this.componentDir = './src/components/'+this.fileName;
-    this.demoDir = './oem/templates/demos/'+this.fileName;
+    this.templatesDir = './oem/templates/components/'+this.fileName;
     this
     .createDirectory()
     .copyAndFormatTemplates()
@@ -24,7 +24,7 @@ CreateComponent.prototype = {
         // console.log('create component', this.componentName, this.componentClass);
         try {
             fs.mkdirSync(this.componentDir);
-            fs.mkdirSync(this.demoDir);
+            fs.mkdirSync(this.templatesDir);
             return this;
         } catch (err) {
             if(err) console.log("ERROR".bold, err);
@@ -49,7 +49,7 @@ CreateComponent.prototype = {
 
         // demo
         var demo = fs.readFileSync('./oem/templates/new-component/demo.html', 'utf-8');
-        fs.writeFileSync(this.demoDir + '/demo.html', this.renderTemplate(demo));
+        fs.writeFileSync(this.templatesDir + '/demo.html', this.renderTemplate(demo));
 
         // gfx
         var gfx = fs.readFileSync('./oem/templates/new-component/gfx.js', 'utf-8');
@@ -74,20 +74,24 @@ CreateComponent.prototype = {
     updatePackageJson: function(){
 
         // add development node
-        var newComponent = {};
-        newComponent.configuration = ["core", this.fileName];
-        newComponent.tests = ["./src/components/"+this.fileName+"/"+this.fileName+".test.js"];
-        newComponent.demo = this.demoDir+"/demo.html";
-        pkg.oem.development[this.fileName] = newComponent;
+        var newDevelopmentConfig = {};
+        newDevelopmentConfig.components = ["core", this.fileName];
+        newDevelopmentConfig.customizations = [];
+        pkg.oem.development[this.fileName] = newDevelopmentConfig;
 
         // configuration
-        pkg.oem.configurations[this.fileName] = [
-            "./src/components/"+this.fileName+"/gfx.js",
-            "./src/components/"+this.fileName+"/model.js",
-            "./src/components/"+this.fileName+"/view.js",
-            "./src/components/"+this.fileName+"/controller.js",
-            "./src/components/"+this.fileName+"/collector.js"
-        ];
+        var newComponentConfig = {};
+        newComponentConfig.files = [];
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/gfx.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/model.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/view.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/controller.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/collector.js");
+        newComponentConfig.tests = [];
+        newComponentConfig.tests.push("./src/components/"+this.fileName+"/"+this.fileName+".test.js");
+        newComponentConfig.templates = {};
+        newComponentConfig.templates.demo = this.templatesDir+"/demo.html";
+        pkg.oem.components[this.fileName] = newComponentConfig;
 
         // save to package
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));

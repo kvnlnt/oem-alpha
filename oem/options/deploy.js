@@ -44,9 +44,9 @@ Deployment.prototype = {
         var template = fs.readFileSync('./oem/templates/deployment/main.html', 'utf-8');
         var html = '';
         html += '<dl class="oem oem-pattern-list">\n';
-        pkg.oem.deployment[this.config].configuration.forEach(function(config){
-            html += '<dt><h2 class="oem">'+config+'<h2></dt>\n';
-            html += '<dd>'+config+'</dd>\n';
+        pkg.oem.deployment[this.config].components.forEach(function(component){
+            html += '<dt><h2 class="oem">'+component+'<h2></dt>\n';
+            html += '<dd>'+component+'</dd>\n';
         });
         html += '</dl>';
         template = template.replace("<!-- HTML -->", html, 'utf8')
@@ -58,8 +58,8 @@ Deployment.prototype = {
 
     getJsFiles: function(){
         // get all source files
-        var srcFiles = pkg.oem.deployment[this.config].configuration.map(function(config){
-            return pkg.oem.configurations[config];
+        var srcFiles = pkg.oem.deployment[this.config].components.map(function(component){
+            return pkg.oem.components[component].files;
         });
 
         // flatten arrays
@@ -67,8 +67,8 @@ Deployment.prototype = {
         .concat(...srcFiles);
 
         // implement customization overwrites
-        if(pkg.oem.deployment[this.config].hasOwnProperty('customization')){
-            var customizations = pkg.oem.deployment[this.config].customization;
+        if(pkg.oem.deployment[this.config].hasOwnProperty('customizations')){
+            var customizations = pkg.oem.deployment[this.config].customizations;
             var customization;
             var indexOfFileToReplace;
             for(var i = 0; i < customizations.length; i = i + 1){
