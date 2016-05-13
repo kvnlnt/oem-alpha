@@ -47,9 +47,15 @@ CreateComponent.prototype = {
         var controller = fs.readFileSync('./oem/templates/new-component/controller.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/controller.js', this.renderTemplate(controller));
 
-        // demo
-        var demo = fs.readFileSync('./oem/templates/new-component/demo.html', 'utf-8');
-        fs.writeFileSync(this.templatesDir + '/demo.html', this.renderTemplate(demo));
+        // html
+        var decription = fs.readFileSync('./oem/templates/new-component/description.html', 'utf-8');
+        fs.writeFileSync(this.templatesDir + '/description.html', this.renderTemplate(decription));
+        var examples = fs.readFileSync('./oem/templates/new-component/examples.html', 'utf-8');
+        fs.writeFileSync(this.templatesDir + '/examples.html', this.renderTemplate(examples));
+        var tests = fs.readFileSync('./oem/templates/new-component/tests.html', 'utf-8');
+        fs.writeFileSync(this.templatesDir + '/tests.html', this.renderTemplate(tests));
+        var usage = fs.readFileSync('./oem/templates/new-component/usage.html', 'utf-8');
+        fs.writeFileSync(this.templatesDir + '/usage.html', this.renderTemplate(usage));
 
         // gfx
         var gfx = fs.readFileSync('./oem/templates/new-component/gfx.js', 'utf-8');
@@ -88,9 +94,12 @@ CreateComponent.prototype = {
         newComponentConfig.files.push("./src/components/"+this.fileName+"/controller.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/collector.js");
         newComponentConfig.tests = [];
-        newComponentConfig.tests.push("./src/components/"+this.fileName+"/"+this.fileName+".test.js");
+        newComponentConfig.tests.push("./src/components/"+this.fileName+"/test.js");
         newComponentConfig.templates = {};
-        newComponentConfig.templates.demo = this.templatesDir+"/demo.html";
+        newComponentConfig.templates.description = this.templatesDir+"/description.html";
+        newComponentConfig.templates.examples = this.templatesDir+"/examples.html";
+        newComponentConfig.templates.tests = this.templatesDir+"/tests.html";
+        newComponentConfig.templates.usage = this.templatesDir+"/usage.html";
         pkg.oem.components[this.fileName] = newComponentConfig;
 
         // save to package

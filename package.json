@@ -97,7 +97,8 @@
                     "./src/core/Responsifier.test.js"
                 ],
                 "templates": {
-                    "demo": "./oem/templates/components/core/test.html"
+                    "description": "./oem/templates/components/core/description.html",
+                    "tests": "./oem/templates/components/core/tests.html"
                 }
             },
             "card": {
@@ -112,7 +113,10 @@
                     "./src/components/card/test.js"
                 ],
                 "templates": {
-                    "demo": "./oem/templates/components/card/demo.html"
+                    "description": "./oem/templates/components/card/description.html",
+                    "examples": "./oem/templates/components/card/examples.html",
+                    "tests": "./oem/templates/components/card/tests.html",
+                    "usage": "./oem/templates/components/card/usage.html"
                 }
             },
             "accordion": {
@@ -127,7 +131,10 @@
                     "./src/components/accordion/test.js"
                 ],
                 "templates": {
-                    "demo": "./oem/templates/components/accordion/demo.html"
+                    "description": "./oem/templates/components/accordion/description.html",
+                    "examples": "./oem/templates/components/accordion/examples.html",
+                    "tests": "./oem/templates/components/accordion/tests.html",
+                    "usage": "./oem/templates/components/accordion/usage.html"
                 }
             },
             "text-input": {
@@ -142,7 +149,10 @@
                     "./src/components/text-input/test.js"
                 ],
                 "templates": {
-                    "demo": "./oem/templates/components/text-input/demo.html"
+                    "description": "./oem/templates/components/text-input/description.html",
+                    "examples": "./oem/templates/components/text-input/examples.html",
+                    "tests": "./oem/templates/components/text-input/tests.html",
+                    "usage": "./oem/templates/components/text-input/usage.html"
                 }
             }
         }

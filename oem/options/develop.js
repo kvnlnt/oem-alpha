@@ -20,7 +20,10 @@ const DevelopComponent = function (component, port) {
     this.component = component;
     this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
-    this.template = pkg.oem.components[this.component].templates.demo;
+    this.templateDescription = pkg.oem.components[this.component].templates.description;
+    this.templateExamples = pkg.oem.components[this.component].templates.examples;
+    this.templateTests = pkg.oem.components[this.component].templates.tests;
+    this.templateUsage = pkg.oem.components[this.component].templates.usage;
     this.server;
     this.start();
 };
@@ -68,16 +71,49 @@ DevelopComponent.prototype = {
     handleServerRequests: function(req, res) {
 
         if (req.url === "/") {
+            
             var that = this;
-            var template = fs.readFileSync(this.template, 'utf8');
+            var templateDescription = "";
+            var templateExamples = "";
+            var templateTests = "";
+            var templateUsage = "";
+
+            // get template partials
+            try {
+                templateDescription = fs.readFileSync(this.templateDescription, 'utf8');
+            } catch (err) {
+                // noop
+            }
+            try {
+                templateExamples = fs.readFileSync(this.templateExamples, 'utf8');
+            } catch (err) {
+                // noop
+            }
+            try {
+                templateTests = fs.readFileSync(this.templateTests, 'utf8');
+            } catch (err) {
+                // noop
+            }
+            try {
+                templateUsage = fs.readFileSync(this.templateUsage, 'utf8');
+            } catch (err) {
+                // noop
+            }
+
+            // now update the main template
             fs.readFile("./oem/templates/development/main.html", 'utf8', function(err, data){
-                data = data.replace("<!-- HTML -->", template, 'utf8')
+                data = data
+                .replace("<!-- HTML:DESCRIPTION -->", templateDescription, 'utf8')
+                .replace("<!-- HTML:EXAMPLES -->", templateExamples, 'utf8')
+                .replace("<!-- HTML:TESTS -->", templateTests, 'utf8')
+                .replace("<!-- HTML:USAGE -->", templateUsage, 'utf8')
                 .replace("<!-- JS -->", that.wrapInScriptTag(that.jsFiles));
                 console.log(chalk.gray("Served: "), './');
                 res.writeHead(200, { "Content-Type": CONTENT_TYPE.HTML });
                 res.write(data);
                 res.end();
             });
+
         // else serve asset
         } else {
 
