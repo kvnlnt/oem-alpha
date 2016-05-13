@@ -4,7 +4,7 @@ oem.Core = (function(Core) {
 
     // Theme Colors
     var COLORS = {};
-    COLORS.black = '#000000';
+    COLORS.black = '#111111';
     COLORS.grey1 = '#111111';
     COLORS.grey2 = '#222222';
     COLORS.grey3 = '#333333';

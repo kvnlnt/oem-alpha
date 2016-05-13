@@ -51,11 +51,28 @@
         .oem-pattern-list dd {
             display: none;
         }
+        .oem.logo {
+            width:80px;
+            background-color: black;
+            color:white;
+            font-family: Courier;
+            text-align: center;
+            margin-bottom:100px;
+        }
+
+        .oem.logo:after {
+            content:"OEM";
+            color:white;
+            font-weight: normal;
+            line-height: 50px;
+            font-size: 24px;
+        }
     </style>
 
 </head>
 
 <body>
+    <div class="oem logo"></div>
     <h1 class="oem">Deployment</h1>
     <p class="oem">The following components were deployed. Click a component title to preview. <button>Toggle All</button></p>
     <!-- HTML -->

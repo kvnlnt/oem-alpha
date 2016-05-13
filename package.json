@@ -27,7 +27,7 @@
                 "customizations": [
                     {
                         "replace": "./src/core/Theme.js",
-                        "with": "./src/core/Theme.js"
+                        "with": "./src/customizations/Example.js"
                     }
                 ]
             }
