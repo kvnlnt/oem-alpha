@@ -105,6 +105,8 @@ The Core provides the following features and abilities:
 Tests are a part of the development cycle. Each component has a `*.demo.html` and `*.test.js` file which drives this functionality. The test suite combines unit and integration testing by visually displaying the results in the browser along with the component you're developing. This allows for testing to be performed by visiting the component being developed in the respective browser.
 
 ## TODO
+- fix multi instance
+- fix dynamic generation registration
 - internationalization
 - test core
 - data attributes
