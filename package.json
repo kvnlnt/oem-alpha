@@ -85,7 +85,8 @@
                     "./src/core/Gfx.js",
                     "./src/core/View.js",
                     "./src/core/Validator.js",
-                    "./src/core/Field.js"
+                    "./src/core/Field.js",
+                    "./src/core/Oem.js"
                 ],
                 "tests": [
                     "./src/core/Collector.test.js",
