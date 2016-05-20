@@ -1,11 +1,11 @@
 oem.Components = (function(Components, Core) {
 
     var %CLASS%View = {};
-    %CLASS%View.id = '%NAME%-css';
+    %CLASS%View.id = '%SELECTOR%-css';
     %CLASS%View.css = [
 
         {
-            selector: "%NAME%, .%NAME%",
+            selector: "%SELECTOR%, .%SELECTOR%",
             declaration: [
                 "color:red"
             ]

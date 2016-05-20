@@ -1,14 +1,28 @@
 oem = (function(Oem) {
 
     /**
-     * Initialize components
-     */
-    Oem.init = function(){};
-
-    /**
      * Create component
      */
-    Oem.create = function(component, settings){};
+    Oem.create = function(proto, settings){
+
+        // default settins
+        var settings = settings || {};
+
+        // convert the settings object to a valid Object.create propertiesObject
+         var propertiesObject = {};
+         for(var setting in settings){
+            propertiesObject[setting] = {
+                value: settings[setting]
+            };
+         }
+        
+        // create instance of component
+        var componentInstance = Object.create(proto, propertiesObject);
+
+        // attach instance to element
+        return componentInstance;
+        
+    };
 
     /**
      * Read component
@@ -29,6 +43,11 @@ oem = (function(Oem) {
      * Delete component
      */
     Oem.delete = function(component){};
+
+    /**
+     * List all components
+     */
+    Oem.list = function(){};
 
     /**
      * Return main oem namespace object

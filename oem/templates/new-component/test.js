@@ -3,7 +3,7 @@ oem.Components = (function(Components, Core) {
     // %CLASS% component
     var %CLASS%Test = Object.create(Core.Test); // call super constructor
     %CLASS%Test.name = "Tests";
-    %CLASS%Test.testComponent = '%NAME%-test';
+    %CLASS%Test.testComponent = '%SELECTOR%-test';
 
     /**
      * Test example

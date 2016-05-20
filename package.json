@@ -71,6 +71,7 @@
                     "./src/core/polyfills/ClassList.js",
                     "./src/core/polyfills/ArrayMap.js",
                     "./src/core/polyfills/ObjectCreate.js",
+                    "./src/core/polyfills/ObjectKeys.js",
                     "./src/core/Namespacer.js",
                     "./src/core/Theme.js",
                     "./src/core/Logger.js",
@@ -106,9 +107,7 @@
                 "files": [
                     "./src/components/card/gfx.js",
                     "./src/components/card/model.js",
-                    "./src/components/card/view.js",
-                    "./src/components/card/controller.js",
-                    "./src/components/card/collector.js"
+                    "./src/components/card/view.js"
                 ],
                 "tests": [
                     "./src/components/card/test.js"
@@ -124,9 +123,7 @@
                 "files": [
                     "./src/components/accordion/gfx.js",
                     "./src/components/accordion/model.js",
-                    "./src/components/accordion/view.js",
-                    "./src/components/accordion/controller.js",
-                    "./src/components/accordion/collector.js"
+                    "./src/components/accordion/view.js"
                 ],
                 "tests": [
                     "./src/components/accordion/test.js"
@@ -142,9 +139,7 @@
                 "files": [
                     "./src/components/text-input/gfx.js",
                     "./src/components/text-input/model.js",
-                    "./src/components/text-input/view.js",
-                    "./src/components/text-input/controller.js",
-                    "./src/components/text-input/collector.js"
+                    "./src/components/text-input/view.js"
                 ],
                 "tests": [
                     "./src/components/text-input/test.js"

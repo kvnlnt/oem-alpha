@@ -12,9 +12,9 @@ oem.Core = (function(Core, Collections) {
      * @param      {Component}  component  - Object component
      * @return     {Object}     return self
      */
-    Collector.addComponent = function(selector, component) {
+    Collector.addComponent = function(component) {
         Collector.components.push({
-            selector: selector,
+            selector: component.getSelector(),
             component: component
         });
         return this;
@@ -46,11 +46,7 @@ oem.Core = (function(Core, Collections) {
         _components = document.querySelectorAll(cssSelector + "," + tagSelector);
         for (var i = 0; i < _components.length; i++) {
             el = _components[i];
-            var instance = Object.create(component, {
-                el: {
-                    value: el
-                }
-            });
+            var instance = oem.create(component, { el: el });
 
             // call initializer
             instance.init();

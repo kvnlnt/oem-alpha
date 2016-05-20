@@ -7,6 +7,7 @@ oem.Core = (function(Core) {
 
     Component.init = function(){
         Core.Responsifier.addComponent(this);
+        Core.Collector.addComponent(this);
     };
 
     Component.getEl = function(){
@@ -15,6 +16,15 @@ oem.Core = (function(Core) {
 
     Component.setEl = function(el){
         this.el = el;
+        return this;
+    };
+
+    Component.getSelector = function(){
+        return this.selector;
+    };
+
+    Component.setSelector = function(selector){
+        this.selector = selector;
         return this;
     };
 

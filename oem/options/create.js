@@ -32,20 +32,12 @@ CreateComponent.prototype = {
     },
 
     renderTemplate: function(str){
-        str = str.replace(new RegExp('%NAME%', 'g'), this.componentName);
+        str = str.replace(new RegExp('%SELECTOR%', 'g'), this.componentName);
         str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
         return str;
     },
 
     copyAndFormatTemplates: function(){
-
-        // collector
-        var collector = fs.readFileSync("./oem/templates/new-component/collector.js", "utf8");
-        fs.writeFileSync(this.componentDir + '/collector.js', this.renderTemplate(collector));
-
-        // controller
-        var controller = fs.readFileSync('./oem/templates/new-component/controller.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/controller.js', this.renderTemplate(controller));
 
         // html
         var decription = fs.readFileSync('./oem/templates/new-component/description.html', 'utf-8');
@@ -91,8 +83,6 @@ CreateComponent.prototype = {
         newComponentConfig.files.push("./src/components/"+this.fileName+"/gfx.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/model.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/view.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/controller.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/collector.js");
         newComponentConfig.tests = [];
         newComponentConfig.tests.push("./src/components/"+this.fileName+"/test.js");
         newComponentConfig.templates = {};

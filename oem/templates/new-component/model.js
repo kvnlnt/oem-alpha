@@ -1,12 +1,12 @@
 oem.Components = (function(Components, Core) {
 
-    var %CLASS%Model = {};
-
-    %CLASS%Model.test = function(){
-        return 'test';
-    };
-
-    Components.%CLASS%Model = %CLASS%Model;
+    // Card component
+    var %CLASS% = oem.create(Core.Component); // call super constructor.
+    %CLASS%.name = "%CLASS%";
+    %CLASS%.selector = "%SELECTOR%";
+    
+    // exports
+    Components.%CLASS% = %CLASS%;
     return Components;
 
 })(oem.Components || {}, oem.Core);

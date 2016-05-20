@@ -1,8 +1,14 @@
 oem.Components = (function(Components, Core) {
 
-    var TextInputModel = {};
+    // Card component
+    var TextInput = Object.create(Core.Component); // call super constructor.
+    TextInput.name = "TextInput";
+    TextInput.selector = "oem-text-input";
 
-    TextInputModel.init = function(){
+    // mixins
+    Core.Util.extend(TextInput, Core.Field); // mixin field functions
+
+    TextInput.init = function(){
         var input = this.getEl(); 
         this.label = input.querySelector('label').innerText;
         this.field = input.querySelector('input[type="text"]');
@@ -12,11 +18,11 @@ oem.Components = (function(Components, Core) {
         this.field.addEventListener('input', this.handleInputChange.bind(this)); // get the input field
     };
 
-    TextInputModel.handleInputChange = function(){
+    TextInput.handleInputChange = function(){
         this.validate();
     };
 
-    Components.TextInputModel = TextInputModel;
+    Components.TextInput = TextInput;
     return Components;
 
 })(oem.Components || {}, oem.Core);
