@@ -89,7 +89,7 @@
 
      // run after all components have been collected
      Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
-     Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.responsify);
+     Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
 
      Core.Responsifier = Responsifier;
      return Core;

@@ -3,11 +3,15 @@ oem.Core = (function(Core) {
     var Component = {};
     Component.el = null;
     Component.name = "Component";
+    Component.selector = "selector";
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
-    Component.init = function(){
+    Component.init = function(options){
+        var options = options || {};
+        this.el = options.el || this.getEl(); // set the dom element
+        this.selector = options.selector || this.getSelector();
+        if(options.el) options.el.oem = this; // store component instance on DOM element for easy access
         Core.Responsifier.addComponent(this);
-        Core.Collector.addComponent(this);
     };
 
     Component.getEl = function(){

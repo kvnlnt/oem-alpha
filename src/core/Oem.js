@@ -1,27 +1,15 @@
-oem = (function(Oem) {
+oem = (function (Oem) {
 
     /**
      * Create component
      */
-    Oem.create = function(proto, settings){
-
-        // default settins
-        var settings = settings || {};
-
-        // convert the settings object to a valid Object.create propertiesObject
-         var propertiesObject = {};
-         for(var setting in settings){
-            propertiesObject[setting] = {
-                value: settings[setting]
-            };
-         }
-        
-        // create instance of component
-        var componentInstance = Object.create(proto, propertiesObject);
-
-        // attach instance to element
-        return componentInstance;
-        
+    Oem.create = function (component, elOrOptions) {
+        // if there's no DOM element, programmatically create one
+        // with all the settings provided, if it's a DOM element
+        // pass that along to the init function
+        // var isDomElement = elOrOptions.nodeType === 1; // crossbrowser way to detect DOM element IE8+
+        component.init(elOrOptions);
+        return component;
     };
 
     /**
@@ -29,7 +17,7 @@ oem = (function(Oem) {
      *
      * @param      {<type>}  component  The component
      */
-    Oem.read = function(component){};
+    Oem.read = function (component) {};
 
     /**
      * Update component
@@ -37,21 +25,21 @@ oem = (function(Oem) {
      * @param      {<type>}  component  The component
      * @param      {<type>}  settings   The settings
      */
-    Oem.update = function(component, settings){};
+    Oem.update = function (component, settings) {};
 
     /**
      * Delete component
      */
-    Oem.delete = function(component){};
+    Oem.delete = function (component) {};
 
     /**
      * List all components
      */
-    Oem.list = function(){};
+    Oem.list = function () {};
 
     /**
      * Return main oem namespace object
      */
     return Oem;
-    
+
 })(oem);

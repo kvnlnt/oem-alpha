@@ -1,9 +1,12 @@
 oem.Components = (function(Components, Core) {
 
-    // Card component
-    var Accordion = Object.create(Core.Component); // call super constructor.
-    Accordion.name = "Accordion";
-    Accordion.selector = "oem-accordion";
+    // Accordion component
+    var Accordion = Core.Prototype(Core.Component, {
+        name: "Accordion",
+        selector:"oem-accordion"
+    });
+
+    // params
     Accordion.expandClass = "expanded";
 
     Accordion.init = function() {

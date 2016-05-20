@@ -1,8 +1,8 @@
 oem.Core = (function(Core, Collections) {
 
     // Card component
-    var Collector = {};
-    Collector.components = [];
+    var AutoInitializer = {};
+    AutoInitializer.components = [];
 
     /**
      * Add component to collection
@@ -12,11 +12,20 @@ oem.Core = (function(Core, Collections) {
      * @param      {Component}  component  - Object component
      * @return     {Object}     return self
      */
-    Collector.addComponent = function(component) {
-        Collector.components.push({
+    AutoInitializer.addComponent = function(component) {
+
+        // we only watch components that haven't been added.
+        var hasAlreadyBeenAdded = this.components.find(function(_component){
+            return _component.selector === component.getSelector();
+        });
+        if(hasAlreadyBeenAdded) return this;
+
+        // add component if it hasn't been already.
+        AutoInitializer.components.push({
             selector: component.getSelector(),
             component: component
         });
+        
         return this;
     };
 
@@ -27,7 +36,7 @@ oem.Core = (function(Core, Collections) {
      * @param      {string}     selector   - base selector text
      * @param      {Component}  component  - Object of compoent
      */
-    Collector.collect = function(selector, component) {
+    AutoInitializer.collect = function(selector, component) {
 
         // init vars
         var cssSelector = "." + selector;
@@ -47,13 +56,6 @@ oem.Core = (function(Core, Collections) {
         for (var i = 0; i < _components.length; i++) {
             el = _components[i];
             var instance = oem.create(component, { el: el });
-
-            // call initializer
-            instance.init();
-
-            // attach this object instance to the element so we can use all it's 
-            // features through the dom element
-            el.oem = instance;
             Collections[selector].push(instance);
         }
 
@@ -67,19 +69,19 @@ oem.Core = (function(Core, Collections) {
      *
      * @method     collectAll
      */
-    Collector.collectAll = function() {
+    AutoInitializer.collectAll = function() {
         var component;
-        for (var i = 0; i < Collector.components.length; i++) {
-            component = Collector.components[i];
-            Collector.collect(component.selector, component.component);
+        for (var i = 0; i < AutoInitializer.components.length; i++) {
+            component = AutoInitializer.components[i];
+            AutoInitializer.collect(component.selector, component.component);
         }
     };
 
     // collect on document ready
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, Collector.collectAll);
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, AutoInitializer.collectAll);
 
     // exports
-    Core.Collector = Collector;
+    Core.AutoInitializer = AutoInitializer;
     return Core;
 
 })(oem.Core, oem.Collections);

@@ -70,6 +70,7 @@
                     "./src/core/polyfills/EventListeners.js",
                     "./src/core/polyfills/ClassList.js",
                     "./src/core/polyfills/ArrayMap.js",
+                    "./src/core/polyfills/ArrayFind.js",
                     "./src/core/polyfills/ObjectCreate.js",
                     "./src/core/polyfills/ObjectKeys.js",
                     "./src/core/Namespacer.js",
@@ -82,7 +83,7 @@
                     "./src/core/Css.js",
                     "./src/core/Responsifier.js",
                     "./src/core/Component.js",
-                    "./src/core/Collector.js",
+                    "./src/core/AutoInitializer.js",
                     "./src/core/Gfx.js",
                     "./src/core/View.js",
                     "./src/core/Validator.js",
@@ -90,7 +91,7 @@
                     "./src/core/Oem.js"
                 ],
                 "tests": [
-                    "./src/core/Collector.test.js",
+                    "./src/core/AutoInitializer.test.js",
                     "./src/core/Component.test.js",
                     "./src/core/Css.test.js",
                     "./src/core/Events.test.js",

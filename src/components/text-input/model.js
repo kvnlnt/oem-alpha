@@ -1,9 +1,10 @@
 oem.Components = (function(Components, Core) {
 
-    // Card component
-    var TextInput = Object.create(Core.Component); // call super constructor.
-    TextInput.name = "TextInput";
-    TextInput.selector = "oem-text-input";
+    // TextInput component
+    var TextInput = Core.Prototype(Core.Component, {
+        name: "TextInput",
+        selector: "oem-text-input"
+    });
 
     // mixins
     Core.Util.extend(TextInput, Core.Field); // mixin field functions

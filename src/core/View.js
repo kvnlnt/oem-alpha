@@ -1,4 +1,4 @@
-oem.Components = (function(Core) {
+oem.Core = (function(Core) {
 
     var View = {};
     View.id = 'oem-view';
