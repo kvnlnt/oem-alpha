@@ -28,9 +28,9 @@ oem.Core = (function(Core) {
         var _el = document.createElement(tag);
 
         // add attributes
-        Object.keys(attrs).forEach(function addAttr(attr){
+        for(var attr in attrs){
             _el.setAttribute(attr, attrs[attr]);
-        });
+        }
 
         // add content
         function addContent(content){
@@ -38,7 +38,13 @@ oem.Core = (function(Core) {
         }
 
         // render content
-        (content.constructor === Array) ? content.forEach(addContent) : addContent(content);
+        if(typeof content === "object") {
+            for(var i = 0; i < content.length; i = i + 1){
+                addContent(content[i]);                
+            }
+        } else {
+            addContent(content);            
+        }
 
         // return element
         return _el;

@@ -10,10 +10,10 @@ oem.Components = (function(Components, Core) {
     var dt1 = Core.El("dt", {}, "dt1");
     var dd1 = Core.El("dd", {}, "dd1");
     var dt2 = Core.El("dt", {}, "dt2");
-    var dd2 = Core.El("dd", {class:"expanded"}, "dd2");
+    var dd2 = Core.El("dd", {"class":"expanded"}, "dd2");
     var dd3 = Core.El("dd", {}, "dd3");
     var dt3 = Core.El("dt", {}, "dt3");
-    var testEl = Core.El("dl", {class:"oem-accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
+    var testEl = Core.El("dl", {"class":"oem-accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
 
     var testAccordion = oem.create(Components.Accordion, {
         el: testEl

@@ -24,7 +24,9 @@ oem = (function (Oem, Core) {
      *
      * @param      {<type>}  component  The component
      */
-    Oem.read = function (component) {};
+    Oem.read = function (component) {
+        return component;
+    };
 
     /**
      * Update component
@@ -32,17 +34,23 @@ oem = (function (Oem, Core) {
      * @param      {<type>}  component  The component
      * @param      {<type>}  settings   The settings
      */
-    Oem.update = function (component, settings) {};
+    Oem.update = function (component, settings) {
+        return component;
+    };
 
     /**
      * Delete component
      */
-    Oem.delete = function (component) {};
+    Oem.destroy = function (component) {
+        return component;
+    };
 
     /**
      * List all components
      */
-    Oem.list = function () {};
+    Oem.list = function () {
+        return component;
+    };
 
     /**
      * Return main oem namespace object
