@@ -8,8 +8,11 @@ oem.Components = (function(Components, Core) {
 
     // params
     Accordion.expandClass = "expanded";
+    Accordion.terms = [];
+    Accordion.definitions = [];
 
     Accordion.init = function() {
+        Core.Responsifier.addComponent(this);
         this.registerEvents();
     };
 
@@ -21,7 +24,9 @@ oem.Components = (function(Components, Core) {
         var definition;
         for (var i = 0; i < list.terms.length; i = i + 1) {
             term = list.terms[i];
+            Accordion.terms.push(term);
             definition = list.definitions[i];
+            Accordion.definitions.push(definition);
             term.isExpanded = definition.classList.contains(this.expandClass);
             term.definition = list.definitions[i];
             term.addEventListener('click', this.toggle.bind(this));
@@ -29,15 +34,23 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
+    Accordion.getTerm = function(i){
+        return this.terms[i];
+    };
+
+    Accordion.getDefinition = function(i){
+        return this.definitions[i];
+    };
+
     Accordion.toggle = function(e) {
         if (e.preventDefault) e.preventDefault(); // catch for event triggered
         var term = e.target;
+        this.contractEverything();
         if (term.isExpanded) {
             this.contract(term);
         } else {
             this.expand(term);
         }
-        this.contractEverythingBut(term);
         return this;
     };
 

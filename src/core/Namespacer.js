@@ -1,7 +1,6 @@
 window.oem = {};
 window.oem.Core = {};
 window.oem.Components = {};
-window.oem.Collections = {};
 window.oem.create = null;
 window.oem.read = null;
 window.oem.update = null;

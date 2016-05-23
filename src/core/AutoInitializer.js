@@ -1,4 +1,4 @@
-oem.Core = (function(Core, Collections) {
+oem.Core = (function(Core) {
 
     // Card component
     var AutoInitializer = {};
@@ -43,20 +43,12 @@ oem.Core = (function(Core, Collections) {
         var tagSelector = selector;
         var el;
 
-        // create collection of this selector type
-        if (typeof Collections[selector] === "undefined") Collections[selector] = [];
-
-        // if this selector has already been collected, reset it
-        // calling collect on a component is the same as "recollecting"
-        if(Collections[selector].length > 0) Collections[selector] = [];
-
         // find all components
         // create and store instances of each
         _components = document.querySelectorAll(cssSelector + "," + tagSelector);
         for (var i = 0; i < _components.length; i++) {
             el = _components[i];
-            var instance = oem.create(component, { el: el });
-            Collections[selector].push(instance);
+            oem.create(component, {el:el});
         }
 
         // go tell it on the mountain
@@ -84,4 +76,4 @@ oem.Core = (function(Core, Collections) {
     Core.AutoInitializer = AutoInitializer;
     return Core;
 
-})(oem.Core, oem.Collections);
+})(oem.Core);

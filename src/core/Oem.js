@@ -1,14 +1,21 @@
-oem = (function (Oem) {
+oem = (function (Oem, Core) {
+
+        // create collection of this selector type
+        // if (typeof Collections[selector] === "undefined") Collections[selector] = [];
+
+        // // if this selector has already been collected, reset it
+        // // calling collect on a component is the same as "recollecting"
+        // if(Collections[selector].length > 0) Collections[selector] = [];
+
 
     /**
      * Create component
      */
-    Oem.create = function (component, elOrOptions) {
-        // if there's no DOM element, programmatically create one
-        // with all the settings provided, if it's a DOM element
-        // pass that along to the init function
-        // var isDomElement = elOrOptions.nodeType === 1; // crossbrowser way to detect DOM element IE8+
-        component.init(elOrOptions);
+    Oem.create = function (component, options) {
+        // this is a creational mediator pattern which calls the root prototype
+        // and creates' an instance
+        var component = Core.Prototype(component, options);
+        component.init();
         return component;
     };
 
@@ -42,4 +49,4 @@ oem = (function (Oem) {
      */
     return Oem;
 
-})(oem);
+})(oem, oem.Core || {});

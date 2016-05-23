@@ -15,14 +15,14 @@ oem.Core = (function(Core) {
         }
 
         // create Object of component
-        var componentInstance = Object.create(proto, propertiesObject);
+        var componentObject = Object.create(proto, propertiesObject);
 
         // add to collector
         // XXX might nobe be the best spot, but where else?
-        oem.Core.AutoInitializer.addComponent(componentInstance);
+        oem.Core.AutoInitializer.addComponent(componentObject);
 
         // attach instance to element
-        return componentInstance;
+        return componentObject;
 
     };
 
