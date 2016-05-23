@@ -7,18 +7,20 @@ oem.Core = (function (Components, Core) {
     var autoInitializer = Object.create(Core.AutoInitializer);
 
     AutoInitializerTest.canCollectComponents = function () {
-        var testEl = document.createElement("div");
-        testEl.classList.add('test-component');
+        var testEl = Core.El("div", {"class":"test-component"}, "");
         document.body.appendChild(testEl);
-        var testComponent = oem.create(Core.Component, {
+        var initWasCalled = false;
+        var testComponent = Core.Prototype(Core.Component, {
             name: "testComponent",
             selector: "test-component",
             el: testEl
         });
+        testComponent.init = function(){
+            initWasCalled = true;
+        };
         autoInitializer.addComponent(testComponent);
         autoInitializer.collectAll();
-        var test = oem.Collections['test-component'].length === 1;
-        AutoInitializerTest.assert('Can collect components', test, true);
+        AutoInitializerTest.assert('Can collect components', initWasCalled, true);
     };
 
     /**
