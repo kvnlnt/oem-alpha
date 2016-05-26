@@ -1,13 +1,13 @@
 oem.Components = (function(Components, Core) {
 
     // Card component
-    var %CLASS% = Core.Prototype(Core.Component, {
-        name: "%CLASS%",
-        selector: "%SELECTOR%"
+    var Prototype = Core.Prototype(Core.Component, {
+        name: "Kevin",
+        selector: "oem-kevin"
     });
     
     // exports
-    Components.%CLASS% = %CLASS%;
+    Components.Kevin.Prototype = Prototype;
     return Components;
 
 })(oem.Components || {}, oem.Core);

@@ -4,10 +4,22 @@ oem.Core = (function(Core) {
     Component.el = null;
     Component.name = "Component";
     Component.selector = "selector";
+    Component.gfx = {};
+    Component.css = [];
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
     Component.init = function(){
+
+        // automatically register component to responsifier
         Core.Responsifier.addComponent(this);
+
+        // automatically render css
+        if(this.css.length){
+            Core.Css.add({
+                id: this.selector + '-css',
+                css: this.css
+            });
+        }
     };
 
     Component.getEl = function(){

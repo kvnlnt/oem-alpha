@@ -59,6 +59,13 @@
                     "text-input"
                 ],
                 "customizations": []
+            },
+            "kevin": {
+                "components": [
+                    "core",
+                    "kevin"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -152,6 +159,23 @@
                     "examples": "./oem/templates/components/text-input/examples.html",
                     "tests": "./oem/templates/components/text-input/tests.html",
                     "usage": "./oem/templates/components/text-input/usage.html"
+                }
+            },
+            "kevin": {
+                "files": [
+                    "./src/components/kevin/module.js",
+                    "./src/components/kevin/gfx.js",
+                    "./src/components/kevin/view.js",
+                    "./src/components/kevin/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/kevin/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/kevin/description.html",
+                    "examples": "./oem/templates/components/kevin/examples.html",
+                    "tests": "./oem/templates/components/kevin/tests.html",
+                    "usage": "./oem/templates/components/kevin/usage.html"
                 }
             }
         }
