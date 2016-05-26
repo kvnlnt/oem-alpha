@@ -58,7 +58,7 @@ oem.Core = (function(Components, Core) {
     });
 
     // exports
-    Components.EventBusTest = EventBusTest;
-    return Components;
+    Core.EventBusTest = EventBusTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);

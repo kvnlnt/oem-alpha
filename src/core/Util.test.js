@@ -8,11 +8,11 @@ oem.Core = (function(Components, Core) {
     component.name = "TestUtil";
 
     // event driven architecture is very difficult to test, do basic existential checks here
-    UtilTest.canExtendObjects = function(){
+    UtilTest.canMixinObjects = function(){
         var destination = {};
         var source = { test: "test" };
-        var test = Core.Util.extend(destination, source).hasOwnProperty('test');
-        UtilTest.assert('can extend objects', test, true);
+        var test = Core.Util.mixin(destination, source).hasOwnProperty('test');
+        UtilTest.assert('can mixin objects', test, true);
     };
 
     UtilTest.canTypeCheckJavascript = function(){
@@ -54,14 +54,14 @@ oem.Core = (function(Components, Core) {
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
         UtilTest.runTestSuite('Util', [
-            UtilTest.canExtendObjects,
+            UtilTest.canMixinObjects,
             UtilTest.canTypeCheckJavascript,
             UtilTest.canDebounce
         ]);
     });
 
     // exports
-    Components.UtilTest = UtilTest;
-    return Components;
+    Core.UtilTest = UtilTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);

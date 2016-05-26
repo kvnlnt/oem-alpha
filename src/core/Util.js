@@ -32,12 +32,12 @@ oem.Core = (function(Core){
     };
 
     /**
-     * Implements mixin pattern by grafting an object onto another object
+     * Implements "soft" mixin pattern by grafting an object onto another object
      * @param  {object} destination - object to graft onto
      * @param  {object} source      - object to graft from
      * @return {object}             - grafted destination
      */
-    Util.extend = function Extend(destination, source) {
+    Util.mixin = function Extend(destination, source) {
         for (var k in source) {
             // append attr value if already exists in destination
             if (destination.hasOwnProperty(k)) {

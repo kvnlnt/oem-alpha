@@ -6,7 +6,7 @@
  * @return     {boolean}  { description_of_the_return_value }
  */
 
-oem.Components = (function(Core) {
+oem.Core = (function(Core) {
 
     var Field = {};
 
@@ -69,4 +69,4 @@ oem.Components = (function(Core) {
     Core.Field = Field;
     return Core;
 
-})(oem.Core);
+})(oem.Core || {});

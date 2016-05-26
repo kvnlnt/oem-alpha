@@ -29,7 +29,7 @@ oem.Core = (function(Components, Core) {
     });
 
     // exports
-    Components.EventsTest = EventsTest;
-    return Components;
+    Core.EventsTest = EventsTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);

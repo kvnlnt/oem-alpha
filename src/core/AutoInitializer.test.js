@@ -33,7 +33,7 @@ oem.Core = (function (Components, Core) {
     });
 
     // exports
-    Components.AutoInitializerTest = AutoInitializerTest;
-    return Components;
+    Core.AutoInitializerTest = AutoInitializerTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);

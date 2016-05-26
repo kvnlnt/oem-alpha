@@ -7,7 +7,6 @@ oem = (function (Oem, Core) {
         // // calling collect on a component is the same as "recollecting"
         // if(Collections[selector].length > 0) Collections[selector] = [];
 
-
     /**
      * Create component
      */

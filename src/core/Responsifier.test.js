@@ -107,7 +107,7 @@ oem.Core = (function(Components, Core) {
     });
 
     // exports
-    Components.ResponsifierTest = ResponsifierTest;
-    return Components;
+    Core.ResponsifierTest = ResponsifierTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);

@@ -7,7 +7,7 @@ oem.Components = (function(Components, Core) {
     });
 
     // mixins
-    Core.Util.extend(TextInput, Core.Field); // mixin field functions
+    // Core.Util.mixin(TextInput, Core.Field); // mixin field functions
 
     TextInput.init = function(){
         var input = this.getEl(); 

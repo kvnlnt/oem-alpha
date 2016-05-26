@@ -53,7 +53,7 @@ oem.Core = (function(Components, Core) {
     });
 
     // exports
-    Components.CssTest = CssTest;
-    return Components;
+    Core.CssTest = CssTest;
+    return Core;
 
 })(oem.Components || {}, oem.Core);
