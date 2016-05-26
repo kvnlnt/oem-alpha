@@ -9,7 +9,7 @@ oem.Core = (function(Core) {
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
     Component.init = function(){
-        Core.Log(this.name + " initialized");
+        // Core.Log(this.name + " initialized");
     };
 
     Component.getEl = function(){

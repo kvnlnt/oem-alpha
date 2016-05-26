@@ -1,9 +1,9 @@
 oem.Components = (function(Components, Core) {
 
     // Accordion component
-    var AccordionTest = Object.create(Core.Test); // call super constructor
-    AccordionTest.name = "Tests";
-    AccordionTest.testComponent = 'oem-accordion-test';
+    var Test = Object.create(Core.Test); // call super constructor
+    Test.name = "Tests";
+    Test.testComponent = 'oem-accordion-test';
 
     // test element
     // tests everything in memory
@@ -15,58 +15,58 @@ oem.Components = (function(Components, Core) {
     var dt3 = Core.El("dt", {}, "dt3");
     var testEl = Core.El("dl", {"class":"oem-accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
 
-    var testAccordion = oem.create(Components.Accordion, {
+    var testAccordion = oem.create(Components.Accordion.Prototype, {
         el: testEl
     });
 
     /**
      * Run this test first before we start interacting with the component
      */
-    AccordionTest.canExpandItemByDefault = function(){
+    Test.canExpandItemByDefault = function(){
         var term = testAccordion.getTerm(1);
         var test = term.isExpanded === true;
-        AccordionTest.assert('Can expand target by default', test, true);
+        Test.assert('Can expand target by default', test, true);
     };
 
-    AccordionTest.canExpandTargetItem = function(){
+    Test.canExpandTargetItem = function(){
         var term = testAccordion.getTerm(0);
         term.click();
         var test = term.isExpanded === true;
-        AccordionTest.assert('Can expand target item', test, true);
+        Test.assert('Can expand target item', test, true);
     };
 
-    AccordionTest.canContractNonTargetItems = function(){
+    Test.canContractNonTargetItems = function(){
         var term = testAccordion.getTerm(1);
         var firstTerm = testAccordion.getTerm(0);
         term.click();
         var test = firstTerm.isExpanded === false;
-        AccordionTest.assert('Can contract non target item', test, true);
+        Test.assert('Can contract non target item', test, true);
     };
 
-    AccordionTest.canContractNonTargetItem = function(){
+    Test.canContractNonTargetItem = function(){
         var firstTerm = testAccordion.getTerm(0);
         var secondTerm = testAccordion.getTerm(1);
         secondTerm.click();
         firstTerm.click();
         var test = secondTerm.isExpanded === false;
         testAccordion.contractEverything(); // cleanup
-        AccordionTest.assert('Can contract non target item', test, true);
+        Test.assert('Can contract non target item', test, true);
     };
 
     /**
      * Run tests
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
-        AccordionTest.runTestSuite('Accordion', [
-            AccordionTest.canExpandItemByDefault,
-            AccordionTest.canExpandTargetItem,
-            AccordionTest.canContractNonTargetItems,
-            AccordionTest.canContractNonTargetItem
+        Test.runTestSuite('Accordion', [
+            Test.canExpandItemByDefault,
+            Test.canExpandTargetItem,
+            Test.canContractNonTargetItems,
+            Test.canContractNonTargetItem
         ]);
     });
 
     // exports
-    Components.AccordionTest = AccordionTest;
+    Components.Accordion.Test = Test;
     return Components;
 
 })(oem.Components || {}, oem.Core);

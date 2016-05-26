@@ -53,17 +53,21 @@ CreateComponent.prototype = {
         var gfx = fs.readFileSync('./oem/templates/new-component/gfx.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/gfx.js', this.renderTemplate(gfx));
 
-        // model
-        var model = fs.readFileSync('./oem/templates/new-component/model.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/model.js', this.renderTemplate(model));
+        // component
+        var component = fs.readFileSync('./oem/templates/new-component/component.js', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/component.js', this.renderTemplate(component));
+
+        // prototype
+        var prototype = fs.readFileSync('./oem/templates/new-component/prototype.js', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/prototype.js', this.renderTemplate(prototype));
 
         // test
         var test = fs.readFileSync('./oem/templates/new-component/test.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/test.js', this.renderTemplate(test));
 
-        // view
-        var view = fs.readFileSync('./oem/templates/new-component/view.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/view.js', this.renderTemplate(view));
+        // css
+        var css = fs.readFileSync('./oem/templates/new-component/css.js', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
 
         return this;
 
@@ -80,9 +84,10 @@ CreateComponent.prototype = {
         // configuration
         var newComponentConfig = {};
         newComponentConfig.files = [];
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/component.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/gfx.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/model.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/view.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/css.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/prototype.js");
         newComponentConfig.tests = [];
         newComponentConfig.tests.push("./src/components/"+this.fileName+"/test.js");
         newComponentConfig.templates = {};

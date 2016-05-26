@@ -1,15 +1,15 @@
 oem.Components = (function(Components, Core) {
 
-    // TextInput component
-    var TextInput = Core.Prototype(Core.Component, {
-        name: "TextInput",
+    // Prototype component
+    var Prototype = Core.Prototype(Core.Component, {
+        name: "Prototype",
         selector: "oem-text-input"
     });
 
     // mixins
-    // Core.Util.mixin(TextInput, Core.Field); // mixin field functions
+    Core.Util.mixin(Prototype, Core.Field); // mixin field functions
 
-    TextInput.init = function(){
+    Prototype.init = function(){
         var input = this.getEl(); 
         this.label = input.querySelector('label').innerText;
         this.field = input.querySelector('input[type="text"]');
@@ -19,11 +19,11 @@ oem.Components = (function(Components, Core) {
         this.field.addEventListener('input', this.handleInputChange.bind(this)); // get the input field
     };
 
-    TextInput.handleInputChange = function(){
+    Prototype.handleInputChange = function(){
         this.validate();
     };
 
-    Components.TextInput = TextInput;
+    Components.TextInput.Prototype = Prototype;
     return Components;
 
 })(oem.Components || {}, oem.Core);

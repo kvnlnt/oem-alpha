@@ -1,7 +1,7 @@
 oem.Components = (function(Components) {
 
-    var TextInputGfx = {};
-    Components.TextInputGfx = TextInputGfx;
+    var Gfx = {};
+    Components.TextInput.Gfx = Gfx;
     return Components;
 
 })(oem.Components || {});

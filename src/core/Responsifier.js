@@ -2,9 +2,6 @@
 
      var Responsifier = {};
 
-     // components
-     Responsifier.components = [];
-
      // default breakpoints
      Responsifier.BREAKPOINTS = [{
         "klass": "mobile",
@@ -37,9 +34,9 @@
      Responsifier.responsify = function() {
 
          // loop all components        
-         for (var i = 0; i < Responsifier.components.length; i++) {
+         for (var i = 0; i < oem.list.length; i = i + 1) {
 
-             var component = Responsifier.components[i]; // current component
+             var component = oem.list[i]; // current component
              var el = component.getEl(); // current element
              var breakpoints = component.getBreakpoints(); // current breakpoints
              var width = el.offsetWidth; // element width
@@ -75,17 +72,6 @@
          return this;
      };
 
-     /**
-      * Add a responsive component
-      *
-      * @method     addComponent
-      * @param      {<type>}  component  { description }
-      * @return     {Object}  { description_of_the_return_value }
-      */
-     Responsifier.addComponent = function(component) {
-         Responsifier.components.push(component);
-         return this;
-     };
 
      // run after all components have been collected
      Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);

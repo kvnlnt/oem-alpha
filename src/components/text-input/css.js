@@ -1,8 +1,6 @@
 oem.Components = (function(Components, Core) {
 
-    var TextInputView = {};
-    TextInputView.id = 'oem-text-input-css';
-    TextInputView.css = [
+    var Css = [
 
         {
             selector: ".oem-text-input .help",
@@ -27,13 +25,8 @@ oem.Components = (function(Components, Core) {
 
     ];
 
-    // add to css renderer
-    Core.Css.add({
-        id: TextInputView.id,
-        css: TextInputView.css
-    });
 
-    Components.CardView = TextInputView;
+    Components.TextInput.Css = Css;
     return Components;
 
 })(oem.Components || {}, oem.Core);

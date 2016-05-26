@@ -1,8 +1,6 @@
 oem.Components = (function(Components, Core) {
 
-    var AccordionView = {};
-    AccordionView.id = 'oem-accordion-css';
-    AccordionView.css = [
+    var Css = [
 
         {
             selector: "oem-accordion, .oem-accordion",
@@ -53,13 +51,7 @@ oem.Components = (function(Components, Core) {
 
     ];
 
-    // add to css renderer
-    Core.Css.add({
-        id: AccordionView.id,
-        css: AccordionView.css
-    });
-
-    Components.CardView = AccordionView;
+    Components.Accordion.Css = Css;
     return Components;
 
 })(oem.Components || {}, oem.Core);

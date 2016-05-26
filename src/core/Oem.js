@@ -8,6 +8,11 @@ oem = (function (Oem, Core) {
         // if(Collections[selector].length > 0) Collections[selector] = [];
 
     /**
+     * List all components
+     */
+    Oem.list = [];
+
+    /**
      * Create component
      */
     Oem.create = function (component, options) {
@@ -15,6 +20,7 @@ oem = (function (Oem, Core) {
         // and creates' an instance
         var component = Core.Prototype(component, options);
         component.init();
+        oem.list.push(component);
         return component;
     };
 
@@ -41,13 +47,6 @@ oem = (function (Oem, Core) {
      * Delete component
      */
     Oem.destroy = function (component) {
-        return component;
-    };
-
-    /**
-     * List all components
-     */
-    Oem.list = function () {
         return component;
     };
 

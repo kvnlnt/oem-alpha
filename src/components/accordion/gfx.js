@@ -1,7 +1,7 @@
 oem.Components = (function(Components) {
 
-    var AccordionGfx = {};
-    Components.AccordionGfx = AccordionGfx;
+    var Gfx = {};
+    Components.Accordion.Gfx = Gfx;
     return Components;
 
 })(oem.Components || {});

@@ -18,8 +18,7 @@ oem.Core = (function (Components, Core) {
         testComponent.init = function(){
             initWasCalled = true;
         };
-        autoInitializer.addComponent(testComponent);
-        autoInitializer.collectAll();
+        autoInitializer.initializeAll();
         AutoInitializerTest.assert('Can collect components', initWasCalled, true);
     };
 

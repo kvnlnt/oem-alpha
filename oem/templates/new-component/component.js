@@ -1,10 +1,7 @@
 oem.Components = (function(Components, Core) {
 
     // Card component
-    var %CLASS% = Core.Prototype(Core.Component, {
-        name: "%CLASS%",
-        selector: "%SELECTOR%"
-    });
+    var %CLASS% = {};
     
     // exports
     Components.%CLASS% = %CLASS%;

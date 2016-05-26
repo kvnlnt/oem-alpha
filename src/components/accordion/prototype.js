@@ -1,22 +1,21 @@
 oem.Components = (function(Components, Core) {
 
-    // Accordion component
-    var Accordion = Core.Prototype(Core.Component, {
-        name: "Accordion",
+    // Prototype component
+    var Prototype = Core.Prototype(Core.Component, {
+        name: "Prototype",
         selector:"oem-accordion"
     });
 
     // params
-    Accordion.expandClass = "expanded";
-    Accordion.terms = [];
-    Accordion.definitions = [];
+    Prototype.expandClass = "expanded";
+    Prototype.terms = [];
+    Prototype.definitions = [];
 
-    Accordion.init = function() {
-        Core.Responsifier.addComponent(this);
+    Prototype.init = function() {
         this.registerEvents();
     };
 
-    Accordion.registerEvents = function() {
+    Prototype.registerEvents = function() {
         var list = this.getEl();
         list.terms = list.querySelectorAll('dt');
         list.definitions = list.querySelectorAll('dd');
@@ -24,9 +23,9 @@ oem.Components = (function(Components, Core) {
         var definition;
         for (var i = 0; i < list.terms.length; i = i + 1) {
             term = list.terms[i];
-            Accordion.terms.push(term);
+            Prototype.terms.push(term);
             definition = list.definitions[i];
-            Accordion.definitions.push(definition);
+            Prototype.definitions.push(definition);
             term.isExpanded = definition.classList.contains(this.expandClass);
             term.definition = list.definitions[i];
             term.addEventListener('click', this.toggle.bind(this));
@@ -34,15 +33,15 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Accordion.getTerm = function(i){
+    Prototype.getTerm = function(i){
         return this.terms[i];
     };
 
-    Accordion.getDefinition = function(i){
+    Prototype.getDefinition = function(i){
         return this.definitions[i];
     };
 
-    Accordion.toggle = function(e) {
+    Prototype.toggle = function(e) {
         if (e.preventDefault) e.preventDefault(); // catch for event triggered
         var term = e.target;
         this.contractEverything();
@@ -54,19 +53,19 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Accordion.expand = function(term) {
+    Prototype.expand = function(term) {
         term.definition.classList.add(this.expandClass);
         term.isExpanded = true;
         return this;
     };
 
-    Accordion.contract = function(term) {
+    Prototype.contract = function(term) {
         term.definition.classList.remove(this.expandClass);
         term.isExpanded = false;
         return this;
     };
 
-    Accordion.contractEverythingBut = function(term) {
+    Prototype.contractEverythingBut = function(term) {
         var list = this.getEl();
         var currentTerm;
         for (var i = 0; i < list.terms.length; i = i + 1) {
@@ -78,7 +77,7 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Accordion.contractEverything = function(){
+    Prototype.contractEverything = function(){
         var list = this.getEl();
         var currentTerm;
         for (var i = 0; i < list.terms.length; i = i + 1) {
@@ -88,7 +87,7 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Components.Accordion = Accordion;
+    Components.Accordion.Prototype = Prototype;
     return Components;
 
 })(oem.Components || {}, oem.Core);
