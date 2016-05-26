@@ -1,8 +1,6 @@
 oem.Components = (function(Components, Core) {
 
-    var CardView = {};
-    CardView.id = 'oem-card-css';
-    CardView.css = [
+    var Css = [
 
         {
             selector: "oem-card, .oem-card",
@@ -40,13 +38,7 @@ oem.Components = (function(Components, Core) {
 
     ];
 
-    // add to css renderer
-    Core.Css.add({
-        id: CardView.id,
-        css: CardView.css
-    });
-
-    Components.CardView = CardView;
+    Components.Card.Css = Css;
     return Components;
 
 })(oem.Components || {}, oem.Core);

@@ -51,12 +51,7 @@ oem.Core = (function(Core) {
 
     ];
 
-    // add to css renderer
-    Core.Css.add({
-        id: View.id,
-        css: View.css
-    });
-
+    Core.Css.render(View.id, View.css);
     Core.View = View;
     return Core;
 

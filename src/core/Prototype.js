@@ -17,10 +17,6 @@ oem.Core = (function(Core) {
         // create Object of component
         var componentObject = Object.create(proto, propertiesObject);
 
-        // add to collector
-        // XXX might nobe be the best spot, but where else?
-        oem.Core.AutoInitializer.addComponent(componentObject);
-
         // attach instance to element
         return componentObject;
 

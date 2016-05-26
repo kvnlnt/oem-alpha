@@ -5,7 +5,7 @@ oem.Components = (function(Components, Core) {
         name: "Kevin",
         selector: "oem-kevin"
     });
-    
+
     // exports
     Components.Kevin.Prototype = Prototype;
     return Components;

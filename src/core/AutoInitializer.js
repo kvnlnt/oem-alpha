@@ -2,32 +2,6 @@ oem.Core = (function(Core) {
 
     // Card component
     var AutoInitializer = {};
-    AutoInitializer.components = [];
-
-    /**
-     * Add component to collection
-     *
-     * @method     addComponent
-     * @param      {string}     selector   - string of base selector
-     * @param      {Component}  component  - Object component
-     * @return     {Object}     return self
-     */
-    AutoInitializer.addComponent = function(component) {
-
-        // we only watch components that haven't been added.
-        var hasAlreadyBeenAdded = this.components.find(function(_component){
-            return _component.selector === component.getSelector();
-        });
-        if(hasAlreadyBeenAdded) return this;
-
-        // add component if it hasn't been already.
-        AutoInitializer.components.push({
-            selector: component.getSelector(),
-            component: component
-        });
-        
-        return this;
-    };
 
     /**
      * Collect a component
@@ -36,11 +10,11 @@ oem.Core = (function(Core) {
      * @param      {string}     selector   - base selector text
      * @param      {Component}  component  - Object of compoent
      */
-    AutoInitializer.collect = function(selector, component) {
+    AutoInitializer.initialize = function(component) {
 
         // init vars
-        var cssSelector = "." + selector;
-        var tagSelector = selector;
+        var cssSelector = "." + component.Prototype.selector;
+        var tagSelector = component.Prototype.selector;
         var el;
 
         // find all components
@@ -48,11 +22,8 @@ oem.Core = (function(Core) {
         _components = document.querySelectorAll(cssSelector + "," + tagSelector);
         for (var i = 0; i < _components.length; i++) {
             el = _components[i];
-            oem.create(component, {el:el});
+            oem.create(component.Prototype, {el:el});
         }
-
-        // go tell it on the mountain
-        Core.Events.dispatch(Core.EVENTS.COMPONENTS_COLLECTED, this);
 
     };
 
@@ -61,19 +32,21 @@ oem.Core = (function(Core) {
      *
      * @method     collectAll
      */
-    AutoInitializer.collectAll = function() {
-        var component;
-        for (var i = 0; i < AutoInitializer.components.length; i++) {
-            component = AutoInitializer.components[i];
-            AutoInitializer.collect(component.selector, component.component);
+    AutoInitializer.initializeAll = function() {
+        for (var component in oem.Components) {
+            component = oem.Components[component];
+            AutoInitializer.initialize(component);
         }
+
+        // go tell it on the mountain
+        Core.Events.dispatch(Core.EVENTS.COMPONENTS_COLLECTED, this);
     };
 
     // collect on document ready
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, AutoInitializer.collectAll);
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, AutoInitializer.initializeAll);
 
     // exports
     Core.AutoInitializer = AutoInitializer;
     return Core;
 
-})(oem.Core);
+})(oem.Core || {});

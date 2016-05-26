@@ -67,12 +67,7 @@ oem.Core = (function(Core) {
 
     ];
 
-    // add to css renderer
-    Core.Css.add({
-        id: 'oem-test-css',
-        css: css
-    });
-
+    Core.Css.render('oem-test-css', css);
     Core.Test = Test;
     return Core;
 

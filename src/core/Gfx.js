@@ -22,11 +22,7 @@ oem.Core = (function(Core) {
             }
         }
 
-        // render definition
-        Core.Css.add({
-            id: 'oem-images-css',
-            css: css
-        });
+        Core.Css.render('oem-images-css', css);
 
     };
 

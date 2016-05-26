@@ -1,7 +1,7 @@
 oem.Components = (function(Components) {
 
-    var CardGfx = {};
-    Components.CardGfx = CardGfx;
+    var Gfx = {};
+    Components.Card.Gfx = Gfx;
     return Components;
 
 })(oem.Components || {});

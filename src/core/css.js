@@ -1,17 +1,6 @@
 oem.Core = (function(Core) { 
 
     var Css = {};
-    Css.collection = [];
-
-    /**
-     * Add new css rule
-     *
-     * @method     add
-     * @param      {<type>}  css     { description }
-     */
-    Css.add = function(css) {
-        Css.collection.push(css);
-    };
 
     /**
      * { function_description }
@@ -20,7 +9,7 @@ oem.Core = (function(Core) {
      * @param      {<type>}           css     { description }
      * @return     {(Object|string)}  { description_of_the_return_value }
      */
-    Css.renderCss = function(css) {
+    Css.translateCss = function(css) {
         var declarations = function(declaration) {
             return "   " + declaration + ";\n";
         };
@@ -39,7 +28,7 @@ oem.Core = (function(Core) {
      * @param      {Object}  css    - css defintion configuration
      * @return     {Object}         - self
      */
-    Css.renderStyleTag = function(id, css) {
+    Css.render = function(id, css) {
         var _head = document.getElementsByTagName('head')[0];
         var _style = document.createElement("style");
         _style.setAttribute("type", "text/css");
@@ -47,9 +36,9 @@ oem.Core = (function(Core) {
         // XXX: this is for IE8
         // we have to try catch this because polyfills don't account for cssText
         try {
-             _style.innerHTML = this.renderCss(css);
+             _style.innerHTML = this.translateCss(css);
          } catch(err) {
-            _style.styleSheet.cssText = this.renderCss(css);
+            _style.styleSheet.cssText = this.translateCss(css);
          }
         _head.appendChild(_style);
         return this;
@@ -60,16 +49,19 @@ oem.Core = (function(Core) {
      *
      * @method     renderAll
      */
-    Css.renderAll = function() {
-        var css;
-        for (var i = 0; i < Css.collection.length; i++) {
-            css = Css.collection[i];
-            Css.renderStyleTag(css.id, css.css);
+    Css.renderComponentCss = function() {
+        var id;
+        for (var component in oem.Components) {
+            component = oem.Components[component];
+            if(component.hasOwnProperty("Css")){
+                id = component.Prototype.selector+"-css";
+                Css.render(id, component.Css);
+            }
         }
     };
 
     // generate onload
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, Css.renderAll);
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, Css.renderComponentCss);
 
     Core.Css = Css;
     return Core;

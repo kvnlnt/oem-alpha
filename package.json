@@ -115,9 +115,10 @@
             },
             "card": {
                 "files": [
+                    "./src/components/card/component.js",
                     "./src/components/card/gfx.js",
-                    "./src/components/card/model.js",
-                    "./src/components/card/view.js"
+                    "./src/components/card/css.js",
+                    "./src/components/card/prototype.js"
                 ],
                 "tests": [
                     "./src/components/card/test.js"
@@ -163,9 +164,9 @@
             },
             "kevin": {
                 "files": [
-                    "./src/components/kevin/module.js",
+                    "./src/components/kevin/component.js",
                     "./src/components/kevin/gfx.js",
-                    "./src/components/kevin/view.js",
+                    "./src/components/kevin/css.js",
                     "./src/components/kevin/prototype.js"
                 ],
                 "tests": [
