@@ -15,23 +15,6 @@ oem.Core = (function(Components, Core) {
         UtilTest.assert('can mixin objects', test, true);
     };
 
-    UtilTest.canTypeCheckJavascript = function(){
-        var test = Core.Util.type('string') === 'string';
-        UtilTest.assert('can typecheck strings', test, true);
-        var test = Core.Util.type(0) === 'number';
-        UtilTest.assert('can typecheck numbers', test, true);
-        var test = Core.Util.type({}) === 'object';
-        UtilTest.assert('can typecheck objects', test, true);
-        var test = Core.Util.type(function(){}) === 'function';
-        UtilTest.assert('can typecheck functions', test, true);
-        var test = Core.Util.type(true) === 'boolean';
-        UtilTest.assert('can typecheck booleans', test, true);
-        var test = Core.Util.type(undefined) === 'undefined';
-        UtilTest.assert('can typecheck undefined', test, true);
-        var test = Core.Util.type(null) === 'null';
-        UtilTest.assert('can typecheck null', test, true);
-    };
-
     UtilTest.canDebounce = function(){
         var test = false;
         function changeVal(){ 
@@ -55,7 +38,6 @@ oem.Core = (function(Components, Core) {
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
         UtilTest.runTestSuite('Util', [
             UtilTest.canMixinObjects,
-            UtilTest.canTypeCheckJavascript,
             UtilTest.canDebounce
         ]);
     });

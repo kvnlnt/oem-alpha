@@ -41,7 +41,7 @@ oem.Core = (function(Core) {
             _style.styleSheet.cssText = this.translateCss(css);
          }
         _head.appendChild(_style);
-        return this;
+        return _style;
     };
 
     /**

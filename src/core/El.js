@@ -24,6 +24,8 @@ oem.Core = (function(Core) {
 
     function El(tag, attrs, content) {
 
+        var content = content || "";
+
         // create tag
         var _el = document.createElement(tag);
 

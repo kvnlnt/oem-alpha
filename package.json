@@ -100,7 +100,8 @@
                     "./src/core/Events.test.js",
                     "./src/core/EventBus.test.js",
                     "./src/core/Util.test.js",
-                    "./src/core/Responsifier.test.js"
+                    "./src/core/Responsifier.test.js",
+                    "./src/core/El.test.js"
                 ],
                 "templates": {
                     "description": "./oem/templates/components/core/description.html",

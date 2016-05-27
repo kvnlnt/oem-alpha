@@ -50,17 +50,6 @@ oem.Core = (function(Core){
     };
 
     /**
-     * Better javascript type checking
-     *
-     * @method     type
-     * @param      {<type>}  obj     { description }
-     * @return     {<type>}  { description_of_the_return_value }
-     */
-    Util.type = function Type(obj) {
-        return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-    };
-
-    /**
      * Generates a GUID string.
      * @returns {String} The generated GUID.
      * @example af8a8416-6e18-a307-bd9c-f2c947bbb3aa
