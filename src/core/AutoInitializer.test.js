@@ -6,20 +6,20 @@ oem.Core = (function (Components, Core) {
     AutoInitializerTest.testComponent = 'oem-core-auto-initializer-test';
     var autoInitializer = Object.create(Core.AutoInitializer);
 
-    AutoInitializerTest.canCollectComponents = function () {
+    AutoInitializerTest.canInitializeComponent = function () {
         var testEl = Core.El("div", {"class":"test-component"}, "");
         document.body.appendChild(testEl);
         var initWasCalled = false;
-        var testComponent = Core.Prototype(Core.Component, {
-            name: "testComponent",
+        var testComponent = {};
+        testComponent.Prototype = Core.Prototype(Core.Component, {
+            type: "testComponent",
             selector: "test-component",
-            el: testEl
         });
-        testComponent.init = function(){
+        testComponent.Prototype.init = function(){
             initWasCalled = true;
         };
-        autoInitializer.initializeAll();
-        AutoInitializerTest.assert('Can collect components', initWasCalled, true);
+        autoInitializer.initialize(testComponent);
+        AutoInitializerTest.assert('Can initialize component', initWasCalled, true);
     };
 
     /**
@@ -27,7 +27,7 @@ oem.Core = (function (Components, Core) {
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function () {
         AutoInitializerTest.runTestSuite('AutoInitializer', [
-            AutoInitializerTest.canCollectComponents
+            AutoInitializerTest.canInitializeComponent
         ]);
     });
 

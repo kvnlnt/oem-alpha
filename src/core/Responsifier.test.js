@@ -4,95 +4,42 @@ oem.Core = (function(Components, Core) {
     var ResponsifierTest = Object.create(Core.Test); // call super constructor
     ResponsifierTest.name = "ResponsifierTests";
     ResponsifierTest.testComponent = 'oem-core-responsifier-test';
+    
+    // main test list container
+    var testContainer = document.querySelector('.'+ResponsifierTest.testComponent);
+
+    // create test wrapper
+    var testWrapper = document.createElement("div");
+    testContainer.appendChild(testWrapper);
+
+    // create test element
+    var testEl = document.createElement("div");
+    testEl.classList.add('oem-test-comp');
+    testWrapper.appendChild(testEl);
+
+    // create test component
+    var testComponent = oem.create(Core.Component, { el:  testEl });
+    testComponent.init();
 
     ResponsifierTest.isMobileResponsive = function(){
-        
-        // create test container
-        var testComponent = document.querySelector("."+ResponsifierTest.testComponent);
-        var testContainer = document.createElement("div");
-        testContainer.style.width = '200px';
-        testComponent.appendChild(testContainer);
-
-        // create test element
-        var thTestComp = document.createElement("div");
-        thTestComp.classList.add('oem-test-comp');
-        testContainer.appendChild(thTestComp);
-
-        var component = Object.create(Core.Component, {
-            el: {
-                value: thTestComp
-            }
-        });
-
-        // test
-        component.init();
+        testWrapper.style.width = '200px';
         Core.Responsifier.responsify();
-        var test = thTestComp.classList.contains('mobile');
+        var test = testEl.classList.contains('mobile');
         ResponsifierTest.assert('is mobile response', test, true);
-
-        // clean up
-        testComponent.removeChild(testContainer);
-
     };
 
     ResponsifierTest.isTabletResponsive = function(){
-        
-        // create test container
-        var testComponent = document.querySelector("."+ResponsifierTest.testComponent);
-        var testContainer = document.createElement("div");
-        testContainer.style.width = '400px';
-        testComponent.appendChild(testContainer);
-
-        // create test element
-        var thTestComp = document.createElement("div");
-        thTestComp.classList.add('oem-test-comp');
-        testContainer.appendChild(thTestComp);
-
-        var component = Object.create(Core.Component, {
-            el: {
-                value: thTestComp
-            }
-        });
-
-        // test
-        component.init();
+        testWrapper.style.width = '400px';
         Core.Responsifier.responsify();
-        var test = thTestComp.classList.contains('tablet');
+        var test = testEl.classList.contains('tablet');
         ResponsifierTest.assert('is tablet response', test, true);
-
-        // clean up
-        testComponent.removeChild(testContainer);
-
     };
 
     ResponsifierTest.isDesktopResponsive = function(){
-        
-        // create test container
-        var testComponent = document.querySelector("."+ResponsifierTest.testComponent);
-        var testContainer = document.createElement("div");
-        testContainer.style.width = '1000px';
-        testComponent.appendChild(testContainer);
-
-        // create test element
-        var thTestComp = document.createElement("div");
-        thTestComp.classList.add('oem-test-comp');
-        testContainer.appendChild(thTestComp);
-
-        var component = Object.create(Core.Component, {
-            el: {
-                value: thTestComp
-            }
-        });
-
-        // test
-        component.init();
+        testWrapper.style.width = '1000px';
         Core.Responsifier.responsify();
-        var test = thTestComp.classList.contains('desktop');
+        var test = testEl.classList.contains('desktop');
         ResponsifierTest.assert('is desktop response', test, true);
-
-        // clean up
-        testComponent.removeChild(testContainer);
-
     };
 
     /**

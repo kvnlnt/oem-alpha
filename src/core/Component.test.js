@@ -7,10 +7,10 @@ oem.Core = (function(Components, Core) {
     var component = Object.create(Core.Component);
     component.name = "TestComponent";
 
-    ComponentTest.canGetAndSetName = function(){
-        component.setName("TestComponentChanged");
-        var test = component.getName() === "TestComponentChanged";
-        ComponentTest.assert('Can get and set the name', test, true);
+    ComponentTest.canGetAndSetType = function(){
+        component.setType("TestComponentChanged");
+        var test = component.getType() === "TestComponentChanged";
+        ComponentTest.assert('Can get and set the type', test, true);
     };
 
     ComponentTest.canGetAndSetElements = function(){
@@ -32,7 +32,7 @@ oem.Core = (function(Components, Core) {
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
         ComponentTest.runTestSuite('Component', [
-            ComponentTest.canGetAndSetName,
+            ComponentTest.canGetAndSetType,
             ComponentTest.canGetAndSetElements,
             ComponentTest.canGetAndSetBreakpoints
         ]);

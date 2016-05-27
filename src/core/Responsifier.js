@@ -34,9 +34,9 @@
      Responsifier.responsify = function() {
 
          // loop all components        
-         for (var i = 0; i < oem.list.length; i = i + 1) {
+         for (var i in oem.list.all) {
 
-             var component = oem.list[i]; // current component
+             var component = oem.list.all[i]; // current component
              var el = component.getEl(); // current element
              var breakpoints = component.getBreakpoints(); // current breakpoints
              var width = el.offsetWidth; // element width
