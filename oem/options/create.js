@@ -53,9 +53,9 @@ CreateComponent.prototype = {
         var gfx = fs.readFileSync('./oem/templates/new-component/gfx.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/gfx.js', this.renderTemplate(gfx));
 
-        // component
-        var component = fs.readFileSync('./oem/templates/new-component/component.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/component.js', this.renderTemplate(component));
+        // module
+        var module = fs.readFileSync('./oem/templates/new-component/module.js', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/module.js', this.renderTemplate(module));
 
         // prototype
         var prototype = fs.readFileSync('./oem/templates/new-component/prototype.js', 'utf-8');
@@ -84,7 +84,7 @@ CreateComponent.prototype = {
         // configuration
         var newComponentConfig = {};
         newComponentConfig.files = [];
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/component.js");
+        newComponentConfig.files.push("./src/components/"+this.fileName+"/module.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/gfx.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/css.js");
         newComponentConfig.files.push("./src/components/"+this.fileName+"/prototype.js");

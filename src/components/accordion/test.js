@@ -40,7 +40,7 @@ oem.Components = (function(Components, Core) {
         var firstTerm = testAccordion.getTerm(0);
         term.click();
         var test = firstTerm.isExpanded === false;
-        Test.assert('Can contract non target item', test, true);
+        Test.assert('Can contract non target items', test, true);
     };
 
     Test.canContractNonTargetItem = function(){

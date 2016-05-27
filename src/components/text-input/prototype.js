@@ -2,7 +2,7 @@ oem.Components = (function(Components, Core) {
 
     // Prototype component
     var Prototype = Core.Prototype(Core.Component, {
-        name: "Prototype",
+        type: "TextInput",
         selector: "oem-text-input"
     });
 

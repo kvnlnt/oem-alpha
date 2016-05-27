@@ -1,16 +1,23 @@
 oem = (function (Oem, Core) {
 
-        // create collection of this selector type
-        // if (typeof Collections[selector] === "undefined") Collections[selector] = [];
-
-        // // if this selector has already been collected, reset it
-        // // calling collect on a component is the same as "recollecting"
-        // if(Collections[selector].length > 0) Collections[selector] = [];
-
     /**
      * List all components
      */
-    Oem.list = [];
+    Oem.list = {
+        all:{},
+        byType: function (componentType) {
+            var components = {};
+            var component;
+            for(var i in Oem.list.all){
+                component = Oem.list.all[i];
+                if(component.type === componentType){
+                    components[i] = component;
+                }
+            }
+            if (Object.keys(components).length === 0) return null; // return null if none found
+            return components;
+        }
+    };
 
     /**
      * Create component
@@ -19,18 +26,21 @@ oem = (function (Oem, Core) {
         // this is a creational mediator pattern which calls the root prototype
         // and creates' an instance
         var component = Core.Prototype(component, options);
+        var guid = Core.Util.guid();
         component.init();
-        oem.list.push(component);
+        component.id = guid;
+        component.el.oem = component; // attach pointer to instance on element
+        oem.list.all[guid] = component;
         return component;
     };
 
     /**
-     * Read component
+     * Read and find components
      *
      * @param      {<type>}  component  The component
      */
-    Oem.read = function (component) {
-        return component;
+    Oem.read = function (componentId) {
+        return oem.list.all[componentId];
     };
 
     /**
@@ -39,15 +49,19 @@ oem = (function (Oem, Core) {
      * @param      {<type>}  component  The component
      * @param      {<type>}  settings   The settings
      */
-    Oem.update = function (component, settings) {
+    Oem.update = function (componentId, settings) {
         return component;
     };
 
     /**
-     * Delete component
+     * Delete component instance and element from dom
      */
-    Oem.destroy = function (component) {
-        return component;
+    Oem.destroy = function (componentId) {
+        var component = Oem.read(componentId);
+        var node = component.getEl();
+        if (node.parentNode) node.parentNode.removeChild(node);
+        delete oem.list.all[componentId];
+        return this;
     };
 
     /**

@@ -2,7 +2,7 @@ oem.Components = (function(Components, Core) {
 
     // Card component
     var Prototype = Core.Prototype(Core.Component, {
-        name:"Card",
+        type:"Card",
         selector:"oem-card"
     });
 

@@ -2,7 +2,7 @@ oem.Core = (function(Core) {
 
     var Component = {};
     Component.el = null;
-    Component.name = "Component";
+    Component.type = "Component";
     Component.selector = "selector";
     Component.gfx = {};
     Component.css = [];
@@ -30,12 +30,12 @@ oem.Core = (function(Core) {
         return this;
     };
 
-    Component.getName = function(){
-        return this.name;
+    Component.getType = function(){
+        return this.type;
     };
 
-    Component.setName = function(name){
-        this.name = name;
+    Component.setType = function(type){
+        this.type = type;
         return this;
     };
 

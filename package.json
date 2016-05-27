@@ -59,13 +59,6 @@
                     "text-input"
                 ],
                 "customizations": []
-            },
-            "kevin": {
-                "components": [
-                    "core",
-                    "kevin"
-                ],
-                "customizations": []
             }
         },
         "components": {
@@ -78,6 +71,7 @@
                     "./src/core/polyfills/ClassList.js",
                     "./src/core/polyfills/ArrayMap.js",
                     "./src/core/polyfills/ArrayFind.js",
+                    "./src/core/polyfills/ArrayFilter.js",
                     "./src/core/polyfills/ObjectCreate.js",
                     "./src/core/polyfills/ObjectKeys.js",
                     "./src/core/Namespacer.js",
@@ -115,7 +109,7 @@
             },
             "card": {
                 "files": [
-                    "./src/components/card/component.js",
+                    "./src/components/card/module.js",
                     "./src/components/card/gfx.js",
                     "./src/components/card/css.js",
                     "./src/components/card/prototype.js"
@@ -132,7 +126,7 @@
             },
             "accordion": {
                 "files": [
-                    "./src/components/accordion/component.js",
+                    "./src/components/accordion/module.js",
                     "./src/components/accordion/gfx.js",
                     "./src/components/accordion/css.js",
                     "./src/components/accordion/prototype.js"
@@ -149,7 +143,7 @@
             },
             "text-input": {
                 "files": [
-                    "./src/components/text-input/component.js",
+                    "./src/components/text-input/module.js",
                     "./src/components/text-input/gfx.js",
                     "./src/components/text-input/css.js",
                     "./src/components/text-input/prototype.js"
@@ -162,23 +156,6 @@
                     "examples": "./oem/templates/components/text-input/examples.html",
                     "tests": "./oem/templates/components/text-input/tests.html",
                     "usage": "./oem/templates/components/text-input/usage.html"
-                }
-            },
-            "kevin": {
-                "files": [
-                    "./src/components/kevin/component.js",
-                    "./src/components/kevin/gfx.js",
-                    "./src/components/kevin/css.js",
-                    "./src/components/kevin/prototype.js"
-                ],
-                "tests": [
-                    "./src/components/kevin/test.js"
-                ],
-                "templates": {
-                    "description": "./oem/templates/components/kevin/description.html",
-                    "examples": "./oem/templates/components/kevin/examples.html",
-                    "tests": "./oem/templates/components/kevin/tests.html",
-                    "usage": "./oem/templates/components/kevin/usage.html"
                 }
             }
         }
