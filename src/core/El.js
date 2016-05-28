@@ -36,7 +36,7 @@ oem.Core = (function(Core) {
 
         // add content
         function addContent(content){
-            (typeof content === "string") ? _el.innerHTML = content :  _el.appendChild(content);
+            (typeof content === "string") ? _el.innerHTML = content : _el.appendChild(content);
         }
 
         // render content

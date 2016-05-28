@@ -59,6 +59,14 @@
                     "text-input"
                 ],
                 "customizations": []
+            },
+            "theme-roller": {
+                "components": [
+                    "core",
+                    "accordion",
+                    "theme-roller"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -157,6 +165,23 @@
                     "examples": "./oem/templates/components/text-input/examples.html",
                     "tests": "./oem/templates/components/text-input/tests.html",
                     "usage": "./oem/templates/components/text-input/usage.html"
+                }
+            },
+            "theme-roller": {
+                "files": [
+                    "./src/components/theme-roller/module.js",
+                    "./src/components/theme-roller/gfx.js",
+                    "./src/components/theme-roller/css.js",
+                    "./src/components/theme-roller/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/theme-roller/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/theme-roller/description.html",
+                    "examples": "./oem/templates/components/theme-roller/examples.html",
+                    "tests": "./oem/templates/components/theme-roller/tests.html",
+                    "usage": "./oem/templates/components/theme-roller/usage.html"
                 }
             }
         }

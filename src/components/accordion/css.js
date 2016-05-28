@@ -36,7 +36,8 @@ oem.Components = (function(Components, Core) {
                 "margin:0",
                 "padding:0px 10px",
                 "height:0",
-                "overflow:hidden"
+                "overflow:hidden",
+                "transition:all 0.25s"
             ]
         },
 
@@ -45,7 +46,8 @@ oem.Components = (function(Components, Core) {
             declaration: [
                 "padding:10px",
                 "height:auto",
-                "overflow:visible"
+                "overflow:visible",
+                "transition:all 0.25s"
             ]
         }
 
