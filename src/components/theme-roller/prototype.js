@@ -20,14 +20,14 @@ oem.Components = (function(Components, Core) {
         var colorSwatch;
         var colorControl;
         for(var i in Core.Theme.COLORS){
-            colorName = Core.El("span", {}, i);
-            colorHex = Core.El("span", {}, Core.Theme.COLORS[i]);
-            colorSwatch = "";
-            colorControl = Core.El("div", {class:"control"}, [colorName, colorHex, colorSwatch]);
+            colorName = Core.El("td", {}, " " + i + " ");
+            colorHex = Core.El("td", {}, Core.Theme.COLORS[i]);
+            colorSwatch = Core.El("td", {style:"background-color:"+Core.Theme.COLORS[i]});
+            colorControl = Core.El("tr", {class:"control"}, [colorSwatch, colorName, colorHex]);
             colorControls.push(colorControl);
         }
 
-        var colorControlsWrapper = Core.El("div", {}, colorControls);
+        var colorControlsWrapper = Core.El("table", {class:"colors"}, colorControls);
         this.getEl().appendChild(colorControlsWrapper);
 
         return this;

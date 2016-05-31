@@ -1,4 +1,3 @@
-
 oem.Core = (function(Core) { 
 
     function Prototype(proto, settings) {

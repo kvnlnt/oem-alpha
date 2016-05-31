@@ -83,6 +83,7 @@
                     "./src/core/polyfills/ObjectCreate.js",
                     "./src/core/polyfills/ObjectKeys.js",
                     "./src/core/Namespacer.js",
+                    "./src/core/Version.js",
                     "./src/core/Prototype.js",
                     "./src/core/El.js",
                     "./src/core/Theme.js",
