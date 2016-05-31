@@ -24,32 +24,29 @@ oem.Core = (function(Core) {
 
     function El(tag, attrs, content) {
 
-        var content = content || "";
+        // convert content to an array
+        content = content || "";
+        content = content instanceof Array ? content : [content];
 
         // create tag
-        var _el = document.createElement(tag);
+        var el = el || document.createElement(tag);
 
         // add attributes
-        for(var attr in attrs){
-            _el.setAttribute(attr, attrs[attr]);
-        }
+        Object.keys(attrs).forEach(function addAttr(attr){
+            el.setAttribute(attr, attrs[attr]);
+        });
 
-        // add content
         function addContent(content){
-            (typeof content === "string") ? _el.innerHTML = content : _el.appendChild(content);
-        }
-
-        // render content
-        if(typeof content === "object") {
-            for(var i = 0; i < content.length; i = i + 1){
-                addContent(content[i]);                
+            if(typeof content === "string" || content instanceof String){
+                var content = document.createTextNode(content);
             }
-        } else {
-            addContent(content);            
+            el.appendChild(content);
         }
+      
+        content.forEach(addContent);
 
-        // return element
-        return _el;
+        return el;
+ 
     }
 
     Core.El = El;

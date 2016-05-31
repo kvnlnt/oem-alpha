@@ -14,11 +14,17 @@ oem.Components = (function(Components, Core) {
 
     Prototype.renderColorControls = function(){
 
-        var colorControls = ["Core.Util.COLORS"];
-        var color;
+        var colorControls = [];
+        var colorName;
+        var colorHex;
+        var colorSwatch;
+        var colorControl;
         for(var i in Core.Theme.COLORS){
-            color = Core.Theme.COLORS[i];
-            colorControls.push(Core.El("div", {}, i + ":" + color));
+            colorName = Core.El("span", {}, i);
+            colorHex = Core.El("span", {}, Core.Theme.COLORS[i]);
+            colorSwatch = "";
+            colorControl = Core.El("div", {class:"control"}, [colorName, colorHex, colorSwatch]);
+            colorControls.push(colorControl);
         }
 
         var colorControlsWrapper = Core.El("div", {}, colorControls);
