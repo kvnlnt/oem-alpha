@@ -27,11 +27,11 @@ function show(){
     console.log("      Purpose:", "    lists all components in package.oem.development");
     console.log("      Example:", "    node oem list");
     console.log("");
-    console.log(chalk.bold("   develop"));
+    console.log(chalk.bold("   dev"));
     console.log("");
     console.log("      Purpose:", "    launches development server for a configuration in package.oem.development");
     console.log("      Arguments:", "  [Component Name] [Port - Defaults to 7001]");
-    console.log("      Example:", "    node oem develop card");
+    console.log("      Example:", "    node oem dev card");
     console.log();
     console.log(chalk.bold("   create"));
     console.log("");
