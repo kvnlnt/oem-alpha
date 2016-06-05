@@ -4,7 +4,8 @@
     "description": "",
     "main": "cli/oem.js",
     "scripts": {
-        "start": "node ./oem"
+        "start": "node ./oem",
+        "postinstall":"alias oem='node oem'"
     },
     "author": "Toolhouse Inc.",
     "license": "ISC",
