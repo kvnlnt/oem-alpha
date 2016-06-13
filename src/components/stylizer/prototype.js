@@ -2,8 +2,8 @@ oem.Components = (function(Components, Core) {
 
     // Card component
     var Prototype = Core.Prototype(Core.Component, {
-        name: "ThemeRoller",
-        selector: "oem-theme-roller"
+        type: "Stylizer",
+        selector: "oem-stylizer"
     });
 
     Prototype.init = function(){
@@ -38,7 +38,7 @@ oem.Components = (function(Components, Core) {
     };
 
     // exports
-    Components.ThemeRoller.Prototype = Prototype;
+    Components.Stylizer.Prototype = Prototype;
     return Components;
 
 })(oem.Components || {}, oem.Core);

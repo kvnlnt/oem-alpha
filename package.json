@@ -1,197 +1,195 @@
 {
-  "name": "oem",
-  "version": "1.0.0",
-  "description": "",
-  "main": "cli/oem.js",
-  "scripts": {
-    "start": "node ./oem",
-    "postinstall": "alias oem='node oem'"
-  },
-  "author": "Toolhouse Inc.",
-  "license": "ISC",
-  "oem": {
-    "deployment": {
-      "all": {
-        "components": [
-          "core",
-          "accordion",
-          "card",
-          "text-input"
-        ],
-        "customizations": []
-      },
-      "toolhouse.com": {
-        "components": [
-          "core",
-          "card"
-        ],
-        "customizations": [
-          {
-            "replace": "./src/core/Theme.js",
-            "with": "./src/customizations/Example.js"
-          }
-        ]
-      }
+    "name": "oem",
+    "version": "1.0.0",
+    "description": "",
+    "main": "cli/oem.js",
+    "scripts": {
+        "start": "node ./oem",
+        "postinstall": "alias oem='node oem'"
     },
-    "development": {
-      "core": {
-        "components": [
-          "core"
-        ],
-        "customizations": []
-      },
-      "card": {
-        "components": [
-          "core",
-          "card"
-        ],
-        "customizations": []
-      },
-      "accordion": {
-        "components": [
-          "core",
-          "accordion"
-        ],
-        "customizations": []
-      },
-      "text-input": {
-        "components": [
-          "core",
-          "text-input"
-        ],
-        "customizations": []
-      },
-      "theme-roller": {
-        "components": [
-          "core",
-          "accordion",
-          "theme-roller"
-        ],
-        "customizations": []
-      }
+    "author": "Toolhouse Inc.",
+    "license": "ISC",
+    "oem": {
+        "deployment": {
+            "all": {
+                "components": [
+                    "core",
+                    "accordion",
+                    "card",
+                    "text-input"
+                ],
+                "customizations": []
+            },
+            "toolhouse.com": {
+                "components": [
+                    "core",
+                    "card"
+                ],
+                "customizations": [
+                    {
+                        "replace": "./src/core/Theme.js",
+                        "with": "./src/customizations/Example.js"
+                    }
+                ]
+            }
+        },
+        "development": {
+            "core": {
+                "components": [
+                    "core"
+                ],
+                "customizations": []
+            },
+            "card": {
+                "components": [
+                    "core",
+                    "card"
+                ],
+                "customizations": []
+            },
+            "accordion": {
+                "components": [
+                    "core",
+                    "accordion"
+                ],
+                "customizations": []
+            },
+            "text-input": {
+                "components": [
+                    "core",
+                    "text-input"
+                ],
+                "customizations": []
+            },
+            "stylizer": {
+                "components": [
+                    "core",
+                    "stylizer"
+                ],
+                "customizations": []
+            }
+        },
+        "components": {
+            "core": {
+                "files": [
+                    "./src/core/polyfills/Bind.js",
+                    "./src/core/polyfills/Dataset.js",
+                    "./src/core/polyfills/QuerySelector.js",
+                    "./src/core/polyfills/EventListeners.js",
+                    "./src/core/polyfills/ClassList.js",
+                    "./src/core/polyfills/ArrayMap.js",
+                    "./src/core/polyfills/ArrayFind.js",
+                    "./src/core/polyfills/ArrayFilter.js",
+                    "./src/core/polyfills/ObjectCreate.js",
+                    "./src/core/polyfills/ObjectKeys.js",
+                    "./src/core/Namespacer.js",
+                    "./src/core/Prototype.js",
+                    "./src/core/El.js",
+                    "./src/core/Theme.js",
+                    "./src/core/Logger.js",
+                    "./src/core/Device.js",
+                    "./src/core/Util.js",
+                    "./src/core/EventBus.js",
+                    "./src/core/Events.js",
+                    "./src/core/Css.js",
+                    "./src/core/Responsifier.js",
+                    "./src/core/Component.js",
+                    "./src/core/AutoInitializer.js",
+                    "./src/core/Gfx.js",
+                    "./src/core/View.js",
+                    "./src/core/Validator.js",
+                    "./src/core/Field.js",
+                    "./src/core/Oem.js"
+                ],
+                "tests": [
+                    "./src/core/AutoInitializer.test.js",
+                    "./src/core/Component.test.js",
+                    "./src/core/Css.test.js",
+                    "./src/core/Events.test.js",
+                    "./src/core/EventBus.test.js",
+                    "./src/core/Util.test.js",
+                    "./src/core/Responsifier.test.js",
+                    "./src/core/El.test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/core/description.html",
+                    "tests": "./oem/templates/components/core/tests.html"
+                }
+            },
+            "card": {
+                "files": [
+                    "./src/components/card/module.js",
+                    "./src/components/card/gfx.js",
+                    "./src/components/card/css.js",
+                    "./src/components/card/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/card/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/card/description.html",
+                    "examples": "./oem/templates/components/card/examples.html",
+                    "tests": "./oem/templates/components/card/tests.html",
+                    "usage": "./oem/templates/components/card/usage.html"
+                }
+            },
+            "accordion": {
+                "files": [
+                    "./src/components/accordion/module.js",
+                    "./src/components/accordion/gfx.js",
+                    "./src/components/accordion/css.js",
+                    "./src/components/accordion/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/accordion/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/accordion/description.html",
+                    "examples": "./oem/templates/components/accordion/examples.html",
+                    "tests": "./oem/templates/components/accordion/tests.html",
+                    "usage": "./oem/templates/components/accordion/usage.html"
+                }
+            },
+            "text-input": {
+                "files": [
+                    "./src/components/text-input/module.js",
+                    "./src/components/text-input/gfx.js",
+                    "./src/components/text-input/css.js",
+                    "./src/components/text-input/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/text-input/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/text-input/description.html",
+                    "examples": "./oem/templates/components/text-input/examples.html",
+                    "tests": "./oem/templates/components/text-input/tests.html",
+                    "usage": "./oem/templates/components/text-input/usage.html"
+                }
+            },
+            "stylizer": {
+                "files": [
+                    "./src/components/stylizer/module.js",
+                    "./src/components/stylizer/gfx.js",
+                    "./src/components/stylizer/css.js",
+                    "./src/components/stylizer/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/stylizer/test.js"
+                ],
+                "templates": {
+                    "description": "./oem/templates/components/stylizer/description.html",
+                    "examples": "./oem/templates/components/stylizer/examples.html",
+                    "tests": "./oem/templates/components/stylizer/tests.html",
+                    "usage": "./oem/templates/components/stylizer/usage.html"
+                }
+            }
+        }
     },
-    "components": {
-      "core": {
-        "files": [
-          "./src/core/polyfills/Bind.js",
-          "./src/core/polyfills/Dataset.js",
-          "./src/core/polyfills/QuerySelector.js",
-          "./src/core/polyfills/EventListeners.js",
-          "./src/core/polyfills/ClassList.js",
-          "./src/core/polyfills/ArrayMap.js",
-          "./src/core/polyfills/ArrayFind.js",
-          "./src/core/polyfills/ArrayFilter.js",
-          "./src/core/polyfills/ObjectCreate.js",
-          "./src/core/polyfills/ObjectKeys.js",
-          "./src/core/Namespacer.js",
-          "./src/core/Version.js",
-          "./src/core/Prototype.js",
-          "./src/core/El.js",
-          "./src/core/Theme.js",
-          "./src/core/Logger.js",
-          "./src/core/Device.js",
-          "./src/core/Util.js",
-          "./src/core/EventBus.js",
-          "./src/core/Events.js",
-          "./src/core/Css.js",
-          "./src/core/Responsifier.js",
-          "./src/core/Component.js",
-          "./src/core/AutoInitializer.js",
-          "./src/core/Gfx.js",
-          "./src/core/View.js",
-          "./src/core/Validator.js",
-          "./src/core/Field.js",
-          "./src/core/Oem.js"
-        ],
-        "tests": [
-          "./src/core/AutoInitializer.test.js",
-          "./src/core/Component.test.js",
-          "./src/core/Css.test.js",
-          "./src/core/Events.test.js",
-          "./src/core/EventBus.test.js",
-          "./src/core/Util.test.js",
-          "./src/core/Responsifier.test.js",
-          "./src/core/El.test.js"
-        ],
-        "templates": {
-          "description": "./oem/templates/components/core/description.html",
-          "tests": "./oem/templates/components/core/tests.html"
-        }
-      },
-      "card": {
-        "files": [
-          "./src/components/card/module.js",
-          "./src/components/card/gfx.js",
-          "./src/components/card/css.js",
-          "./src/components/card/prototype.js"
-        ],
-        "tests": [
-          "./src/components/card/test.js"
-        ],
-        "templates": {
-          "description": "./oem/templates/components/card/description.html",
-          "examples": "./oem/templates/components/card/examples.html",
-          "tests": "./oem/templates/components/card/tests.html",
-          "usage": "./oem/templates/components/card/usage.html"
-        }
-      },
-      "accordion": {
-        "files": [
-          "./src/components/accordion/module.js",
-          "./src/components/accordion/gfx.js",
-          "./src/components/accordion/css.js",
-          "./src/components/accordion/prototype.js"
-        ],
-        "tests": [
-          "./src/components/accordion/test.js"
-        ],
-        "templates": {
-          "description": "./oem/templates/components/accordion/description.html",
-          "examples": "./oem/templates/components/accordion/examples.html",
-          "tests": "./oem/templates/components/accordion/tests.html",
-          "usage": "./oem/templates/components/accordion/usage.html"
-        }
-      },
-      "text-input": {
-        "files": [
-          "./src/components/text-input/module.js",
-          "./src/components/text-input/gfx.js",
-          "./src/components/text-input/css.js",
-          "./src/components/text-input/prototype.js"
-        ],
-        "tests": [
-          "./src/components/text-input/test.js"
-        ],
-        "templates": {
-          "description": "./oem/templates/components/text-input/description.html",
-          "examples": "./oem/templates/components/text-input/examples.html",
-          "tests": "./oem/templates/components/text-input/tests.html",
-          "usage": "./oem/templates/components/text-input/usage.html"
-        }
-      },
-      "theme-roller": {
-        "files": [
-          "./src/components/theme-roller/module.js",
-          "./src/components/theme-roller/gfx.js",
-          "./src/components/theme-roller/css.js",
-          "./src/components/theme-roller/prototype.js"
-        ],
-        "tests": [
-          "./src/components/theme-roller/test.js"
-        ],
-        "templates": {
-          "description": "./oem/templates/components/theme-roller/description.html",
-          "examples": "./oem/templates/components/theme-roller/examples.html",
-          "tests": "./oem/templates/components/theme-roller/tests.html",
-          "usage": "./oem/templates/components/theme-roller/usage.html"
-        }
-      }
+    "devDependencies": {},
+    "dependencies": {
+        "chalk": "^1.1.3",
+        "express": "^4.13.4",
+        "uglify-js": "^2.6.2"
     }
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "chalk": "^1.1.3",
-    "express": "^4.13.4",
-    "uglify-js": "^2.6.2"
-  }
 }

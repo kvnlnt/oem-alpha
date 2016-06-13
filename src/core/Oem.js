@@ -1,5 +1,7 @@
 oem = (function (Oem, Core) {
 
+    Oem.version = 1;
+
     /**
      * List all components
      */

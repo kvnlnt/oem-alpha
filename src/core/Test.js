@@ -18,9 +18,13 @@ oem.Core = (function(Core) {
         function noop(){ return false; }
 
         // run tests
+        if(this.hasOwnProperty('beforeAll')) this.afterAll();
         for(var i = 0; i < testSuite.length; i++){
+            if(this.hasOwnProperty('beforeEach')) this.beforeEach();
             testSuite[i]();
+            if(this.hasOwnProperty('afterEach')) this.afterEach();
         }
+        if(this.hasOwnProperty('afterAll')) this.afterAll();
         
     };
 

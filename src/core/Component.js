@@ -4,8 +4,6 @@ oem.Core = (function(Core) {
     Component.el = null;
     Component.type = "Component";
     Component.selector = "selector";
-    Component.gfx = {};
-    Component.css = [];
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
     Component.init = function(){

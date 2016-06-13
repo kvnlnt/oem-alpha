@@ -1,9 +1,9 @@
 oem.Components = (function(Components, Core) {
 
-    // ThemeRoller component
+    // Stylizer component
     var Test = Object.create(Core.Test); // call super constructor
     Test.name = "Tests";
-    Test.testComponent = 'oem-theme-roller-test';
+    Test.testComponent = 'oem-stylizer-test';
 
     /**
      * Test example
@@ -18,13 +18,13 @@ oem.Components = (function(Components, Core) {
      * Run tests
      */
     Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
-        Test.runTestSuite('ThemeRoller', [
+        Test.runTestSuite('Stylizer', [
             Test.exampleIsWorking
         ]);
     });
 
     // exports
-    Components.ThemeRoller.Test = Test;
+    Components.Stylizer.Test = Test;
     return Components;
 
 })(oem.Components || {}, oem.Core);

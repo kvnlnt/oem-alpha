@@ -1,10 +1,10 @@
 oem.Components = (function(Components, Core) {
 
     // Card component
-    var ThemeRoller = {};
+    var Stylizer = {};
     
     // exports
-    Components.ThemeRoller = ThemeRoller;
+    Components.Stylizer = Stylizer;
     return Components;
 
 })(oem.Components || {}, oem.Core);

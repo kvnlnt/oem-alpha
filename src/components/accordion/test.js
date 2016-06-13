@@ -53,6 +53,10 @@ oem.Components = (function(Components, Core) {
         Test.assert('Can contract non target item', test, true);
     };
 
+    Test.afterAll = function(){
+        oem.destroy(testAccordion.id);
+    };
+
     /**
      * Run tests
      */
