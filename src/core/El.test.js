@@ -6,10 +6,10 @@ oem.Core = (function(Components, Core) {
     ElTest.testComponent = 'oem-core-el-test';
 
     ElTest.canCreateDomElements = function(){
-        var el = Core.El("div", { class: "parent" }, [
+        var el = Core.El("div", { "class": "parent" }, [
             "testing",
-            Core.El("div", { class: "child1"}, "testing"),
-            Core.El("div", { class: "child2"}, "testing")
+            Core.El("div", { "class": "child1"}, "testing"),
+            Core.El("div", { "class": "child2"}, "testing")
         ]);
         var elExists = el.classList.contains("parent");
         var elHasTextContent = el.textContent === "testingtestingtesting";

@@ -80,6 +80,7 @@
                     "./src/core/polyfills/ArrayMap.js",
                     "./src/core/polyfills/ArrayFind.js",
                     "./src/core/polyfills/ArrayFilter.js",
+                    "./src/core/polyfills/ArrayForEach.js",
                     "./src/core/polyfills/ObjectCreate.js",
                     "./src/core/polyfills/ObjectKeys.js",
                     "./src/core/Namespacer.js",

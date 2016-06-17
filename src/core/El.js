@@ -25,8 +25,10 @@ oem.Core = (function(Core) {
     function El(tag, attrs, content) {
 
         // convert content to an array
-        content = content || "";
+        var content = content || "";
         content = content instanceof Array ? content : [content];
+
+        var attrs = attrs || {};
 
         // create tag
         var el = el || document.createElement(tag);
