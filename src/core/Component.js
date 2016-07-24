@@ -7,7 +7,7 @@ oem.Core = (function(Core) {
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
     Component.init = function(){
-        // Core.Log(this.name + " initialized");
+        // overwrite in component prototype
     };
 
     Component.getEl = function(){

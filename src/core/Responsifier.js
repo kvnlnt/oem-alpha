@@ -21,8 +21,8 @@
 
      // initialize
      Responsifier.init = function() {
-         Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
-         return this;
+        Responsifier.responsify();
+        return this;
      };
 
      /**
@@ -31,12 +31,14 @@
       * @method     responsify
       * @return     {Object}  { description_of_the_return_value }
       */
-     Responsifier.responsify = function() {
+     Responsifier.responsify = function(components) {
+
+        var components = components || oem.list.all;
 
          // loop all components        
-         for (var i in oem.list.all) {
+         for (var i in components) {
 
-             var component = oem.list.all[i]; // current component
+             var component = components[i]; // current component
              var el = component.getEl(); // current element
              var breakpoints = component.getBreakpoints(); // current breakpoints
              var width = el.offsetWidth; // element width
@@ -75,7 +77,9 @@
 
      // run after all components have been collected
      Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
-     Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, Responsifier.responsify);
+     Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, function(){
+        Responsifier.responsify();
+     });
 
      Core.Responsifier = Responsifier;
      return Core;

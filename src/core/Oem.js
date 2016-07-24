@@ -46,7 +46,7 @@ oem = (function (Oem, Core) {
     };
 
     /**
-     * Update component
+     * TODO: Update component
      *
      * @param      {<type>}  component  The component
      * @param      {<type>}  settings   The settings
@@ -56,14 +56,24 @@ oem = (function (Oem, Core) {
     };
 
     /**
-     * Delete component instance and element from dom
+     * Delete component instance and element from DOM
      */
     Oem.destroy = function (componentId) {
         var component = Oem.read(componentId);
         var node = component.getEl();
         if (node.parentNode) node.parentNode.removeChild(node);
         delete oem.list.all[componentId];
-        return this;
+        return component;
+    };
+
+    /**
+     * Mediator to internal initializer
+     * @return {[type]} [description]
+     */
+    Oem.init = function(components){
+        var components = components || oem.Components;
+        Oem.AutoInitializer.initializeAll(components);
+        return components;
     };
 
     /**

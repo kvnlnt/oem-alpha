@@ -17,10 +17,10 @@
 
     "use strict";
 
-    function Validator() {
-        this.errors = null;
-        this.clean = null;
-        this.isValid = true;
+    function Validator(errors, clean, isValid) {
+        this.errors = errors || null;
+        this.clean = clean || null;
+        this.isValid = isValid || true;
     }
 
     Validator.prototype = {

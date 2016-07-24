@@ -49,7 +49,7 @@ oem.Core = (function(Core) {
      *
      * @method     renderAll
      */
-    Css.renderComponentCss = function() {
+    Css.renderComponentCss = function(components) {
         var id;
         for (var component in oem.Components) {
             component = oem.Components[component];
@@ -61,7 +61,9 @@ oem.Core = (function(Core) {
     };
 
     // generate onload
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, Css.renderComponentCss);
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+        Css.renderComponentCss(oem.Components);
+    });
 
     Core.Css = Css;
     return Core;

@@ -32,9 +32,9 @@ oem.Core = (function(Core) {
      *
      * @method     collectAll
      */
-    AutoInitializer.initializeAll = function() {
-        for (var component in oem.Components) {
-            component = oem.Components[component];
+    AutoInitializer.initializeAll = function(components) {
+        for (var component in components) {
+            component = components[component];
             AutoInitializer.initialize(component);
         }
 
@@ -43,7 +43,9 @@ oem.Core = (function(Core) {
     };
 
     // collect on document ready
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, AutoInitializer.initializeAll);
+    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+        AutoInitializer.initializeAll(oem.Components);
+    });
 
     // exports
     Core.AutoInitializer = AutoInitializer;
