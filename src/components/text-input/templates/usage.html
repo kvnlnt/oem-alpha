@@ -1,0 +1,26 @@
+<h2 class="oem">Usage</h2>
+<h3 class="oem">Html</h3>
+<textarea class="demoHtml">
+<div class="oem-text-input">
+    <!-- label is used by component -->
+    <label for="firstName">First Name</label>
+    <!-- name attribute is used by component -->
+    <input type="text" name="firstName" placeholder="First Name" />
+    <div class="help"></div>
+    <!-- errors are rendered here as "li"s -->
+    <ul class="errors"></ul>
+    <!-- Translates to validation api -->
+    <!-- 1. data-validation = validator.minLength -->
+    <!-- 2. data-settings = minLength argument -->
+    <!-- 3. Message = custom message -->
+    <!-- See Core/Validator.js  for details -->
+    <div class="validations">
+        <div data-validation="minLength" data-settings="3">
+            First name must be at least 3 Characters
+        </div>
+        <div data-validation="maxLength" data-settings="6">
+            First name must be less than 6 Characters
+        </div>
+    </div>
+</div>
+</textarea>

@@ -10,7 +10,7 @@ const CreateComponent = function(componentName){
     this.componentName = 'oem-' + componentName;
     this.componentClass = this.convertNameToClass(componentName);
     this.componentDir = './src/components/'+this.fileName;
-    this.templatesDir = './oem/templates/components/'+this.fileName;
+    this.templatesDir = './src/components/'+this.fileName+'/templates';
     this
     .createDirectory()
     .copyAndFormatTemplates()
@@ -40,13 +40,13 @@ CreateComponent.prototype = {
     copyAndFormatTemplates: function(){
 
         // html
-        var decription = fs.readFileSync('./oem/templates/new-component/description.html', 'utf-8');
+        var decription = fs.readFileSync('./oem/templates/new-component/templates/description.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/description.html', this.renderTemplate(decription));
-        var examples = fs.readFileSync('./oem/templates/new-component/examples.html', 'utf-8');
+        var examples = fs.readFileSync('./oem/templates/new-component/templates/examples.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/examples.html', this.renderTemplate(examples));
-        var tests = fs.readFileSync('./oem/templates/new-component/tests.html', 'utf-8');
+        var tests = fs.readFileSync('./oem/templates/new-component/templates/tests.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/tests.html', this.renderTemplate(tests));
-        var usage = fs.readFileSync('./oem/templates/new-component/usage.html', 'utf-8');
+        var usage = fs.readFileSync('./oem/templates/new-component/templates/usage.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/usage.html', this.renderTemplate(usage));
 
         // gfx

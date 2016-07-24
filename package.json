@@ -113,8 +113,8 @@
                     "./src/core/El.test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/components/core/description.html",
-                    "tests": "./oem/templates/components/core/tests.html"
+                    "description": "./oem/templates/core/description.html",
+                    "tests": "./oem/templates/core/tests.html"
                 }
             },
             "card": {
@@ -128,10 +128,10 @@
                     "./src/components/card/test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/components/card/description.html",
-                    "examples": "./oem/templates/components/card/examples.html",
-                    "tests": "./oem/templates/components/card/tests.html",
-                    "usage": "./oem/templates/components/card/usage.html"
+                    "description": "./src/components/card/templates/description.html",
+                    "examples": "./src/components/card/templates/examples.html",
+                    "tests": "./src/components/card/templates/tests.html",
+                    "usage": "./src/components/card/templates/usage.html"
                 }
             },
             "accordion": {
@@ -145,10 +145,10 @@
                     "./src/components/accordion/test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/components/accordion/description.html",
-                    "examples": "./oem/templates/components/accordion/examples.html",
-                    "tests": "./oem/templates/components/accordion/tests.html",
-                    "usage": "./oem/templates/components/accordion/usage.html"
+                    "description": "./src/components/accordion/templates/description.html",
+                    "examples": "./src/components/accordion/templates/examples.html",
+                    "tests": "./src/components/accordion/templates/tests.html",
+                    "usage": "./src/components/accordion/templates/usage.html"
                 }
             },
             "text-input": {
@@ -162,10 +162,10 @@
                     "./src/components/text-input/test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/components/text-input/description.html",
-                    "examples": "./oem/templates/components/text-input/examples.html",
-                    "tests": "./oem/templates/components/text-input/tests.html",
-                    "usage": "./oem/templates/components/text-input/usage.html"
+                    "description": "./src/components/text-input/templates/description.html",
+                    "examples": "./src/components/text-input/templates/examples.html",
+                    "tests": "./src/components/text-input/templates/tests.html",
+                    "usage": "./src/components/text-input/templates/usage.html"
                 }
             },
             "stylizer": {
@@ -179,10 +179,10 @@
                     "./src/components/stylizer/test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/components/stylizer/description.html",
-                    "examples": "./oem/templates/components/stylizer/examples.html",
-                    "tests": "./oem/templates/components/stylizer/tests.html",
-                    "usage": "./oem/templates/components/stylizer/usage.html"
+                    "description": "./src/components/stylizer/templates/description.html",
+                    "examples": "./src/components/stylizer/templates/examples.html",
+                    "tests": "./src/components/stylizer/templates/tests.html",
+                    "usage": "./src/components/stylizer/templates/usage.html"
                 }
             }
         }

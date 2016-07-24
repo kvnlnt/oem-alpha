@@ -8,7 +8,7 @@ const chalk = require('chalk');
 const RemoveComponent = function(componentName) {
     this.fileName = componentName;
     this.componentDir = './src/components/' + this.fileName;
-    this.templatesDir = './oem/templates/components/' + this.fileName;
+    this.templatesDir = './src/components/' + this.fileName + '/templates';
     this
         .removeDirectory(this.componentDir)
         .removeDirectory(this.templatesDir)
@@ -19,11 +19,12 @@ const RemoveComponent = function(componentName) {
 RemoveComponent.prototype = {
 
     removeDirectory: function(path) {
+        var that = this;
         if (fs.existsSync(path)) {
             fs.readdirSync(path).forEach(function(file, index) {
                 var curPath = path + "/" + file;
                 if (fs.lstatSync(curPath).isDirectory()) { // recurse
-                    deleteFolderRecursive(curPath);
+                    that.removeDirectory(curPath);
                 } else { // delete file
                     fs.unlinkSync(curPath);
                 }
