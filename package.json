@@ -67,6 +67,22 @@
                     "stylizer"
                 ],
                 "customizations": []
+            },
+            "form": {
+                "components": [
+                    "core",
+                    "form",
+                    "text-input",
+                    "button"
+                ],
+                "customizations": []
+            },
+            "button": {
+                "components": [
+                    "core",
+                    "button"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -183,6 +199,40 @@
                     "examples": "./src/components/stylizer/templates/examples.html",
                     "tests": "./src/components/stylizer/templates/tests.html",
                     "usage": "./src/components/stylizer/templates/usage.html"
+                }
+            },
+            "form": {
+                "files": [
+                    "./src/components/form/module.js",
+                    "./src/components/form/gfx.js",
+                    "./src/components/form/css.js",
+                    "./src/components/form/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/form/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/form/templates/description.html",
+                    "examples": "./src/components/form/templates/examples.html",
+                    "tests": "./src/components/form/templates/tests.html",
+                    "usage": "./src/components/form/templates/usage.html"
+                }
+            },
+            "button": {
+                "files": [
+                    "./src/components/button/module.js",
+                    "./src/components/button/gfx.js",
+                    "./src/components/button/css.js",
+                    "./src/components/button/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/button/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/button/templates/description.html",
+                    "examples": "./src/components/button/templates/examples.html",
+                    "tests": "./src/components/button/templates/tests.html",
+                    "usage": "./src/components/button/templates/usage.html"
                 }
             }
         }

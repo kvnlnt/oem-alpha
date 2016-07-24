@@ -24,6 +24,11 @@ oem.Core = (function(Core) {
     COLORS.success = 'green';
     Theme.COLORS = COLORS;
 
+    // Font sizes
+    var FONT_SIZES = {};
+    FONT_SIZES.button = 14;
+    Theme.FONT_SIZES = FONT_SIZES;
+
     // css definitions, see Css module
     var IMAGES = {};
     IMAGES.toolhouse = [{

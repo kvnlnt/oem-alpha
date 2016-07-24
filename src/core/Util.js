@@ -64,6 +64,19 @@ oem.Core = (function(Core){
         return _p8() + _p8(true) + _p8(true) + _p8();
     };
 
+    /**
+     * Convert array like object to array
+     * @param  {object} arrayLikeObject 
+     * @return {array}
+     */
+    Util.arrayFrom = function(arrayLikeObject){
+        var ary = [];
+        for(var i = 0; i < arrayLikeObject.length; i++){
+            ary.push(arrayLikeObject[i]);
+        }
+        return ary;
+    };
+
     Core.Util = Util;
     return Core;
 

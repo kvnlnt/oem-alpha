@@ -8,7 +8,7 @@ const chalk = require('chalk');
  */
 const Deployment = function (config) {
     this.config = config;
-    this.directory = './deploy/'+this.config;
+    this.directory = './deployments/'+this.config;
     this.jsFile = this.directory + "/oem.js";
     this.jsFileMinified = this.directory + "/oem.min.js";
     this.jsFiles = this.getJsFiles();

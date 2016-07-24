@@ -53,6 +53,11 @@ oem.Core = (function(Core) {
         return this;
     };
 
+    Field.setValidateOnChange = function(validateOnChange){
+        this.validateOnChange = validateOnChange;
+        return this;
+    };
+
     // METHODS
     
     Field.setupInputField = function(){
@@ -97,7 +102,14 @@ oem.Core = (function(Core) {
             validator[validation].apply(validator, arguments);
         }
 
+        // XXX : All fields need a validator as it is used to collect it's data
+        // in order to handle optional fields where validation is not specified
+        // automatically assign the "skip" validation
+        
+
         this.renderErrors(validator);
+
+        return validator;
         
     };
 
