@@ -1,14 +1,19 @@
+// USAGE
+// - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
 oem.Components = (function(Components, Core) {
 
     // Card component
     var Prototype = Core.Prototype(Core.Component, {
         type: "Form",
-        selector: "oem-form",
-        fields: [],
-        submitButton: null,
-        method: 'post',
-        action: '/'
+        selector: "oem-form"
     });
+
+    // DEFAULTS
+
+    Prototype.fields = [];
+    Prototype.submitButton = null;
+    Prototype.formId = null;
+    Prototype.formSubmittedEventName = null;
 
     // SETUP
 
@@ -22,15 +27,14 @@ oem.Components = (function(Components, Core) {
             return field.oem;
         });
         var submitButton = this.getEl().querySelector(".submit");
-        var method = this.getEl().getAttribute("method") || this.getMethod();
-        var action = this.getEl().getAttribute("action") || this.getAction();
+        var formId = this.getEl().id;
 
         // set fields
         this
         .setFields(fields)
         .setSubmitButton(submitButton)
-        .setMethod(method)
-        .setAction(action)
+        .setFormId(formId)
+        .setFormSubmittedEventName(formId + ":submitted")
         .registerEvents();
     };
 
@@ -44,12 +48,12 @@ oem.Components = (function(Components, Core) {
         return this.submitButton;
     };
 
-    Prototype.getMethod = function(){
-        return this.method;
+    Prototype.getFormId = function(){
+        return this.formId;
     };
 
-    Prototype.getAction = function(){
-        return this.action;
+    Prototype.getFormSubmittedEventName = function(){
+        return this.formSubmittedEventName;
     };
 
     // SETTERS
@@ -64,13 +68,13 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Prototype.setMethod = function(method){
-        this.method = method;
+    Prototype.setFormId = function(formId){
+        this.formId = formId;
         return this;
     };
 
-    Prototype.setAction = function(action){
-        this.action = action;
+    Prototype.setFormSubmittedEventName = function(formSubmittedEventName){
+        this.formSubmittedEventName = formSubmittedEventName;
         return this;
     };
 
@@ -123,7 +127,6 @@ oem.Components = (function(Components, Core) {
             cleanCollection: cleanCollection,
             errorCollection: errorCollection 
         }
-
     };
 
     Prototype.convertCleanCollectionToObject = function(cleanCollection){
@@ -135,7 +138,10 @@ oem.Components = (function(Components, Core) {
     },
 
     Prototype.submitForm = function(clean){
-        console.log(clean, this.getMethod(), this.getAction());
+        // trigger event with data
+        var e = new CustomEvent(this.getFormSubmittedEventName(), {detail: clean});
+        Core.Log(e);
+        return e;
     };
     
     // exports

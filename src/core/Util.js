@@ -1,4 +1,4 @@
-oem.Core = (function(Core){
+oem.Core = (function(Core) {
 
     // Module
     var Util = {};
@@ -58,8 +58,8 @@ oem.Core = (function(Core){
      */
     Util.guid = function() {
         function _p8(s) {
-            var p = (Math.random().toString(16)+"000000000").substr(2,8);
-            return s ? "-" + p.substr(0,4) + "-" + p.substr(4,4) : p ;
+            var p = (Math.random().toString(16) + "000000000").substr(2, 8);
+            return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
         }
         return _p8() + _p8(true) + _p8(true) + _p8();
     };
@@ -69,12 +69,21 @@ oem.Core = (function(Core){
      * @param  {object} arrayLikeObject 
      * @return {array}
      */
-    Util.arrayFrom = function(arrayLikeObject){
+    Util.arrayFrom = function(arrayLikeObject) {
         var ary = [];
-        for(var i = 0; i < arrayLikeObject.length; i++){
+        for (var i = 0; i < arrayLikeObject.length; i++) {
             ary.push(arrayLikeObject[i]);
         }
         return ary;
+    };
+
+    Util.getUrlVars = function() {
+        var vars = {};
+        var search = function(m, key, value) {
+            vars[key] = value;
+        };
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, search);
+        return vars;
     };
 
     Core.Util = Util;

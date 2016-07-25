@@ -60,6 +60,9 @@ oem.Core = (function(Core) {
 
     // METHODS
     
+    // TODO
+    Field.reset = function(){};
+    
     Field.setupInputField = function(){
         this.label = this.getLabel();
         this.field = this.getField();

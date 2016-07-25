@@ -1,6 +1,6 @@
 <h2 class="oem">Example</h2>
 
-<form class="oem-form" method="post" action="/ajax/endpoint">
+<form id="exampleForm" class="oem-form">
     <div class="oem-text-input">
         <label for="firstName">First Name</label>
         <div class="help">
@@ -11,6 +11,17 @@
         <div class="validations">
             <div data-validation="minLength" data-settings="3">First name must be at least 3 Characters</div>
             <div data-validation="maxLength" data-settings="6">First name must be less than 6 Characters</div>
+        </div>
+    </div>
+    <div class="oem-text-input">
+        <label for="firstName">Last Name</label>
+        <div class="help">
+            Please enter your last name
+        </div>
+        <input type="text" name="lastName" placeholder="Last Name" />
+        <ul class="errors"></ul>
+        <div class="validations">
+            <div data-validation="minLength" data-settings="1">Last name must be at least 1 Characters</div>
         </div>
     </div>
     <button class="oem-button submit">Submit</button>
