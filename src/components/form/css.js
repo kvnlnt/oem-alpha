@@ -5,7 +5,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: ".oem-form .help",
             declaration: [
-                "font-size:" + Core.Theme.FONT_SIZES.SMALL + "px",
+                "font-size:" + Core.Theme.FONT_SIZES.MEDIUM + "px",
                 "margin: 10px 0px",
                 "opacity: 0.6"
             ]
@@ -21,7 +21,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: ".oem-form .errors",
             declaration: [
-                "color:" + Core.Theme.COLORS.alert,
+                "color:" + Core.Theme.COLORS.ALERT,
                 "font-size:" + Core.Theme.FONT_SIZES.SMALL
             ]
         },

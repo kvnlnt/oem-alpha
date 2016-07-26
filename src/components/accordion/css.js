@@ -7,7 +7,7 @@ oem.Components = (function(Components, Core) {
             declaration: [
                 "margin:0",
                 "padding:0",
-                "border-bottom:1px solid " + Core.Theme.COLORS.greyB
+                "border-bottom:1px solid " + Core.Theme.COLORS.GREY
             ]
         },
 
@@ -17,8 +17,8 @@ oem.Components = (function(Components, Core) {
                 "margin:0",
                 "line-height:40px",
                 "padding:10px",
-                "border-top:1px solid " + Core.Theme.COLORS.greyB,
-                "background-color: " + Core.Theme.COLORS.greyE,
+                "border-top:1px solid " + Core.Theme.COLORS.GREY,
+                "background-color: " + Core.Theme.COLORS.GREY,
                 "cursor:pointer"
             ]
         },
@@ -26,7 +26,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: "oem-accordion dt:hover, .oem-accordion dt:hover",
             declaration: [
-                "background-color:" + Core.Theme.COLORS.greyD
+                "background-color:" + Core.Theme.COLORS.GREY
             ]
         },
 

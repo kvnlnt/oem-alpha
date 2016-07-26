@@ -255,6 +255,13 @@
             if (!isValid) this._addError(fieldName, errorMessage);
             if (isValid) this._addClean(fieldName, fieldVal);
             return this;
+        },
+
+        // TODO
+        regex: function(fieldName, fieldLabel, fieldVal, options, customErrorMessage) {
+            var fieldLabel = fieldLabel || null;
+            var errorMessage = customErrorMessage || fieldLabel + ' not a valid option';
+            return this;
         }
 
     };
