@@ -2,7 +2,6 @@
 // - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
 oem.Components = (function(Components, Core) {
 
-    // Card component
     var Prototype = Core.Prototype(Core.Component, {
         type: "Form",
         selector: "oem-form"
@@ -12,8 +11,6 @@ oem.Components = (function(Components, Core) {
 
     Prototype.fields = [];
     Prototype.submitButton = null;
-    Prototype.formId = null;
-    Prototype.formSubmittedEventName = null;
 
     // SETUP
 
@@ -23,18 +20,25 @@ oem.Components = (function(Components, Core) {
     };
 
     Prototype.setup = function(){
+
+        // get fields
         var fields = Core.Util.arrayFrom(this.getEl().children).map(function(field){
             return field.id;
         });
-        var submitButton = this.getEl().querySelector(".submit");
-        var formId = this.getEl().id;
 
-        // set fields
+        // get submit button
+        var submitButton = this.getEl().querySelector(".submit");
+
+        // create events
+        var events = {
+            submitted: this.getId() + ":submitted"
+        };
+
+        // 
         this
         .setSubmitButton(submitButton)
+        .setEvents(events)
         .setFields(fields)
-        .setFormId(formId)
-        .setFormSubmittedEventName(formId + ":submitted")
         .registerEvents();
     };
 
@@ -46,14 +50,6 @@ oem.Components = (function(Components, Core) {
 
     Prototype.getSubmitButton = function(){
         return this.submitButton;
-    };
-
-    Prototype.getFormId = function(){
-        return this.formId;
-    };
-
-    Prototype.getFormSubmittedEventName = function(){
-        return this.formSubmittedEventName;
     };
 
     // SETTERS
@@ -68,20 +64,11 @@ oem.Components = (function(Components, Core) {
         return this;
     };
 
-    Prototype.setFormId = function(formId){
-        this.formId = formId;
-        return this;
-    };
-
-    Prototype.setFormSubmittedEventName = function(formSubmittedEventName){
-        this.formSubmittedEventName = formSubmittedEventName;
-        return this;
-    };
-
     // METHODS
 
     Prototype.registerEvents = function(submitButton, fields){
         var that = this;
+
         var submitButton = submitButton || this.getSubmitButton();
         var fields = fields || this.getFields();
         submitButton.addEventListener('click', function(e){
@@ -140,7 +127,7 @@ oem.Components = (function(Components, Core) {
 
     Prototype.submitForm = function(clean){
         // trigger event with data
-        var e = new CustomEvent(this.getFormSubmittedEventName(), {detail: clean});
+        var e = new CustomEvent(this.getEvents().submitted, {detail: clean, type: this.getEvents().submitted});
         Core.Log(e);
         return e;
     };

@@ -1,6 +1,6 @@
 oem.Components = (function(Components, Core) {
 
-    // Card component
+    // Main component namespace
     var %CLASS% = {};
     
     // exports

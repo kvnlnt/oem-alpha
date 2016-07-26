@@ -1,6 +1,5 @@
 oem.Components = (function(Components, Core) {
 
-    // Card component
     var Form = {};
     
     // exports

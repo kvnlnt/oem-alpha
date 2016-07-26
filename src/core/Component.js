@@ -6,10 +6,13 @@ oem.Core = (function(Core) {
     Component.type = "Component";
     Component.selector = "selector";
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
+    Component.events = {};
 
     Component.init = function(){
         // overwrite in component prototype
     };
+
+    // GETTERS
 
     Component.getId = function(){
         return this.id;
@@ -19,13 +22,28 @@ oem.Core = (function(Core) {
         return this.el;
     };
 
-    Component.setEl = function(el){
-        this.el = el;
-        return this;
-    };
-
     Component.getSelector = function(){
         return this.selector;
+    };
+
+    Component.getType = function(){
+        return this.type;
+    };
+
+    Component.getBreakpoints = function(){
+        return this.breakpoints;
+    };
+
+    Component.getEvents = function(){
+        return this.events;
+    };
+
+
+    // SETTERS
+
+    Component.setType = function(type){
+        this.type = type;
+        return this;
     };
 
     Component.setSelector = function(selector){
@@ -33,12 +51,8 @@ oem.Core = (function(Core) {
         return this;
     };
 
-    Component.getType = function(){
-        return this.type;
-    };
-
-    Component.setType = function(type){
-        this.type = type;
+    Component.setEl = function(el){
+        this.el = el;
         return this;
     };
 
@@ -48,12 +62,13 @@ oem.Core = (function(Core) {
         return this;
     };
 
-    Component.getBreakpoints = function(){
-        return this.breakpoints;
-    };
-
     Component.setBreakpoints = function(breakpoints){
         this.breakpoints = breakpoints;
+        return this;
+    };
+
+    Component.setEvents = function(events){
+        this.events = events;
         return this;
     };
 

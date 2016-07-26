@@ -1,6 +1,5 @@
 oem.Components = (function(Components, Core) {
-
-    // Card component
+    
     var Prototype = Core.Prototype(Core.Component, {
         type: "Stylizer",
         selector: "oem-stylizer"

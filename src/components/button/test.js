@@ -1,6 +1,5 @@
 oem.Components = (function(Components, Core) {
 
-    // Button component
     var Test = Object.create(Core.Test); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'oem-button-test';

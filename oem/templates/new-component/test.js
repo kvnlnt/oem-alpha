@@ -1,6 +1,5 @@
 oem.Components = (function(Components, Core) {
 
-    // %CLASS% component
     var Test = Object.create(Core.Test); // call super constructor
     Test.name = "Tests";
     Test.testComponent = '%SELECTOR%-test';

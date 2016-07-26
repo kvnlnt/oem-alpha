@@ -1,12 +1,12 @@
 oem.Components = (function(Components, Core) {
 
-    // Prototype component
     var Prototype = Core.Prototype(Core.Component, {
         type: "Accordion",
         selector:"oem-accordion"
     });
 
-    // params
+    // DEFAULTS
+
     Prototype.expandClass = "expanded";
     Prototype.terms = [];
     Prototype.definitions = [];

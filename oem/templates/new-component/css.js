@@ -5,7 +5,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: "%SELECTOR%, .%SELECTOR%",
             declaration: [
-                "color:red"
+                "color:black"
             ]
         }
 
