@@ -18,21 +18,21 @@ oem.Components = (function(Components, Core) {
     // SETUP
 
     Prototype.init = function(){
-        // init only after components have been collected so we can access it's child oem configs
+        // init only after oem components have been collected and initialized
         Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype.setup.bind(this));
     };
 
     Prototype.setup = function(){
         var fields = Core.Util.arrayFrom(this.getEl().children).map(function(field){
-            return field.oem;
+            return field.id;
         });
         var submitButton = this.getEl().querySelector(".submit");
         var formId = this.getEl().id;
 
         // set fields
         this
-        .setFields(fields)
         .setSubmitButton(submitButton)
+        .setFields(fields)
         .setFormId(formId)
         .setFormSubmittedEventName(formId + ":submitted")
         .registerEvents();
@@ -109,11 +109,12 @@ oem.Components = (function(Components, Core) {
         // if no errors found, get clean data and submit
         this.fields.forEach(function(field){
             var validator;
+            var fieldComponent = oem.read(field);
 
             // if field has a validator then validate it!
-            if(field.validate) {
-                field.setValidateOnChange(true);
-                validator = field.validate();
+            if(fieldComponent.validate) {
+                fieldComponent.setValidateOnChange(true);
+                validator = fieldComponent.validate();
                 cleanCollection.push(validator.clean);
                 if(validator.errors != null) {
                     errorCollection.push(validator.errors);

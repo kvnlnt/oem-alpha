@@ -28,11 +28,10 @@ oem = (function (Oem, Core) {
         // this is a creational mediator pattern which calls the root prototype
         // and creates' an instance
         var component = Core.Prototype(component, options);
-        var guid = Core.Util.guid();
         component.init();
-        component.id = guid;
+        component.setId(component.getEl().id || Core.Util.guid());
         component.el.oem = component; // attach pointer to instance on element
-        oem.list.all[guid] = component;
+        oem.list.all[component.getId()] = component;
         return component;
     };
 

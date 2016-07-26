@@ -33,6 +33,7 @@ oem.Core = (function(Core) {
      * @method     collectAll
      */
     AutoInitializer.initializeAll = function(components) {
+
         for (var component in components) {
             component = components[component];
             AutoInitializer.initialize(component);

@@ -2,12 +2,17 @@ oem.Core = (function(Core) {
 
     var Component = {};
     Component.el = null;
+    Component.id = null;
     Component.type = "Component";
     Component.selector = "selector";
     Component.breakpoints = Core.Responsifier.BREAKPOINTS;
 
     Component.init = function(){
         // overwrite in component prototype
+    };
+
+    Component.getId = function(){
+        return this.id;
     };
 
     Component.getEl = function(){
@@ -34,6 +39,12 @@ oem.Core = (function(Core) {
 
     Component.setType = function(type){
         this.type = type;
+        return this;
+    };
+
+    Component.setId = function(id){
+        this.getEl().id = id;
+        this.id = id;
         return this;
     };
 
