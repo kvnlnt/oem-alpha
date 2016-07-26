@@ -26,8 +26,17 @@ oem.Core = (function(Core) {
 
     // Font sizes
     var FONT_SIZES = {};
-    FONT_SIZES.button = 14;
+    FONT_SIZES.TINY = 11;
+    FONT_SIZES.SMALL = 12;
+    FONT_SIZES.MEDIUM = 14;
+    FONT_SIZES.LARGE = 18;
+    FONT_SIZES.HUGE = 24;
     Theme.FONT_SIZES = FONT_SIZES;
+
+    // Forms
+    var FORMS = {};
+    FORMS.FIELD_BORDER_COLOR = COLORS.greyE;
+    Theme.FORMS = FORMS;
 
     // css definitions, see Css module
     var IMAGES = {};

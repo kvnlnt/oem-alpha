@@ -5,7 +5,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: "oem-button, .oem-button",
             declaration: [
-                "font-size:" + Core.Theme.FONT_SIZES.button + "px",
+                "font-size:" + Core.Theme.FONT_SIZES.medium + "px",
                 "padding: 5px 10px",
                 "border:0",
                 "cursor:pointer"
