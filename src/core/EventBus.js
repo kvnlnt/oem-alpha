@@ -82,11 +82,12 @@ oem.Core = (function(Core) {
             }
             return false;
         },
-        dispatch: function(type, target) {
+        dispatch: function(type, target, data) {
             var numOfListeners = 0;
             var event = {
                 type: type,
-                target: target
+                target: target,
+                data: data
             };
             var args = [];
             var numOfArgs = arguments.length;

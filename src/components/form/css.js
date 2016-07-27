@@ -5,7 +5,7 @@ oem.Components = (function(Components, Core) {
         {
             selector: ".oem-form .help",
             declaration: [
-                "font-size:" + Core.Theme.FONT_SIZES.MEDIUM + "px",
+                "font-size:" + Core.Theme.FONT.SIZE.MEDIUM + "px",
                 "margin: 10px 0px",
                 "opacity: 0.6"
             ]
@@ -22,7 +22,7 @@ oem.Components = (function(Components, Core) {
             selector: ".oem-form .errors",
             declaration: [
                 "color:" + Core.Theme.COLORS.ALERT,
-                "font-size:" + Core.Theme.FONT_SIZES.SMALL
+                "font-size:" + Core.Theme.FONT.SIZE.SMALL
             ]
         },
 
@@ -30,7 +30,7 @@ oem.Components = (function(Components, Core) {
             selector: ".oem-form input",
             declaration: [
                 "width:100%",
-                "font-size:" + Core.Theme.FONT_SIZES.MEDIUM + "px",
+                "font-size:" + Core.Theme.FONT.SIZE.MEDIUM + "px",
                 "padding:10px",
                 "border:1px solid " + Core.Theme.FORMS.FIELD_BORDER_COLOR,
                 "border-radius: 2px"

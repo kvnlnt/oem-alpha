@@ -7,8 +7,8 @@ oem.Components = (function(Components, Core) {
     // 1) contain any/all functional behavior for this component.
     // 2) be prototyped into a new instance for each component
     var Prototype = Core.Prototype(Core.Component, {
-        type: "%CLASS%",
-        selector: "%SELECTOR%"
+        type: "Kevin",
+        selector: "oem-kevin"
     });
 
 
@@ -72,7 +72,7 @@ oem.Components = (function(Components, Core) {
     // EXPORTS
     // ========================================================
     // Probably only want to export the prototype
-    Components.%CLASS%.Prototype = Prototype;
+    Components.Kevin.Prototype = Prototype;
     return Components;
 
 })(oem.Components || {}, oem.Core);

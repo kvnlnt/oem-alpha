@@ -71,9 +71,14 @@ oem = (function (Oem, Core) {
      */
     Oem.init = function(components){
         var components = components || oem.Components;
-        Oem.AutoInitializer.initializeAll(components);
+        Core.AutoInitializer.initializeAll(components);
         return components;
     };
+
+    /**
+     * Proxy to internal event bus
+     */
+    Oem.events = Core.Events;
 
     /**
      * Return main oem namespace object

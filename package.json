@@ -83,6 +83,13 @@
                     "button"
                 ],
                 "customizations": []
+            },
+            "kevin": {
+                "components": [
+                    "core",
+                    "kevin"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -114,7 +121,7 @@
                     "./src/core/AutoInitializer.js",
                     "./src/core/Gfx.js",
                     "./src/core/Validator.js",
-                    "./src/core/Field.js",
+                    "./src/core/mixins/Field.js",
                     "./src/core/Oem.js"
                 ],
                 "tests": [
@@ -232,6 +239,23 @@
                     "examples": "./src/components/button/templates/examples.html",
                     "tests": "./src/components/button/templates/tests.html",
                     "usage": "./src/components/button/templates/usage.html"
+                }
+            },
+            "kevin": {
+                "files": [
+                    "./src/components/kevin/module.js",
+                    "./src/components/kevin/gfx.js",
+                    "./src/components/kevin/css.js",
+                    "./src/components/kevin/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/kevin/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/kevin/templates/description.html",
+                    "examples": "./src/components/kevin/templates/examples.html",
+                    "tests": "./src/components/kevin/templates/tests.html",
+                    "usage": "./src/components/kevin/templates/usage.html"
                 }
             }
         }

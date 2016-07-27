@@ -6,7 +6,7 @@
  * @return     {boolean}  { description_of_the_return_value }
  */
 
-oem.Core = (function(Core) {
+oem.Core.Mixins = (function(Core, Mixins) {
 
     var Field = {};
 
@@ -139,7 +139,7 @@ oem.Core = (function(Core) {
         }
     };
 
-    Core.Field = Field;
-    return Core;
+    Mixins.Field = Field;
+    return Mixins;
 
-})(oem.Core || {});
+})(oem.Core || {}, oem.Core.Mixins || {});

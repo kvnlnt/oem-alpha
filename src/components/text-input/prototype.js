@@ -1,13 +1,15 @@
 oem.Components = (function(Components, Core) {
 
-    // Prototype component
     var Prototype = Core.Prototype(Core.Component, {
         type: "TextInput",
         selector: "oem-text-input"
     });
 
-    // mixins
-    Core.Util.mixin(Prototype, Core.Field); // mixin field functions
+    // MIXINS
+
+    Core.Util.mixin(Prototype, Core.Mixins.Field); // mixin field functions
+
+    // INIT
 
     Prototype.init = function(){
         this.setupInputField();

@@ -12,14 +12,14 @@ oem.Components = (function(Components, Core) {
     Prototype.fields = [];
     Prototype.submitButton = null;
 
-    // SETUP
+    // INIT
 
     Prototype.init = function(){
         // init only after oem components have been collected and initialized
-        Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype.setup.bind(this));
+        Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype._init.bind(this));
     };
 
-    Prototype.setup = function(){
+    Prototype._init = function(){
 
         // get fields
         var fields = Core.Util.arrayFrom(this.getEl().children).map(function(field){
@@ -127,9 +127,10 @@ oem.Components = (function(Components, Core) {
 
     Prototype.submitForm = function(clean){
         // trigger event with data
-        var e = new CustomEvent(this.getEvents().submitted, {detail: clean, type: this.getEvents().submitted});
-        Core.Log(e);
-        return e;
+        Core.Events.dispatch(this.getEvents().submitted, this, clean);
+        // var e = new CustomEvent(, {detail: clean, type: this.getEvents().submitted});
+        // Core.Log(e);
+        // return e;
     };
     
     // exports
