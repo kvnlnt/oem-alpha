@@ -3,7 +3,7 @@ oem.Core = (function(Core) {
     var Theme = {};
 
     // exports
-    Core.Theme = Theme;
+    Core.Modules.Theme = Theme;
     return Core;
 
 })(oem.Core);

@@ -1,8 +1,8 @@
 // USAGE
 // - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
-(function(Components, Core) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT, UTIL) {
 
-    var Prototype = Core.Prototype(Core.Modules.Component, {
+    var Prototype = PROTOTYPE(COMPONENT, {
         type: "Form",
         selector: "oem-form"
     });
@@ -16,13 +16,13 @@
 
     Prototype.init = function(){
         // init only after oem components have been collected and initialized
-        Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype._init.bind(this));
+        oem.events.addEventListener(oem.EVENTS.COMPONENTS_COLLECTED, Prototype._init.bind(this));
     };
 
     Prototype._init = function(){
 
         // get fields
-        var fields = Core.Util.arrayFrom(this.getEl().children).map(function(field){
+        var fields = UTIL.arrayFrom(this.getEl().children).map(function(field){
             return field.id;
         });
 
@@ -120,21 +120,26 @@
     Prototype.convertCleanCollectionToObject = function(cleanCollection){
         var clean = {};
         for(var collection in cleanCollection) {
-            Core.Util.mixin(clean, cleanCollection[collection]);
+            UTIL.mixin(clean, cleanCollection[collection]);
         }
         return clean;
     },
 
     Prototype.submitForm = function(clean){
         // trigger event with data
-        Core.Events.dispatch(this.getEvents().submitted, this, clean);
+        oem.events.dispatch(this.getEvents().submitted, this, clean);
         // var e = new CustomEvent(, {detail: clean, type: this.getEvents().submitted});
-        // Core.Log(e);
+        // Core.Modules.Log(e);
         // return e;
     };
     
     // exports
-    Components.Form.Prototype = Prototype;
-    return Components;
+    COMPONENTS.Form.Prototype = Prototype;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(
+    oem.Components,
+    oem.Core.Modules.Prototype, 
+    oem.Core.Modules.Component, 
+    oem.Core.Modules.Util
+);

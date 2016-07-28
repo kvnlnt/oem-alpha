@@ -6,7 +6,7 @@
  * @return     {boolean}  { description_of_the_return_value }
  */
 
-oem.Core.Mixins = (function(Core, Mixins) {
+(function(MIXINS, VALIDATOR) {
 
     var Field = {};
 
@@ -79,7 +79,7 @@ oem.Core.Mixins = (function(Core, Mixins) {
     Field.validate = function(){
 
         // create a brand new one each time, that's right start over
-        var validator = new Core.Validator();
+        var validator = new VALIDATOR();
         var input = this.getEl();
         var value = this.field.value;
         var configElements = input.querySelectorAll('div.validations > div');
@@ -139,7 +139,7 @@ oem.Core.Mixins = (function(Core, Mixins) {
         }
     };
 
-    Mixins.Field = Field;
-    return Mixins;
+    MIXINS.Field = Field;
+    return MIXINS;
 
-})(oem.Core || {}, oem.Core.Mixins || {});
+})(oem.Core.Mixins, oem.Core.Modules.Validator);

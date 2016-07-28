@@ -23,7 +23,7 @@
 
     };
 
-    Core.Prototype = Prototype;
+    Core.Modules.Prototype = Prototype;
     return Core;
 
 })(oem.Core);

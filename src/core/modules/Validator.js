@@ -267,7 +267,7 @@
     };
 
     // Extend and return
-    Core.Validator = Validator;
+    Core.Modules.Validator = Validator;
     return Core;
 
 })(oem.Core);

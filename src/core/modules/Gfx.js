@@ -22,14 +22,14 @@
             }
         }
 
-        Core.Css.render('oem-images-css', css);
+        Core.Modules.Css.render('oem-images-css', css);
 
     };
 
     // do this automatically
-    Gfx.renderThemeImages(Core.Theme.IMAGES);
+    Gfx.renderThemeImages(Core.Modules.Theme.IMAGES);
 
-    Core.Gfx = Gfx;
+    Core.Modules.Gfx = Gfx;
     return Core;
     
 

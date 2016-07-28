@@ -1,7 +1,7 @@
 (function(Components, Core) {
 
     // Component component
-    var ComponentTest = Object.create(Core.Test); // call super constructor
+    var ComponentTest = Object.create(Core.Modules.Test); // call super constructor
     ComponentTest.name = "ComponentTests";
     ComponentTest.testComponent = 'oem-core-component-test';
     var component = Object.create(Core.Component);
@@ -30,7 +30,7 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         ComponentTest.runTestSuite('Component', [
             ComponentTest.canGetAndSetType,
             ComponentTest.canGetAndSetElements,

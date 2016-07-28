@@ -1,4 +1,4 @@
-(function(Components, Core) {
+(function(COMPONENTS) {
 
     var Css = [
 
@@ -12,7 +12,7 @@
     ];
 
 
-    Components.%CLASS%.Css = Css;
-    return Components;
+    COMPONENTS.%CLASS%.Css = Css;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components);

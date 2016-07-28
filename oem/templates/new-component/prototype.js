@@ -1,4 +1,4 @@
-(function(Components, Core) {
+(function(COMPONENTS, COMPONENT) {
 
 
     // PROTOTYPE
@@ -6,7 +6,7 @@
     // This is the main prototype class for this component. It is meant to:
     // 1) contain any/all functional behavior for this component.
     // 2) be prototyped into a new instance for each component
-    var Prototype = Core.Prototype(Core.Modules.Component, {
+    var Prototype = Core.Prototype(COMPONENT, {
         type: "%CLASS%",
         selector: "%SELECTOR%"
     });
@@ -72,7 +72,7 @@
     // EXPORTS
     // ========================================================
     // Probably only want to export the prototype
-    Components.%CLASS%.Prototype = Prototype;
-    return Components;
+    COMPONENTS.%CLASS%.Prototype = Prototype;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Modules.Component);

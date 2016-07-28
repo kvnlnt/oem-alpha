@@ -1,17 +1,17 @@
 (function (Components, Core) {
 
     // AutoInitializer component
-    var AutoInitializerTest = Object.create(Core.Test); // call super constructor
+    var AutoInitializerTest = Object.create(Core.Modules.Test); // call super constructor
     AutoInitializerTest.name = "AutoInitializerTests";
     AutoInitializerTest.testComponent = 'oem-core-auto-initializer-test';
     var autoInitializer = Object.create(Core.AutoInitializer);
 
     AutoInitializerTest.canInitializeComponent = function () {
-        var testEl = Core.El("div", {"class":"test-component"}, "");
+        var testEl = Core.Modules.El("div", {"class":"test-component"}, "");
         document.body.appendChild(testEl);
         var initWasCalled = false;
         var testComponent = {};
-        testComponent.Prototype = Core.Prototype(Core.Component, {
+        testComponent.Prototype = Core.Modules.Prototype(Core.Component, {
             type: "testComponent",
             selector: "test-component",
         });
@@ -25,7 +25,7 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function () {
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function () {
         AutoInitializerTest.runTestSuite('AutoInitializer', [
             AutoInitializerTest.canInitializeComponent
         ]);

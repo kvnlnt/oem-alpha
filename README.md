@@ -84,6 +84,10 @@ Like webpack, OEM's final artifact is a single javascript file. Each component h
      - oem.Collections
      - [el].oem
 
+## Coding Styles
+
+1. Uppercase imported module variables to avoid collisions
+
 ### Core
 The Core provides the following features and abilities:
 

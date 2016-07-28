@@ -5,7 +5,7 @@
         {
             selector: "oem-button, .oem-button",
             declaration: [
-                "font-size:" + Core.Theme.FONT.SIZE.MEDIUM + "px",
+                "font-size:" + Core.Modules.Theme.FONT.SIZE.MEDIUM + "px",
                 "padding: 5px 10px",
                 "border:0",
                 "cursor:pointer"

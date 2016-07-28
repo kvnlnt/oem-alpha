@@ -113,7 +113,7 @@
         }
     };
 
-    Core.EventBus = EventBus;
+    Core.Modules.EventBus = EventBus;
     return Core;
 
 })(oem.Core);

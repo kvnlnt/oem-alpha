@@ -28,9 +28,9 @@
     Oem.create = function (component, options) {
         // this is a creational mediator pattern which calls the root prototype
         // and creates' an instance
-        var component = Core.Prototype(component, options);
+        var component = Core.Modules.Prototype(component, options);
         component.init();
-        component.setId(component.getEl().id || Core.Util.guid());
+        component.setId(component.getEl().id || Core.Modules.Util.guid());
         component.el.oem = component; // attach pointer to instance on element
         oem.list.all[component.getId()] = component;
         return component;
@@ -77,9 +77,10 @@
     };
 
     /**
-     * Proxy to internal event bus
+     * Proxy to internal event bus and enum
      */
-    Oem.events = Core.Events;
+    Oem.events = Core.Modules.Events;
+    Oem.EVENTS = Core.Modules.EVENTS;
 
     /**
      * Return main oem namespace object

@@ -71,8 +71,8 @@
 
     ];
 
-    Core.Css.render('oem-test-css', css);
-    Core.Test = Test;
+    Core.Modules.Css.render('oem-test-css', css);
+    Core.Modules.Test = Test;
     return Core;
 
 })(oem.Core);

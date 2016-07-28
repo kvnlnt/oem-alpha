@@ -61,11 +61,11 @@
     };
 
     // generate onload
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         Css.renderComponentCss(oem.Components);
     });
 
-    Core.Css = Css;
+    Core.Modules.Css = Css;
     return Core;
 
 })(oem.Core);

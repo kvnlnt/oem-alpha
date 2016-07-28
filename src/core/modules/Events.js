@@ -7,28 +7,28 @@
         COMPONENTS_COLLECTED: "COMPONENTS_COLLECTED"
     };
 
-    var Events = new oem.Core.EventBus();
+    var Events = new Core.Modules.EventBus();
 
     // when all dom content is loaded
     document.addEventListener("DOMContentLoaded", function(event) {
         Events.dispatch(EVENTS.DOCUMENT_READY, this);
-        Core.Log(EVENTS.DOCUMENT_READY);
+        Core.Modules.Log(EVENTS.DOCUMENT_READY);
     });
 
     // when the window is resized
-    window.addEventListener("resize", Core.Util.debounce(function() {
+    window.addEventListener("resize", Core.Modules.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_RESIZED, this);
-        Core.Log(EVENTS.WINDOW_RESIZED);
+        Core.Modules.Log(EVENTS.WINDOW_RESIZED);
     }, 250), true);
     
     // when the window is scrolled
-    window.addEventListener("scroll", Core.Util.debounce(function() {
+    window.addEventListener("scroll", Core.Modules.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_SCROLLED, this);
-        Core.Log(EVENTS.WINDOW_SCROLLED);
+        Core.Modules.Log(EVENTS.WINDOW_SCROLLED);
     }, 250), true);
 
-    Core.EVENTS = EVENTS;
-    Core.Events = Events;
+    Core.Modules.EVENTS = EVENTS;
+    Core.Modules.Events = Events;
     return Core;
 
 })(oem.Core);

@@ -40,11 +40,11 @@
         }
 
         // go tell it on the mountain
-        Core.Events.dispatch(Core.EVENTS.COMPONENTS_COLLECTED, this);
+        Core.Modules.Events.dispatch(Core.Modules.EVENTS.COMPONENTS_COLLECTED, this);
     };
 
     // collect on document ready
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         AutoInitializer.initializeAll(oem.Components);
     });
 

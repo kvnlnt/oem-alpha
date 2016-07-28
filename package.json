@@ -104,7 +104,6 @@
                     "./src/core/modules/El.js",
                     "./src/core/modules/Theme.js",
                     "./src/core/modules/Logger.js",
-                    "./src/core/modules/Device.js",
                     "./src/core/modules/Util.js",
                     "./src/core/modules/EventBus.js",
                     "./src/core/modules/Events.js",

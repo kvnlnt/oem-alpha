@@ -1,10 +1,10 @@
-(function(Components, Core) {
+(function(COMPONENTS) {
 
     // Main component namespace
     var %CLASS% = {};
     
     // exports
-    Components.%CLASS% = %CLASS%;
-    return Components;
+    COMPONENTS.%CLASS% = %CLASS%;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components);

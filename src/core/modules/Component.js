@@ -5,7 +5,7 @@
     Component.id = null;
     Component.type = "Component";
     Component.selector = "selector";
-    Component.breakpoints = Core.Responsifier.BREAKPOINTS;
+    Component.breakpoints = Core.Modules.Responsifier.BREAKPOINTS;
     Component.events = {};
 
     Component.init = function(){
@@ -37,7 +37,6 @@
     Component.getEvents = function(){
         return this.events;
     };
-
 
     // SETTERS
 

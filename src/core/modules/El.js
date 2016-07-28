@@ -51,7 +51,7 @@
  
     }
 
-    Core.El = El;
+    Core.Modules.El = El;
     return Core;
 
 })(oem.Core);

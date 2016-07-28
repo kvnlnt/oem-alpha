@@ -5,12 +5,12 @@
         {
             selector: "oem-card, .oem-card",
             declaration: [
-                "background-color: " + Core.Theme.COLORS.WHITE,
+                "background-color: " + Core.Modules.Theme.COLORS.WHITE,
                 "font-size: 16px",
                 "display:block",
                 "padding:10px",
                 "text-align:center",
-                "box-shadow: 0px 0px 4px " + Core.Theme.COLORS.GREY
+                "box-shadow: 0px 0px 4px " + Core.Modules.Theme.COLORS.GREY
             ]
         },
 

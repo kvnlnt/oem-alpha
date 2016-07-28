@@ -1,10 +1,10 @@
 (function(Components, Core) {
 
     // Events component
-    var EventsTest = Object.create(Core.Test); // call super constructor
+    var EventsTest = Object.create(Core.Modules.Test); // call super constructor
     EventsTest.name = "EventsTests";
     EventsTest.testComponent = 'oem-core-events-test';
-    var component = Object.create(Core.Events);
+    var component = Object.create(Core.Modules.Events);
     component.name = "TestEvents";
 
     // event driven architecture is very difficult to test, do basic existential checks here
@@ -22,14 +22,14 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         EventsTest.runTestSuite('Events', [
             EventsTest.sanity
         ]);
     });
 
     // exports
-    Core.EventsTest = EventsTest;
+    Core.Modules.EventsTest = EventsTest;
     return Core;
 
 })(oem.Components, oem.Core);

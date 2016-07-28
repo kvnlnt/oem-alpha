@@ -1,6 +1,6 @@
 (function(Components, Core) {
     
-    var Prototype = Core.Prototype(Core.Modules.Component, {
+    var Prototype = Core.Modules.Prototype(Core.Modules.Component, {
         type: "Stylizer",
         selector: "oem-stylizer"
     });
@@ -18,15 +18,15 @@
         var colorHex;
         var colorSwatch;
         var colorControl;
-        for(var i in Core.Theme.COLORS){
-            colorName = Core.El("td", {}, " " + i + " ");
-            colorHex = Core.El("td", {}, Core.Theme.COLORS[i]);
-            colorSwatch = Core.El("td", {style:"background-color:"+Core.Theme.COLORS[i]});
-            colorControl = Core.El("tr", {class:"control"}, [colorSwatch, colorName, colorHex]);
+        for(var i in Core.Modules.Theme.COLORS){
+            colorName = Core.Modules.El("td", {}, " " + i + " ");
+            colorHex = Core.Modules.El("td", {}, Core.Modules.Theme.COLORS[i]);
+            colorSwatch = Core.Modules.El("td", {style:"background-color:"+Core.Modules.Theme.COLORS[i]});
+            colorControl = Core.Modules.El("tr", {class:"control"}, [colorSwatch, colorName, colorHex]);
             colorControls.push(colorControl);
         }
 
-        var colorControlsWrapper = Core.El("table", {class:"colors"}, colorControls);
+        var colorControlsWrapper = Core.Modules.El("table", {class:"colors"}, colorControls);
         this.getEl().appendChild(colorControlsWrapper);
 
         return this;

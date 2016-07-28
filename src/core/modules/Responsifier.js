@@ -76,12 +76,12 @@
 
 
      // run after all components have been collected
-     Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
-     Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, function(){
+     Core.Modules.Events.addEventListener(Core.Modules.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
+     Core.Modules.Events.addEventListener(Core.Modules.EVENTS.WINDOW_RESIZED, function(){
         Responsifier.responsify();
      });
 
-     Core.Responsifier = Responsifier;
+     Core.Modules.Responsifier = Responsifier;
      return Core;
 
  })(oem.Core);

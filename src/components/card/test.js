@@ -1,6 +1,6 @@
 (function(Components, Core) {
 
-    var Test = Object.create(Core.Test); // call super constructor
+    var Test = Object.create(Core.Modules.Test); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'oem-card-test';
 
@@ -26,7 +26,7 @@
 
         // test
         card.init();
-        Core.Responsifier.responsify();
+        Core.Modules.Responsifier.responsify();
         Test.assert('is mobile response', thCard.classList.contains('mobile'), true);
 
         // clean up
@@ -56,7 +56,7 @@
 
         // test
         card.init();
-        Core.Responsifier.responsify();
+        Core.Modules.Responsifier.responsify();
         Test.assert('is tablet response', thCard.classList.contains('tablet'), true);
 
         // clean up
@@ -86,7 +86,7 @@
 
         // test
         card.init();
-        Core.Responsifier.responsify();
+        Core.Modules.Responsifier.responsify();
         Test.assert('is desktop response', thCard.classList.contains('desktop'), true);
 
         // clean up
@@ -97,7 +97,7 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('Card', [
             Test.isMobileResponsive,
             Test.isTabletResponsive,

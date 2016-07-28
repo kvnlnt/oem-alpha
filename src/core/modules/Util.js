@@ -86,7 +86,7 @@
         return vars;
     };
 
-    Core.Util = Util;
+    Core.Modules.Util = Util;
     return Core;
 
 })(oem.Core);

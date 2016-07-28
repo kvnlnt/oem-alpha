@@ -1,7 +1,7 @@
-(function(Components) {
+(function(COMPONENTS) {
 
     var Gfx = {};
-    Components.%CLASS%.Gfx = Gfx;
-    return Components;
+    COMPONENTS.%CLASS%.Gfx = Gfx;
+    return COMPONENTS;
 
 })(oem.Components);

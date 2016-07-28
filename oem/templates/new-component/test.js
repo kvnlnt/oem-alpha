@@ -1,6 +1,6 @@
-(function(Components, Core) {
+(function(COMPONENTS, TEST) {
 
-    var Test = Object.create(Core.Test); // call super constructor
+    var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
     Test.testComponent = '%SELECTOR%-test';
 
@@ -16,14 +16,14 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('%CLASS%', [
             Test.exampleIsWorking
         ]);
     });
 
     // exports
-    Components.%CLASS%.Test = Test;
-    return Components;
+    COMPONENTS.%CLASS%.Test = Test;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Test);

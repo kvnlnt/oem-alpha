@@ -34,7 +34,7 @@
     Theme.IMAGES             = IMAGES;
 
     // exports
-    Core.Theme               = Theme;
+    Core.Modules.Theme               = Theme;
     return Core;
 
 })(oem.Core);

@@ -1,6 +1,6 @@
 (function(Components, Core) {
 
-    var Test = Object.create(Core.Test); // call super constructor
+    var Test = Object.create(Core.Modules.Test); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'oem-button-test';
 
@@ -16,7 +16,7 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('Button', [
             Test.exampleIsWorking
         ]);

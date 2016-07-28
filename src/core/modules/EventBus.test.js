@@ -1,13 +1,13 @@
 (function(Components, Core) {
 
     // EventBus component
-    var EventBusTest = Object.create(Core.Test); // call super constructor
+    var EventBusTest = Object.create(Core.Modules.Test); // call super constructor
     EventBusTest.name = "EventBusTests";
     EventBusTest.testComponent = 'oem-core-event-bus-test';
-    var component = Object.create(Core.EventBus);
+    var component = Object.create(Core.Modules.EventBus);
     component.name = "TestEventBus";
 
-    var testEventBus = new Core.EventBus();
+    var testEventBus = new Core.Modules.EventBus();
     function testCallback(){}
 
     EventBusTest.canAddDetectAndGetListeners = function(){
@@ -49,7 +49,7 @@
     /**
      * Run tests
      */
-    Core.Events.addEventListener(Core.EVENTS.DOCUMENT_READY, function(){
+    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         EventBusTest.runTestSuite('EventBus', [
             EventBusTest.canAddDetectAndGetListeners,
             EventBusTest.canRemoveListener,
@@ -58,7 +58,7 @@
     });
 
     // exports
-    Core.EventBusTest = EventBusTest;
+    Core.Modules.EventBusTest = EventBusTest;
     return Core;
 
 })(oem.Components, oem.Core);

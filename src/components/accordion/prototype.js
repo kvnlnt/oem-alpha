@@ -1,6 +1,6 @@
 (function(Components, Core) {
 
-    var Prototype = Core.Prototype(Core.Modules.Component, {
+    var Prototype = Core.Modules.Prototype(Core.Modules.Component, {
         type: "Accordion",
         selector:"oem-accordion"
     });

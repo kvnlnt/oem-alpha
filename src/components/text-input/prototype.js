@@ -1,13 +1,13 @@
 (function(Components, Core) {
 
-    var Prototype = Core.Prototype(Core.Modules.Component, {
+    var Prototype = Core.Modules.Prototype(Core.Modules.Component, {
         type: "TextInput",
         selector: "oem-text-input"
     });
 
     // MIXINS
 
-    Core.Util.mixin(Prototype, Core.Mixins.Field); // mixin field functions
+    Core.Modules.Util.mixin(Prototype, Core.Mixins.Field); // mixin field functions
 
     // INIT
 

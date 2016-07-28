@@ -2,7 +2,7 @@
 
     function Log() {
         // logging enabled by the presence of the "logging" url parameter
-        if(!Core.Util.getUrlVars().logging) return false;
+        if(!Core.Modules.Util.getUrlVars().logging) return false;
         try {
             console.log.apply(console, arguments);
         } catch(err){
@@ -11,7 +11,7 @@
         }
     };
 
-    Core.Log = Log;
+    Core.Modules.Log = Log;
     return Core;
 
 })(oem.Core);
