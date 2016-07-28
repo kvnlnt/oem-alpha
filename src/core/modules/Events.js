@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     var EVENTS = {
         DOCUMENT_READY: "DOCUMENT_READY",
@@ -31,4 +31,4 @@ oem.Core = (function(Core) {
     Core.Events = Events;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

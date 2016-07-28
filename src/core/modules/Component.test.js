@@ -1,4 +1,4 @@
-oem.Core = (function(Components, Core) {
+(function(Components, Core) {
 
     // Component component
     var ComponentTest = Object.create(Core.Test); // call super constructor
@@ -39,7 +39,7 @@ oem.Core = (function(Components, Core) {
     });
 
     // exports
-    Core.ComponentTest = ComponentTest;
+    Core.Modules.ComponentTest = ComponentTest;
     return Core;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

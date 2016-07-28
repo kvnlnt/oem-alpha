@@ -13,7 +13,7 @@
  * 
  */
 
- oem.Core =  (function(Core) {
+(function(Core) {
 
     "use strict";
 
@@ -270,4 +270,4 @@
     Core.Validator = Validator;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

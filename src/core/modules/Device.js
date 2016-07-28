@@ -1,4 +1,4 @@
-oem.Core = (function(Core){
+(function(Core){
 
     // Module
     var Device = {};
@@ -113,4 +113,4 @@ oem.Core = (function(Core){
     Core.Device = Device;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

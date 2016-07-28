@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     var Theme                = {};
 

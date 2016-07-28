@@ -1,7 +1,7 @@
-oem.Components = (function(Components) {
+(function(Components) {
 
     var Gfx = {};
     Components.Stylizer.Gfx = Gfx;
     return Components;
 
-})(oem.Components || {});
+})(oem.Components);

@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
     var Stylizer = {};
     
@@ -6,4 +6,4 @@ oem.Components = (function(Components, Core) {
     Components.Stylizer = Stylizer;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

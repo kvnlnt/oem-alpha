@@ -1,4 +1,4 @@
-oem.Core = (function (Components, Core) {
+(function (Components, Core) {
 
     // AutoInitializer component
     var AutoInitializerTest = Object.create(Core.Test); // call super constructor
@@ -32,7 +32,7 @@ oem.Core = (function (Components, Core) {
     });
 
     // exports
-    Core.AutoInitializerTest = AutoInitializerTest;
+    Core.Modules.AutoInitializerTest = AutoInitializerTest;
     return Core;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

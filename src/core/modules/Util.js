@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     // Module
     var Util = {};
@@ -89,4 +89,4 @@ oem.Core = (function(Core) {
     Core.Util = Util;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

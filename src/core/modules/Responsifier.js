@@ -1,4 +1,4 @@
- oem.Core = (function(Core) {
+(function(Core) {
 
      var Responsifier = {};
 
@@ -84,4 +84,4 @@
      Core.Responsifier = Responsifier;
      return Core;
 
- })(oem.Core || {});
+ })(oem.Core);

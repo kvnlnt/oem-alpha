@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
     var Css = [
 
@@ -18,4 +18,4 @@ oem.Components = (function(Components, Core) {
     Components.Button.Css = Css;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

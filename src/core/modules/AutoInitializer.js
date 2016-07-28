@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     // Card component
     var AutoInitializer = {};
@@ -49,7 +49,7 @@ oem.Core = (function(Core) {
     });
 
     // exports
-    Core.AutoInitializer = AutoInitializer;
+    Core.Modules.AutoInitializer = AutoInitializer;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

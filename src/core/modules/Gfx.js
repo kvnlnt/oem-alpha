@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     var Gfx = {};
 
@@ -33,4 +33,4 @@ oem.Core = (function(Core) {
     return Core;
     
 
-})(oem.Core || {});
+})(oem.Core);

@@ -20,7 +20,7 @@
 //     </div>
 // </div>
 
-oem.Core = (function(Core) { 
+(function(Core) { 
 
     function El(tag, attrs, content) {
 
@@ -54,4 +54,4 @@ oem.Core = (function(Core) {
     Core.El = El;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
     // TextInput component
     var Test = Object.create(Core.Test); // call super constructor
@@ -27,4 +27,4 @@ oem.Components = (function(Components, Core) {
     Components.TextInput.Test = Test;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

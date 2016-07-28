@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
     // Main component namespace
     var %CLASS% = {};
@@ -7,4 +7,4 @@ oem.Components = (function(Components, Core) {
     Components.%CLASS% = %CLASS%;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

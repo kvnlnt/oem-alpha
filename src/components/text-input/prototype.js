@@ -1,6 +1,6 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
-    var Prototype = Core.Prototype(Core.Component, {
+    var Prototype = Core.Prototype(Core.Modules.Component, {
         type: "TextInput",
         selector: "oem-text-input"
     });
@@ -18,4 +18,4 @@ oem.Components = (function(Components, Core) {
     Components.TextInput.Prototype = Prototype;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

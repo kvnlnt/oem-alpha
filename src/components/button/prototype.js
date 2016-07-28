@@ -1,6 +1,6 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
-    var Prototype = Core.Prototype(Core.Component, {
+    var Prototype = Core.Prototype(Core.Modules.Component, {
         type: "Button",
         selector: "oem-button"
     });
@@ -9,4 +9,4 @@ oem.Components = (function(Components, Core) {
     Components.Button.Prototype = Prototype;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

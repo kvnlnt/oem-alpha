@@ -1,4 +1,4 @@
-oem.Core = (function(Core){
+(function(Core){
 
     function Log() {
         // logging enabled by the presence of the "logging" url parameter
@@ -14,4 +14,4 @@ oem.Core = (function(Core){
     Core.Log = Log;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

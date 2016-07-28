@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     function Extends(proto) {
       function F() {}
@@ -10,5 +10,5 @@ oem.Core = (function(Core) {
     return Core;
     
 
-})(oem.Core || {});
+})(oem.Core);
 

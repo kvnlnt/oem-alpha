@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
     // Card component
     var TextInput = {};
@@ -7,4 +7,4 @@ oem.Components = (function(Components, Core) {
     Components.TextInput = TextInput;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

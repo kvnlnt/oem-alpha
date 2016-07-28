@@ -1,4 +1,5 @@
-oem = (function (Oem, Core) {
+// Core oem object
+(function (Oem, Core) {
 
     Oem.version = 1;
 
@@ -85,4 +86,4 @@ oem = (function (Oem, Core) {
      */
     return Oem;
 
-})(oem, oem.Core || {});
+})(oem, oem.Core);

@@ -132,7 +132,7 @@ DevelopComponent.prototype = {
 
         // test core and component test files
         var testFiles = [];
-        testFiles.push("./src/core/Test.js");
+        testFiles.push("./src/core/modules/Test.js");
         testFiles.push(pkg.oem.components[this.component].tests);
 
         // flatten arrays

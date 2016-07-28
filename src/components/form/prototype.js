@@ -1,8 +1,8 @@
 // USAGE
 // - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
-    var Prototype = Core.Prototype(Core.Component, {
+    var Prototype = Core.Prototype(Core.Modules.Component, {
         type: "Form",
         selector: "oem-form"
     });
@@ -137,4 +137,4 @@ oem.Components = (function(Components, Core) {
     Components.Form.Prototype = Prototype;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

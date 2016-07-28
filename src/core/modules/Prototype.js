@@ -1,4 +1,4 @@
-oem.Core = (function(Core) { 
+(function(Core) { 
 
     function Prototype(proto, settings) {
 
@@ -26,4 +26,4 @@ oem.Core = (function(Core) {
     Core.Prototype = Prototype;
     return Core;
 
-})(oem.Core || {});
+})(oem.Core);

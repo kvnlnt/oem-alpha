@@ -1,4 +1,4 @@
-oem.Components = (function(Components, Core) {
+(function(Components, Core) {
 
 
     // PROTOTYPE
@@ -6,7 +6,7 @@ oem.Components = (function(Components, Core) {
     // This is the main prototype class for this component. It is meant to:
     // 1) contain any/all functional behavior for this component.
     // 2) be prototyped into a new instance for each component
-    var Prototype = Core.Prototype(Core.Component, {
+    var Prototype = Core.Prototype(Core.Modules.Component, {
         type: "%CLASS%",
         selector: "%SELECTOR%"
     });
@@ -75,4 +75,4 @@ oem.Components = (function(Components, Core) {
     Components.%CLASS%.Prototype = Prototype;
     return Components;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

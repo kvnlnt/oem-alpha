@@ -1,4 +1,4 @@
-oem.Core = (function(Components, Core) {
+(function(Components, Core) {
 
     // Responsifier component
     var ResponsifierTest = Object.create(Core.Test); // call super constructor
@@ -57,4 +57,4 @@ oem.Core = (function(Components, Core) {
     Core.ResponsifierTest = ResponsifierTest;
     return Core;
 
-})(oem.Components || {}, oem.Core);
+})(oem.Components, oem.Core);

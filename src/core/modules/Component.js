@@ -1,4 +1,4 @@
-oem.Core = (function(Core) {
+(function(Core) {
 
     var Component = {};
     Component.el = null;
@@ -72,9 +72,9 @@ oem.Core = (function(Core) {
         return this;
     };
 
-    Core.Component = Component;
+    Core.Modules.Component = Component;
     return Core;
     
 
-})(oem.Core || {});
+})(oem.Core);
 

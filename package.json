@@ -83,13 +83,6 @@
                     "button"
                 ],
                 "customizations": []
-            },
-            "kevin": {
-                "components": [
-                    "core",
-                    "kevin"
-                ],
-                "customizations": []
             }
         },
         "components": {
@@ -106,33 +99,33 @@
                     "./src/core/polyfills/ArrayForEach.js",
                     "./src/core/polyfills/ObjectCreate.js",
                     "./src/core/polyfills/ObjectKeys.js",
-                    "./src/core/Namespacer.js",
-                    "./src/core/Prototype.js",
-                    "./src/core/El.js",
-                    "./src/core/Theme.js",
-                    "./src/core/Logger.js",
-                    "./src/core/Device.js",
-                    "./src/core/Util.js",
-                    "./src/core/EventBus.js",
-                    "./src/core/Events.js",
-                    "./src/core/Css.js",
-                    "./src/core/Responsifier.js",
-                    "./src/core/Component.js",
-                    "./src/core/AutoInitializer.js",
-                    "./src/core/Gfx.js",
-                    "./src/core/Validator.js",
+                    "./src/core/modules/Namespacer.js",
+                    "./src/core/modules/Prototype.js",
+                    "./src/core/modules/El.js",
+                    "./src/core/modules/Theme.js",
+                    "./src/core/modules/Logger.js",
+                    "./src/core/modules/Device.js",
+                    "./src/core/modules/Util.js",
+                    "./src/core/modules/EventBus.js",
+                    "./src/core/modules/Events.js",
+                    "./src/core/modules/Css.js",
+                    "./src/core/modules/Responsifier.js",
+                    "./src/core/modules/Component.js",
+                    "./src/core/modules/AutoInitializer.js",
+                    "./src/core/modules/Gfx.js",
+                    "./src/core/modules/Validator.js",
                     "./src/core/mixins/Field.js",
                     "./src/core/Oem.js"
                 ],
                 "tests": [
-                    "./src/core/AutoInitializer.test.js",
-                    "./src/core/Component.test.js",
-                    "./src/core/Css.test.js",
-                    "./src/core/Events.test.js",
-                    "./src/core/EventBus.test.js",
-                    "./src/core/Util.test.js",
-                    "./src/core/Responsifier.test.js",
-                    "./src/core/El.test.js"
+                    "./src/core/modules/AutoInitializer.test.js",
+                    "./src/core/modules/Component.test.js",
+                    "./src/core/modules/Css.test.js",
+                    "./src/core/modules/Events.test.js",
+                    "./src/core/modules/EventBus.test.js",
+                    "./src/core/modules/Util.test.js",
+                    "./src/core/modules/Responsifier.test.js",
+                    "./src/core/modules/El.test.js"
                 ],
                 "templates": {
                     "description": "./oem/templates/core/description.html",
@@ -239,23 +232,6 @@
                     "examples": "./src/components/button/templates/examples.html",
                     "tests": "./src/components/button/templates/tests.html",
                     "usage": "./src/components/button/templates/usage.html"
-                }
-            },
-            "kevin": {
-                "files": [
-                    "./src/components/kevin/module.js",
-                    "./src/components/kevin/gfx.js",
-                    "./src/components/kevin/css.js",
-                    "./src/components/kevin/prototype.js"
-                ],
-                "tests": [
-                    "./src/components/kevin/test.js"
-                ],
-                "templates": {
-                    "description": "./src/components/kevin/templates/description.html",
-                    "examples": "./src/components/kevin/templates/examples.html",
-                    "tests": "./src/components/kevin/templates/tests.html",
-                    "usage": "./src/components/kevin/templates/usage.html"
                 }
             }
         }
