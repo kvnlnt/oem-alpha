@@ -95,7 +95,7 @@
             configElement = configElements[i];
             errorMessage = configElement.innerText;
             validation = configElement.dataset.validation;
-            settings = configElement.dataset.settings.split(',');
+            settings = configElement.dataset.validationArgs.split(',');
             arguments = [];
             arguments.push(this.fieldName);
             arguments.push(this.label);
