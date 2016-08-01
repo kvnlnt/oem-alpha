@@ -47,7 +47,7 @@ function show(){
     console.log("");
     console.log(chalk.bold("   deploy"));
     console.log("");
-    console.log("      Purpose:", "   deploys a configuration from package.oem.deployments");
+    console.log("      Purpose:", "    deploys a configuration from package.oem.deployments");
     console.log("      Arguments:", "  [Deployment Name]");
     console.log("      Example:", "    node oem deploy all");
     console.log("");
