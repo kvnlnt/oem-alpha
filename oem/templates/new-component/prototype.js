@@ -75,4 +75,4 @@
     COMPONENTS.%CLASS%.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Component);
+})(oem.Components, oem.Core.Prototypes.Component);

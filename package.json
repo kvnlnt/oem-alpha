@@ -109,22 +109,22 @@
                     "./src/core/modules/Events.js",
                     "./src/core/modules/Css.js",
                     "./src/core/modules/Responsifier.js",
-                    "./src/core/modules/Component.js",
                     "./src/core/modules/AutoInitializer.js",
                     "./src/core/modules/Gfx.js",
                     "./src/core/modules/Validator.js",
+                    "./src/core/prototypes/Component.js",
                     "./src/core/mixins/Field.js",
                     "./src/core/Oem.js"
                 ],
                 "tests": [
                     "./src/core/modules/AutoInitializer.test.js",
-                    "./src/core/modules/Component.test.js",
                     "./src/core/modules/Css.test.js",
                     "./src/core/modules/Events.test.js",
                     "./src/core/modules/EventBus.test.js",
                     "./src/core/modules/Util.test.js",
                     "./src/core/modules/Responsifier.test.js",
-                    "./src/core/modules/El.test.js"
+                    "./src/core/modules/El.test.js",
+                    "./src/core/prototypes/Component.test.js"
                 ],
                 "templates": {
                     "description": "./oem/templates/core/description.html",

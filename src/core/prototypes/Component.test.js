@@ -39,7 +39,7 @@
     });
 
     // exports
-    Core.Modules.ComponentTest = ComponentTest;
+    Core.Prototypes.ComponentTest = ComponentTest;
     return Core;
 
 })(oem.Components, oem.Core);

@@ -1,6 +1,6 @@
 (function(Components, Core) {
 
-    var Prototype = Core.Modules.Prototype(Core.Modules.Component, {
+    var Prototype = Core.Modules.Prototype(Core.Prototypes.Component, {
         type:"Card",
         selector:"oem-card"
     });

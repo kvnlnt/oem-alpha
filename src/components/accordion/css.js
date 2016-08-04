@@ -1,4 +1,4 @@
-(function(Components, Core) {
+(function(COMPONENTS, CORE) {
 
     var Css = [
 
@@ -7,7 +7,7 @@
             declaration: [
                 "margin:0",
                 "padding:0",
-                "border-bottom:1px solid " + Core.Modules.Theme.COLORS.GREY
+                "border-bottom:1px solid " + CORE.Modules.Theme.COLORS.GREY
             ]
         },
 
@@ -17,8 +17,8 @@
                 "margin:0",
                 "line-height:40px",
                 "padding:10px",
-                "border-top:1px solid " + Core.Modules.Theme.COLORS.GREY,
-                "background-color: " + Core.Modules.Theme.COLORS.GREY,
+                "border-top:1px solid " + CORE.Modules.Theme.COLORS.GREY,
+                "background-color: " + CORE.Modules.Theme.COLORS.GREY,
                 "cursor:pointer"
             ]
         },
@@ -26,7 +26,7 @@
         {
             selector: "oem-accordion dt:hover, .oem-accordion dt:hover",
             declaration: [
-                "background-color:" + Core.Modules.Theme.COLORS.GREY
+                "background-color:" + CORE.Modules.Theme.COLORS.GREY
             ]
         },
 
@@ -53,7 +53,7 @@
 
     ];
 
-    Components.Accordion.Css = Css;
-    return Components;
+    COMPONENTS.Accordion.Css = Css;
+    return COMPONENTS;
 
 })(oem.Components, oem.Core);

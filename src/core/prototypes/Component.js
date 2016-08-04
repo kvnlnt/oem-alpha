@@ -71,7 +71,7 @@
         return this;
     };
 
-    Core.Modules.Component = Component;
+    Core.Prototypes.Component = Component;
     return Core;
     
 

@@ -1,9 +1,9 @@
-(function(Components, Core) {
+(function(COMPONENTS) {
 
     var Accordion = {};
     
     // exports
-    Components.Accordion = Accordion;
-    return Components;
+    COMPONENTS.Accordion = Accordion;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components);

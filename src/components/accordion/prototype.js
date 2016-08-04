@@ -1,6 +1,6 @@
-(function(Components, Core) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT) {
 
-    var Prototype = Core.Modules.Prototype(Core.Modules.Component, {
+    var Prototype = PROTOTYPE(COMPONENT, {
         type: "Accordion",
         selector:"oem-accordion"
     });
@@ -87,7 +87,7 @@
         return this;
     };
 
-    Components.Accordion.Prototype = Prototype;
-    return Components;
+    COMPONENTS.Accordion.Prototype = Prototype;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Modules.Prototype, oem.Core.Prototypes.Component);

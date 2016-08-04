@@ -140,6 +140,6 @@
 })(
     oem.Components,
     oem.Core.Modules.Prototype, 
-    oem.Core.Modules.Component, 
+    oem.Core.Prototypes.Component, 
     oem.Core.Modules.Util
 );
