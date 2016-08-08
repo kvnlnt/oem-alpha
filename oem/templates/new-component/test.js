@@ -2,7 +2,7 @@
 
     var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
-    Test.testComponent = '%SELECTOR%-test';
+    Test.testComponent = '%CLASS%-test';
 
     /**
      * Test example
@@ -26,4 +26,4 @@
     COMPONENTS.%CLASS%.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Test);
+})(oem.Components, oem.Core.Modules.Test);

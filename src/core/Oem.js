@@ -29,10 +29,10 @@
         // this is a creational mediator pattern which calls the root prototype
         // and creates' an instance
         var component = Core.Modules.Prototype(component, options);
-        component.init();
-        component.setId(component.getEl().id || Core.Modules.Util.guid());
+        component.setId(component.getEl().dataset.oemId || Core.Modules.Util.guid());
         component.el.oem = component; // attach pointer to instance on element
         oem.list.all[component.getId()] = component;
+        component.init();
         return component;
     };
 

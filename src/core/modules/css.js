@@ -9,12 +9,13 @@
      * @param      {<type>}           css     { description }
      * @return     {(Object|string)}  { description_of_the_return_value }
      */
-    Css.translateCss = function(css) {
+    Css.translateCss = function(id, css) {
+        var selector = '[data-oem="'+id+'"]';
         var declarations = function(declaration) {
             return "   " + declaration + ";\n";
         };
         var rules = function(rule) {
-            return rule.selector + " {\n" + rule.declaration.map(declarations).join('') + "}";
+            return selector + ' ' + rule.selector + " {\n" + rule.declaration.map(declarations).join('') + "}";
         };
         // all rules
         return css.map(rules).join('\n\n');
@@ -29,19 +30,19 @@
      * @return     {Object}         - self
      */
     Css.render = function(id, css) {
-        var _head = document.getElementsByTagName('head')[0];
-        var _style = document.createElement("style");
-        _style.setAttribute("type", "text/css");
-        _style.setAttribute("id", id);
+        var head = document.getElementsByTagName('head')[0];
+        var style = document.createElement("style");
+        style.setAttribute("type", "text/css");
+        style.setAttribute("data-oem-css", id);
         // XXX: this is for IE8
         // we have to try catch this because polyfills don't account for cssText
         try {
-             _style.innerHTML = this.translateCss(css);
+             style.innerHTML = this.translateCss(id, css);
          } catch(err) {
-            _style.styleSheet.cssText = this.translateCss(css);
+            style.styleSheet.cssText = this.translateCss(id, css);
          }
-        _head.appendChild(_style);
-        return _style;
+        head.appendChild(style);
+        return style;
     };
 
     /**
@@ -54,7 +55,7 @@
         for (var component in oem.Components) {
             component = oem.Components[component];
             if(component.hasOwnProperty("Css")){
-                id = component.Prototype.selector+"-css";
+                id = component.Prototype.type;
                 Css.render(id, component.Css);
             }
         }

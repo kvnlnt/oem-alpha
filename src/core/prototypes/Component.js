@@ -4,7 +4,6 @@
     Component.el = null;
     Component.id = null;
     Component.type = "Component";
-    Component.selector = "selector";
     Component.breakpoints = Core.Modules.Responsifier.BREAKPOINTS;
     Component.events = {};
 
@@ -20,10 +19,6 @@
 
     Component.getEl = function(){
         return this.el;
-    };
-
-    Component.getSelector = function(){
-        return this.selector;
     };
 
     Component.getType = function(){
@@ -42,11 +37,6 @@
 
     Component.setType = function(type){
         this.type = type;
-        return this;
-    };
-
-    Component.setSelector = function(selector){
-        this.selector = selector;
         return this;
     };
 

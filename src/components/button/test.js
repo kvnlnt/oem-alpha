@@ -2,7 +2,7 @@
 
     var Test = Object.create(Core.Modules.Test); // call super constructor
     Test.name = "Tests";
-    Test.testComponent = 'oem-button-test';
+    Test.testComponent = 'Button';
 
     /**
      * Test example

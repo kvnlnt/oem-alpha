@@ -3,7 +3,7 @@
     // TextInput component
     var Test = Object.create(Core.Modules.Test); // call super constructor
     Test.name = "Tests";
-    Test.testComponent = 'oem-text-input-test';
+    Test.testComponent = 'TextInput';
 
     /**
      * Test example

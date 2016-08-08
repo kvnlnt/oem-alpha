@@ -3,7 +3,7 @@
     var Css = [
 
         {
-            selector: "%SELECTOR%, .%SELECTOR%",
+            selector: '[data-oem="%CLASS%"]',
             declaration: [
                 "color:black"
             ]

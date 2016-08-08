@@ -1,8 +1,7 @@
 (function(COMPONENTS, PROTOTYPE, COMPONENT) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
-        type: "Accordion",
-        selector:"oem-accordion"
+        type: "Accordion"
     });
 
     // DEFAULTS

@@ -3,7 +3,7 @@
     var Css = [
 
         {
-            selector: "oem-accordion, .oem-accordion",
+            selector: '',
             declaration: [
                 "margin:0",
                 "padding:0",
@@ -12,7 +12,7 @@
         },
 
         {
-            selector: "oem-accordion dt, .oem-accordion dt",
+            selector: 'dt',
             declaration: [
                 "margin:0",
                 "line-height:40px",
@@ -24,14 +24,14 @@
         },
 
         {
-            selector: "oem-accordion dt:hover, .oem-accordion dt:hover",
+            selector: 'dt:hover',
             declaration: [
                 "background-color:" + CORE.Modules.Theme.COLORS.GREY
             ]
         },
 
         {
-            selector: "oem-accordion dd, .oem-accordion dd",
+            selector: 'dd',
             declaration: [
                 "margin:0",
                 "padding:0px 10px",
@@ -42,7 +42,7 @@
         },
 
         {
-            selector: "oem-accordion dd.expanded, .oem-accordion dd.expanded",
+            selector: 'dd.expanded',
             declaration: [
                 "padding:10px",
                 "height:auto",

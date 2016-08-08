@@ -7,7 +7,6 @@ const chalk = require('chalk');
  */
 const CreateComponent = function(componentName){
     this.fileName = componentName;
-    this.componentName = 'oem-' + componentName;
     this.componentClass = this.convertNameToClass(componentName);
     this.componentDir = './src/components/'+this.fileName;
     this.templatesDir = './src/components/'+this.fileName+'/templates';
@@ -32,7 +31,6 @@ CreateComponent.prototype = {
     },
 
     renderTemplate: function(str){
-        str = str.replace(new RegExp('%SELECTOR%', 'g'), this.componentName);
         str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
         return str;
     },

@@ -1,11 +1,11 @@
-(function(Components, Core) {
+(function(COMPONENTS, THEME) {
 
     var Css = [
 
         {
-            selector: "oem-button, .oem-button",
+            selector: "",
             declaration: [
-                "font-size:" + Core.Modules.Theme.FONT.SIZE.MEDIUM + "px",
+                "font-size:" + THEME.FONT.SIZE.MEDIUM + "px",
                 "padding: 5px 10px",
                 "border:0",
                 "cursor:pointer"
@@ -15,7 +15,7 @@
     ];
 
 
-    Components.Button.Css = Css;
-    return Components;
+    COMPONENTS.Button.Css = Css;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Modules.Theme);

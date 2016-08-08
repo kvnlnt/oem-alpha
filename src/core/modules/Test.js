@@ -8,7 +8,7 @@
 
         // create container
         var testSuiteName = testSuiteName || '';
-        var el = document.querySelector('.' + this.testComponent);
+        var el = document.querySelector('[data-oem-test="'+this.testComponent+'"]');
         var h3 = document.createElement('h3');
         h3.classList.add('oem');
         h3.innerText = testSuiteName;
@@ -29,7 +29,7 @@
     };
 
     Test.assert = function(msg, a, b){
-        var ul = document.querySelector('.' + this.testComponent + ' ul');
+        var ul = document.querySelector('[data-oem-test="'+this.testComponent+'"]' + ' ul');
         ul.classList.add('oem');
         var li;
         if(a === b){
@@ -49,7 +49,7 @@
     var css = [
 
         {
-            selector: ".test",
+            selector: '',
             declaration: [
                 "margin:20px 0px",
                 "font-size:14px"
@@ -71,7 +71,7 @@
 
     ];
 
-    Core.Modules.Css.render('oem-test-css', css);
+    Core.Modules.Css.render('Test', css);
     Core.Modules.Test = Test;
     return Core;
 

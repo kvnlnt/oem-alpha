@@ -13,13 +13,12 @@
     AutoInitializer.initialize = function(component) {
 
         // init vars
-        var cssSelector = "." + component.Prototype.selector;
-        var tagSelector = component.Prototype.selector;
+        var selector = '[data-oem="'+component.Prototype.type+'"]';
         var el;
 
         // find all components
         // create and store instances of each
-        _components = document.querySelectorAll(cssSelector + "," + tagSelector);
+        _components = document.querySelectorAll(selector);
         for (var i = 0; i < _components.length; i++) {
             el = _components[i];
             oem.create(component.Prototype, {el:el});

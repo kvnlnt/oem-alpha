@@ -1,13 +1,12 @@
-(function(Components, Core) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT, MIXIN, FIELD) {
 
-    var Prototype = Core.Modules.Prototype(Core.Prototypes.Component, {
-        type: "TextInput",
-        selector: "oem-text-input"
+    var Prototype = PROTOTYPE(COMPONENT, {
+        type: "TextInput"
     });
 
     // MIXINS
 
-    Core.Modules.Util.mixin(Prototype, Core.Mixins.Field); // mixin field functions
+    MIXIN(Prototype, FIELD); // mixin field functions
 
     // INIT
 
@@ -15,7 +14,7 @@
         this.setupInputField();
     };
 
-    Components.TextInput.Prototype = Prototype;
-    return Components;
+    COMPONENTS.TextInput.Prototype = Prototype;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Modules.Prototype, oem.Core.Prototypes.Component, oem.Core.Modules.Util.mixin, oem.Core.Mixins.Field);

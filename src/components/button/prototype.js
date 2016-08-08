@@ -1,8 +1,7 @@
 (function(Components, Core) {
 
     var Prototype = Core.Modules.Prototype(Core.Prototypes.Component, {
-        type: "Button",
-        selector: "oem-button"
+        type: "Button"
     });
     
     // exports

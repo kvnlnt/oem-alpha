@@ -40,13 +40,6 @@
                 ],
                 "customizations": []
             },
-            "card": {
-                "components": [
-                    "core",
-                    "card"
-                ],
-                "customizations": []
-            },
             "accordion": {
                 "components": [
                     "core",
@@ -129,23 +122,6 @@
                 "templates": {
                     "description": "./oem/templates/core/description.html",
                     "tests": "./oem/templates/core/tests.html"
-                }
-            },
-            "card": {
-                "files": [
-                    "./src/components/card/module.js",
-                    "./src/components/card/gfx.js",
-                    "./src/components/card/css.js",
-                    "./src/components/card/prototype.js"
-                ],
-                "tests": [
-                    "./src/components/card/test.js"
-                ],
-                "templates": {
-                    "description": "./src/components/card/templates/description.html",
-                    "examples": "./src/components/card/templates/examples.html",
-                    "tests": "./src/components/card/templates/tests.html",
-                    "usage": "./src/components/card/templates/usage.html"
                 }
             },
             "accordion": {

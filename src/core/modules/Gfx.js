@@ -22,7 +22,7 @@
             }
         }
 
-        Core.Modules.Css.render('oem-images-css', css);
+        Core.Modules.Css.render('Images-css', css);
 
     };
 
