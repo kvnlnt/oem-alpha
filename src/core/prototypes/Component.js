@@ -46,8 +46,8 @@
     };
 
     Component.setId = function(id){
-        this.getEl().id = id;
-        this.id = id;
+        this.id = id || Core.Modules.UTIL.guid();
+        this.getEl().dataset.oemId = id;
         return this;
     };
 

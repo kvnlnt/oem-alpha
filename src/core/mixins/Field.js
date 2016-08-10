@@ -8,16 +8,22 @@
 
 (function(MIXINS, VALIDATOR) {
 
-    var Field = {};
+    var Field = {
+        field:null,
+        fieldLabel:null,
+        fieldName:null,
+        fieldErrors:[],
+        fieldValidations:[]
+    };
 
      // GETTERS
 
-    Field.getLabel = function(){
-        return this.getEl().querySelector('label').innerText;
-    };
-
     Field.getField = function(){
         return this.getEl().querySelector('input[type="text"]');
+    };
+
+    Field.getFieldLabel = function(){
+        return this.getEl().querySelector('label').innerText;
     };
 
     Field.getFieldName = function(){
@@ -30,9 +36,9 @@
 
     // SETTERS
 
-    Field.setLabel = function(label){
-        this.getEl().querySelector('label').innerText = label;
-        this.label = label;
+    Field.setFieldLabel = function(fieldLabel){
+        this.getEl().querySelector('label').innerText = fieldLabel;
+        this.fieldLabel = fieldLabel;
         return this;
     };
 

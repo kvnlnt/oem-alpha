@@ -12,7 +12,7 @@
     var dd2 = Core.Modules.El("dd", {"class":"expanded"}, "dd2");
     var dd3 = Core.Modules.El("dd", {}, "dd3");
     var dt3 = Core.Modules.El("dt", {}, "dt3");
-    var testEl = Core.Modules.El("dl", {"class":"oem-accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
+    var testEl = Core.Modules.El("dl", {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
 
     var testAccordion = oem.create(Components.Accordion.Prototype, {
         el: testEl

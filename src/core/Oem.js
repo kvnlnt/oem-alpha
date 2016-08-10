@@ -1,18 +1,18 @@
 // Core oem object
-(function (Oem, Core) {
+(function (OEM, UTIL, PROTOTYPE, AUTO_INITIALIZER) {
 
-    Oem.version = 1;
+    OEM.version = 1;
 
     /**
      * List all components
      */
-    Oem.list = {
+    OEM.list = {
         all:{},
         byType: function (componentType) {
             var components = {};
             var component;
-            for(var i in Oem.list.all){
-                component = Oem.list.all[i];
+            for(var i in OEM.list.all){
+                component = OEM.list.all[i];
                 if(component.type === componentType){
                     components[i] = component;
                 }
@@ -24,16 +24,32 @@
 
     /**
      * Create component
+     * this is a creational mediator pattern which calls the root prototype
+     * and creates' an instance
      */
-    Oem.create = function (component, options) {
-        // this is a creational mediator pattern which calls the root prototype
-        // and creates' an instance
-        var component = Core.Modules.Prototype(component, options);
-        component.setId(component.getEl().dataset.oemId || Core.Modules.Util.guid());
-        component.el.oem = component; // attach pointer to instance on element
-        oem.list.all[component.getId()] = component;
-        component.init();
-        return component;
+    OEM.create = function (component, options) {
+
+        // create a new original prototype off the provided component with supplied options
+        var createdComponent = PROTOTYPE(component, options);
+
+        // run getters and setters after creation of component to properly 
+        // assign properties. This is a required pattern in javascript else
+        // all references will be part of the prototype and thus be immutable
+        if(options.el){
+            Object.keys(options.el.dataset).forEach(function(dataAttr){
+                var key = dataAttr.replace("oem", "");
+                var val = options.el.dataset[dataAttr];
+                // run setter, skip the base oem component attr (it'll be blank)
+                if(key.length) createdComponent['set'+key](val);
+            });
+        }
+
+        // add component to collection
+        oem.list.all[createdComponent.getId()] = createdComponent;
+
+        // initialize and return
+        createdComponent.init();
+        return createdComponent;
     };
 
     /**
@@ -41,7 +57,7 @@
      *
      * @param      {<type>}  component  The component
      */
-    Oem.read = function (componentId) {
+    OEM.read = function (componentId) {
         return oem.list.all[componentId];
     };
 
@@ -51,15 +67,15 @@
      * @param      {<type>}  component  The component
      * @param      {<type>}  settings   The settings
      */
-    Oem.update = function (componentId, settings) {
+    OEM.update = function (componentId, settings) {
         return component;
     };
 
     /**
      * Delete component instance and element from DOM
      */
-    Oem.destroy = function (componentId) {
-        var component = Oem.read(componentId);
+    OEM.destroy = function (componentId) {
+        var component = OEM.read(componentId);
         var node = component.getEl();
         if (node.parentNode) node.parentNode.removeChild(node);
         delete oem.list.all[componentId];
@@ -70,21 +86,21 @@
      * Mediator to internal initializer
      * @return {[type]} [description]
      */
-    Oem.init = function(components){
+    OEM.init = function(components){
         var components = components || oem.Components;
-        Core.AutoInitializer.initializeAll(components);
+        AUTO_INITIALIZER.initializeAll(components);
         return components;
     };
 
     /**
      * Proxy to internal event bus and enum
      */
-    Oem.events = Core.Modules.Events;
-    Oem.EVENTS = Core.Modules.EVENTS;
+    OEM.events = OEM.Core.Modules.Events;
+    OEM.EVENTS = OEM.Core.Modules.EVENTS;
 
     /**
      * Return main oem namespace object
      */
-    return Oem;
+    return OEM;
 
-})(oem, oem.Core);
+})(oem, oem.Core.Modules.Util, oem.Core.Modules.Prototype, oem.Core.AutoInitializer);
