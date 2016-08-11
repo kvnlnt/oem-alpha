@@ -8,13 +8,15 @@
 
 (function(MIXINS, VALIDATOR) {
 
-    var Field = {
-        field:null,
-        fieldLabel:null,
-        fieldName:null,
-        fieldErrors:[],
-        fieldValidations:[]
-    };
+    var Field = {};
+
+    // DEFAULTS
+
+    Field.field = null;
+    Field.fieldLabel = null;
+    Field.fieldName = null;
+    Field.fieldErrors = [];
+    Field.fieldValidations = [];
 
      // GETTERS
 
@@ -70,7 +72,7 @@
     Field.reset = function(){};
     
     Field.setupInputField = function(){
-        this.label = this.getLabel();
+        this.label = this.getFieldLabel();
         this.field = this.getField();
         this.fieldName = this.getFieldName();
         this.errors = this.getErrors();

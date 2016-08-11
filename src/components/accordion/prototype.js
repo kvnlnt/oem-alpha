@@ -14,6 +14,10 @@
         this.registerEvents();
     };
 
+    Prototype.getTerms = function(){
+        return this.terms;
+    };
+
     Prototype.registerEvents = function() {
         var list = this.getEl();
         list.terms = list.querySelectorAll('dt');
