@@ -6,7 +6,7 @@
  * @return     {boolean}  { description_of_the_return_value }
  */
 
-(function(CORE, PROTOTYPE, COMPONENT, VALIDATOR, UTIL) {
+(function(CORE, PROTOTYPE, COMPONENT, VALIDATOR, UTIL, EL) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Field"
@@ -19,9 +19,49 @@
     Prototype.help = '';
     Prototype.name = null;
     Prototype.value = null;
-    Prototype.errors = [];
+    Prototype.errors = {};
     Prototype.validations = [];
+    Prototype.isValid = false;
     Prototype.validateOnChange = false;
+
+    // SETUP
+    
+    /**
+     * Setup field elements
+     */
+    Prototype.setup = function(){
+        this
+        .setLabel(this.getEl().dataset.oemLabel)
+        .setHelp(this.getEl().dataset.oemHelp)
+        .setName(this.getEl().dataset.oemName)
+        .setPlaceholder(this.getEl().dataset.oemPlaceholder)
+        .setValue(this.getEl().dataset.oemValue)
+        .setValidations(this.getValidationsFromEl())
+        .setupField()
+        .render();
+        return this;
+    };
+
+    Prototype.setupField = function(){
+        var field = this.createField();
+        this.setField(field);
+        return this;
+    };
+
+    Prototype.createLabel = function(name, label){
+        var name = name || this.getName();
+        var label = label || this.getLabel();
+        return new EL("label", { for:name}, label);
+    };
+
+    Prototype.createHelp = function(help){
+        var help = help || this.getHelp();
+        return new EL("div", { class:"help"}, help);
+    };
+
+    Prototype.createErrorWrapper = function(){
+        return new EL("ul", {class:"errors"});
+    };
 
     // GETTERS
 
@@ -55,6 +95,10 @@
 
     Prototype.getValidations = function() {
         return this.validations;
+    };
+
+    Prototype.getIsValid = function(){
+        return this.isValid;
     };
 
     Prototype.getValidateOnChange = function() {
@@ -100,6 +144,11 @@
 
     Prototype.setValidations = function(validations) {
         this.validations = validations;
+        return this;
+    };
+
+    Prototype.setIsValid = function(isValid){
+        this.isValid = isValid;
         return this;
     };
 
@@ -153,8 +202,21 @@
         // update collection and render errors
         this.setErrors(validator.errors).renderErrors();
 
+        // update validation status
+        this.setIsValid(validator.isValid);
+
         return validator;
 
+    };
+
+    // RENDERERS
+    
+    Prototype.render = function(){
+        // render elements
+        this.getEl().appendChild(this.createLabel());
+        this.getEl().appendChild(this.createHelp());
+        this.getEl().appendChild(this.createErrorWrapper());
+        this.getEl().appendChild(this.getField());
     };
 
     Prototype.renderErrors = function(errors){
@@ -182,4 +244,11 @@
     CORE.Prototypes.Field = Prototype;
     return CORE;
 
-})(oem.Core, oem.Core.Modules.Prototype, oem.Core.Prototypes.Component, oem.Core.Modules.Validator, oem.Core.Modules.Util);
+})(
+    oem.Core,
+    oem.Core.Modules.Prototype,
+    oem.Core.Prototypes.Component,
+    oem.Core.Modules.Validator,
+    oem.Core.Modules.Util,
+    oem.Core.Modules.El
+);
