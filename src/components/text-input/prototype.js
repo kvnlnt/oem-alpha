@@ -41,7 +41,8 @@
     };
 
     Prototype.handleInputChange = function(){
-        this.validate();
+        var currValue = this.getField().value;
+        this.setValue(currValue).validate();
     };
 
     COMPONENTS.TextInput.Prototype = Prototype;

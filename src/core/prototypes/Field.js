@@ -117,9 +117,12 @@
             var args = dataAttrs[x];
             var isValidation = x.indexOf("oemValidate") > -1;
             if(isValidation){
+                var validationType = x.replace("oemValidate","");
+                var validation = validationType[0].toLowerCase() + validationType.slice(1); // lowercase first letter
+                var args = args.split("|").map(function(arg){ return UTIL.typeCast(arg) }); 
                 validations.push({
-                    validation: x.replace("oemValidate", "").toLowerCase(),
-                    args: args.split("|").map(function(arg){ return UTIL.typeCast(arg) })
+                    validation: validation,
+                    args: args
                 });
             }
         }
@@ -135,6 +138,9 @@
         var validator = new VALIDATOR();
         var that = this;
 
+        // XXX : All fields need a validator as it is used to collect it's data
+        // in order to handle optional fields where validation is not specified
+        // automatically assign the "skip" validation
         this.getValidations().forEach(function(validation){
             var args = [];
             args.push(that.getName());
@@ -143,54 +149,34 @@
             args.push.apply(args, validation.args);
             validator[validation.validation].apply(validator, args);
         });
-
-        // for(var i = 0; i < configElements.length; i = i + 1){
-        //     configElement = configElements[i];
-        //     errorMessage = configElement.innerText;
-        //     validation = configElement.dataset.validation;
-        //     settings = configElement.dataset.validationArgs.split(',');
-        //     arguments = [];
-        //     arguments.push(this.fieldName);
-        //     arguments.push(this.label);
-        //     arguments.push(value); // get field value
-        //     arguments.push.apply(arguments, settings); // add validation arguments
-        //     arguments.push(errorMessage); // add message
-        //     validator[validation].apply(validator, arguments);
-        // }
-
-        // XXX : All fields need a validator as it is used to collect it's data
-        // in order to handle optional fields where validation is not specified
-        // automatically assign the "skip" validation
-
-
-        console.log(validator);
-        // this.renderErrors(validator);
+        
+        // update collection and render errors
+        this.setErrors(validator.errors).renderErrors();
 
         return validator;
 
     };
 
-    Prototype.renderErrors = function(validator){
+    Prototype.renderErrors = function(errors){
+
+        var errors = errors || this.getErrors();
+        var errorList = this.getEl().querySelector("ul.errors");
 
         // empty error list
-        while (this.errors.hasChildNodes()) {
-            this.errors.removeChild(this.errors.lastChild);
+        while (errorList.hasChildNodes()) {
+            errorList.removeChild(errorList.lastChild);
         }
-
-        // leave if no errors
-        if(validator.isValid) return false;
-
-        // don't do anything until we've validated things
-        if(!this.validateOnChange) return false;
-
-        var errors = validator.errors[this.fieldName];
 
         // now populate
-        for(var i = 0; i < errors.length; i = i + 1){
-            li = document.createElement('li');
-            li.innerText = errors[i];
-            this.errors.appendChild(li);
+        for(var x in errors){
+            errors[x].forEach(function(error){
+                var li = document.createElement('li');
+                li.innerText = error;
+                errorList.appendChild(li);
+            });
         }
+
+        return errorList;
     };
 
     CORE.Prototypes.Field = Prototype;
