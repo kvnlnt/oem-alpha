@@ -31,18 +31,7 @@
 
         // create a new original prototype off the provided component with supplied options
         var createdComponent = PROTOTYPE(component, options);
-
-        // run getters and setters after creation of component to properly 
-        // assign properties. This is a required pattern in javascript else
-        // all references will be part of the prototype and thus be immutable
-        if(options.el){
-            Object.keys(options.el.dataset).forEach(function(dataAttr){
-                var key = dataAttr.replace("oem", "");
-                var val = options.el.dataset[dataAttr];
-                // run setter, skip the base oem component attr (it'll be blank)
-                if(key.length) createdComponent['set'+key](val);
-            });
-        }
+        createdComponent.setId(options.el.dataset.oemId || UTIL.guid());
 
         // add component to collection
         oem.list.all[createdComponent.getId()] = createdComponent;

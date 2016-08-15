@@ -106,7 +106,7 @@
                     "./src/core/modules/Gfx.js",
                     "./src/core/modules/Validator.js",
                     "./src/core/prototypes/Component.js",
-                    "./src/core/mixins/Field.js",
+                    "./src/core/prototypes/Field.js",
                     "./src/core/Oem.js"
                 ],
                 "tests": [

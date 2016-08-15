@@ -77,6 +77,9 @@
         return ary;
     };
 
+    /**
+     * Get URL variables
+     */
     Util.getUrlVars = function() {
         var vars = {};
         var search = function(m, key, value) {
@@ -84,6 +87,23 @@
         };
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, search);
         return vars;
+    };
+
+    /**
+     * Automatically cast string to proper javascript data type
+     * // TODO add other type checking, for now we only translate strings, numbers and floats
+     * @return {[type]} [description]
+     */
+    Util.typeCast = function(str){
+
+        // is it an integer?
+        if(parseInt(str) == str) return parseInt(str);
+
+        // is it a float?
+        if(parseFloat(str) == str) return parseFloat(str);
+
+        // guess it's just a string
+        return str;
     };
 
     Core.Modules.Util = Util;

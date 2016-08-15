@@ -1,10 +1,10 @@
-(function(Core) {
+(function(CORE) {
 
     var Component = {};
     Component.el = null;
     Component.id = null;
     Component.type = "Component";
-    Component.breakpoints = Core.Modules.Responsifier.BREAKPOINTS;
+    Component.breakpoints = CORE.Modules.Responsifier.BREAKPOINTS;
     Component.events = {};
 
     Component.init = function(){
@@ -46,7 +46,7 @@
     };
 
     Component.setId = function(id){
-        this.id = id || Core.Modules.UTIL.guid();
+        this.id = id || CORE.Modules.UTIL.guid();
         this.getEl().dataset.oemId = id;
         return this;
     };
@@ -61,8 +61,8 @@
         return this;
     };
 
-    Core.Prototypes.Component = Component;
-    return Core;
+    CORE.Prototypes.Component = Component;
+    return CORE;
     
 
 })(oem.Core);

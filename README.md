@@ -215,6 +215,9 @@ This control will allow you to:
 1. Speed up development time
 1. Solve problems better and faster
 
+## DECISIONS
+1. Leave auto configuration of component data up to component. For example, don't auto set parameters from data-oem attrs.
+1. The webcomponent spec is still in flux. It has four lifecycle events I'm leaving out for now. Each component is responsible for it's own events which can be reached via oem.read("cid").events;
 
 ## TODO
 - forms (masks, fields, etc)
