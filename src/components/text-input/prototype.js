@@ -7,8 +7,9 @@
     // INIT
 
     Prototype.init = function(){
-        this.setup();
+        this.setupField();
         this.getField().addEventListener('input', this.handleInputChange.bind(this)); // get the input field
+        this.getField().addEventListener('focus', this.getField().select);
     };
 
     Prototype.createField = function(){

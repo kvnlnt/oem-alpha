@@ -20,6 +20,7 @@
     Prototype.name = null;
     Prototype.value = null;
     Prototype.errors = {};
+    Prototype.errorWrapper = null;
     Prototype.validations = [];
     Prototype.isValid = false;
     Prototype.validateOnChange = false;
@@ -29,33 +30,35 @@
     /**
      * Setup field elements
      */
-    Prototype.setup = function(){
+    Prototype.setupField = function(){
         this
-        .setLabel(this.getEl().dataset.oemLabel)
-        .setHelp(this.getEl().dataset.oemHelp)
-        .setName(this.getEl().dataset.oemName)
-        .setPlaceholder(this.getEl().dataset.oemPlaceholder)
-        .setValue(this.getEl().dataset.oemValue)
-        .setValidations(this.getValidationsFromEl())
-        .setupField()
+        .setName()
+        .setPlaceholder()
+        .setValue()
+        .setValidations()
+        .setLabel(this.createLabel())
+        .setHelp(this.createHelp())
+        .setField(this.createField())
+        .setErrorWrapper(this.createErrorWrapper())
         .render();
         return this;
     };
 
-    Prototype.setupField = function(){
-        var field = this.createField();
-        this.setField(field);
-        return this;
+    // CREATE ELEMENTS
+
+    Prototype.createField = function(){
+        var input = new EL("input", {type:"text", name:this.getName(), placeholder:this.getPlaceholder(), value:this.getValue()});
+        return input;
     };
 
     Prototype.createLabel = function(name, label){
         var name = name || this.getName();
-        var label = label || this.getLabel();
+        var label = label || this.getEl().dataset.oemLabel;
         return new EL("label", { for:name}, label);
     };
 
     Prototype.createHelp = function(help){
-        var help = help || this.getHelp();
+        var help = help || this.getEl().dataset.oemHelp;
         return new EL("div", { class:"help"}, help);
     };
 
@@ -89,6 +92,10 @@
         return this.errors;
     };
 
+    Prototype.getErrorWrapper = function(){
+        return this.errorWrapper;
+    }; 
+
     Prototype.getHelp = function() {
         return this.help;
     };
@@ -118,17 +125,17 @@
     };
 
     Prototype.setName = function(name) {
-        this.name = name;
+        this.name = name || this.getEl().dataset.oemName;
         return this;
     };
 
     Prototype.setPlaceholder = function(placeholder){
-        this.placeholder = placeholder;
+        this.placeholder = placeholder || this.getEl().dataset.oemPlaceholder;
         return this;
     }
 
     Prototype.setValue = function(value) {
-        this.value = value;
+        this.value = value || this.getEl().dataset.oemValue;
         return this;
     };
 
@@ -137,13 +144,18 @@
         return this;
     };
 
+    Prototype.setErrorWrapper = function(errorWrapper){
+        this.errorWrapper = errorWrapper;
+        return this;
+    }
+
     Prototype.setHelp = function(help) {
         this.help = help;
         return this;
     };
 
     Prototype.setValidations = function(validations) {
-        this.validations = validations;
+        this.validations = validations || this.getValidationsFromEl();
         return this;
     };
 
@@ -152,12 +164,12 @@
         return this;
     };
 
-    Prototype.setValidateOnValueChange = function(validateOnChange) {
+    Prototype.setValidateOnChange = function(validateOnChange) {
         this.validateOnChange = validateOnChange;
         return this;
     };
 
-    // METHODS
+    // VALIDATION
 
     Prototype.getValidationsFromEl = function(){
         var dataAttrs = this.getEl().dataset;
@@ -178,9 +190,6 @@
         return validations;
     };
 
-    // TODO
-    Prototype.reset = function(){};
-
     Prototype.validate = function(){
 
         // create a brand new one each time, that's right start over
@@ -193,7 +202,7 @@
         this.getValidations().forEach(function(validation){
             var args = [];
             args.push(that.getName());
-            args.push(that.getLabel());
+            args.push(that.getLabel().innerText);
             args.push(that.getValue());
             args.push.apply(args, validation.args);
             validator[validation.validation].apply(validator, args);
@@ -206,27 +215,26 @@
         this.setIsValid(validator.isValid);
 
         return validator;
-
     };
 
     // RENDERERS
     
     Prototype.render = function(){
         // render elements
-        this.getEl().appendChild(this.createLabel());
-        this.getEl().appendChild(this.createHelp());
-        this.getEl().appendChild(this.createErrorWrapper());
+        this.getEl().appendChild(this.getLabel());
+        this.getEl().appendChild(this.getHelp());
         this.getEl().appendChild(this.getField());
+        this.getEl().appendChild(this.getErrorWrapper());
     };
 
     Prototype.renderErrors = function(errors){
 
         var errors = errors || this.getErrors();
-        var errorList = this.getEl().querySelector("ul.errors");
+        var errorWrapper = this.getErrorWrapper();
 
         // empty error list
-        while (errorList.hasChildNodes()) {
-            errorList.removeChild(errorList.lastChild);
+        while (errorWrapper.hasChildNodes()) {
+            errorWrapper.removeChild(errorWrapper.lastChild);
         }
 
         // now populate
@@ -234,12 +242,17 @@
             errors[x].forEach(function(error){
                 var li = document.createElement('li');
                 li.innerText = error;
-                errorList.appendChild(li);
+                errorWrapper.appendChild(li);
             });
         }
 
-        return errorList;
+        return errorWrapper;
     };
+
+    // METHODS
+    
+    // TODO
+    Prototype.reset = function(){};
 
     CORE.Prototypes.Field = Prototype;
     return CORE;

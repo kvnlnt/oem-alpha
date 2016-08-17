@@ -3,7 +3,7 @@
     var Css = [
 
         {
-            selector: ".oem-form .help",
+            selector: ".help",
             declaration: [
                 "font-size:" + THEME.FONT.SIZE.MEDIUM + "px",
                 "margin: 10px 0px",
@@ -12,14 +12,14 @@
         },
 
         {
-            selector: ".oem-form .validations",
+            selector: ".validations",
             declaration: [
                 "display:none"
             ]
         },
 
         {
-            selector: ".oem-form .errors",
+            selector: ".errors",
             declaration: [
                 "color:" + THEME.COLORS.ALERT,
                 "font-size:" + THEME.FONT.SIZE.SMALL
@@ -27,7 +27,7 @@
         },
 
         {
-            selector: ".oem-form input",
+            selector: "input",
             declaration: [
                 "width:100%",
                 "font-size:" + THEME.FONT.SIZE.MEDIUM + "px",
