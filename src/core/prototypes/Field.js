@@ -135,7 +135,7 @@
     }
 
     Prototype.setValue = function(value) {
-        this.value = value || this.getEl().dataset.oemValue;
+        this.value = value || (this.getEl().dataset.oemValue || "");
         return this;
     };
 
