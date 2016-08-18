@@ -4,12 +4,17 @@
 <div 
     data-oem="TextInput"
     data-oem-id="firstName"
-    data-oem-name="firstName"
-    data-oem-label="First Name"
-    data-oem-placeholder="First Name"
-    data-oem-value="Kevin"
-    data-oem-help="Please enter your first name"
+    data-oem-validate-on-change="true"
     data-oem-validate-min-length="3|First name must be at least 3 chars long"
     data-oem-validate-max-length="6">
+
+<label for="firstName">First Name</label>
+
+<ul class="help">Please enter your first name</ul>
+
+<input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
+
+<ul class="errors"></ul>
+
 </div>
 </textarea>

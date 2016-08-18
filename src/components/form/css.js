@@ -31,7 +31,8 @@
             declaration: [
                 "width:100%",
                 "font-size:" + THEME.FONT.SIZE.MEDIUM + "px",
-                "padding:10px",
+                "padding:10px 0",
+                "text-indent:10px",
                 "border:1px solid " + THEME.FORMS.FIELD_BORDER_COLOR,
                 "border-radius: 2px"
             ]

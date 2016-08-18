@@ -5,6 +5,8 @@ OEM is a platform/framework which allows for the quick development and managemen
 ## Features/Benefits
 * streamlined workflow (via cli)
 * 100% native javascript
+* 100% native html
+* 100% native css
 * 100% unit test coverage
 * 100% integration test coverage
 * 100% library dependency free
@@ -16,6 +18,9 @@ OEM is a platform/framework which allows for the quick development and managemen
 * easy integration
 * composable architecture
 * build server friendly (via cli)
+
+## Principles
+* Progressive enhancement (aka works without javascript)
 
 ## Setup
 

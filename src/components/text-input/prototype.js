@@ -12,8 +12,8 @@
         this.getField().addEventListener('focus', this.getField().select);
     };
 
-    Prototype.createField = function(){
-        var input = new EL("input", {type:"text", name:this.getName(), placeholder:this.getPlaceholder(), value:this.getValue()});
+    Prototype.getField = function(){
+        var input = this.getEl().querySelector('input');
         return input;
     };
 
