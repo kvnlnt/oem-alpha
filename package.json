@@ -84,6 +84,181 @@
                     "toggle"
                 ],
                 "customizations": []
+            },
+            "grid": {
+                "components": [
+                    "core",
+                    "grid"
+                ],
+                "customizations": []
+            },
+            "file-upload": {
+                "components": [
+                    "core",
+                    "file-upload"
+                ],
+                "customizations": []
+            },
+            "password-input": {
+                "components": [
+                    "core",
+                    "password-input"
+                ],
+                "customizations": []
+            },
+            "select-box": {
+                "components": [
+                    "core",
+                    "select-box"
+                ],
+                "customizations": []
+            },
+            "progress-bar": {
+                "components": [
+                    "core",
+                    "progress-bar"
+                ],
+                "customizations": []
+            },
+            "lightbox": {
+                "components": [
+                    "core",
+                    "lightbox"
+                ],
+                "customizations": []
+            },
+            "modal": {
+                "components": [
+                    "core",
+                    "modal"
+                ],
+                "customizations": []
+            },
+            "date-picker": {
+                "components": [
+                    "core",
+                    "date-picker"
+                ],
+                "customizations": []
+            },
+            "slider": {
+                "components": [
+                    "core",
+                    "slider"
+                ],
+                "customizations": []
+            },
+            "dialog": {
+                "components": [
+                    "core",
+                    "dialog"
+                ],
+                "customizations": []
+            },
+            "sticky": {
+                "components": [
+                    "core",
+                    "sticky"
+                ],
+                "customizations": []
+            },
+            "time-picker": {
+                "components": [
+                    "core",
+                    "time-picker"
+                ],
+                "customizations": []
+            },
+            "color-picker": {
+                "components": [
+                    "core",
+                    "color-picker"
+                ],
+                "customizations": []
+            },
+            "tooltip": {
+                "components": [
+                    "core",
+                    "tooltip"
+                ],
+                "customizations": []
+            },
+            "breadcrumb": {
+                "components": [
+                    "core",
+                    "breadcrumb"
+                ],
+                "customizations": []
+            },
+            "tabs": {
+                "components": [
+                    "core",
+                    "tabs"
+                ],
+                "customizations": []
+            },
+            "table": {
+                "components": [
+                    "core",
+                    "table"
+                ],
+                "customizations": []
+            },
+            "list": {
+                "components": [
+                    "core",
+                    "list"
+                ],
+                "customizations": []
+            },
+            "badge": {
+                "components": [
+                    "core",
+                    "badge"
+                ],
+                "customizations": []
+            },
+            "alert": {
+                "components": [
+                    "core",
+                    "alert"
+                ],
+                "customizations": []
+            },
+            "dimmer": {
+                "components": [
+                    "core",
+                    "dimmer"
+                ],
+                "customizations": []
+            },
+            "dropdown": {
+                "components": [
+                    "core",
+                    "dropdown"
+                ],
+                "customizations": []
+            },
+            "loader": {
+                "components": [
+                    "core",
+                    "loader"
+                ],
+                "customizations": []
+            },
+            "drawer": {
+                "components": [
+                    "core",
+                    "drawer"
+                ],
+                "customizations": []
+            },
+            "carousel": {
+                "components": [
+                    "core",
+                    "carousel"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -226,6 +401,431 @@
                     "examples": "./src/components/toggle/templates/examples.html",
                     "tests": "./src/components/toggle/templates/tests.html",
                     "usage": "./src/components/toggle/templates/usage.html"
+                }
+            },
+            "grid": {
+                "files": [
+                    "./src/components/grid/module.js",
+                    "./src/components/grid/gfx.js",
+                    "./src/components/grid/css.js",
+                    "./src/components/grid/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/grid/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/grid/templates/description.html",
+                    "examples": "./src/components/grid/templates/examples.html",
+                    "tests": "./src/components/grid/templates/tests.html",
+                    "usage": "./src/components/grid/templates/usage.html"
+                }
+            },
+            "file-upload": {
+                "files": [
+                    "./src/components/file-upload/module.js",
+                    "./src/components/file-upload/gfx.js",
+                    "./src/components/file-upload/css.js",
+                    "./src/components/file-upload/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/file-upload/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/file-upload/templates/description.html",
+                    "examples": "./src/components/file-upload/templates/examples.html",
+                    "tests": "./src/components/file-upload/templates/tests.html",
+                    "usage": "./src/components/file-upload/templates/usage.html"
+                }
+            },
+            "password-input": {
+                "files": [
+                    "./src/components/password-input/module.js",
+                    "./src/components/password-input/gfx.js",
+                    "./src/components/password-input/css.js",
+                    "./src/components/password-input/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/password-input/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/password-input/templates/description.html",
+                    "examples": "./src/components/password-input/templates/examples.html",
+                    "tests": "./src/components/password-input/templates/tests.html",
+                    "usage": "./src/components/password-input/templates/usage.html"
+                }
+            },
+            "select-box": {
+                "files": [
+                    "./src/components/select-box/module.js",
+                    "./src/components/select-box/gfx.js",
+                    "./src/components/select-box/css.js",
+                    "./src/components/select-box/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/select-box/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/select-box/templates/description.html",
+                    "examples": "./src/components/select-box/templates/examples.html",
+                    "tests": "./src/components/select-box/templates/tests.html",
+                    "usage": "./src/components/select-box/templates/usage.html"
+                }
+            },
+            "progress-bar": {
+                "files": [
+                    "./src/components/progress-bar/module.js",
+                    "./src/components/progress-bar/gfx.js",
+                    "./src/components/progress-bar/css.js",
+                    "./src/components/progress-bar/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/progress-bar/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/progress-bar/templates/description.html",
+                    "examples": "./src/components/progress-bar/templates/examples.html",
+                    "tests": "./src/components/progress-bar/templates/tests.html",
+                    "usage": "./src/components/progress-bar/templates/usage.html"
+                }
+            },
+            "lightbox": {
+                "files": [
+                    "./src/components/lightbox/module.js",
+                    "./src/components/lightbox/gfx.js",
+                    "./src/components/lightbox/css.js",
+                    "./src/components/lightbox/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/lightbox/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/lightbox/templates/description.html",
+                    "examples": "./src/components/lightbox/templates/examples.html",
+                    "tests": "./src/components/lightbox/templates/tests.html",
+                    "usage": "./src/components/lightbox/templates/usage.html"
+                }
+            },
+            "modal": {
+                "files": [
+                    "./src/components/modal/module.js",
+                    "./src/components/modal/gfx.js",
+                    "./src/components/modal/css.js",
+                    "./src/components/modal/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/modal/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/modal/templates/description.html",
+                    "examples": "./src/components/modal/templates/examples.html",
+                    "tests": "./src/components/modal/templates/tests.html",
+                    "usage": "./src/components/modal/templates/usage.html"
+                }
+            },
+            "date-picker": {
+                "files": [
+                    "./src/components/date-picker/module.js",
+                    "./src/components/date-picker/gfx.js",
+                    "./src/components/date-picker/css.js",
+                    "./src/components/date-picker/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/date-picker/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/date-picker/templates/description.html",
+                    "examples": "./src/components/date-picker/templates/examples.html",
+                    "tests": "./src/components/date-picker/templates/tests.html",
+                    "usage": "./src/components/date-picker/templates/usage.html"
+                }
+            },
+            "slider": {
+                "files": [
+                    "./src/components/slider/module.js",
+                    "./src/components/slider/gfx.js",
+                    "./src/components/slider/css.js",
+                    "./src/components/slider/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/slider/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/slider/templates/description.html",
+                    "examples": "./src/components/slider/templates/examples.html",
+                    "tests": "./src/components/slider/templates/tests.html",
+                    "usage": "./src/components/slider/templates/usage.html"
+                }
+            },
+            "dialog": {
+                "files": [
+                    "./src/components/dialog/module.js",
+                    "./src/components/dialog/gfx.js",
+                    "./src/components/dialog/css.js",
+                    "./src/components/dialog/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/dialog/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/dialog/templates/description.html",
+                    "examples": "./src/components/dialog/templates/examples.html",
+                    "tests": "./src/components/dialog/templates/tests.html",
+                    "usage": "./src/components/dialog/templates/usage.html"
+                }
+            },
+            "sticky": {
+                "files": [
+                    "./src/components/sticky/module.js",
+                    "./src/components/sticky/gfx.js",
+                    "./src/components/sticky/css.js",
+                    "./src/components/sticky/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/sticky/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/sticky/templates/description.html",
+                    "examples": "./src/components/sticky/templates/examples.html",
+                    "tests": "./src/components/sticky/templates/tests.html",
+                    "usage": "./src/components/sticky/templates/usage.html"
+                }
+            },
+            "time-picker": {
+                "files": [
+                    "./src/components/time-picker/module.js",
+                    "./src/components/time-picker/gfx.js",
+                    "./src/components/time-picker/css.js",
+                    "./src/components/time-picker/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/time-picker/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/time-picker/templates/description.html",
+                    "examples": "./src/components/time-picker/templates/examples.html",
+                    "tests": "./src/components/time-picker/templates/tests.html",
+                    "usage": "./src/components/time-picker/templates/usage.html"
+                }
+            },
+            "color-picker": {
+                "files": [
+                    "./src/components/color-picker/module.js",
+                    "./src/components/color-picker/gfx.js",
+                    "./src/components/color-picker/css.js",
+                    "./src/components/color-picker/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/color-picker/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/color-picker/templates/description.html",
+                    "examples": "./src/components/color-picker/templates/examples.html",
+                    "tests": "./src/components/color-picker/templates/tests.html",
+                    "usage": "./src/components/color-picker/templates/usage.html"
+                }
+            },
+            "tooltip": {
+                "files": [
+                    "./src/components/tooltip/module.js",
+                    "./src/components/tooltip/gfx.js",
+                    "./src/components/tooltip/css.js",
+                    "./src/components/tooltip/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/tooltip/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/tooltip/templates/description.html",
+                    "examples": "./src/components/tooltip/templates/examples.html",
+                    "tests": "./src/components/tooltip/templates/tests.html",
+                    "usage": "./src/components/tooltip/templates/usage.html"
+                }
+            },
+            "breadcrumb": {
+                "files": [
+                    "./src/components/breadcrumb/module.js",
+                    "./src/components/breadcrumb/gfx.js",
+                    "./src/components/breadcrumb/css.js",
+                    "./src/components/breadcrumb/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/breadcrumb/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/breadcrumb/templates/description.html",
+                    "examples": "./src/components/breadcrumb/templates/examples.html",
+                    "tests": "./src/components/breadcrumb/templates/tests.html",
+                    "usage": "./src/components/breadcrumb/templates/usage.html"
+                }
+            },
+            "tabs": {
+                "files": [
+                    "./src/components/tabs/module.js",
+                    "./src/components/tabs/gfx.js",
+                    "./src/components/tabs/css.js",
+                    "./src/components/tabs/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/tabs/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/tabs/templates/description.html",
+                    "examples": "./src/components/tabs/templates/examples.html",
+                    "tests": "./src/components/tabs/templates/tests.html",
+                    "usage": "./src/components/tabs/templates/usage.html"
+                }
+            },
+            "table": {
+                "files": [
+                    "./src/components/table/module.js",
+                    "./src/components/table/gfx.js",
+                    "./src/components/table/css.js",
+                    "./src/components/table/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/table/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/table/templates/description.html",
+                    "examples": "./src/components/table/templates/examples.html",
+                    "tests": "./src/components/table/templates/tests.html",
+                    "usage": "./src/components/table/templates/usage.html"
+                }
+            },
+            "list": {
+                "files": [
+                    "./src/components/list/module.js",
+                    "./src/components/list/gfx.js",
+                    "./src/components/list/css.js",
+                    "./src/components/list/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/list/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/list/templates/description.html",
+                    "examples": "./src/components/list/templates/examples.html",
+                    "tests": "./src/components/list/templates/tests.html",
+                    "usage": "./src/components/list/templates/usage.html"
+                }
+            },
+            "badge": {
+                "files": [
+                    "./src/components/badge/module.js",
+                    "./src/components/badge/gfx.js",
+                    "./src/components/badge/css.js",
+                    "./src/components/badge/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/badge/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/badge/templates/description.html",
+                    "examples": "./src/components/badge/templates/examples.html",
+                    "tests": "./src/components/badge/templates/tests.html",
+                    "usage": "./src/components/badge/templates/usage.html"
+                }
+            },
+            "alert": {
+                "files": [
+                    "./src/components/alert/module.js",
+                    "./src/components/alert/gfx.js",
+                    "./src/components/alert/css.js",
+                    "./src/components/alert/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/alert/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/alert/templates/description.html",
+                    "examples": "./src/components/alert/templates/examples.html",
+                    "tests": "./src/components/alert/templates/tests.html",
+                    "usage": "./src/components/alert/templates/usage.html"
+                }
+            },
+            "dimmer": {
+                "files": [
+                    "./src/components/dimmer/module.js",
+                    "./src/components/dimmer/gfx.js",
+                    "./src/components/dimmer/css.js",
+                    "./src/components/dimmer/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/dimmer/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/dimmer/templates/description.html",
+                    "examples": "./src/components/dimmer/templates/examples.html",
+                    "tests": "./src/components/dimmer/templates/tests.html",
+                    "usage": "./src/components/dimmer/templates/usage.html"
+                }
+            },
+            "dropdown": {
+                "files": [
+                    "./src/components/dropdown/module.js",
+                    "./src/components/dropdown/gfx.js",
+                    "./src/components/dropdown/css.js",
+                    "./src/components/dropdown/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/dropdown/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/dropdown/templates/description.html",
+                    "examples": "./src/components/dropdown/templates/examples.html",
+                    "tests": "./src/components/dropdown/templates/tests.html",
+                    "usage": "./src/components/dropdown/templates/usage.html"
+                }
+            },
+            "loader": {
+                "files": [
+                    "./src/components/loader/module.js",
+                    "./src/components/loader/gfx.js",
+                    "./src/components/loader/css.js",
+                    "./src/components/loader/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/loader/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/loader/templates/description.html",
+                    "examples": "./src/components/loader/templates/examples.html",
+                    "tests": "./src/components/loader/templates/tests.html",
+                    "usage": "./src/components/loader/templates/usage.html"
+                }
+            },
+            "drawer": {
+                "files": [
+                    "./src/components/drawer/module.js",
+                    "./src/components/drawer/gfx.js",
+                    "./src/components/drawer/css.js",
+                    "./src/components/drawer/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/drawer/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/drawer/templates/description.html",
+                    "examples": "./src/components/drawer/templates/examples.html",
+                    "tests": "./src/components/drawer/templates/tests.html",
+                    "usage": "./src/components/drawer/templates/usage.html"
+                }
+            },
+            "carousel": {
+                "files": [
+                    "./src/components/carousel/module.js",
+                    "./src/components/carousel/gfx.js",
+                    "./src/components/carousel/css.js",
+                    "./src/components/carousel/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/carousel/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/carousel/templates/description.html",
+                    "examples": "./src/components/carousel/templates/examples.html",
+                    "tests": "./src/components/carousel/templates/tests.html",
+                    "usage": "./src/components/carousel/templates/usage.html"
                 }
             }
         }
