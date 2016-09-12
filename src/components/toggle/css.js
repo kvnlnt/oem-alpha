@@ -12,7 +12,7 @@
     ];
 
 
-    COMPONENTS.%CLASS%.Css = Css;
+    COMPONENTS.Toggle.Css = Css;
     return COMPONENTS;
 
 })(oem.Components);

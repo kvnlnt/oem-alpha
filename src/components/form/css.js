@@ -6,8 +6,8 @@
             selector: ".help",
             declaration: [
                 "font-size:" + THEME.FONT.SIZE.MEDIUM + "px",
-                "margin: 10px 0px",
-                "opacity: 0.6"
+                "opacity: 0.6",
+                "margin:10px 0"
             ]
         },
 
@@ -19,7 +19,7 @@
         },
 
         {
-            selector: ".errors",
+            selector: "ul.errors",
             declaration: [
                 "color:" + THEME.COLORS.ALERT,
                 "font-size:" + THEME.FONT.SIZE.SMALL
@@ -35,6 +35,13 @@
                 "text-indent:10px",
                 "border:1px solid " + THEME.FORMS.FIELD_BORDER_COLOR,
                 "border-radius: 2px"
+            ]
+        },
+
+        {
+            selector: ".error input",
+            declaration: [
+                "border:1px solid " + THEME.COLORS.ALERT
             ]
         }
 

@@ -66,7 +66,8 @@
                     "core",
                     "form",
                     "text-input",
-                    "button"
+                    "button",
+                    "toggle"
                 ],
                 "customizations": []
             },
@@ -74,6 +75,13 @@
                 "components": [
                     "core",
                     "button"
+                ],
+                "customizations": []
+            },
+            "toggle": {
+                "components": [
+                    "core",
+                    "toggle"
                 ],
                 "customizations": []
             }
@@ -207,6 +215,23 @@
                     "examples": "./src/components/button/templates/examples.html",
                     "tests": "./src/components/button/templates/tests.html",
                     "usage": "./src/components/button/templates/usage.html"
+                }
+            },
+            "toggle": {
+                "files": [
+                    "./src/components/toggle/module.js",
+                    "./src/components/toggle/gfx.js",
+                    "./src/components/toggle/css.js",
+                    "./src/components/toggle/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/toggle/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/toggle/templates/description.html",
+                    "examples": "./src/components/toggle/templates/examples.html",
+                    "tests": "./src/components/toggle/templates/tests.html",
+                    "usage": "./src/components/toggle/templates/usage.html"
                 }
             }
         }

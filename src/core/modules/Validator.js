@@ -87,7 +87,7 @@
         required: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
             var fieldLabel = fieldLabel || null;
             var errorMessage = customErrorMessage || fieldLabel + ' is required';
-            var isValid = fieldVal !== null && fieldVal !== void 0 && fieldVal.length != 0;
+            var isValid = fieldVal !== null && fieldVal !== void 0 && fieldVal.length != 0 && fieldVal != false;
             if (!isValid) this._addError(fieldName, errorMessage);
             if (isValid) this._addClean(fieldName, fieldVal);
             return this;
@@ -257,10 +257,23 @@
             return this;
         },
 
-        // TODO
-        regex: function(fieldName, fieldLabel, fieldVal, options, customErrorMessage) {
+        /**
+         * Validate against regex value
+         *
+         * @method     option
+         * @param      {string}  fieldName              - input field name
+         * @param      {string}  fieldLabel             - input field label
+         * @param      {(number|string)}  fieldVal      - value to test
+         * @param      {(number{}|string[])}  regex     - regex pattern
+         * @param      {string}  [customErrorMessage]   - optional custom message
+         * @return     {Object}                         - Validator instance
+         */
+        regex: function(fieldName, fieldLabel, fieldVal, regex, customErrorMessage) {
             var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' not a valid option';
+            var errorMessage = customErrorMessage || fieldLabel + ' does not match';
+            var isValid = fieldVal.match(regex);
+            if (!isValid) this._addError(fieldName, errorMessage);
+            if (isValid) this._addClean(fieldName, fieldVal);
             return this;
         }
 

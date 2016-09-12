@@ -47,10 +47,6 @@ CreateComponent.prototype = {
         var usage = fs.readFileSync('./oem/templates/new-component/templates/usage.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/usage.html', this.renderTemplate(usage));
 
-        // gfx
-        var gfx = fs.readFileSync('./oem/templates/new-component/gfx.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/gfx.js', this.renderTemplate(gfx));
-
         // module
         var module = fs.readFileSync('./oem/templates/new-component/module.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/module.js', this.renderTemplate(module));

@@ -148,6 +148,12 @@
         var errors = errors || this.getErrors();
         var errorWrapper = this.getErrorWrapper();
 
+        if(errors){
+            this.getEl().classList.add("error");
+        } else {
+            this.getEl().classList.remove("error");
+        }
+
         // empty error list
         while (errorWrapper.hasChildNodes()) {
             errorWrapper.removeChild(errorWrapper.lastChild);

@@ -8,24 +8,23 @@
     <div 
         data-oem="TextInput"
         data-oem-id="firstName"
-        data-oem-name="firstName"
-        data-oem-label="First Name"
-        data-oem-placeholder="First Name"
-        data-oem-help="Please enter your first name"
+        data-oem-validate-on-change="true"
         data-oem-validate-min-length="3|First name must be at least 3 chars long"
         data-oem-validate-max-length="6">
+        <label for="firstName">First Name</label>
+        <div class="help">This is an example of a text input field</div>
+        <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
+        <ul class="errors"></ul>
     </div>
 
     <div 
-        data-oem="TextInput"
-        data-oem-id="lastName"
-        data-oem-name="lastName"
-        data-oem-label="Last Name"
-        data-oem-placeholder="Last Name"
-        data-oem-value="Lint"
-        data-oem-help="Please enter your last name"
-        data-oem-validate-min-length="3"
-        data-oem-validate-max-length="6">
+        data-oem="Toggle"
+        data-oem-id="yesOrNo"
+        data-oem-validate-required>
+        <label for="firstName">Do you like fish?</label>
+        <div class="help">This is a toggle field</div>
+        <input type="checkbox" name="fishLiker">
+        <ul class="errors"></ul>
     </div>
 
     <button data-oem-id="submitBasicForm" data-oem="Button" data-oem-style="normal">Submit</button>

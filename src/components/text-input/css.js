@@ -1,7 +1,9 @@
-(function(Components, Core) {
+(function(Components, THEME) {
 
     var Css = [];
+
     Components.TextInput.Css = Css;
+
     return Components;
 
-})(oem.Components, oem.Core);
+})(oem.Components, oem.Core.Modules.Theme);
