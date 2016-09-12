@@ -4,8 +4,8 @@
         {
             selector:'input[type="text"]',
             declaration:[
-                'border-radius:4px',
-                'border:0px'
+                'border-radius:' + THEME.FORMS.FIELD_BORDER_RADIUS,
+                'border:1px solid' + THEME.FORMS.FIELD_BORDER_COLOR
             ]
         }
     ];

@@ -259,6 +259,27 @@
                     "carousel"
                 ],
                 "customizations": []
+            },
+            "checkbox": {
+                "components": [
+                    "core",
+                    "checkbox"
+                ],
+                "customizations": []
+            },
+            "radio": {
+                "components": [
+                    "core",
+                    "radio"
+                ],
+                "customizations": []
+            },
+            "multi-select": {
+                "components": [
+                    "core",
+                    "multi-select"
+                ],
+                "customizations": []
             }
         },
         "components": {
@@ -826,6 +847,57 @@
                     "examples": "./src/components/carousel/templates/examples.html",
                     "tests": "./src/components/carousel/templates/tests.html",
                     "usage": "./src/components/carousel/templates/usage.html"
+                }
+            },
+            "checkbox": {
+                "files": [
+                    "./src/components/checkbox/module.js",
+                    "./src/components/checkbox/gfx.js",
+                    "./src/components/checkbox/css.js",
+                    "./src/components/checkbox/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/checkbox/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/checkbox/templates/description.html",
+                    "examples": "./src/components/checkbox/templates/examples.html",
+                    "tests": "./src/components/checkbox/templates/tests.html",
+                    "usage": "./src/components/checkbox/templates/usage.html"
+                }
+            },
+            "radio": {
+                "files": [
+                    "./src/components/radio/module.js",
+                    "./src/components/radio/gfx.js",
+                    "./src/components/radio/css.js",
+                    "./src/components/radio/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/radio/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/radio/templates/description.html",
+                    "examples": "./src/components/radio/templates/examples.html",
+                    "tests": "./src/components/radio/templates/tests.html",
+                    "usage": "./src/components/radio/templates/usage.html"
+                }
+            },
+            "multi-select": {
+                "files": [
+                    "./src/components/multi-select/module.js",
+                    "./src/components/multi-select/gfx.js",
+                    "./src/components/multi-select/css.js",
+                    "./src/components/multi-select/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/multi-select/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/multi-select/templates/description.html",
+                    "examples": "./src/components/multi-select/templates/examples.html",
+                    "tests": "./src/components/multi-select/templates/tests.html",
+                    "usage": "./src/components/multi-select/templates/usage.html"
                 }
             }
         }
