@@ -36,27 +36,21 @@ OEM also provides a command line utility that streamlines a "conventional" workf
 OEM's command line utility facilitates basic workflows for creating, developing and deploying components. The cli can be reached via `node oem [command]`. Each command run's a corresponding script in the `./oem/options/` folder.
 
     // help
-
     Options and usage information
 
     // list
-
     Lists all registered components.
 
     // dev [component configuration]
-    
     Launches development server (express) for a component, dynamically rendering script all of its configured scripts to script tags in an html document. This allows for simple/conventional troubleshooting and development workflows.
 
     // [component-name]
-    
     Scaffolds out new component with starter code and inline documentation as well as registers a new component to the `package.json` file.
 
     // [component-name]
-    
     Removes a component, all of it's files and it's registration from the `package.json` file.
 
     // deploy [deployment-name]
-    
     Concatenates, minifies and deploys deployments configured in the `package.json` file. Also dynamically generates a pattern libary with all components included in the deployment.
 
 ## Client Side API
@@ -72,7 +66,7 @@ OEM's final artifact is a single javascript file. Each component has an individu
     oem.create
     oem.read
     oem.update
-    oem.destory
+    oem.destroy
 
     // event bus
 
@@ -97,9 +91,6 @@ A new component titled "test-component" will be added to the `package.json` file
 
 ##### module.js
 Main namespace for component. Contains any code common to all instances of the component.
-
-##### gfx.js
-To be used to store base64 images unique to this component.
 
 ##### css.js
 Base styles for this component. Expressed as an array of javascript objects (See Css and Styling).
@@ -130,14 +121,23 @@ All styles are expressed as simple javascript objects with two keys in the `css.
 
 The declaration is nothing more than an array of CSS declarations.
 
-Example:
+#### Example:
+
+ComponentName/css.js
 
     {
-        selector: ".oem-component",
+        selector: ".title",
         declaration: [
             "line-height: 40px",
             "color:" + Core.Modules.Theme.COLORS.GREY
         ]
+    }
+
+Each component has a `style` written to the head in order of components listed in the deployment configuration. Each component prefixes it's selectors with `[data-oem="ComponentName"]`. The style above would render something like:
+
+    [data-oem="ComponentName"] .title {
+        line-height: 40px;
+        color:#e2e2e2
     }
 
 All styling should be the simplest possible definition that could work. It should use generic styling that can be easily overwritten and extended. Note the use of the global theme object (also customizable) used to implement global settings. It's also possible to add such settings to the `module.js` but is not advisable.
@@ -186,22 +186,20 @@ Each deployment entry is a configuration used by the `deploy` utility. Each conf
     - oem.min.js
     - oem.min.js.map
 
-##  Justification: It's not a component library, it's a framework to create a component library.
-
-### Frameworks are a pain but we need them:
-Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunately, we need the features and functionality these tools provide in order to efficiently produce a modern web application. 
+### We need the features and functionality frameworks provide in order to efficiently produce a modern web application.
+Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunately, we need the features and functionality frameworks provide in order to efficiently produce a modern web application. 
 
 Today's applications often contain more clientside than serverside code. Some applications are 100% "clientside" and connect to a variety of backend services. This clientside code is often untested or even worse, untestable (without some refactoring). Frameworks help us because they can abstract away core functionality and offer us the reliability of having been tested. 
 
 
-### There are two types of frontend frameworks:
+### This creates core dependencies on frameworks that can and will evolve away from your implementation(s) which means that future upgrades, etc will become painful.
+Application logic is at the mercy of your chosen framework but if "done right" can be largely isolated from the features you used in the framework to construct your app. However, this isn't the same for component libraries. All the work that goes into interface flow, selecting dom elements, maintaining state, etc quickly become hotspots for monkeypatching, rerendering, etc...as their intergrations become tightly wound to the component library itself. Additionally their implementation details become integrated into the application logic layer (rendering, events, etc). This creates core dependencies on frameworks that can and will evolve away from your implementation(s) which means that future upgrades, etc will become painful.
 
-1. Application logic (Angular, React, Backbone, Ember, etc.)
-1. Component library (Bootrap, Foundation, Semantic UI, etc.)
+### You are already maintaining your own library:
+Because of these tight integration interdependencies you are married to the library AND your implementation. If you've done it "the library's way" you did a good job of working with the marketing dept. However, if you've been forced to compromise the power of the library with every customization imaginable (like the rest of us) then chances are you are already maintaining your own library. A library that wasn't built for your implementation.
 
-Application logic is at the mercy of your chosen framework but if "done right" can be largely isolated from the features you used in the framework to construct your app. However, this isn't the same for component libraries. All the work that goes into interface flow, selecting dom elements, maintaining state, etc quickly become hotspots for monkeypatching, rerendering, etc...as their intergrations become tightly wound to the component library itself. A component library that can and will evolve away from your implementation(s). 
-
-Instead of providing you with a ready-made set of components, OEM is a framework that provides you with the tools to build your own component library. Your ability to create your own testable, highly customizable components allows you to take control of the quality, efficiency and evolution of your own applications and their workflow. Want two different types of modals? No problem. How about inventing something brand new or finding something in another component library you like, no problem, just create it or port it over!
+### OEM *is* a framework but it's a frame that provides you with the tools to build your own component library.
+Your ability to create your own testable, highly customizable components allows you to take control of the quality, efficiency and evolution of your own applications and their workflow. Want two different types of modals? No problem. How about inventing something brand new or finding something in another component library you like, no problem, just create it or port it over!
 
 By building your own component library, you can tightly control:
 
