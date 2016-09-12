@@ -19,6 +19,9 @@ OEM is a platform/framework which allows for the quick development and managemen
 * composable architecture
 * build server friendly (via cli)
 
+## Quick pitch
+There' no compiling, no typescript, no transpiling, no css processing, no code maps, 
+
 ## Principles
 * Progressive enhancement (aka works without javascript)
 
@@ -185,6 +188,8 @@ Each deployment entry is a configuration used by the `deploy` utility. Each conf
     - oem.js.map
     - oem.min.js
     - oem.min.js.map
+
+## Justification
 
 ### We need the features and functionality frameworks provide in order to efficiently produce a modern web application.
 Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunately, we need the features and functionality frameworks provide in order to efficiently produce a modern web application. 
