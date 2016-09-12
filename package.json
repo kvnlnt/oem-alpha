@@ -128,14 +128,13 @@
                     "./src/core/prototypes/Component.test.js"
                 ],
                 "templates": {
-                    "description": "./oem/templates/core/description.html",
-                    "tests": "./oem/templates/core/tests.html"
+                    "description": "./core/templates/core/description.html",
+                    "tests": "./core/templates/core/tests.html"
                 }
             },
             "accordion": {
                 "files": [
                     "./src/components/accordion/module.js",
-                    "./src/components/accordion/gfx.js",
                     "./src/components/accordion/css.js",
                     "./src/components/accordion/prototype.js"
                 ],
@@ -152,7 +151,6 @@
             "text-input": {
                 "files": [
                     "./src/components/text-input/module.js",
-                    "./src/components/text-input/gfx.js",
                     "./src/components/text-input/css.js",
                     "./src/components/text-input/prototype.js"
                 ],
@@ -169,7 +167,6 @@
             "stylizer": {
                 "files": [
                     "./src/components/stylizer/module.js",
-                    "./src/components/stylizer/gfx.js",
                     "./src/components/stylizer/css.js",
                     "./src/components/stylizer/prototype.js"
                 ],
@@ -186,7 +183,6 @@
             "form": {
                 "files": [
                     "./src/components/form/module.js",
-                    "./src/components/form/gfx.js",
                     "./src/components/form/css.js",
                     "./src/components/form/prototype.js"
                 ],
@@ -203,7 +199,6 @@
             "button": {
                 "files": [
                     "./src/components/button/module.js",
-                    "./src/components/button/gfx.js",
                     "./src/components/button/css.js",
                     "./src/components/button/prototype.js"
                 ],
@@ -220,7 +215,6 @@
             "toggle": {
                 "files": [
                     "./src/components/toggle/module.js",
-                    "./src/components/toggle/gfx.js",
                     "./src/components/toggle/css.js",
                     "./src/components/toggle/prototype.js"
                 ],

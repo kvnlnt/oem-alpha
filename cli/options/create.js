@@ -38,29 +38,29 @@ CreateComponent.prototype = {
     copyAndFormatTemplates: function(){
 
         // html
-        var decription = fs.readFileSync('./oem/templates/new-component/templates/description.html', 'utf-8');
+        var decription = fs.readFileSync('./cli/templates/new-component/templates/description.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/description.html', this.renderTemplate(decription));
-        var examples = fs.readFileSync('./oem/templates/new-component/templates/examples.html', 'utf-8');
+        var examples = fs.readFileSync('./cli/templates/new-component/templates/examples.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/examples.html', this.renderTemplate(examples));
-        var tests = fs.readFileSync('./oem/templates/new-component/templates/tests.html', 'utf-8');
+        var tests = fs.readFileSync('./cli/templates/new-component/templates/tests.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/tests.html', this.renderTemplate(tests));
-        var usage = fs.readFileSync('./oem/templates/new-component/templates/usage.html', 'utf-8');
+        var usage = fs.readFileSync('./cli/templates/new-component/templates/usage.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/usage.html', this.renderTemplate(usage));
 
         // module
-        var module = fs.readFileSync('./oem/templates/new-component/module.js', 'utf-8');
+        var module = fs.readFileSync('./cli/templates/new-component/module.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/module.js', this.renderTemplate(module));
 
         // prototype
-        var prototype = fs.readFileSync('./oem/templates/new-component/prototype.js', 'utf-8');
+        var prototype = fs.readFileSync('./cli/templates/new-component/prototype.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/prototype.js', this.renderTemplate(prototype));
 
         // test
-        var test = fs.readFileSync('./oem/templates/new-component/test.js', 'utf-8');
+        var test = fs.readFileSync('./cli/templates/new-component/test.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/test.js', this.renderTemplate(test));
 
         // css
-        var css = fs.readFileSync('./oem/templates/new-component/css.js', 'utf-8');
+        var css = fs.readFileSync('./cli/templates/new-component/css.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
 
         return this;

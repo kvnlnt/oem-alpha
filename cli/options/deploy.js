@@ -41,7 +41,7 @@ Deployment.prototype = {
         fs.writeFileSync(this.jsFileMinified, minifiedFileContents.code);
 
         // write html file
-        var template = fs.readFileSync('./oem/templates/deployment/main.html', 'utf-8');
+        var template = fs.readFileSync('./cli/templates/deployment/main.html', 'utf-8');
         var html = '';
         html += '<dl class="oem oem-pattern-list">\n';
         pkg.oem.deployment[this.config].components.forEach(function(component){

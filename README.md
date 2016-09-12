@@ -203,7 +203,7 @@ Application logic is at the mercy of your chosen framework but if "done right" c
 ### You are already maintaining your own library:
 Because of these tight integration interdependencies you are married to the library AND your implementation. If you've done it "the library's way" you did a good job of working with the marketing dept. However, if you've been forced to compromise the power of the library with every customization imaginable (like the rest of us) then chances are you are already maintaining your own library. A library that wasn't built for your implementation.
 
-### OEM *is* a framework but it's a frame that provides you with the tools to build your own component library.
+### OEM *is* a framework but it's a framework that provides you with the tools to build your own component library.
 Your ability to create your own testable, highly customizable components allows you to take control of the quality, efficiency and evolution of your own applications and their workflow. Want two different types of modals? No problem. How about inventing something brand new or finding something in another component library you like, no problem, just create it or port it over!
 
 By building your own component library, you can tightly control:

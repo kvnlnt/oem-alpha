@@ -92,7 +92,7 @@ DevelopComponent.prototype = {
         }
 
         // now update the main template
-        fs.readFile("./oem/templates/development/main.html", 'utf8', function(err, data) {
+        fs.readFile("./cli/templates/development/main.html", 'utf8', function(err, data) {
             data = data
                 .replace("<!-- HTML:DESCRIPTION -->", templateDescription, 'utf8')
                 .replace("<!-- HTML:EXAMPLES -->", templateExamples, 'utf8')
