@@ -191,8 +191,8 @@ Each deployment entry is a configuration used by the `deploy` utility. Each conf
 
 ## Justification
 
-### We need the features and functionality frameworks provide in order to efficiently produce a modern web application.
-Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunately, we need the features and functionality frameworks provide in order to efficiently produce a modern web application. 
+### We need the features and functionality that frameworks provide in order to efficiently produce a modern web application.
+Modern adaptive and responsive design UI/UX, device fragmentation, legacy browser support, opinionated frameworks combined with the heavy churn of frontend toolchains have turned modern frontend development into a gauntlet of gotchas. Unfortunately, we need the features and functionality that frameworks provide in order to efficiently produce a modern web application. 
 
 Today's applications often contain more clientside than serverside code. Some applications are 100% "clientside" and connect to a variety of backend services. This clientside code is often untested or even worse, untestable (without some refactoring). Frameworks help us because they can abstract away core functionality and offer us the reliability of having been tested. 
 
