@@ -427,7 +427,7 @@
             "grid": {
                 "files": [
                     "./src/components/grid/module.js",
-                    "./src/components/grid/gfx.js",
+
                     "./src/components/grid/css.js",
                     "./src/components/grid/prototype.js"
                 ],
@@ -444,7 +444,7 @@
             "file-upload": {
                 "files": [
                     "./src/components/file-upload/module.js",
-                    "./src/components/file-upload/gfx.js",
+
                     "./src/components/file-upload/css.js",
                     "./src/components/file-upload/prototype.js"
                 ],
@@ -461,7 +461,7 @@
             "password-input": {
                 "files": [
                     "./src/components/password-input/module.js",
-                    "./src/components/password-input/gfx.js",
+
                     "./src/components/password-input/css.js",
                     "./src/components/password-input/prototype.js"
                 ],
@@ -478,7 +478,6 @@
             "select-box": {
                 "files": [
                     "./src/components/select-box/module.js",
-                    "./src/components/select-box/gfx.js",
                     "./src/components/select-box/css.js",
                     "./src/components/select-box/prototype.js"
                 ],
@@ -495,7 +494,6 @@
             "progress-bar": {
                 "files": [
                     "./src/components/progress-bar/module.js",
-                    "./src/components/progress-bar/gfx.js",
                     "./src/components/progress-bar/css.js",
                     "./src/components/progress-bar/prototype.js"
                 ],
@@ -512,7 +510,6 @@
             "lightbox": {
                 "files": [
                     "./src/components/lightbox/module.js",
-                    "./src/components/lightbox/gfx.js",
                     "./src/components/lightbox/css.js",
                     "./src/components/lightbox/prototype.js"
                 ],
@@ -529,7 +526,6 @@
             "modal": {
                 "files": [
                     "./src/components/modal/module.js",
-                    "./src/components/modal/gfx.js",
                     "./src/components/modal/css.js",
                     "./src/components/modal/prototype.js"
                 ],
@@ -546,7 +542,6 @@
             "date-picker": {
                 "files": [
                     "./src/components/date-picker/module.js",
-                    "./src/components/date-picker/gfx.js",
                     "./src/components/date-picker/css.js",
                     "./src/components/date-picker/prototype.js"
                 ],
@@ -563,7 +558,6 @@
             "slider": {
                 "files": [
                     "./src/components/slider/module.js",
-                    "./src/components/slider/gfx.js",
                     "./src/components/slider/css.js",
                     "./src/components/slider/prototype.js"
                 ],
@@ -580,7 +574,6 @@
             "dialog": {
                 "files": [
                     "./src/components/dialog/module.js",
-                    "./src/components/dialog/gfx.js",
                     "./src/components/dialog/css.js",
                     "./src/components/dialog/prototype.js"
                 ],
@@ -597,7 +590,6 @@
             "sticky": {
                 "files": [
                     "./src/components/sticky/module.js",
-                    "./src/components/sticky/gfx.js",
                     "./src/components/sticky/css.js",
                     "./src/components/sticky/prototype.js"
                 ],
@@ -614,7 +606,6 @@
             "time-picker": {
                 "files": [
                     "./src/components/time-picker/module.js",
-                    "./src/components/time-picker/gfx.js",
                     "./src/components/time-picker/css.js",
                     "./src/components/time-picker/prototype.js"
                 ],
@@ -631,7 +622,6 @@
             "color-picker": {
                 "files": [
                     "./src/components/color-picker/module.js",
-                    "./src/components/color-picker/gfx.js",
                     "./src/components/color-picker/css.js",
                     "./src/components/color-picker/prototype.js"
                 ],
@@ -648,7 +638,6 @@
             "tooltip": {
                 "files": [
                     "./src/components/tooltip/module.js",
-                    "./src/components/tooltip/gfx.js",
                     "./src/components/tooltip/css.js",
                     "./src/components/tooltip/prototype.js"
                 ],
@@ -665,7 +654,6 @@
             "breadcrumb": {
                 "files": [
                     "./src/components/breadcrumb/module.js",
-                    "./src/components/breadcrumb/gfx.js",
                     "./src/components/breadcrumb/css.js",
                     "./src/components/breadcrumb/prototype.js"
                 ],
@@ -682,7 +670,6 @@
             "tabs": {
                 "files": [
                     "./src/components/tabs/module.js",
-                    "./src/components/tabs/gfx.js",
                     "./src/components/tabs/css.js",
                     "./src/components/tabs/prototype.js"
                 ],
@@ -699,7 +686,6 @@
             "table": {
                 "files": [
                     "./src/components/table/module.js",
-                    "./src/components/table/gfx.js",
                     "./src/components/table/css.js",
                     "./src/components/table/prototype.js"
                 ],
@@ -716,7 +702,6 @@
             "list": {
                 "files": [
                     "./src/components/list/module.js",
-                    "./src/components/list/gfx.js",
                     "./src/components/list/css.js",
                     "./src/components/list/prototype.js"
                 ],
@@ -733,7 +718,6 @@
             "badge": {
                 "files": [
                     "./src/components/badge/module.js",
-                    "./src/components/badge/gfx.js",
                     "./src/components/badge/css.js",
                     "./src/components/badge/prototype.js"
                 ],
@@ -750,7 +734,6 @@
             "alert": {
                 "files": [
                     "./src/components/alert/module.js",
-                    "./src/components/alert/gfx.js",
                     "./src/components/alert/css.js",
                     "./src/components/alert/prototype.js"
                 ],
@@ -767,7 +750,6 @@
             "dimmer": {
                 "files": [
                     "./src/components/dimmer/module.js",
-                    "./src/components/dimmer/gfx.js",
                     "./src/components/dimmer/css.js",
                     "./src/components/dimmer/prototype.js"
                 ],
@@ -784,7 +766,6 @@
             "dropdown": {
                 "files": [
                     "./src/components/dropdown/module.js",
-                    "./src/components/dropdown/gfx.js",
                     "./src/components/dropdown/css.js",
                     "./src/components/dropdown/prototype.js"
                 ],
@@ -801,7 +782,6 @@
             "loader": {
                 "files": [
                     "./src/components/loader/module.js",
-                    "./src/components/loader/gfx.js",
                     "./src/components/loader/css.js",
                     "./src/components/loader/prototype.js"
                 ],
@@ -818,7 +798,6 @@
             "drawer": {
                 "files": [
                     "./src/components/drawer/module.js",
-                    "./src/components/drawer/gfx.js",
                     "./src/components/drawer/css.js",
                     "./src/components/drawer/prototype.js"
                 ],
@@ -835,7 +814,6 @@
             "carousel": {
                 "files": [
                     "./src/components/carousel/module.js",
-                    "./src/components/carousel/gfx.js",
                     "./src/components/carousel/css.js",
                     "./src/components/carousel/prototype.js"
                 ],
@@ -852,7 +830,6 @@
             "checkbox": {
                 "files": [
                     "./src/components/checkbox/module.js",
-                    "./src/components/checkbox/gfx.js",
                     "./src/components/checkbox/css.js",
                     "./src/components/checkbox/prototype.js"
                 ],
@@ -869,7 +846,6 @@
             "radio": {
                 "files": [
                     "./src/components/radio/module.js",
-                    "./src/components/radio/gfx.js",
                     "./src/components/radio/css.js",
                     "./src/components/radio/prototype.js"
                 ],
@@ -886,7 +862,6 @@
             "multi-select": {
                 "files": [
                     "./src/components/multi-select/module.js",
-                    "./src/components/multi-select/gfx.js",
                     "./src/components/multi-select/css.js",
                     "./src/components/multi-select/prototype.js"
                 ],

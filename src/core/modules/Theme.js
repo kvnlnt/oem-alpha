@@ -2,13 +2,24 @@
 
     var Theme = {};
 
+    // Breakpoints
+    var BREAKPOINTS = {};
+    BREAKPOINTS.MOBILE = 400;
+    BREAKPOINTS.MOBILE_LANDSCAPE = 800;
+    BREAKPOINTS.TABLET = 1000;
+    BREAKPOINTS.DESKTOP = 1200;
+    Theme.BREAKPOINTS = BREAKPOINTS;
+
     // Theme Colors
     var COLORS = {};
-    COLORS.BLACK = '#000000';
+    COLORS.PITCH_BLACK = '#000000';
+    COLORS.BLACK = '#222222';
     COLORS.LIGHT_GREY = '#DDDDDD';
     COLORS.GREY = '#AAAAAA';
     COLORS.DARK_GREY = '#999999';
-    COLORS.WHITE = '#FFFFFF';
+    COLORS.STARK_WHITE = '#FFFFFF';
+    COLORS.WHITE = '#f2f2f2';
+    COLORS.OFF_WHITE = 'e6e6e6';
     COLORS.ALERT = 'red';
     COLORS.SUCCESS = 'green';
     COLORS.WARNING = 'yellow';

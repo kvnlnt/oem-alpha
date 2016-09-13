@@ -4,7 +4,6 @@
     Component.el = null;
     Component.id = null;
     Component.type = "Component";
-    Component.breakpoints = CORE.Modules.Responsifier.BREAKPOINTS;
     Component.events = {};
 
     Component.init = function(){
@@ -23,10 +22,6 @@
 
     Component.getType = function(){
         return this.type;
-    };
-
-    Component.getBreakpoints = function(){
-        return this.breakpoints;
     };
 
     Component.getEvents = function(){
@@ -48,11 +43,6 @@
     Component.setId = function(id){
         this.id = id || CORE.Modules.UTIL.guid();
         this.getEl().dataset.oemId = id;
-        return this;
-    };
-
-    Component.setBreakpoints = function(breakpoints){
-        this.breakpoints = breakpoints;
         return this;
     };
 

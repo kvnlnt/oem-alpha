@@ -15,7 +15,7 @@
             return "   " + declaration + ";\n";
         };
         var rules = function(rule) {
-            return selector + ' ' + rule.selector + " {\n" + rule.declaration.map(declarations).join('') + "}";
+            return selector + '' + rule.selector + " {\n" + rule.declaration.map(declarations).join('') + "}";
         };
         // all rules
         return css.map(rules).join('\n\n');

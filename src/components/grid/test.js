@@ -1,29 +1,29 @@
-(function(COMPONENTS, TEST) {
+// (function(COMPONENTS, TEST) {
 
-    var Test = Object.create(TEST); // call super constructor
-    Test.name = "Tests";
-    Test.testComponent = 'Grid-test';
+//     var Test = Object.create(TEST); // call super constructor
+//     Test.name = "Tests";
+//     Test.testComponent = 'Grid-test';
 
-    /**
-     * Test example
-     *
-     * @method     
-     */
-    Test.exampleIsWorking = function(){
-        Test.assert('Test example is working', true, true);
-    };    
+//     /**
+//      * Test example
+//      *
+//      * @method     
+//      */
+//     Test.exampleIsWorking = function(){
+//         Test.assert('Test example is working', true, true);
+//     };    
 
-    /**
-     * Run tests
-     */
-    oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
-        Test.runTestSuite('Grid', [
-            Test.exampleIsWorking
-        ]);
-    });
+//     /**
+//      * Run tests
+//      */
+//     oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
+//         Test.runTestSuite('Grid', [
+//             Test.exampleIsWorking
+//         ]);
+//     });
 
-    // exports
-    COMPONENTS.Grid.Test = Test;
-    return COMPONENTS;
+//     // exports
+//     COMPONENTS.Grid.Test = Test;
+//     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Test);
+// })(oem.Components, oem.Core.Modules.Test);
