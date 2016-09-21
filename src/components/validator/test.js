@@ -2,7 +2,7 @@
 
     var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
-    Test.testComponent = '%CLASS%Test';
+    Test.testComponent = 'ValidatorTest';
 
     /**
      * Test example
@@ -17,13 +17,13 @@
      * Run tests
      */
     oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
-        Test.runTestSuite('%CLASS%', [
+        Test.runTestSuite('Validator', [
             Test.exampleIsWorking
         ]);
     });
 
     // exports
-    COMPONENTS.%CLASS%.Test = Test;
+    COMPONENTS.Validator.Test = Test;
     return COMPONENTS;
 
 })(oem.Components, oem.Core.Modules.Test);

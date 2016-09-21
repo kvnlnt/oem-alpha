@@ -5,37 +5,37 @@ const chalk = require('chalk');
 /**
  * Component Creator
  */
-const CreateComponent = function(componentName){
+const CreateComponent = function(componentName) {
     this.fileName = componentName;
     this.componentClass = this.convertNameToClass(componentName);
-    this.componentDir = './src/components/'+this.fileName;
-    this.templatesDir = './src/components/'+this.fileName+'/templates';
+    this.componentDir = './src/components/' + this.fileName;
+    this.templatesDir = './src/components/' + this.fileName + '/templates';
     this
-    .createDirectory()
-    .copyAndFormatTemplates()
-    .updatePackageJson()
-    .launch();
+        .createDirectory()
+        .copyAndFormatTemplates()
+        .updatePackageJson()
+        .launch();
 };
 
 CreateComponent.prototype = {
 
-    createDirectory: function(){
+    createDirectory: function() {
         // console.log('create component', this.componentName, this.componentClass);
         try {
             fs.mkdirSync(this.componentDir);
             fs.mkdirSync(this.templatesDir);
             return this;
         } catch (err) {
-            if(err) console.log("ERROR".bold, err);
+            if (err) console.log("ERROR".bold, err);
         }
     },
 
-    renderTemplate: function(str){
+    renderTemplate: function(str) {
         str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
         return str;
     },
 
-    copyAndFormatTemplates: function(){
+    copyAndFormatTemplates: function() {
 
         // html
         var decription = fs.readFileSync('./cli/templates/new-component/templates/description.html', 'utf-8');
@@ -64,10 +64,41 @@ CreateComponent.prototype = {
         fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
 
         return this;
-
     },
 
-    updatePackageJson: function(){
+    sortPackageJson: function(package) {
+
+        // sort development
+        package.oem.development = Object
+            .keys(package.oem.development)
+            .sort()
+            .reduce(function(result, key) {
+                result[key] = package.oem.development[key];
+                return result;
+            }, {});
+
+        // sort components
+        package.oem.components = Object
+            .keys(package.oem.components)
+            .sort()
+            .reduce(function(result, key) {
+                result[key] = package.oem.components[key];
+                return result;
+            }, {});
+
+        // sort deployment
+        package.oem.deployment = Object
+            .keys(package.oem.deployment)
+            .sort()
+            .reduce(function(result, key) {
+                result[key] = package.oem.deployment[key];
+                return result;
+            }, {});
+
+        return package;
+    },
+
+    updatePackageJson: function() {
 
         // add development node
         var newDevelopmentConfig = {};
@@ -78,26 +109,25 @@ CreateComponent.prototype = {
         // configuration
         var newComponentConfig = {};
         newComponentConfig.files = [];
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/module.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/gfx.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/css.js");
-        newComponentConfig.files.push("./src/components/"+this.fileName+"/prototype.js");
+        newComponentConfig.files.push("./src/components/" + this.fileName + "/module.js");
+        newComponentConfig.files.push("./src/components/" + this.fileName + "/css.js");
+        newComponentConfig.files.push("./src/components/" + this.fileName + "/prototype.js");
         newComponentConfig.tests = [];
-        newComponentConfig.tests.push("./src/components/"+this.fileName+"/test.js");
+        newComponentConfig.tests.push("./src/components/" + this.fileName + "/test.js");
         newComponentConfig.templates = {};
-        newComponentConfig.templates.description = this.templatesDir+"/description.html";
-        newComponentConfig.templates.examples = this.templatesDir+"/examples.html";
-        newComponentConfig.templates.tests = this.templatesDir+"/tests.html";
-        newComponentConfig.templates.usage = this.templatesDir+"/usage.html";
+        newComponentConfig.templates.description = this.templatesDir + "/description.html";
+        newComponentConfig.templates.examples = this.templatesDir + "/examples.html";
+        newComponentConfig.templates.tests = this.templatesDir + "/tests.html";
+        newComponentConfig.templates.usage = this.templatesDir + "/usage.html";
         pkg.oem.components[this.fileName] = newComponentConfig;
 
         // save to package
-        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
-    
+        fs.writeFileSync('./package.json', JSON.stringify(this.sortPackageJson(pkg), null, 4));
+
         return this;
     },
 
-    launch: function(){
+    launch: function() {
         console.log("");
         console.log("");
         console.log(chalk.bgWhite("       "));
@@ -110,8 +140,8 @@ CreateComponent.prototype = {
         console.log("");
     },
 
-    convertNameToClass: function(name){
-        return name.split('-').map(function(segment){
+    convertNameToClass: function(name) {
+        return name.split('-').map(function(segment) {
             return segment.charAt(0).toUpperCase() + segment.slice(1);
         }).join('');
     }
