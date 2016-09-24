@@ -8,8 +8,7 @@
 
     // DEFAULTS
 
-    Prototype.fields = [];
-    Prototype.validators = [];
+    Prototype.fields = {};
     Prototype.submitButton = null;
 
     // INIT
@@ -30,18 +29,6 @@
         return this.validators;
     };
 
-    Prototype.getValidatorsByField = function(field){
-        return this.getValidators().filter(function(validator){
-            return validator.getField() === field.getId();
-        });
-    };
-
-    Prototype.getValidatorByType = function(type){
-        return this.getValidators().filter(function(validator){
-            return validator.getValidation() === type;
-        })[0];
-    };
-
     // SETTERS
     
     Prototype.setFields = function(fields){
@@ -52,12 +39,22 @@
     // METHODS
     
     Prototype.addField = function(field){
-        this.fields.push(field);
+        if(!this.fields.hasOwnProperty(field.getId())) this.createFieldObject(field.getId());
+        this.fields[field.getId()].component = field;
         return this;
     };
 
     Prototype.addValidator = function(validator){
-        this.validators.push(validator);
+        if(!this.fields.hasOwnProperty(validator.getField())) this.createFieldObject(validator.getField());
+        this.fields[validator.getField()].validators.push(validator);
+        return this;
+    };
+
+    Prototype.createFieldObject = function(fieldName){
+        if(!this.fields.hasOwnProperty(fieldName)) this.fields[fieldName] = {
+            component: null,
+            validators:[]
+        };
         return this;
     };
 
@@ -65,32 +62,49 @@
 
         var that = this;
         var fields = this.getFields();
-        var validator = new VALIDATOR();
+        var isValid = true;
+        var clean = {};
+        var errors = {};
         var validators;
 
-        // loop fields
-        fields.forEach(function(field){
-            // get validations
-            validators = that.getValidatorsByField(field);
-            // if it has validators, run them
-            if(validators){
-                validators.forEach(function(v){
-                    validator[v.getValidation()].apply(validator, v.getArgs(field.getValue()))
+        for(var field in fields){
+            if(fields[field].validators.length){
+                fields[field].validators.forEach(function(validator){
+                    // create argument list for validator module
+                    var args = [fields[field].component.getValue()].concat(validator.getArgs());
+                    // run validation
+                    if(VALIDATOR[validator.getValidation()].apply(VALIDATOR, args)) {
+                        // if clean, store it
+                        clean[field] = fields[field].component.getValue();
+                    } else {
+                        // if error, add to error collection, show error and check form as invalid
+                        if(!errors.hasOwnProperty(field)) errors[field] = [];
+                        errors[field].push(validator.getMessage());
+                        validator.show();
+                        isValid = false;
+                    }
                 });
             } else {
-                // manually add field to clean collection
-                validator._addClean(field.getId(), field.getValue());
+                clean[field] = fields[field].getValue();
             }
-        });
+        }
 
-        return validator;
+        return {
+            isValid: isValid,
+            clean: clean,
+            errors: errors
+        }
 
     };
 
     Prototype.resetValidation = function(){
-        this.getValidators().forEach(function(validator){
-            validator.hide();
-        });
+        var fields = this.getFields();
+        var validations;
+        for(var field in fields){
+            fields[field].validators.forEach(function(validator){
+                validator.hide();
+            });
+        }
     };
 
     Prototype.convertCleanCollectionToObject = function(cleanCollection){
@@ -105,20 +119,13 @@
         this.resetValidation();
         var validation = this.validate();
         var that = this;
+        console.log(validation);
 
         // if valid, broadcast
         if(validation.isValid){
             // trigger event with data
             oem.events.dispatch(this.getEvents().submitted, this, validation.clean);
             LOG(validation.clean);
-        } else {
-            // show errors
-            for(var e in validation.errors){
-                validation.errors[e].forEach(function(error){
-                    var validator = that.getValidatorByType(error.type);
-                    validator.show(validator.getMessage() || error.message);
-                });
-            }
         }
         
     };

@@ -1,15 +1,8 @@
 /**
  * Validator
- * @class
- * @desc - Validation object which allows validations to be chained together. Each call to a validation method populates either the "clean" object for valid values or the "error" object for failed validations. 
- * 
- * Tip: Recreate the validation object each time you do a validation. You can call multiple validations on a single field (this is it's intended usage) but if you call the same validation multiple times on a single field, it will simply add to the collection and you'll end up with duplicate errors on the field. 
- * 
- * @example <caption>Basic usage</caption>
- * // returns {username:['Username must be a valid email address']}
- * var validate = new Validator();
- * validate.email('username', 'Username', 'bad-email-address');
- * validate.password('password, 'Password', 'OKpassw0rd');
+ * @module
+ * @desc - pile of validation functions 
+
  * 
  */
 
@@ -17,266 +10,103 @@
 
     "use strict";
 
-    function Validator(errors, clean, isValid) {
-        this.errors = errors || null;
-        this.clean = clean || null;
-        this.isValid = isValid || true;
-    }
-
-    Validator.prototype = {
-
-        // internal methods
-
-        /**
-         * Add field and message to error collection and return Validator
-         *
-         * @method     _addError
-         * @param      {string}  fieldName  - fieldName of field
-         * @param      {string}  message    - message to collect
-         * @return     {Object}             - Validator instance
-         */
-        _addError: function(type, fieldName, message) {
-            if (this.errors === null) this.errors = {};
-            if (!this.errors.hasOwnProperty(fieldName)) this.errors[fieldName] = [];
-            this.errors[fieldName].push({
-                type: type,
-                message: message
-            });
-            this.isValid = false;
-            return this;
-        },
-
-        /**
-         * Add field and message to clean collection and return Validator
-         *
-         * @method     _addError
-         * @param      {string}  fieldName  - input field name of field
-         * @param      {string}  message    - message to collect
-         * @return     {Object}             - Validator instance
-         */
-        _addClean: function(fieldName, val) {
-            if (this.clean === null) this.clean = {};
-            if (!this.clean.hasOwnProperty(fieldName)) this.clean[fieldName] = val;
-            return this;
-        },
+    var Validator = {
 
         // validation methods
 
         /**
-         * Pass through validation and return Validator
-         * Used to attach a value to the clean collection
-         *
-         * @method     skip
-         * @param      {string}  fieldName      - input field name
-         * @param      {string}  fieldLabel     - input field label
-         * @param      {*}  fieldVal            - value to pass through
-         * @return     {Object}                 - Validator instance
-         */
-        skip: function(fieldName, fieldLabel, fieldVal) {
-            this._addClean(fieldName, fieldVal);
-            return this;
-        },
-
-        /**
-         * Validate field exists and return Validator
-         *
+         * Validate field exists
          * @method     required
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {*}       fieldVal               - value to test
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        required: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' is required';
-            var isValid = fieldVal !== null && fieldVal !== void 0 && fieldVal.length != 0 && fieldVal != false;
-            if (!isValid) this._addError('required', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+        required: function(val) {
+            var isValid = val !== null && val !== void 0 && val.length != 0 && val != false;
+            return isValid;
         },
 
         /**
          * Validate string is an email and return Validator
-         *
          * @method     email
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {string}  fieldVal               - value to test
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        email: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' must be a valid email address';
+        email: function(val) {
             var re = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-            var isValid = re.test(fieldVal);
-            if (!isValid) this._addError('email', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+            var isValid = re.test(val);
+            return isValid;
         },
 
         /**
          * Validate string is a password and return Validator
-         *
          * @method     password
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {string}  fieldVal               - value to test
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        password: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' must be mixed case, alphanumeric and at least 8 characters long';
+        password: function(val) {
             var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}$/;
-            var isValid = re.test(fieldVal);
-            if (!isValid) this._addError('password', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+            var isValid = re.test(val);
+            return isValid;
         },
 
         /**
          * Validate that two strings match and return Validator
-         * useful for comparing passwords
-         *
          * @method     match
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {*}  fieldVal                    - any value that can be compared with the "===" operator
-         * @param      {string}  fieldToMatchLabel      - label of field to match
-         * @param      {*}  fieldToMatchVal             - any value that can be compared with the "===" operator
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        match: function(fieldName, fieldLabel, fieldVal, fieldToMatchLabel, fieldToMatchVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + 'This field must match ' + fieldToMatchLabel;
-            var isValid = fieldVal === fieldToMatchVal;
-            if (!isValid) this._addError('match', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+        match: function(val1, val2) {
+            var isValid = val1 === val2;
+            return isValid;
         },
 
         /**
          * Validate a string is mixed case and return Validator
-         *
          * @method     mixedCase
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {string}  fieldVal               - value to test
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        mixedCase: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' must contain both upper and lower case letters';
+        mixedCase: function(val) {
             var re = /(?:[a-z].+[A-Z])|(?:[A-Z].+[a-z])/g;
-            var isValid = re.test(fieldVal);
-            if (!isValid) this._addError('mixedCase', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+            var isValid = re.test(val);
+            return isValid;
         },
 
         /**
          * Validate stirng contains a number and return Validator
-         *
          * @method     containsNumber
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {string}  fieldVal               - value to test
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        containsNumber: function(fieldName, fieldLabel, fieldVal, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' must contain at least one number';
+        containsNumber: function(val) {
             var re = /[0-9]/g;
-            var isValid = re.test(fieldVal);
-            if (!isValid) this._addError('containsNumber', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+            var isValid = re.test(val);
+            return isValid;
         },
 
         /**
          * Validate string has minimum length and return validator
-         *
          * @method     minLength
-         * @param      {string}     fieldName               - input field name
-         * @param      {string}     fieldLabel              - input field label
-         * @param      {string}     fieldVal                - value to test
-         * @param      {number}     len                     - minimum length
-         * @param      {string}     [customErrorMessage]    - optional custom message
-         * @return     {Object}                             - Validator instance
          */
-        minLength: function(fieldName, fieldLabel, fieldVal, len, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var fieldVal = fieldVal === null ? '' : fieldVal;
-            var errorMessage = customErrorMessage || fieldLabel + ' must be at least ' + len + ' characters long';
-            var isValid = fieldVal.length >= len;
-            if (!isValid) this._addError('minLength', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+        minLength: function(val, len) {
+            var val = val === null ? '' : val;
+            var isValid = val.length >= len;
+            return isValid;
         },
 
         /**
          * Validate string has maxiumum length and return validator
-         *
          * @method     maxLength
-         * @param      {string}     fieldName               - input field name
-         * @param      {string}     fieldLabel              - input field label
-         * @param      {string}     fieldVal                - value to test
-         * @param      {number}     len                     - maximum length
-         * @param      {string}     [customErrorMessage]    - optional custom message
-         * @return     {Object}                             - Validator instance
          */
-        maxLength: function(fieldName, fieldLabel, fieldVal, len, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var fieldVal = fieldVal === null ? '' : fieldVal;
-            var errorMessage = customErrorMessage || fieldLabel + ' must be less than ' + len + ' characters long';
-            var isValid = fieldVal.length < len;
-            if (!isValid) this._addError('maxLength', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+        maxLength: function(val, len) {
+            var val = val === null ? '' : val;
+            var isValid = val.length < len;
+            return isValid;
         },
 
         /**
          * Validate value exists in options list and return Validator
-         *
          * @method     option
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {(number|string)}  fieldVal      - value to test
-         * @param      {(number{}|string[])}  options   - array of options to test against
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        option: function(fieldName, fieldLabel, fieldVal, options, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' not a valid option';
-            var isValid = options.indexOf(fieldVal) > -1;
-            if (!isValid) this._addError('option', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
-            return this;
+        option: function(val, options) {
+            var isValid = options.indexOf(val) > -1;
+            return isValid;
         },
 
         /**
          * Validate against regex value
-         *
          * @method     option
-         * @param      {string}  fieldName              - input field name
-         * @param      {string}  fieldLabel             - input field label
-         * @param      {(number|string)}  fieldVal      - value to test
-         * @param      {(number{}|string[])}  regex     - regex pattern
-         * @param      {string}  [customErrorMessage]   - optional custom message
-         * @return     {Object}                         - Validator instance
          */
-        regex: function(fieldName, fieldLabel, fieldVal, regex, customErrorMessage) {
-            var fieldLabel = fieldLabel || null;
-            var errorMessage = customErrorMessage || fieldLabel + ' does not match';
-            var isValid = fieldVal.match(regex);
-            if (!isValid) this._addError('regex', fieldName, errorMessage);
-            if (isValid) this._addClean(fieldName, fieldVal);
+        regex: function(val, regex) {
+            var isValid = val.match(regex);
             return this;
         }
 

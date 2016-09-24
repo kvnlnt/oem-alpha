@@ -58,13 +58,7 @@
      * @return {[type]}          [description]
      */
     Prototype.getArgs = function(fieldVal){
-        var args = [];
-        args.push(this.getField()); // field id
-        args.push(oem.read(this.getField()).getLabel().innerText); // field label
-        args.push(fieldVal);
-        this.args.forEach(function(arg){ args.push(arg); }); // add args
-        args.push(this.getMessage()); // add custom message
-        return args;
+        return this.args;
     };
 
     // SETTERS
@@ -81,9 +75,8 @@
 
     // METHODS
     
-    Prototype.show = function(message){
+    Prototype.show = function(){
         this.getEl().style.display = 'block';
-        this.getEl().innerText = message;
         return this;
     };
 
