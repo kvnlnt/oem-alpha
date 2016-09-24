@@ -6,28 +6,39 @@
     data-oem-submit-button="submitBasicForm">
 
     <div 
+        data-oem="Validator"
+        data-oem-id="valMin"
+        data-oem-form="basicForm"
+        data-oem-field="firstName"
+        data-oem-validation="minLength"
+        data-oem-args="3">First name must be at least 3 chars long</div>
+
+    <div 
+        data-oem="Validator"
+        data-oem-id="valMax"
+        data-oem-form="basicForm"
+        data-oem-field="firstName"
+        data-oem-validation="maxLength"
+        data-oem-args="5"></div>
+
+    <div 
         data-oem="TextInput"
         data-oem-id="firstName"
-        data-oem-validate-on-change="true"
-        data-oem-validate-min-length="3|First name must be at least 3 chars long"
-        data-oem-validate-max-length="6">
+        data-oem-form="basicForm">
         <label for="firstName">First Name</label>
         <div class="help">This is an example of a text input field</div>
         <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
-        <ul class="errors"></ul>
     </div>
 
-    <div 
-        data-oem="Toggle"
-        data-oem-id="yesOrNo"
-        data-oem-validate-required>
-        <label for="firstName">Do you like fish?</label>
-        <div class="help">This is a toggle field</div>
-        <input type="checkbox" name="fishLiker">
-        <ul class="errors"></ul>
-    </div>
+    <button 
+        data-oem-id="submitBasicForm" 
+        data-oem="SubmitButton"
+        data-oem-form="basicForm">Submit</button>
 
-    <button data-oem-id="submitBasicForm" data-oem="Button" data-oem-style="normal">Submit</button>
-    <button data-oem-id="resetBasicForm" data-oem="Button" data-oem-style="normal" type="reset">Reset</button>
+    <button 
+        data-oem-id="resetBasicForm" 
+        data-oem="Button" 
+        data-oem-style="normal" 
+        type="reset">Reset</button>
     
 </form>

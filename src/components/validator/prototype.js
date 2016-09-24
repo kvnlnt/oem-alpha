@@ -10,67 +10,89 @@
         type: "Validator"
     });
 
-
-    // MIXINS 
-    // ========================================================
-    // Augment funciontality with mixins from ./src/core/mixins
-
-    // Core.Util.mixin(Prototype, Core.Mixins.Field);
-
-
     // DEFAULTS 
-    // ========================================================
-    // 1. Use this area to set parameters and defaults on the prototype not part of the original Core.Component prototype.
-    // 2. Be sure to use getters/setters for each param
 
-    // Prototype.newProperty = someValue;
-
+    Prototype.form = null;
+    Prototype.field = null;
+    Prototype.validation = null;
+    Prototype.args = [];
 
     // INIT
-    // ========================================================
-    // 1. Use this area to run setup functions.
-    // 2. The init function from the Core.Component prototype will be called automatically. 
-    // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_COLLECTED):
-    //      1. register that event in the init function
-    //      2. then call an internal "init" function (see form component for example)
 
-    // Initialize component
-    // Prototype.init = function(){
-    //      Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype.initAfterComponentsLoaded.bind(this));
-    // };
-    // 
-    // More initialization after components have been loaded
-    // Prototype.initAfterComponentsLoaded = function(){
-    //      console.log('now all components have been loaded, do something');
-    // };
+    Prototype.init = function(){
+        this.form = this.getEl().dataset.oemForm;
+        this.field = this.getEl().dataset.oemField;
+        this.validation = this.getEl().dataset.oemValidation;
+        this.args = this.getEl().dataset.oemArgs.split("|");
+        this.message = this.getEl().innerText;
+        oem.read(this.form).addValidator(this);
+    };
     
-
     // GETTERS
     // ========================================================
     // Add getters for params unique to this prototype
  
-    // Prototype.getNewProperty = function(){
-    //      return this.newProperty;
-    // };
+    Prototype.getForm = function(){
+         return this.form;
+    };
 
+    Prototype.getField = function(){
+        return this.field;
+    };
+
+    Prototype.getValidation = function(){
+        return this.validation;
+    };
+
+    Prototype.getArgs = function(){
+        return this.args;
+    };
+
+    Prototype.getMessage = function(){
+        return this.message;
+    };
+
+    /**
+     * Get arguments for validator module
+     * @param  {[type]} fieldVal [description]
+     * @return {[type]}          [description]
+     */
+    Prototype.getArgs = function(fieldVal){
+        var args = [];
+        args.push(this.getField()); // field id
+        args.push(oem.read(this.getField()).getLabel().innerText); // field label
+        args.push(fieldVal);
+        this.args.forEach(function(arg){ args.push(arg); }); // add args
+        args.push(this.getMessage()); // add custom message
+        return args;
+    };
 
     // SETTERS
-    // ========================================================
-    // Add setters for params unique to this prototype
 
-    // Prototype.setNewProperty = function(newProperty){
-    //     return this.newProperty;
-    // };
+    Prototype.setForm = function(form){
+        this.form = form;
+        return this;
+    };
 
+    Prototype.setField = function(field){
+        this.field = field;
+        return this;
+    };
 
     // METHODS
-    // ========================================================
-    // Add methods unique to this prototype
     
-    
+    Prototype.show = function(message){
+        this.getEl().style.display = 'block';
+        this.getEl().innerText = message;
+        return this;
+    };
+
+    Prototype.hide = function(){
+        this.getEl().style.display = 'none';
+    };
+
     // EXPORTS
-    // ========================================================
-    // Probably only want to export the prototype
+
     COMPONENTS.Validator.Prototype = Prototype;
     return COMPONENTS;
 

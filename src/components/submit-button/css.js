@@ -5,14 +5,14 @@
         {
             selector: '',
             declaration: [
-                'display:none'
+                "color:black"
             ]
         }
 
     ];
 
 
-    COMPONENTS.Validator.Css = Css;
+    COMPONENTS.SubmitButton.Css = Css;
     return COMPONENTS;
 
 })(oem.Components);

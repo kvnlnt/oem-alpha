@@ -21,7 +21,6 @@
     Prototype.handleInputChange = function(){
         var currValue = this.getField().value;
         this.setValue(currValue);
-        if(this.getValidateOnChange()) this.validate();
     };
 
     COMPONENTS.TextInput.Prototype = Prototype;

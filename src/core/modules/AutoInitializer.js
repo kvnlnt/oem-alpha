@@ -10,7 +10,7 @@
      * @param      {string}     selector   - base selector text
      * @param      {Component}  component  - Object of compoent
      */
-    AutoInitializer.initialize = function(component) {
+    AutoInitializer.collect = function(component) {
 
         // init vars
         var selector = '[data-oem="'+component.Prototype.type+'"]';
@@ -31,20 +31,28 @@
      *
      * @method     collectAll
      */
-    AutoInitializer.initializeAll = function(components) {
+    AutoInitializer.collectAll = function(components) {
 
         for (var component in components) {
             component = components[component];
-            AutoInitializer.initialize(component);
+            AutoInitializer.collect(component);
         }
 
         // go tell it on the mountain
         Core.Modules.Events.dispatch(Core.Modules.EVENTS.COMPONENTS_COLLECTED, this);
+
+        return this;
+    };
+
+    AutoInitializer.initializeAll = function(){
+        for(var component in oem.list.all){
+            oem.read(component).init();
+        }
     };
 
     // collect on document ready
     Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
-        AutoInitializer.initializeAll(oem.Components);
+        AutoInitializer.collectAll(oem.Components).initializeAll();
     });
 
     // exports

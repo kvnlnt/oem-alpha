@@ -1,6 +1,6 @@
 // USAGE
 // - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
-(function(COMPONENTS, PROTOTYPE, COMPONENT, UTIL, LOG) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT, UTIL, LOG, VALIDATOR) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Form"
@@ -9,40 +9,15 @@
     // DEFAULTS
 
     Prototype.fields = [];
+    Prototype.validators = [];
     Prototype.submitButton = null;
 
     // INIT
 
     Prototype.init = function(){
-        // init only after oem components have been collected and initialized
-        oem.events.addEventListener(oem.EVENTS.COMPONENTS_COLLECTED, Prototype._init.bind(this));
-    };
-
-    /**
-     * Internal init called after all components have been collected by Oem
-     * @return {[type]} [description]
-     */
-    Prototype._init = function(){
-
-        // get fields
-        var fields = UTIL.arrayFrom(this.getEl().querySelectorAll('[data-oem-id]')).map(function(field){
-            return field.dataset.oemId;
-        });
-
-        // get submit button
-        var submitButton = oem.read(this.getEl().dataset.oemSubmitButton);
-
-        // create events
-        var events = {
+        this.setEvents({
             submitted: this.getId() + ":submitted"
-        };
-
-        // config
-        this
-        .setSubmitButton(submitButton)
-        .setEvents(events)
-        .setFields(fields)
-        .registerEvents();
+        });
     };
 
     // GETTERS
@@ -51,8 +26,20 @@
         return this.fields;
     };
 
-    Prototype.getSubmitButton = function(){
-        return this.submitButton;
+    Prototype.getValidators = function(){
+        return this.validators;
+    };
+
+    Prototype.getValidatorsByField = function(field){
+        return this.getValidators().filter(function(validator){
+            return validator.getField() === field.getId();
+        });
+    };
+
+    Prototype.getValidatorByType = function(type){
+        return this.getValidators().filter(function(validator){
+            return validator.getValidation() === type;
+        })[0];
     };
 
     // SETTERS
@@ -62,58 +49,48 @@
         return this;
     };
 
-    Prototype.setSubmitButton = function(submitButton){
-        this.submitButton = submitButton;
-        return this;
-    };
-
-    // HANDLERS
-    Prototype.handleFormSubmit = function(e){
-        e.preventDefault();
-        var validatedForm = this.validateForm();
-        if(validatedForm.isValid) this.submitForm(validatedForm.cleanCollection);
-    }
-
     // METHODS
-
-    Prototype.registerEvents = function(submitButton, fields){
-        var submitButton = submitButton || this.getSubmitButton();
-        submitButton.getEl().addEventListener('click', this.handleFormSubmit.bind(this));
+    
+    Prototype.addField = function(field){
+        this.fields.push(field);
         return this;
     };
 
-    Prototype.validateForm = function(fields){
+    Prototype.addValidator = function(validator){
+        this.validators.push(validator);
+        return this;
+    };
 
-        var fields = fields || this.getFields();
-        var isValid = true;
-        var cleanCollection = {};
-        var errorCollection = [];
+    Prototype.validate = function(field){
 
-        // loop and validate
-        // if errors found, set flag and return errors
-        // if no errors found, get clean data and submit
-        this.fields.forEach(function(field){
-            var validator;
-            var fieldComponent = oem.read(field);
+        var that = this;
+        var fields = this.getFields();
+        var validator = new VALIDATOR();
+        var validators;
 
-            // if field has a validator then validate it!
-            if(fieldComponent.validate) {
-                fieldComponent.setValidateOnChange(true);
-                validatedField = fieldComponent.validate();
-                if(validatedField.isValid) {
-                    cleanCollection[fieldComponent.getName()] = fieldComponent.getValue();
-                } else {
-                    isValid = false;
-                    errorCollection.push(validatedField.errors);
-                }
+        // loop fields
+        fields.forEach(function(field){
+            // get validations
+            validators = that.getValidatorsByField(field);
+            // if it has validators, run them
+            if(validators){
+                validators.forEach(function(v){
+                    validator[v.getValidation()].apply(validator, v.getArgs(field.getValue()))
+                });
+            } else {
+                // manually add field to clean collection
+                validator._addClean(field.getId(), field.getValue());
             }
         });
 
-        return {
-            isValid: isValid,
-            cleanCollection: cleanCollection,
-            errorCollection: errorCollection 
-        }
+        return validator;
+
+    };
+
+    Prototype.resetValidation = function(){
+        this.getValidators().forEach(function(validator){
+            validator.hide();
+        });
     };
 
     Prototype.convertCleanCollectionToObject = function(cleanCollection){
@@ -124,12 +101,26 @@
         return clean;
     },
 
-    Prototype.submitForm = function(clean){
-        // trigger event with data
-        oem.events.dispatch(this.getEvents().submitted, this, clean);
-        // var e = new CustomEvent(, {detail: clean, type: this.getEvents().submitted});
-        LOG(clean);
-        // return e;
+    Prototype.submit = function(){
+        this.resetValidation();
+        var validation = this.validate();
+        var that = this;
+
+        // if valid, broadcast
+        if(validation.isValid){
+            // trigger event with data
+            oem.events.dispatch(this.getEvents().submitted, this, validation.clean);
+            LOG(validation.clean);
+        } else {
+            // show errors
+            for(var e in validation.errors){
+                validation.errors[e].forEach(function(error){
+                    var validator = that.getValidatorByType(error.type);
+                    validator.show(validator.getMessage() || error.message);
+                });
+            }
+        }
+        
     };
     
     // exports
@@ -141,5 +132,6 @@
     oem.Core.Modules.Prototype, 
     oem.Core.Prototypes.Component, 
     oem.Core.Modules.Util,
-    oem.Core.Modules.Log
+    oem.Core.Modules.Log,
+    oem.Core.Modules.Validator
 );

@@ -142,6 +142,8 @@
                 "components": [
                     "core",
                     "form",
+                    "validator",
+                    "submit-button",
                     "text-input",
                     "button",
                     "toggle"
@@ -236,6 +238,13 @@
                 "components": [
                     "core",
                     "stylizer"
+                ],
+                "customizations": []
+            },
+            "submit-button": {
+                "components": [
+                    "core",
+                    "submit-button"
                 ],
                 "customizations": []
             },
@@ -781,6 +790,22 @@
                     "examples": "./src/components/stylizer/templates/examples.html",
                     "tests": "./src/components/stylizer/templates/tests.html",
                     "usage": "./src/components/stylizer/templates/usage.html"
+                }
+            },
+            "submit-button": {
+                "files": [
+                    "./src/components/submit-button/module.js",
+                    "./src/components/submit-button/css.js",
+                    "./src/components/submit-button/prototype.js"
+                ],
+                "tests": [
+                    "./src/components/submit-button/test.js"
+                ],
+                "templates": {
+                    "description": "./src/components/submit-button/templates/description.html",
+                    "examples": "./src/components/submit-button/templates/examples.html",
+                    "tests": "./src/components/submit-button/templates/tests.html",
+                    "usage": "./src/components/submit-button/templates/usage.html"
                 }
             },
             "table": {

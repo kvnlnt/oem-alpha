@@ -36,8 +36,6 @@
         // add component to collection
         oem.list.all[createdComponent.getId()] = createdComponent;
 
-        // initialize and return
-        createdComponent.init();
         return createdComponent;
     };
 
