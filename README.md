@@ -1,6 +1,6 @@
 # OEM
 
-OEM allows designers and devs to work together. As a stand alone framework and development platform it allows for the quick development and frustration free lifecycle management of your own custom web component library.
+OEM is a component manufacturing library. As such, it allows designers and developers to work together to develop and design the components they want. It's a stand alone framework and development platform that allows for the quick development and frustration free lifecycle management of your own custom web component library.
 
 # Table of contents
 1. [Features](#features)
@@ -66,6 +66,5 @@ Each deployment entry is a configuration used by the `deploy` utility. Each conf
 - ./deploy/custom-site.com/
 
     - oem.js
-    - oem.js.map
     - oem.min.js
     - oem.min.js.map
