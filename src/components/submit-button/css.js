@@ -1,18 +1,11 @@
-(function(COMPONENTS) {
+(function(COMPONENTS, THEME) {
 
     var Css = [
-
-        {
-            selector: '',
-            declaration: [
-                "color:black"
-            ]
-        }
-
+        THEME.FORMS.BUTTON
     ];
 
 
     COMPONENTS.SubmitButton.Css = Css;
     return COMPONENTS;
 
-})(oem.Components);
+})(oem.Components, oem.Core.Modules.Theme);

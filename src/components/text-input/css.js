@@ -1,13 +1,9 @@
 (function(Components, THEME) {
 
     var Css = [
-        {
-            selector:'input[type="text"]',
-            declaration:[
-                'border-radius:' + THEME.FORMS.FIELD_BORDER_RADIUS,
-                'border:1px solid' + THEME.FORMS.FIELD_BORDER_COLOR
-            ]
-        }
+        THEME.FORMS.FIELD_INPUT, 
+        THEME.FORMS.FIELD_HELP,
+        THEME.FORMS.FIELD_LABEL
     ];
 
     Components.TextInput.Css = Css;

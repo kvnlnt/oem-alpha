@@ -1,15 +1,7 @@
 (function(COMPONENTS, THEME) {
 
     var Css = [
-
-        {
-            selector: '',
-            declaration: [
-                'display:none',
-                'color:'+ THEME.COLORS.ALERT
-            ]
-        }
-
+        THEME.FORMS.FIELD_VALIDATOR
     ];
 
 
