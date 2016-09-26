@@ -1,6 +1,6 @@
 # OEM
 
-OEM is a component manufacturing library. As such, it allows designers and developers to work together to develop and design the components they want. It's a stand alone framework and development platform that allows for the quick development and frustration free lifecycle management of your own custom web component library.
+OEM is a stand alone web component framework that allows you to quickly create and manage your own web component library. The code you write is 100% native html, css and javacript and 100% standards compliant. Managing your own custom component library allows designers and developers to work together to create 100% custom components that look like you want them to, behave like you want them to and will never change until you want them to. 
 
 # Table of contents
 1. [Features](#features)
@@ -8,6 +8,8 @@ OEM is a component manufacturing library. As such, it allows designers and devel
 1. [Setup](#setup)
 1. [How It Works](#how-it-works)
 1. [Development](#development)
+1. [Deployment](#deployment)
+1. [Pattern Library](#pattern-library)
 
 <a name="features"></a>
 ## Features:
@@ -16,6 +18,7 @@ OEM is a component manufacturing library. As such, it allows designers and devel
 * customizable themes/styling
 * enables quick prototyping
 * facilitates atomic design
+* facilitates communication between designers/developers
 
 ### Dev's will love it because:
 * streamlined workflow (via cli)
@@ -33,8 +36,7 @@ OEM is a component manufacturing library. As such, it allows designers and devel
 
 <a name="quick-pitch"></a>
 ## Quick pitch
-No superset javascript languages to learn, no transpilers to perform magic
-There's no hot reloading and auto compilers to fight with, no superset javascript languages to learn, no transpilers to reverse engineer, no css processors to ruin your life, no code maps to debug your code because your dev code isn't minified, there are no incompatibilities and upgrades to worry about. Still not convinced? [Read the long pitch](docs/justification.md).
+No superset javascript languages to learn, no overly complex build tools, no overly complex dev process, no transpilers mangling your code, no css processors to be superceded, no upgrades or deprecation to worry about. Still not convinced? [Read the long pitch](docs/justification.md).
 
 <a name="setup"></a>
 ## Setup
@@ -52,14 +54,15 @@ OEM also provides a command line utility that streamlines a "conventional" workf
 OEM's command line utility facilitates basic workflows for creating, developing and deploying components. The cli can be reached via `node oem [command]`. Each command run's a corresponding script in the `./cli/options/` folder.
 
 ### Client Side API
-OEM's final artifact is a single javascript file. Each component has an individual markup structure and implements various abilities exposed by the core as well as their own unique functionality. All components and code are protected under the `oem` namespace. Open up the console in your browser and type in `oem`. All component lifecycle management and core functionality for oem can be controlled programmatically via the namespace.
+OEM's final artifact is a single javascript file. That includes all js, css, images, etc. Each component has an individual markup structure and implements various abilities exposed by the core as well as their own unique functionality. All components and code are protected under the `oem` namespace. Open up the console in your browser and type in `oem`. All component lifecycle management and core functionality for oem can be controlled programmatically via the namespace.
 
 See `./src/core/Oem.js` for full api implementation details (don't worry, it's simple!).
 
 <a name="development"></a>
 ## Development
-The development lifecycle centers around the `node oem dev [component]` command line tool. It launches an express server that loads all files in the component's development configuration registered to the `./package.json` file. Javascript files are rendered uncompiled, in order as script tags to the head of the document. This enables the tried and true dev cycle of loading, debugging and editing the code you're actually writing in the browser. It's fast, simple, reliable and has always worked the way it should be.
+The development lifecycle centers around the `node oem dev [component]` command line tool. It launches an express server that loads all files in the component's development configuration registered to the `./package.json` file. Javascript files are automatically included as script tags to the head of the document. This enables the tried and true classic dev process of writing code and checking your work in the browser – old school. It's fast, simple, reliable and will work for the forseeable future.
 
+<a name="deployment"></a>
 ## Deployment
 Each deployment entry is a configuration used by the `deploy` utility. Each configuration lists the `oem.components` to be deployed and any overwrites (`customizations`) to be applied. All files will be compiled and minified in order and written to the `deploy` folder in a folder named after the entry. Example: `node oem deploy custom-site.com` will run the "custom-site.com" deployment and produce the following:
 
@@ -68,3 +71,9 @@ Each deployment entry is a configuration used by the `deploy` utility. Each conf
     - oem.js
     - oem.min.js
     - oem.min.js.map
+
+<a name="pattern-library"></a>
+## Pattern Library
+A pattern library is generated each time a deployment is run. It can be viewed at 
+
+    ./deploy/custom-size.com/pattern-libary
