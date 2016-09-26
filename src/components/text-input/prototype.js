@@ -20,6 +20,7 @@
 
     Prototype.handleInputChange = function(){
         var currValue = this.getField().value;
+        oem.events.dispatch(this.getEvents().changed, this, currValue);
         this.setValue(currValue);
     };
 

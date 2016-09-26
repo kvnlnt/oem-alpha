@@ -15,6 +15,7 @@ OEM allows designers and devs to work together. As a stand alone framework and d
 * automatically generates pattern library
 * customizable themes/styling
 * enables quick prototyping
+* facilitates atomic design
 
 ### Dev's will love it because:
 * streamlined workflow (via cli)

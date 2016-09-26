@@ -4,6 +4,12 @@
  * @class      Components (name)
  * @param      {<type>}   Core    The core
  * @return     {boolean}  { description_of_the_return_value }
+ *
+ * Implementation details:
+ * Components looking to prototype this must: 
+ * 1) Call the setupField method
+ * 2) implement a "getField" method
+ * 3) explicitly manage the field's value using setValue
  */
 
 (function(CORE, PROTOTYPE, COMPONENT, VALIDATOR, UTIL, EL) {
@@ -20,23 +26,35 @@
     Prototype.setupField = function(){
         this.form = this.getEl().dataset.oemForm;
         oem.read(this.form).addField(this);
+        this.setEvents({
+            changed: this.getId() + ":changed"
+        });
     };
 
     // GETTERS
     
-    Prototype.getName = function(){
-        return this.getField().name;
+    Prototype.getForm = function(){
+        return this.form;
     };
-
+    
     Prototype.getLabel = function(){
         return this.getEl().querySelector("label");
     }
+
+    Prototype.getName = function(){
+        return this.getField().name;
+    };
 
     Prototype.getValue = function() {
         return this.value;
     };
 
     // SETTERS
+
+    Prototype.setForm = function(form){
+        this.form = form;
+        return this;
+    };
 
     Prototype.setValue = function(value) {
         this.value = value;

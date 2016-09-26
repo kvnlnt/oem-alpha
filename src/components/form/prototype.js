@@ -10,6 +10,10 @@
 
     Prototype.fields = {};
     Prototype.submitButton = null;
+    Prototype.validated = false;
+    Prototype.valid = false;
+    Prototype.clean = {};
+    Prototype.errors = {};
 
     // INIT
 
@@ -21,6 +25,14 @@
 
     // GETTERS
 
+    Prototype.getClean = function(){
+        return this.clean;
+    };
+
+    Prototype.getErrors = function(){
+        return this.errors;
+    };
+
     Prototype.getFields = function(){
         return this.fields;
     };
@@ -29,10 +41,54 @@
         return this.validators;
     };
 
+    Prototype.hasBeenValidated = function(){
+        return this.validated;
+    };
+
+    Prototype.isValid = function(){
+        return this.valid;
+    };
+
     // SETTERS
     
+    Prototype.setClean = function(clean){
+        this.clean = clean;
+        return this;
+    };
+
+    Prototype.setErrors = function(errors){
+        this.errors = errors;
+        return this;
+    };
+
     Prototype.setFields = function(fields){
         this.fields = fields;
+        return this;
+    };
+
+    Prototype.setHasBeenValidated = function(validated) {
+
+        // if this has already been validated and validated is true
+        // short circuit, we don't want to keep adding listeners to fields
+        if(this.hasBeenValidated() && validated) return this;
+
+        this.validated = validated;
+
+        // if true, start listening for change events on all fields
+        if(validated){
+            for(var field in this.getFields()){
+                // if the field has a changed event, we'll listen for it
+                field = oem.read(field);
+                if(field.getEvents().changed){
+                    oem.events.addEventListener(field.getEvents().changed, this.validate.bind(this));                                    
+                }
+            }
+        } 
+        return this;
+    };
+
+    Prototype.setIsValid = function(valid){
+        this.valid = valid;
         return this;
     };
 
@@ -59,6 +115,7 @@
     };
 
     Prototype.validate = function(field){
+        this.resetValidation();
 
         var that = this;
         var fields = this.getFields();
@@ -89,12 +146,15 @@
             }
         }
 
-        return {
-            isValid: isValid,
-            clean: clean,
-            errors: errors
-        }
+        // only do this once
+        if(!this.hasBeenValidated()) this.setHasBeenValidated(true);
 
+        this
+        .setIsValid(isValid)
+        .setClean(clean)
+        .setErrors(errors);
+
+        return this;
     };
 
     Prototype.resetValidation = function(){
@@ -116,18 +176,15 @@
     },
 
     Prototype.submit = function(){
-        this.resetValidation();
         var validation = this.validate();
         var that = this;
-        console.log(validation);
 
         // if valid, broadcast
-        if(validation.isValid){
+        if(this.isValid()){
             // trigger event with data
-            oem.events.dispatch(this.getEvents().submitted, this, validation.clean);
-            LOG(validation.clean);
+            oem.events.dispatch(this.getEvents().submitted, this, this.getClean());
+            LOG(this.getClean());
         }
-        
     };
     
     // exports
