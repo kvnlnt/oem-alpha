@@ -128,29 +128,32 @@
             if(fields[field].validators.length){
                 fields[field].validators.forEach(function(validator){
                     // create argument object for validator module
-                    var args = {};
-                    args.val = fields[field].component.getValue();
-                    UTIL.mixin(args, validator.getArgs());
+                    var args = validator.getArgs({val: fields[field].component.getValue()});
                     // run validation
                     if(VALIDATOR[validator.getValidation()](args)) {
-                        // if clean, store it
+                        // it's valid, store to clean
                         clean[field] = fields[field].component.getValue();
                     } else {
-                        // if error, add to error collection, show error and check form as invalid
+                        // it didn't validate, store to errors
                         if(!errors.hasOwnProperty(field)) errors[field] = [];
                         errors[field].push(validator.getMessage());
+                        // show the validation
                         validator.show();
+                        // this form is invalid
                         isValid = false;
                     }
                 });
             } else {
+                // it's not a validated param, store it
                 clean[field] = fields[field].getValue();
             }
         }
 
-        // only do this once
+        // if this form hasn't been validated yet, it has now
         if(!this.hasBeenValidated()) this.setHasBeenValidated(true);
 
+        // set the form to it's new validation state
+        // update the clean and error vars
         this
         .setIsValid(isValid)
         .setClean(clean)

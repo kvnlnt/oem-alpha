@@ -44,21 +44,12 @@
         return this.validation;
     };
 
-    Prototype.getArgs = function(){
-        return this.args;
+    Prototype.getArgs = function(kwargs){
+        return UTIL.mixin(kwargs, this.args);
     };
 
     Prototype.getMessage = function(){
         return this.message;
-    };
-
-    /**
-     * Get arguments for validator module
-     * @param  {[type]} fieldVal [description]
-     * @return {[type]}          [description]
-     */
-    Prototype.getArgs = function(fieldVal){
-        return this.args;
     };
 
     // SETTERS
