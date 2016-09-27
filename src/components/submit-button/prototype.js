@@ -34,7 +34,7 @@
     
     Prototype.handleClick = function(e){
         e.preventDefault();
-        oem.read(this.form).submit();
+        if(oem.read(this.form)) oem.read(this.form).submit();
     };
     
     // EXPORTS

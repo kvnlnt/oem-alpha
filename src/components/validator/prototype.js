@@ -25,7 +25,7 @@
         this.validation = this.getEl().dataset.oemValidation;
         this.args = UTIL.parseStringToObject(this.getEl().dataset.oemArgs);
         this.message = this.getEl().innerText;
-        oem.read(this.form).addValidator(this);
+        if(oem.read(this.form)) oem.read(this.form).addValidator(this);
     };
     
     // GETTERS

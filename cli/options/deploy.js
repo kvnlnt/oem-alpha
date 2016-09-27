@@ -46,18 +46,34 @@ Deployment.prototype = {
         var usage = null;
         var examples = null;
         var html = '';
+        var components = pkg.oem.deployment[this.config].components;
+        components.sort();
+
         html += '<h1>Pattern Library</h1>';
         html += '<p>The following components were auto generated from the <em>'+this.config+'</em> deployment configuration.</p>';
-        pkg.oem.deployment[this.config].components.forEach(function(component){
+
+        // menu
+        components.forEach(function(component){
+            if(component != 'core'){
+                html += '<a href="#'+component+'">'+component+'</a>  &nbsp;';
+            }
+        });
+
+        // components
+        components.forEach(function(component){
             if(component != 'core'){
                 description = fs.readFileSync('./src/components/' + component + '/templates/description.html');
                 usage = fs.readFileSync('./src/components/' + component + '/templates/usage.html');
-                examples = fs.readFileSync('./src/components/' + component + '/templates/examples.html');            
+                examples = fs.readFileSync('./src/components/' + component + '/templates/examples.html');
+                html += '<a name="'+component+'"></a>';
+                html += '<section>';           
                 html += description;
                 html += usage;
                 html += examples;
+                html += '</section>';
             }
         });
+
         template = template.replace("<!-- HTML -->", html, 'utf8')
         fs.outputFileSync(this.directory + '/index.html', template);
 

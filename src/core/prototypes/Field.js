@@ -25,7 +25,7 @@
 
     Prototype.setupField = function(){
         this.form = this.getEl().dataset.oemForm;
-        oem.read(this.form).addField(this);
+        if(oem.read(this.form)) oem.read(this.form).addField(this);
         this.setEvents({
             changed: this.getId() + ":changed"
         });
