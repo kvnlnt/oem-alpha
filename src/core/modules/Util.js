@@ -56,10 +56,12 @@
      */
     Util.parseStringToObject = function(str){
         var keyVals = {};
-        str.split(",").forEach(function(keyVal){
-            var keyVal = keyVal.split(":");
-            keyVals[keyVal[0]] = keyVal[1];
-        });
+        if(str){
+            str.split(",").forEach(function(keyVal){
+                var keyVal = keyVal.split(":");
+                keyVals[keyVal[0]] = keyVal[1];
+            });
+        } 
         return keyVals;
     };
 

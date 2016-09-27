@@ -14,9 +14,11 @@
             "all": {
                 "components": [
                     "core",
-                    "accordion",
-                    "card",
-                    "text-input"
+                    "form",
+                    "validator",
+                    "submit-button",
+                    "text-input",
+                    "button"
                 ],
                 "customizations": []
             },
@@ -25,12 +27,10 @@
                     "core",
                     "card"
                 ],
-                "customizations": [
-                    {
-                        "replace": "./src/core/Theme.js",
-                        "with": "./src/customizations/Example.js"
-                    }
-                ]
+                "customizations": [{
+                    "replace": "./src/core/Theme.js",
+                    "with": "./src/customizations/Example.js"
+                }]
             }
         },
         "development": {
@@ -926,6 +926,7 @@
     "dependencies": {
         "chalk": "^1.1.3",
         "express": "^4.13.4",
+        "opener": "^1.4.2",
         "uglify-js": "^2.6.2"
     }
 }
