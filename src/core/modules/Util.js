@@ -50,6 +50,20 @@
     };
 
     /**
+     * Parses a json-esque string to an object
+     * @param  {[type]} str turns this => "len:6, val:'test'" to this => {len: 6, val:"test"}
+     * @return {[type]}     [description]
+     */
+    Util.parseStringToObject = function(str){
+        var keyVals = {};
+        str.split(",").forEach(function(keyVal){
+            var keyVal = keyVal.split(":");
+            keyVals[keyVal[0]] = keyVal[1];
+        });
+        return keyVals;
+    };
+
+    /**
      * Generates a GUID string.
      * @returns {String} The generated GUID.
      * @example af8a8416-6e18-a307-bd9c-f2c947bbb3aa

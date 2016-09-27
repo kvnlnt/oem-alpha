@@ -127,10 +127,12 @@
         for(var field in fields){
             if(fields[field].validators.length){
                 fields[field].validators.forEach(function(validator){
-                    // create argument list for validator module
-                    var args = [fields[field].component.getValue()].concat(validator.getArgs());
+                    // create argument object for validator module
+                    var args = {};
+                    args.val = fields[field].component.getValue();
+                    UTIL.mixin(args, validator.getArgs());
                     // run validation
-                    if(VALIDATOR[validator.getValidation()].apply(VALIDATOR, args)) {
+                    if(VALIDATOR[validator.getValidation()](args)) {
                         // if clean, store it
                         clean[field] = fields[field].component.getValue();
                     } else {
@@ -166,14 +168,6 @@
             });
         }
     };
-
-    Prototype.convertCleanCollectionToObject = function(cleanCollection){
-        var clean = {};
-        for(var collection in cleanCollection) {
-            UTIL.mixin(clean, cleanCollection[collection]);
-        }
-        return clean;
-    },
 
     Prototype.submit = function(){
         var validation = this.validate();

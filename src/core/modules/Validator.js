@@ -76,7 +76,9 @@
          * Validate string has minimum length and return validator
          * @method     minLength
          */
-        minLength: function(val, len) {
+        minLength: function(args) {
+            var val = args.val;
+            var len = args.len;
             var val = val === null ? '' : val;
             var isValid = val.length >= len;
             return isValid;
@@ -86,7 +88,9 @@
          * Validate string has maxiumum length and return validator
          * @method     maxLength
          */
-        maxLength: function(val, len) {
+        maxLength: function(args) {
+            var val = args.val;
+            var len = args.len;
             var val = val === null ? '' : val;
             var isValid = val.length < len;
             return isValid;
