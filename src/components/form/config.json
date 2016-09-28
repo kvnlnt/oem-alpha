@@ -1,0 +1,26 @@
+{
+    "development": {
+        "components": [
+            "validator",
+            "submit-button",
+            "text-input",
+            "button",
+            "toggle"
+        ],
+        "customizations": []
+    },
+    "files": [
+        "module.js",
+        "css.js",
+        "prototype.js"
+    ],
+    "tests": [
+        "test.js"
+    ],
+    "templates": {
+        "description": "templates/description.html",
+        "examples": "templates/examples.html",
+        "tests": "templates/tests.html",
+        "usage": "templates/usage.html"
+    }
+}
