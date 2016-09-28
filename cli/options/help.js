@@ -39,6 +39,12 @@ function show(){
     console.log("      Arguments:", "  [Component Name - lowercase, no spaces, uses dashes if necessary]");
     console.log("      Example:", "    node oem new component-name");
     console.log("");
+    console.log(chalk.bold("   install"));
+    console.log("");
+    console.log("      Purpose:", "    install components from the remote OEM repo");
+    console.log("      Arguments:", "  [Component Name]");
+    console.log("      Example:", "    node oem install component-name");
+    console.log("");
     console.log(chalk.bold("   remove"));
     console.log("");
     console.log("      Purpose:", "    removes and unregisters a component");
@@ -50,6 +56,12 @@ function show(){
     console.log("      Purpose:", "    deploys a configuration from package.oem.deployments");
     console.log("      Arguments:", "  [Deployment Name]");
     console.log("      Example:", "    node oem deploy all");
+    console.log("");
+    console.log(chalk.bold("   factory-reset"));
+    console.log("");
+    console.log("      Purpose:", "    remove all components");
+    console.log("      Arguments:", "  n/a");
+    console.log("      Example:", "    node oem factory-reset");
     console.log("");
     console.log("");
     console.log("");
