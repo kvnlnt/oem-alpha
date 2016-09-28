@@ -27,13 +27,15 @@
                     "core",
                     "card"
                 ],
-                "customizations": [{
-                    "replace": "./src/core/Theme.js",
-                    "with": "./src/customizations/Example.js"
-                }]
+                "customizations": [
+                    {
+                        "replace": "./src/core/Theme.js",
+                        "with": "./src/customizations/Example.js"
+                    }
+                ]
             }
         },
-        "components":[
+        "components": [
             "alert",
             "badge",
             "breadcrumb",
@@ -69,7 +71,8 @@
             "time-picker",
             "toggle",
             "tooltip",
-            "validator"]
+            "validator"
+        ]
     },
     "devDependencies": {},
     "dependencies": {

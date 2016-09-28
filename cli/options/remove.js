@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs-extra");
 const pkg = require('../../package');
 const chalk = require('chalk');
 
@@ -8,35 +8,18 @@ const chalk = require('chalk');
 const RemoveComponent = function(componentName) {
     this.fileName = componentName;
     this.componentDir = './src/components/' + this.fileName;
-    this.templatesDir = './src/components/' + this.fileName + '/templates';
-    this
-        .removeDirectory(this.componentDir)
-        .removeDirectory(this.templatesDir)
-        .updatePackageJson()
-        .reply();
+    this.removeDirectory().updatePackageJson().reply();
 };
 
 RemoveComponent.prototype = {
 
-    removeDirectory: function(path) {
-        var that = this;
-        if (fs.existsSync(path)) {
-            fs.readdirSync(path).forEach(function(file, index) {
-                var curPath = path + "/" + file;
-                if (fs.lstatSync(curPath).isDirectory()) { // recurse
-                    that.removeDirectory(curPath);
-                } else { // delete file
-                    fs.unlinkSync(curPath);
-                }
-            });
-            fs.rmdirSync(path);
-        }
+    removeDirectory: function() {
+       fs.removeSync(this.componentDir)
         return this;
     },
 
     updatePackageJson: function() {
-        delete pkg.oem.development[this.fileName];
-        delete pkg.oem.components[this.fileName];
+        pkg.oem.components.splice(pkg.oem.components.indexOf(this.fileName), 1);
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
         return this;
     },

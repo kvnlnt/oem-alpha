@@ -63,66 +63,20 @@ CreateComponent.prototype = {
         var css = fs.readFileSync('./cli/templates/new-component/css.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
 
+        // config
+        var config = fs.readFileSync('./cli/templates/new-component/config.json', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/config.json', this.renderTemplate(config));
+
         return this;
-    },
-
-    sortPackageJson: function(package) {
-
-        // sort development
-        package.oem.development = Object
-            .keys(package.oem.development)
-            .sort()
-            .reduce(function(result, key) {
-                result[key] = package.oem.development[key];
-                return result;
-            }, {});
-
-        // sort components
-        package.oem.components = Object
-            .keys(package.oem.components)
-            .sort()
-            .reduce(function(result, key) {
-                result[key] = package.oem.components[key];
-                return result;
-            }, {});
-
-        // sort deployment
-        package.oem.deployment = Object
-            .keys(package.oem.deployment)
-            .sort()
-            .reduce(function(result, key) {
-                result[key] = package.oem.deployment[key];
-                return result;
-            }, {});
-
-        return package;
     },
 
     updatePackageJson: function() {
 
-        // add development node
-        var newDevelopmentConfig = {};
-        newDevelopmentConfig.components = ["core", this.fileName];
-        newDevelopmentConfig.customizations = [];
-        pkg.oem.development[this.fileName] = newDevelopmentConfig;
-
-        // configuration
-        var newComponentConfig = {};
-        newComponentConfig.files = [];
-        newComponentConfig.files.push("./src/components/" + this.fileName + "/module.js");
-        newComponentConfig.files.push("./src/components/" + this.fileName + "/css.js");
-        newComponentConfig.files.push("./src/components/" + this.fileName + "/prototype.js");
-        newComponentConfig.tests = [];
-        newComponentConfig.tests.push("./src/components/" + this.fileName + "/test.js");
-        newComponentConfig.templates = {};
-        newComponentConfig.templates.description = this.templatesDir + "/description.html";
-        newComponentConfig.templates.examples = this.templatesDir + "/examples.html";
-        newComponentConfig.templates.tests = this.templatesDir + "/tests.html";
-        newComponentConfig.templates.usage = this.templatesDir + "/usage.html";
-        pkg.oem.components[this.fileName] = newComponentConfig;
+        pkg.oem.components.push(this.fileName);
+        pkg.oem.components.sort();
 
         // save to package
-        fs.writeFileSync('./package.json', JSON.stringify(this.sortPackageJson(pkg), null, 4));
+        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
 
         return this;
     },
