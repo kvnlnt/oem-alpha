@@ -19,9 +19,14 @@ List.prototype = {
         console.log("");
         console.log("");
 
-        Object.keys(pkg.oem.components).sort().forEach(function(configuration){
-            console.log(configuration);
-        });
+        if(Object.keys(pkg.oem.components)){
+            Object.keys(pkg.oem.components).sort().forEach(function(configuration){
+                console.log(configuration);
+            });    
+        } else {
+            console.log("You have no components.");
+        }
+        
 
         console.log("");
         console.log("");
