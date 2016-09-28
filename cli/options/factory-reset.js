@@ -6,8 +6,8 @@ const fs = require('fs-extra');
  * Component Creator
  */
 const FactoryReset = function(componentName){
-    this.componentsDirectory = './src/components;
-    this.configurationsDirectory = './src/configurations';
+    this.componentsDirectory = "./src/components";
+    this.configurationsDirectory = "./src/configurations";
     this.customizations = "./src/customizations";
     this.reset();
 };
