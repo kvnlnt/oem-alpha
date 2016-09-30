@@ -5,21 +5,26 @@ const chalk = require('chalk');
 /**
  * Component Creator
  */
-const RemoveComponent = function(componentName) {
-    this.fileName = componentName;
-    this.componentDir = './src/components/' + this.fileName;
-    this.removeDirectory().updatePackageJson().reply();
+const RemoveComponent = function(components) {
+    components.shift();
+    this.components = components;
+    this.removeDirectories().updatePackageJson().reply();
 };
 
 RemoveComponent.prototype = {
 
-    removeDirectory: function() {
-       fs.removeSync(this.componentDir)
+    removeDirectories: function() {
+        this.components.forEach(function(component){
+            var dir = './src/components/' + component;
+            fs.removeSync(dir);
+        });
         return this;
     },
 
     updatePackageJson: function() {
-        pkg.oem.components.splice(pkg.oem.components.indexOf(this.fileName), 1);
+        this.components.forEach(function(component){
+            pkg.oem.components.splice(pkg.oem.components.indexOf(component), 1);
+        });
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
         return this;
     },

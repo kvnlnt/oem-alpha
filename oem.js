@@ -49,7 +49,7 @@ try {
             var installComponent = new InstallComponent(ARGS[1]);
             break;
         case ARG.REMOVE:
-            var removeComponent = new RemoveComponent(ARGS[1]);
+            var removeComponent = new RemoveComponent(ARGS);
             break;
         case ARG.DEPLOY:
             if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';

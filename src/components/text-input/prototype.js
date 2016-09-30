@@ -27,4 +27,9 @@
     COMPONENTS.TextInput.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Prototype, oem.Core.Prototypes.Field, oem.Core.Modules.El);
+})(
+    oem.Components,
+    oem.Core.Modules.Prototype,
+    oem.Components.Prototype.Field,
+    oem.Core.Modules.El
+);
