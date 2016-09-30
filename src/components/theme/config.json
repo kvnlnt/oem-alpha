@@ -4,17 +4,17 @@
         "customizations": []
     },
     "files": [
-        "module.js",
-        "css.js",
-        "prototype.js"
+        "./src/components/theme/module.js",
+        "./src/components/theme/css.js",
+        "./src/components/theme/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "./src/components/theme/test.js"
     ],
     "templates": {
-        "description": "templates/description.html",
-        "examples": "templates/examples.html",
-        "tests": "templates/tests.html",
-        "usage": "templates/usage.html"
+        "description": "./src/components/theme/templates/description.html",
+        "examples": "./src/components/theme/templates/examples.html",
+        "tests": "./src/components/theme/templates/tests.html",
+        "usage": "./src/components/theme/templates/usage.html"
     }
 }

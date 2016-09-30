@@ -4,17 +4,17 @@
         "customizations": []
     },
     "files": [
-        "module.js",
-        "css.js",
-        "prototype.js"
+        "./src/components/text-input/module.js",
+        "./src/components/text-input/css.js",
+        "./src/components/text-input/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "./src/components/text-input/test.js"
     ],
     "templates": {
-        "description": "templates/description.html",
-        "examples": "templates/examples.html",
-        "tests": "templates/tests.html",
-        "usage": "templates/usage.html"
+        "description": "./src/components/text-input/templates/description.html",
+        "examples": "./src/components/text-input/templates/examples.html",
+        "tests": "./src/components/text-input/templates/tests.html",
+        "usage": "./src/components/text-input/templates/usage.html"
     }
 }

@@ -4,17 +4,17 @@
         "customizations": []
     },
     "files": [
-        "module.js",
-        "css.js",
-        "prototype.js"
+        "./src/components/validator/module.js",
+        "./src/components/validator/css.js",
+        "./src/components/validator/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "./src/components/validator/test.js"
     ],
     "templates": {
-        "description": "templates/description.html",
-        "examples": "templates/examples.html",
-        "tests": "templates/tests.html",
-        "usage": "templates/usage.html"
+        "description": "./src/components/validator/templates/description.html",
+        "examples": "./src/components/validator/templates/examples.html",
+        "tests": "./src/components/validator/templates/tests.html",
+        "usage": "./src/components/validator/templates/usage.html"
     }
 }

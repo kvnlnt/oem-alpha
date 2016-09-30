@@ -4,17 +4,17 @@
         "customizations": []
     },
     "files": [
-        "module.js",
-        "css.js",
-        "prototype.js"
+        "./src/components/button/module.js",
+        "./src/components/button/css.js",
+        "./src/components/button/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "./src/components/button/test.js"
     ],
     "templates": {
-        "description": "templates/description.html",
-        "examples": "templates/examples.html",
-        "tests": "templates/tests.html",
-        "usage": "templates/usage.html"
+        "description": "./src/components/button/templates/description.html",
+        "examples": "./src/components/button/templates/examples.html",
+        "tests": "./src/components/button/templates/tests.html",
+        "usage": "./src/components/button/templates/usage.html"
     }
 }

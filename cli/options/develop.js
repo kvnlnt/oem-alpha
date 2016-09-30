@@ -12,12 +12,10 @@ const chalk = require('chalk');
  */
 const DevelopComponent = function(component, port) {
     this.component = component;
-    this.jsFiles = this.getJsFiles();
     this.port = port || 7001;
-    this.templateDescription = pkg.oem.components[this.component].templates.description;
-    this.templateExamples = pkg.oem.components[this.component].templates.examples;
-    this.templateTests = pkg.oem.components[this.component].templates.tests;
-    this.templateUsage = pkg.oem.components[this.component].templates.usage;
+    this.folder = "./src/components/" + component;
+    this.config = JSON.parse(fs.readFileSync(this.folder + "/config.json", 'utf8'));
+    this.jsFiles = this.getJsFiles();
     this.server;
     this.start();
 };
@@ -64,40 +62,42 @@ DevelopComponent.prototype = {
     handleServerRequest: function(req, res) {
 
         var that = this;
-        var templateDescription = "";
-        var templateExamples = "";
-        var templateTests = "";
-        var templateUsage = "";
+        var htmlDescription = "";
+        var htmlExamples = "";
+        var htmlTests = "";
+        var htmlUsage = "";
 
-        // get template partials
+        // get html partials
         try {
-            templateDescription = fs.readFileSync(this.templateDescription, 'utf8');
+            htmlDescription = fs.readFileSync(this.config.templates.description, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            templateExamples = fs.readFileSync(this.templateExamples, 'utf8');
+            htmlExamples = fs.readFileSync(this.config.templates.examples, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            templateTests = fs.readFileSync(this.templateTests, 'utf8');
+            htmlTests = fs.readFileSync(this.config.templates.tests, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            templateUsage = fs.readFileSync(this.templateUsage, 'utf8');
+            htmlUsage = fs.readFileSync(this.config.templates.usage, 'utf8');
         } catch (err) {
             // noop
         }
 
-        // now update the main template
+        console.log('description', htmlDescription);
+
+        // now update the main html
         fs.readFile("./cli/templates/development/main.html", 'utf8', function(err, data) {
             data = data
-                .replace("<!-- HTML:DESCRIPTION -->", templateDescription, 'utf8')
-                .replace("<!-- HTML:EXAMPLES -->", templateExamples, 'utf8')
-                .replace("<!-- HTML:TESTS -->", templateTests, 'utf8')
-                .replace("<!-- HTML:USAGE -->", templateUsage, 'utf8')
+                .replace("<!-- HTML:DESCRIPTION -->", htmlDescription, 'utf8')
+                .replace("<!-- HTML:EXAMPLES -->", htmlExamples, 'utf8')
+                .replace("<!-- HTML:TESTS -->", htmlTests, 'utf8')
+                .replace("<!-- HTML:USAGE -->", htmlUsage, 'utf8')
                 .replace("<!-- JS -->", that.wrapInScriptTag(that.jsFiles));
             res.send(data);
             res.end();
@@ -125,24 +125,34 @@ DevelopComponent.prototype = {
      */
     getJsFiles: function() {
 
-        // component configuration files
-        var srcFiles = pkg.oem.development[this.component].components.map(function(component) {
-            return pkg.oem.components[component].files;
+        // core files
+        var coreConfig = JSON.parse(fs.readFileSync("./src/core/config.json", 'utf8'));
+        var coreFiles = coreConfig.files;
+
+        // files from development components loaded during development
+        var devComponentFiles = this.config.development.components.map(function(component) {
+            var config = JSON.parse(fs.readFileSync("./src/components/"+component+"/config.json", 'utf8'));
+            return config.files;
         });
+
+        // source files
+        var srcFiles = this.config.files;
 
         // test core and component test files
         var testFiles = [];
         testFiles.push("./src/core/modules/Test.js");
-        testFiles.push(pkg.oem.components[this.component].tests);
+        testFiles.push(this.config.tests);
 
         // flatten arrays
         var allFiles = []
+            .concat(...coreFiles)
+            .concat(...devComponentFiles)
             .concat(...srcFiles)
             .concat(...testFiles);
 
         // implement customization overwrites
-        if (pkg.oem.development[this.component].hasOwnProperty('customizations')) {
-            var customizations = pkg.oem.development[this.component].customizations;
+        if (this.config.development.customizations) {
+            var customizations = this.config.development.customizations;
             var customization;
             var indexOfFileToReplace;
             for (var i = 0; i < customizations.length; i = i + 1) {
@@ -152,7 +162,7 @@ DevelopComponent.prototype = {
             }
         }
 
-        // console.log(allFiles);
+        console.log(allFiles);
 
         return allFiles;
     }

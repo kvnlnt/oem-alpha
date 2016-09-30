@@ -4,17 +4,17 @@
         "customizations": []
     },
     "files": [
-        "module.js",
-        "css.js",
-        "prototype.js"
+        "./src/components/accordion/module.js",
+        "./src/components/accordion/css.js",
+        "./src/components/accordion/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "./src/components/accordion/test.js"
     ],
     "templates": {
-        "description": "templates/description.html",
-        "examples": "templates/examples.html",
-        "tests": "templates/tests.html",
-        "usage": "templates/usage.html"
+        "description": "./src/components/accordion/templates/description.html",
+        "examples": "./src/components/accordion/templates/examples.html",
+        "tests": "./src/components/accordion/templates/tests.html",
+        "usage": "./src/components/accordion/templates/usage.html"
     }
 }

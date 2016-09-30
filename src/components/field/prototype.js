@@ -12,7 +12,7 @@
  * 3) explicitly manage the field's value using setValue
  */
 
-(function(CORE, PROTOTYPE, COMPONENT, VALIDATOR, UTIL, EL) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Field"
@@ -64,14 +64,11 @@
     // TODO
     Prototype.reset = function(){};
 
-    CORE.Prototypes.Field = Prototype;
-    return CORE;
+    COMPONENTS.Field.Prototype = Prototype;
+    return COMPONENTS;
 
 })(
-    oem.Core,
+    oem.Components,
     oem.Core.Modules.Prototype,
-    oem.Core.Prototypes.Component,
-    oem.Core.Modules.Validator,
-    oem.Core.Modules.Util,
-    oem.Core.Modules.El
+    oem.Core.Prototypes.Component
 );
