@@ -1,6 +1,6 @@
 {
     "development": {
-        "components": [],
+        "components": ["field", "theme"],
         "customizations": []
     },
     "files": [

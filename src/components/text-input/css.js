@@ -1,13 +1,13 @@
 (function(Components, THEME) {
 
     var Css = [
-        THEME.FORMS.FIELD_INPUT, 
-        THEME.FORMS.FIELD_HELP,
-        THEME.FORMS.FIELD_LABEL
+        // THEME.FORM_FIELD_INPUT, 
+        // THEME.FORMS_FIELD_HELP,
+        // THEME.FORMS_FIELD_LABEL
     ];
 
     Components.TextInput.Css = Css;
 
     return Components;
 
-})(oem.Components, oem.Core.Modules.Theme);
+})(oem.Components, oem.Components.Theme);

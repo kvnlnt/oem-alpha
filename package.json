@@ -41,9 +41,7 @@
             "field",
             "form",
             "submit-button",
-            "text-input",
-            "theme",
-            "validator"
+            "text-input"
         ]
     },
     "devDependencies": {},

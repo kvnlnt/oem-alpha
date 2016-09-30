@@ -1,4 +1,4 @@
-(function(COMPONENTS, PROTOTYPE, FIELD, EL) {
+(function(COMPONENTS, PROTOTYPE, FIELD) {
 
     var Prototype = PROTOTYPE(FIELD, {
         type: "TextInput"
@@ -30,6 +30,5 @@
 })(
     oem.Components,
     oem.Core.Modules.Prototype,
-    oem.Components.Prototype.Field,
-    oem.Core.Modules.El
+    oem.Components.Field.Prototype
 );
