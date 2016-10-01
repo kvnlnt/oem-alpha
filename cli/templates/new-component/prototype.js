@@ -36,14 +36,7 @@
 
     // Initialize component
     // Prototype.init = function(){
-    //      Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Prototype.initAfterComponentsLoaded.bind(this));
     // };
-    // 
-    // More initialization after components have been loaded
-    // Prototype.initAfterComponentsLoaded = function(){
-    //      console.log('now all components have been loaded, do something');
-    // };
-    
 
     // GETTERS
     // ========================================================

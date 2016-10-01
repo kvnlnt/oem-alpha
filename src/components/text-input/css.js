@@ -1,7 +1,7 @@
 (function(Components, THEME) {
 
     var Css = [
-        // THEME.FORM_FIELD_INPUT, 
+        THEME.FORM_FIELD_INPUT, 
         // THEME.FORMS_FIELD_HELP,
         // THEME.FORMS_FIELD_LABEL
     ];

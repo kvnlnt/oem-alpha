@@ -1,10 +1,6 @@
 (function(COMPONENTS, THEME) {
 
-    var Css = [
-        THEME.FORMS.FIELD_VALIDATOR
-    ];
-
-
+    var Css = [];
     COMPONENTS.Validator.Css = Css;
     return COMPONENTS;
 

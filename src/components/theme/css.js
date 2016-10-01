@@ -1,7 +1,7 @@
 (function(COMPONENTS) {
 
     var Css = [];
-    COMPONENTS.%CLASS%.Css = Css;
+    COMPONENTS.Theme.Css = Css;
     return COMPONENTS;
 
 })(oem.Components);

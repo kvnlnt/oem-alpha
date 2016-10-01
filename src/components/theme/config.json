@@ -1,0 +1,20 @@
+{
+    "development": {
+        "components": [],
+        "customizations": []
+    },
+    "files": [
+        "./src/components/theme/module.js",
+        "./src/components/theme/css.js",
+        "./src/components/theme/prototype.js"
+    ],
+    "tests": [
+        "test.js"
+    ],
+    "templates": {
+        "description": "./src/components/theme/templates/description.html",
+        "examples": "./src/components/theme/templates/examples.html",
+        "tests": "./src/components/theme/templates/tests.html",
+        "usage": "./src/components/theme/templates/usage.html"
+    }
+}

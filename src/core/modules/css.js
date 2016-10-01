@@ -11,12 +11,18 @@
      */
     Css.translateCss = function(id, css) {
         var selector = '[data-oem="'+id+'"]';
-        var declarations = function(declaration) {
-            return "   " + declaration + ";\n";
+
+        function declaration(declaration) {
+            var declarations = Object.keys(declaration).map(function(k){
+                return k + ":" + declaration[k] + ";";
+            });
+            return "   " + declarations.join('') + ";\n";
         };
-        var rules = function(rule) {
-            return selector + '' + rule.selector + " {\n" + rule.declaration.map(declarations).join('') + "}";
+
+        function rules(rule) {
+            return selector + '' + rule.selector + " {\n" + declaration(rule.declaration) + "}";
         };
+
         // all rules
         return css.map(rules).join('\n\n');
     };
@@ -31,9 +37,16 @@
      */
     Css.render = function(id, css) {
         var head = document.getElementsByTagName('head')[0];
-        var style = document.createElement("style");
-        style.setAttribute("type", "text/css");
-        style.setAttribute("data-oem-css", id);
+        var selector = '[data-oem-css="'+id+'"]';
+        var currentStyleTag = document.querySelector(selector);
+        // replace existing tag
+        if(currentStyleTag){
+            var style = currentStyleTag;            
+        } else {
+            var style = document.createElement("style"); 
+            style.setAttribute("type", "text/css");
+            style.setAttribute("data-oem-css", id);  
+        }
         // XXX: this is for IE8
         // we have to try catch this because polyfills don't account for cssText
         try {
@@ -50,20 +63,22 @@
      *
      * @method     renderAll
      */
-    Css.renderComponentCss = function(components) {
+    Css.renderAll = function(components) {
         var id;
+        var styles = {};
         for (var component in oem.Components) {
             component = oem.Components[component];
             if(component.hasOwnProperty("Css")){
                 id = component.Prototype.type;
-                Css.render(id, component.Css);
+                styles[id] = Css.render(id, component.Css);
             }
         }
+        return styles;
     };
 
     // generate onload
     Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
-        Css.renderComponentCss(oem.Components);
+        Css.renderAll(oem.Components);
     });
 
     Core.Modules.Css = Css;

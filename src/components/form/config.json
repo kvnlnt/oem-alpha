@@ -5,7 +5,7 @@
             "submit-button",
             "text-input",
             "button",
-            "toggle"
+            "theme"
         ],
         "customizations": []
     },

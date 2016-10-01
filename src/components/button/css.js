@@ -1,10 +1,6 @@
 (function(COMPONENTS, THEME) {
 
-    var Css = [
-        THEME.FORMS.BUTTON
-    ];
-
-
+    var Css = [];
     COMPONENTS.Button.Css = Css;
     return COMPONENTS;
 

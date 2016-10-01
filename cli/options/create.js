@@ -32,6 +32,7 @@ CreateComponent.prototype = {
 
     renderTemplate: function(str) {
         str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
+        str = str.replace(new RegExp('%DIR%', 'g'), this.componentDir);
         return str;
     },
 
