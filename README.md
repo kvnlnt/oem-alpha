@@ -1,6 +1,8 @@
 # OEM
 
-OEM is a stand alone web component framework that allows you to quickly create and manage your own web component library. The code you write is 100% native html, css and javacript and 100% standards compliant. Managing your own custom component library allows designers and developers to work together to create 100% custom components that look like you want them to, behave like you want them to and will never change until you want them to. 
+OEM is a stand alone web component framework that allows you to quickly create and manage your own web component library using native html, css and javascript.
+
+OEM web components are not to be confused with [W3C Web Components](https://www.w3.org/TR/components-intro/). OEM is a framework which implements a Spoke-hub distribution model to enable aggregation and compositional patterns between it's components.
 
 # Table of contents
 1. [Features](#features)
@@ -28,6 +30,7 @@ OEM is a stand alone web component framework that allows you to quickly create a
 * 100% unit test coverage
 * 100% integration test coverage
 * 100% library dependency free
+* 100% conflict free
 * customizable deployments
 * legacy browser support (IE8+)
 * easy integration
@@ -36,7 +39,7 @@ OEM is a stand alone web component framework that allows you to quickly create a
 
 <a name="quick-pitch"></a>
 ## Quick pitch
-No superset javascript languages to learn, no overly complex build tools, no overly complex dev process, no transpilers mangling your code, no css processors to be superceded, no upgrades or deprecation to worry about. Still not convinced? [Read the long pitch](docs/justification.md).
+Make web components today that will work tomorrow. You control the evolution of your code. There's no superset javascript languages to learn, no overly complex build tools, no laborious dev ceremonies, no transpiling or abstracted processing, no upgrades or deprecation to worry about. Still not convinced? [Read the long pitch](docs/justification.md).
 
 <a name="setup"></a>
 ## Setup
