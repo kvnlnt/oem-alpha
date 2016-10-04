@@ -18,9 +18,17 @@
     // INIT
 
     Prototype.init = function(){
+
+        // register events
         this.setEvents({
             submitted: this.getId() + ":submitted"
         });
+
+        // config reset button
+        this
+        .getEl()
+        .querySelector('[type="reset"]')
+        .addEventListener('click', this.resetValidation.bind(this));
     };
 
     // GETTERS

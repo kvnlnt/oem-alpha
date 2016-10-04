@@ -1,11 +1,12 @@
 {
     "development": {
         "components": [
+            "theme",
             "validator",
             "submit-button",
+            "field",
             "text-input",
-            "button",
-            "theme"
+            "button"
         ],
         "customizations": []
     },

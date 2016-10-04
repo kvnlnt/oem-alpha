@@ -79,6 +79,7 @@
     // generate onload
     Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
         Css.renderAll(oem.Components);
+        oem.events.dispatch(oem.EVENTS.CSS_RENDERED, this);
     });
 
     Core.Modules.Css = Css;

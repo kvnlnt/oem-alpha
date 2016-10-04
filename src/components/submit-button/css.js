@@ -1,8 +1,11 @@
 (function(COMPONENTS, THEME) {
 
-    var Css = [];
+    var Css = [
+        THEME.BUTTON,
+        THEME.BUTTON_HOLLOW
+    ];
 
     COMPONENTS.SubmitButton.Css = Css;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Theme);
+})(oem.Components, oem.Components.Theme);

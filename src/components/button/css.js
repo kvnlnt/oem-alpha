@@ -1,7 +1,8 @@
 (function(COMPONENTS, THEME) {
 
     var Css = [
-        THEME.BUTTON
+        THEME.BUTTON,
+        THEME.BUTTON_HOLLOW
     ];
 
     COMPONENTS.Button.Css = Css;

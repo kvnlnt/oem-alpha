@@ -6,42 +6,42 @@
     data-oem="Form"
     data-oem-id="basicForm">
 
-    <div 
-        data-oem="TextInput"
-        data-oem-id="firstName"
-        data-oem-form="basicForm">
-        <label for="firstName">First Name</label>
-        <div class="help">This is an example of a text input field</div>
-        <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
-
+    <fieldset>
         <div 
-            data-oem="Validator"
-            data-oem-id="valMin"
+            data-oem="TextInput"
+            data-oem-id="firstName"
+            data-oem-form="basicForm">
+            <label for="firstName">First Name</label>
+            <div class="help">This is an example of a text input field</div>
+            <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
+            <div 
+                data-oem="Validator"
+                data-oem-id="valMin"
+                data-oem-form="basicForm"
+                data-oem-field="firstName"
+                data-oem-validation="minLength"
+                data-oem-args="len:3">First name must be at least 3 chars long</div>
+            <div 
+                data-oem="Validator"
+                data-oem-id="valMax"
+                data-oem-form="basicForm"
+                data-oem-field="firstName"
+                data-oem-validation="maxLength"
+                data-oem-args="len:6">First name must be less than 6 chars long</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <button 
+            data-oem-id="submitBasicForm" 
+            data-oem="SubmitButton"
             data-oem-form="basicForm"
-            data-oem-field="firstName"
-            data-oem-validation="minLength"
-            data-oem-args="len:3">First name must be at least 3 chars long</div>
+            type="submit">Submit</button>
 
-        <div 
-            data-oem="Validator"
-            data-oem-id="valMax"
-            data-oem-form="basicForm"
-            data-oem-field="firstName"
-            data-oem-validation="maxLength"
-            data-oem-args="len:6">First name must be less than 6 chars long</div>
-
-    </div>
-
-    <button 
-        data-oem-id="submitBasicForm" 
-        data-oem="SubmitButton"
-        data-oem-form="basicForm"
-        type="submit">Submit</button>
-
-    <button 
-        data-oem-id="resetBasicForm" 
-        data-oem="Button" 
-        data-oem-style="normal" 
-        type="reset">Reset</button>
-    
+        <button 
+            data-oem-id="resetBasicForm" 
+            data-oem="Button" 
+            class="--hollow"
+            type="reset">Reset</button>
+    </fieldset>
 </form>

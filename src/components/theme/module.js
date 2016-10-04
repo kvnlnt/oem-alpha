@@ -5,9 +5,10 @@
     var CONFIG = {};
     CONFIG.FONT_SIZE_SMALL = 12;
     CONFIG.FONT_SIZE_MEDIUM = 14;
-    CONFIG.FORM_FIELD_BORDER_COLOR = '#666666';
+    CONFIG.FORM_FIELD_BORDER_COLOR = '#CCCCCC';
     CONFIG.COLOR_MAIN = '#000000';
     CONFIG.COLOR_WHITE = '#FFFFFF';
+    CONFIG.COLOR_ALERT = '#FF0000';
 
     Theme.BUTTON = {
         selector: "",
@@ -19,9 +20,19 @@
             "color": CONFIG.COLOR_WHITE,
             "border":"none",
             "border-radius": "3px",
-            "line-height":"24px"
+            "line-height":"24px",
+            "cursor":"pointer"
         }
-    }
+    };
+
+    Theme.BUTTON_HOLLOW = {
+        selector: ".--hollow",
+        declaration: {
+            "background-color": "transparent",
+            "border":"1px solid " + CONFIG.COLOR_MAIN,
+            "color": CONFIG.COLOR_MAIN
+        }
+    };
 
     Theme.FORM_FIELD_INPUT = {
         selector: " > input",
@@ -52,12 +63,10 @@
         }
     };
 
-    Theme.FORM_VALIDATIONS = {
-        selector: " .validations",
-        declaration: {
-            "display":"none"
-        }
-    };
+    oem.events.addEventListener(oem.EVENTS.CSS_RENDERED, function(){
+        var preloader = document.querySelector('[data-oem-css="Preloader"]');
+        preloader.parentNode.removeChild(preloader);
+    });
 
     // exports
     Theme.CONFIG = CONFIG;
