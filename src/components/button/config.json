@@ -1,6 +1,6 @@
 {
     "development": {
-        "components": [],
+        "components": ["theme"],
         "customizations": []
     },
     "files": [

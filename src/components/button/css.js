@@ -1,7 +1,10 @@
 (function(COMPONENTS, THEME) {
 
-    var Css = [];
+    var Css = [
+        THEME.BUTTON
+    ];
+
     COMPONENTS.Button.Css = Css;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Theme);
+})(oem.Components, oem.Components.Theme);

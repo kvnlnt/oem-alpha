@@ -13,19 +13,19 @@
         "deployment": {
             "all": {
                 "components": [
-                    "core",
+                    "accordion",
+                    "button",
+                    "field",
                     "form",
-                    "validator",
                     "submit-button",
                     "text-input",
-                    "button"
+                    "theme"
                 ],
                 "customizations": []
             },
             "toolhouse.com": {
                 "components": [
-                    "core",
-                    "card"
+                    "core"
                 ],
                 "customizations": [
                     {

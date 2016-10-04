@@ -2,8 +2,8 @@
 
     var Css = [
         THEME.FORM_FIELD_INPUT, 
-        // THEME.FORMS_FIELD_HELP,
-        // THEME.FORMS_FIELD_LABEL
+        THEME.FORM_FIELD_HELP,
+        THEME.FORM_FIELD_LABEL
     ];
 
     Components.TextInput.Css = Css;

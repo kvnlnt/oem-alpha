@@ -14,9 +14,9 @@
 
         function declaration(declaration) {
             var declarations = Object.keys(declaration).map(function(k){
-                return k + ":" + declaration[k] + ";";
+                return "   " + k + ":" + declaration[k] + ";\n";
             });
-            return "   " + declarations.join('') + ";\n";
+            return declarations.join('');
         };
 
         function rules(rule) {
