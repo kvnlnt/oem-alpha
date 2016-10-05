@@ -21,7 +21,6 @@
         "./src/core/modules/Css.js",
         "./src/core/modules/Responsifier.js",
         "./src/core/modules/AutoInitializer.js",
-        "./src/core/modules/Validator.js",
         "./src/core/prototypes/Component.js",
         "./src/core/Oem.js"
     ],

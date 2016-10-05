@@ -12,7 +12,7 @@
  * 3) explicitly manage the field's value using setValue
  */
 
-(function(COMPONENTS, PROTOTYPE, COMPONENT) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT, VALIDATOR) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Field"
@@ -22,6 +22,7 @@
 
     Prototype.form = null;
     Prototype.value = null;
+    Prototype.validators = [];
 
     Prototype.setupField = function(){
         this.form = this.getEl().dataset.oemForm;
@@ -49,6 +50,10 @@
         return this.value;
     };
 
+    Prototype.getValidators = function(){
+        return this.validators;
+    };
+
     // SETTERS
 
     Prototype.setForm = function(form){
@@ -61,8 +66,32 @@
         return this;
     };
 
+    // METHODS
+    
+    Prototype.addValidator = function(validator){
+        this.validators.push(validator);
+        return this;
+    };
+
+    Prototype.validate = function(){
+        var that = this;
+        var isValid = true;
+        this.getValidators().forEach(function(validator){
+            var args = validator.getArgs({val: that.getValue()});
+            if(!VALIDATOR[validator.getValidation()](args)) {
+                validator.show();
+                isValid = false;
+            }
+        });
+        return isValid;
+    };
+
     // TODO
-    Prototype.reset = function(){};
+    Prototype.reset = function(){
+        this.getValidators().forEach(function(validator){
+            validator.hide();
+        });
+    };
 
     COMPONENTS.Field.Prototype = Prototype;
     return COMPONENTS;
@@ -70,5 +99,6 @@
 })(
     oem.Components,
     oem.Core.Modules.Prototype,
-    oem.Core.Prototypes.Component
+    oem.Core.Prototypes.Component,
+    oem.Components.Validator
 );

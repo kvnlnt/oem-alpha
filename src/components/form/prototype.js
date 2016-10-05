@@ -1,6 +1,6 @@
 // USAGE
 // - add an event listener on an event formatted like so "[THE FORM'S ID]:submitted". The "detail" property will contain all the cleaned data
-(function(COMPONENTS, PROTOTYPE, COMPONENT, UTIL, LOG, VALIDATOR) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT, UTIL, LOG) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Form"
@@ -28,7 +28,7 @@
         this
         .getEl()
         .querySelector('[type="reset"]')
-        .addEventListener('click', this.resetValidation.bind(this));
+        .addEventListener('click', this.reset.bind(this));
     };
 
     // GETTERS
@@ -103,54 +103,26 @@
     // METHODS
     
     Prototype.addField = function(field){
-        if(!this.fields.hasOwnProperty(field.getId())) this.createFieldObject(field.getId());
-        this.fields[field.getId()].component = field;
-        return this;
-    };
-
-    Prototype.addValidator = function(validator){
-        if(!this.fields.hasOwnProperty(validator.getField())) this.createFieldObject(validator.getField());
-        this.fields[validator.getField()].validators.push(validator);
-        return this;
-    };
-
-    Prototype.createFieldObject = function(fieldName){
-        if(!this.fields.hasOwnProperty(fieldName)) this.fields[fieldName] = {
-            component: null,
-            validators:[]
-        };
+        this.fields[field.getId()] = field;
         return this;
     };
 
     Prototype.validate = function(field){
-        this.resetValidation();
+        this.reset();
 
         var that = this;
         var fields = this.getFields();
         var isValid = true;
         var clean = {};
-        var errors = {};
         var validators;
 
         for(var field in fields){
             if(fields[field].validators.length){
-                fields[field].validators.forEach(function(validator){
-                    // create argument object for validator module
-                    var args = validator.getArgs({val: fields[field].component.getValue()});
-                    // run validation
-                    if(VALIDATOR[validator.getValidation()](args)) {
-                        // it's valid, store to clean
-                        clean[field] = fields[field].component.getValue();
-                    } else {
-                        // it didn't validate, store to errors
-                        if(!errors.hasOwnProperty(field)) errors[field] = [];
-                        errors[field].push(validator.getMessage());
-                        // show the validation
-                        validator.show();
-                        // this form is invalid
-                        isValid = false;
-                    }
-                });
+                if(fields[field].validate()){
+                    clean[field] = fields[field].getValue();
+                } else {
+                    isValid = false;
+                }
             } else {
                 // it's not a validated param, store it
                 clean[field] = fields[field].getValue();
@@ -164,20 +136,17 @@
         // update the clean and error vars
         this
         .setIsValid(isValid)
-        .setClean(clean)
-        .setErrors(errors);
+        .setClean(clean);
 
         return this;
     };
 
-    Prototype.resetValidation = function(){
+    Prototype.reset = function(){
+        var that = this;
         var fields = this.getFields();
-        var validations;
-        for(var field in fields){
-            fields[field].validators.forEach(function(validator){
-                validator.hide();
-            });
-        }
+        Object.keys(this.getFields()).forEach(function(key){
+            that.getFields()[key].reset();
+        });
     };
 
     Prototype.submit = function(){
@@ -201,6 +170,5 @@
     oem.Core.Modules.Prototype, 
     oem.Core.Prototypes.Component, 
     oem.Core.Modules.Util,
-    oem.Core.Modules.Log,
-    oem.Core.Modules.Validator
+    oem.Core.Modules.Log
 );

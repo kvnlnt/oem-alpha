@@ -20,12 +20,11 @@
     // INIT
 
     Prototype.init = function(){
-        this.form = this.getEl().dataset.oemForm;
         this.field = this.getEl().dataset.oemField;
         this.validation = this.getEl().dataset.oemValidation;
         this.args = UTIL.parseStringToObject(this.getEl().dataset.oemArgs);
         this.message = this.getEl().innerText;
-        if(oem.read(this.form)) oem.read(this.form).addValidator(this);
+        oem.read(this.field).addValidator(this);
     };
     
     // GETTERS
@@ -80,4 +79,8 @@
     COMPONENTS.Validator.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Prototypes.Component, oem.Core.Modules.Prototype, oem.Core.Modules.Util);
+})(
+    oem.Components,
+    oem.Core.Prototypes.Component,
+    oem.Core.Modules.Prototype,
+    oem.Core.Modules.Util);
