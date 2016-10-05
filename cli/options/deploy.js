@@ -8,9 +8,11 @@ const opener = require("opener");
 /**
  * Component Development Server
  */
-const Deployment = function (config) {
-    this.config = config;
-    this.directory = './deploy/'+this.config;
+const Deployment = function (deployment) {
+    this.deployment = deployment;
+    this.config = pkg.oem.deployments[deployment];
+    this.components = this.config.components;
+    this.directory = './deploy/'+deployment;
     this.jsFile = this.directory + "/oem.js";
     this.jsFileMinified = this.directory + "/oem.min.js";
     this.jsFiles = this.getJsFiles();
@@ -46,11 +48,11 @@ Deployment.prototype = {
         var usage = null;
         var examples = null;
         var html = '';
-        var components = pkg.oem.deployment[this.config].components;
+        var components = this.components;
         components.sort();
 
         html += '<h1>Pattern Library</h1>';
-        html += '<p>The following components were auto generated from the <em>'+this.config+'</em> deployment configuration.</p>';
+        html += '<p>The following components were auto generated from the <em>'+this.deployment+'</em> deployment configuration.</p>';
 
         // menu
         components.forEach(function(component){
@@ -84,28 +86,41 @@ Deployment.prototype = {
 
     },
 
-    getJsFiles: function(){
-        // get all source files
-        var srcFiles = pkg.oem.deployment[this.config].components.map(function(component){
-            return pkg.oem.components[component].files;
+    /**
+     * Start Component's JS files
+     *
+     * @method     startDevelopingComponent
+     * @param      {<type>}  answers  { description }
+     */
+    getJsFiles: function() {
+
+
+        // core files
+        var coreConfig = JSON.parse(fs.readFileSync("./src/core/config.json", 'utf8'));
+        var coreFiles = coreConfig.files;
+
+        // files from development components loaded during development
+        var devComponentFiles = this.components.map(function(component) {
+            var config = JSON.parse(fs.readFileSync("./src/components/"+component+"/config.json", 'utf8'));
+            return config.files;
         });
 
         // flatten arrays
         var allFiles = []
-        .concat(...srcFiles);
+            .concat(...coreFiles)
+            .concat(...devComponentFiles);
 
         // implement customization overwrites
-        if(pkg.oem.deployment[this.config].hasOwnProperty('customizations')){
-            var customizations = pkg.oem.deployment[this.config].customizations;
+        if (this.config.customizations) {
+            var customizations = this.config.customizations;
             var customization;
             var indexOfFileToReplace;
-            for(var i = 0; i < customizations.length; i = i + 1){
+            for (var i = 0; i < customizations.length; i = i + 1) {
                 customization = customizations[i];
                 indexOfFileToReplace = allFiles.indexOf(customization.replace);
-                if(indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
-            }          
+                if (indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
+            }
         }
-
         return allFiles;
     },
 

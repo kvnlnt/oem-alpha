@@ -53,7 +53,7 @@ try {
             break;
         case ARG.DEPLOY:
             if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';
-            if(pkg.oem.deployment[ARGS[1]] === void 0) throw 'no such deployment exists, check package.json';
+            if(pkg.oem.deployments[ARGS[1]] === void 0) throw 'no such deployment exists, check package.json';
             var deployment = new Deployment(ARGS[1]);
             break;
         case ARG.FACTORY_RESET:

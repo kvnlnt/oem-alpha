@@ -1,55 +1,49 @@
 {
-    "name": "oem",
-    "version": "1.0.0",
-    "description": "",
-    "main": "cli/oem.js",
-    "scripts": {
-        "start": "node ./oem",
-        "postinstall": "alias oem='node oem'"
-    },
-    "author": "Toolhouse Inc.",
-    "license": "ISC",
-    "oem": {
-        "deployment": {
-            "all": {
-                "components": [
-                    "accordion",
-                    "button",
-                    "field",
-                    "form",
-                    "submit-button",
-                    "text-input",
-                    "theme"
-                ],
-                "customizations": []
-            },
-            "toolhouse.com": {
-                "components": [
-                    "core"
-                ],
-                "customizations": [
-                    {
-                        "replace": "./src/core/Theme.js",
-                        "with": "./src/customizations/Example.js"
-                    }
-                ]
-            }
-        },
+  "name": "oem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli/oem.js",
+  "scripts": {
+    "start": "node ./oem",
+    "postinstall": "alias oem='node oem'"
+  },
+  "author": "Toolhouse Inc.",
+  "license": "ISC",
+  "oem": {
+    "deployments": {
+      "all": {
         "components": [
-            "accordion",
-            "button",
-            "field",
-            "form",
-            "submit-button",
-            "text-input",
-            "theme"
+          "accordion",
+          "button",
+          "field",
+          "form",
+          "submit-button",
+          "text-input",
+          "theme"
         ]
+      },
+      "toolhouse.com": {
+        "components": [
+          "core"
+        ]
+      }
     },
-    "devDependencies": {},
-    "dependencies": {
-        "chalk": "^1.1.3",
-        "express": "^4.13.4",
-        "opener": "^1.4.2",
-        "uglify-js": "^2.6.2"
-    }
+    "components": [
+      "accordion",
+      "button",
+      "field",
+      "form",
+      "submit-button",
+      "text-input",
+      "theme"
+    ]
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "express": "^4.13.4",
+    "fs-extra": "^0.30.0",
+    "opener": "^1.4.2",
+    "uglify-js": "^2.6.2"
+  }
 }
