@@ -12,8 +12,10 @@ const Deployment = function (deployment) {
     this.deployment = deployment;
     this.configs = pkg.oem.deployments[deployment];
     this.directory = './deploy/'+deployment;
-    this.jsFile = this.directory + "/oem.js";
-    this.jsFileMinified = this.directory + "/oem.min.js";
+    this.jsFileName = "oem.js";
+    this.jsFile = this.directory + "/" + this.jsFileName;
+    this.jsFileMinifiedName = "oem.min.js";
+    this.jsFileMinified = this.directory + "/" + this.jsFileMinifiedName;
     this.jsFiles = this.getJsFiles();
     this.deploy().reply();
 };
@@ -52,11 +54,12 @@ Deployment.prototype = {
 
         // artifacts
         html += "<h2>Artifacts</h2>";
-        html += "<p>"+this.jsFile+" ("+this.getFilesizeInKB(this.jsFile)+"kb)</p>";
-        html += "<p>"+this.jsFileMinified+" ("+this.getFilesizeInKB(this.jsFileMinified)+"kb)</p>";
+        html += "<p>Artifacts included in this deployment";
+        html += '<p><a target="_blank"  href="'+this.jsFileName+'"">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb)</p>';
+        html += '<p><a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb)</p>';
 
         html += "<h2>Components</h2>";
-        html += '<p>The following components were auto generated.</p>';
+        html += '<p>Components included in this deployment</p>';
 
         // components
         components.forEach(function(component){
