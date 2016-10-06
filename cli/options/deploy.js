@@ -47,32 +47,42 @@ Deployment.prototype = {
         var template = fs.readFileSync('./cli/templates/deployment/main.html', 'utf-8');
         var html = '';
         var components = pkg.oem.deployments[this.deployment];
+        var that = this;
 
         // header
         html += '<h1>Deployment</h1>';
-        html += '<p>This <em>'+this.deployment+'</em> deployment configuration report was generated on '+this.getDateTime()+'</p>';
-
-        // artifacts
-        html += "<h2>Artifacts</h2>";
-        html += "<p>Artifacts included in this deployment";
-        html += '<p><a target="_blank"  href="'+this.jsFileName+'"">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb)</p>';
-        html += '<p><a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb)</p>';
-
-        html += "<h2>Components</h2>";
-        html += '<p>Components included in this deployment</p>';
+        html += '<table>'
+        html += '<tr>';
+        html += '<td>Configuration</td>';
+        html += '<td>'+this.deployment+'</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Generated</td>';
+        html += '<td>'+this.getDateTime()+'</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Artifact</td>';
+        html += '<td><a target="_blank" href="'+this.jsFileName+'">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb)</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Artifact Minified</td>';
+        html += '<td><a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb)</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Components</td>';
+        html += '<td>'+components.map(function(component){ return that.createAnchorLink(component) }).join(', ')+'</td>';
+        html += '</tr>';
+        html += '</table>';
 
         // components
         components.forEach(function(component){
             var componentConfig = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
             html += '<section>';          
             html += fs.readFileSync(componentConfig.templates.description, 'utf8');
+            html += '<p><strong>Files</strong><br/><small>' + componentConfig.files.join('<br/>') + '</small></p>';
             html += '</section>';
         });
 
-        // files
-        html += "<h2>Files</h2>";
-        html += "<p>Files included in this deployment</p>";
-        html += this.jsFiles.join("<br/>");
 
         template = template.replace("<!-- HTML -->", html, 'utf8')
         fs.outputFileSync(this.directory + '/index.html', template);
@@ -82,6 +92,13 @@ Deployment.prototype = {
 
         return this;
 
+    },
+
+    createAnchorLink: function(str){
+        var id = str.split("-").map(function(strPart){
+            return strPart.charAt(0).toUpperCase() + strPart.slice(1);
+        }).join('');
+        return '<a href="#'+id+'">'+id+'</a>';
     },
 
     getFilesizeInKB: function(filename) {
