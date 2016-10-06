@@ -1,9 +1,9 @@
 {
     "development": {
-        "components": [
+        "configurations": [
+            "core",
             "theme"
-        ],
-        "customizations": []
+        ]
     },
     "files": [
         "./src/components/submit-button/module.js",

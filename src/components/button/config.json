@@ -1,7 +1,6 @@
 {
     "development": {
-        "components": ["theme"],
-        "customizations": []
+        "configurations": ["core", "theme"]
     },
     "files": [
         "./src/components/button/module.js",

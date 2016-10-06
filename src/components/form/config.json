@@ -1,14 +1,14 @@
 {
     "development": {
-        "components": [
+        "configurations": [
+            "core",
             "theme",
             "validator",
             "submit-button",
             "field",
             "text-input",
             "button"
-        ],
-        "customizations": []
+        ]
     },
     "files": [
         "./src/components/form/module.js",

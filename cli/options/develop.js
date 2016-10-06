@@ -10,11 +10,10 @@ const chalk = require('chalk');
 /**
  * Component Development Server
  */
-const DevelopComponent = function(component, port) {
-    this.component = component;
+const DevelopComponent = function(configuration, port) {
+    this.component = configuration;
     this.port = port || 7001;
-    this.folder = "./src/components/" + component;
-    this.config = JSON.parse(fs.readFileSync(this.folder + "/config.json", 'utf8'));
+    this.config = JSON.parse(fs.readFileSync(pkg.oem.development[configuration], 'utf8'));
     this.jsFiles = this.getJsFiles();
     this.server;
     this.start();
@@ -125,13 +124,10 @@ DevelopComponent.prototype = {
      */
     getJsFiles: function() {
 
-        // core files
-        var coreConfig = JSON.parse(fs.readFileSync("./src/core/config.json", 'utf8'));
-        var coreFiles = coreConfig.files;
 
         // files from development components loaded during development
-        var devComponentFiles = this.config.development.components.map(function(component) {
-            var config = JSON.parse(fs.readFileSync("./src/components/"+component+"/config.json", 'utf8'));
+        var devComponentFiles = this.config.development.configurations.map(function(configuration) {
+            var config = JSON.parse(fs.readFileSync(pkg.oem.development[configuration], 'utf8'));
             return config.files;
         });
 
@@ -145,22 +141,21 @@ DevelopComponent.prototype = {
 
         // flatten arrays
         var allFiles = []
-            .concat(...coreFiles)
             .concat(...devComponentFiles)
             .concat(...srcFiles)
             .concat(...testFiles);
 
         // implement customization overwrites
-        if (this.config.development.customizations) {
-            var customizations = this.config.development.customizations;
-            var customization;
-            var indexOfFileToReplace;
-            for (var i = 0; i < customizations.length; i = i + 1) {
-                customization = customizations[i];
-                indexOfFileToReplace = allFiles.indexOf(customization.replace);
-                if (indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
-            }
-        }
+        // if (this.config.development.customizations) {
+        //     var customizations = this.config.development.customizations;
+        //     var customization;
+        //     var indexOfFileToReplace;
+        //     for (var i = 0; i < customizations.length; i = i + 1) {
+        //         customization = customizations[i];
+        //         indexOfFileToReplace = allFiles.indexOf(customization.replace);
+        //         if (indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
+        //     }
+        // }
 
         console.log(allFiles);
 

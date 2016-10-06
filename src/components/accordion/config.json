@@ -1,7 +1,6 @@
 {
     "development": {
-        "components": [],
-        "customizations": []
+        "configurations": ["core"]
     },
     "files": [
         "./src/components/accordion/module.js",

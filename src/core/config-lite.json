@@ -1,16 +1,5 @@
 {
     "files": [
-        "./src/core/polyfills/Bind.js",
-        "./src/core/polyfills/Dataset.js",
-        "./src/core/polyfills/QuerySelector.js",
-        "./src/core/polyfills/EventListeners.js",
-        "./src/core/polyfills/ClassList.js",
-        "./src/core/polyfills/ArrayMap.js",
-        "./src/core/polyfills/ArrayFind.js",
-        "./src/core/polyfills/ArrayFilter.js",
-        "./src/core/polyfills/ArrayForEach.js",
-        "./src/core/polyfills/ObjectCreate.js",
-        "./src/core/polyfills/ObjectKeys.js",
         "./src/core/modules/Namespacer.js",
         "./src/core/modules/Prototype.js",
         "./src/core/modules/El.js",
@@ -19,7 +8,6 @@
         "./src/core/modules/EventBus.js",
         "./src/core/modules/Events.js",
         "./src/core/modules/Css.js",
-        "./src/core/modules/Responsifier.js",
         "./src/core/modules/AutoInitializer.js",
         "./src/core/prototypes/Component.js",
         "./src/core/Oem.js"
@@ -30,7 +18,6 @@
         "./src/core/modules/Events.test.js",
         "./src/core/modules/EventBus.test.js",
         "./src/core/modules/Util.test.js",
-        "./src/core/modules/Responsifier.test.js",
         "./src/core/modules/El.test.js",
         "./src/core/prototypes/Component.test.js"
     ],

@@ -1,8 +1,8 @@
 # OEM
 
-OEM is a stand alone web component framework that allows you to quickly create and manage your own web component library using native html, css and javascript.
+OEM is a web component framework that allows you to quickly create and manage your own web component library using native html, css and javascript.
 
-OEM web components are not to be confused with [W3C Web Components](https://www.w3.org/TR/components-intro/). OEM is a framework which implements a Spoke-hub distribution model to enable aggregation and compositional patterns between it's components.
+OEM web components are not to be confused with [W3C Web Components](https://www.w3.org/TR/components-intro/). OEM defines it's own component architecture using a Spoke-hub distribution model to enable aggregation and compositional patterns between components.
 
 # Table of contents
 1. [Features](#features)
@@ -39,7 +39,7 @@ OEM web components are not to be confused with [W3C Web Components](https://www.
 
 <a name="quick-pitch"></a>
 ## Quick pitch
-Make web components today that will work tomorrow. You control the evolution of your code. There's no superset javascript languages to learn, no overly complex build tools, no laborious dev ceremonies, no transpiling or abstracted processing, no upgrades or deprecation to worry about. Still not convinced? [Read the long pitch](docs/justification.md).
+The promise of OEM is that the web components you make today will work tomorrow. It does this by providing a platform that makes component-to-component communication the primary focus. Should you reach a point where you decide you no longer want/need OEM, you are left with well abstracted code and functionally that is semantic, native and has little to do with OEM itself. [Read the long pitch](docs/justification.md).
 
 <a name="setup"></a>
 ## Setup

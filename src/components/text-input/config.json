@@ -1,7 +1,6 @@
 {
     "development": {
-        "components": ["field", "theme"],
-        "customizations": []
+        "configurations": ["core", "field", "theme"]
     },
     "files": [
         "./src/components/text-input/module.js",

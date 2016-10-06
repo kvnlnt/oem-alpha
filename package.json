@@ -11,8 +11,8 @@
   "license": "ISC",
   "oem": {
     "deployments": {
-      "all": {
-        "components": [
+      "all": [
+          "core",
           "accordion",
           "button",
           "field",
@@ -21,22 +21,24 @@
           "text-input",
           "theme"
         ]
-      },
-      "toolhouse.com": {
-        "components": [
-          "core"
-        ]
+    },
+    "demos": {
+      "all":{
+        "deployment":"all"
       }
     },
-    "components": [
-      "accordion",
-      "button",
-      "field",
-      "form",
-      "submit-button",
-      "text-input",
-      "theme"
-    ]
+    "development": {
+      "core":"./src/core/config.json",
+      "core-lite":"./src/core/config-lite.json",
+      "accordion":"./src/components/accordion/config.json",
+      "button":"./src/components/button/config.json",
+      "field":"./src/components/field/config.json",
+      "form":"./src/components/form/config.json",
+      "submit-button":"./src/components/submit-button/config.json",
+      "text-input":"./src/components/text-input/config.json",
+      "theme":"./src/components/theme/config.json",
+      "validator":"./src/components/validator/config.json"
+    }
   },
   "devDependencies": {},
   "dependencies": {
