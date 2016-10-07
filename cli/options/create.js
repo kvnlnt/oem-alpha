@@ -6,10 +6,10 @@ const chalk = require('chalk');
  * Component Creator
  */
 const CreateComponent = function(componentName) {
-    this.fileName = componentName;
+    this.componentName = componentName;
     this.componentClass = this.convertNameToClass(componentName);
-    this.componentDir = './src/components/' + this.fileName;
-    this.templatesDir = './src/components/' + this.fileName + '/templates';
+    this.componentDir = './src/components/' + this.componentName;
+    this.templatesDir = './src/components/' + this.componentName + '/templates';
     this
         .createDirectory()
         .copyAndFormatTemplates()
@@ -73,8 +73,14 @@ CreateComponent.prototype = {
 
     updatePackageJson: function() {
 
-        pkg.oem.components.push(this.fileName);
-        pkg.oem.components.sort();
+        pkg.oem.development[this.componentName] = this.componentDir + "/config.json";
+        var sortedObject = {};
+        var keys = Object.keys(pkg.oem.development);
+        keys.sort();
+        keys.forEach(function(key){
+            sortedObject[key] = pkg.oem.development[key];
+        });
+        pkg.oem.development = sortedObject;
 
         // save to package
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
@@ -90,7 +96,7 @@ CreateComponent.prototype = {
         console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log('Component', chalk.bold(this.fileName), 'has been created');
+        console.log('Component', chalk.bold(this.componentName), 'has been created');
         console.log("");
         console.log("");
     },

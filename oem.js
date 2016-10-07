@@ -43,12 +43,14 @@ try {
             Help.show();
             break;
         case ARG.CREATE:
+            if(pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'component already exists';
             var newComponent = new CreateComponent(ARGS[1]);
             break;
         case ARG.INSTALL:
             var installComponent = new InstallComponent(ARGS[1]);
             break;
         case ARG.REMOVE:
+            if(!pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'component does not exist';
             var removeComponent = new RemoveComponent(ARGS);
             break;
         case ARG.DEPLOY:
