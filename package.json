@@ -13,12 +13,13 @@
         "deployments": {
             "all": [
                 "core",
-                "accordion",
+                "theme",
                 "button",
                 "field",
                 "form",
                 "submit-button",
-                "text-input"
+                "text-input",
+                "validator"
             ]
         },
         "demos": {

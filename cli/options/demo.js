@@ -35,7 +35,7 @@ Demo.prototype = {
         fs.copySync(this.deployment.jsFileMinified, this.directory + '/' + this.deployment.jsFileMinified);
 
         // write html file
-        var template = fs.readFileSync('./cli/templates/deployment/main.html', 'utf-8');
+        var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8');
         var description = null;
         var usage = null;
         var examples = null;
@@ -54,14 +54,26 @@ Demo.prototype = {
         // components
         this.components.forEach(function(component){
             if(component != 'core'){
-                description = fs.readFileSync('./src/components/' + component + '/templates/description.html');
-                usage = fs.readFileSync('./src/components/' + component + '/templates/usage.html');
-                examples = fs.readFileSync('./src/components/' + component + '/templates/examples.html');
+                try {
+                    description = fs.readFileSync('./src/components/' + component + '/templates/description.html');
+                } catch (err) {
+                    // noop
+                }
+                try {
+                    usage = fs.readFileSync('./src/components/' + component + '/templates/usage.html');                    
+                } catch(err) {
+                    // noop
+                }
+                try {
+                    examples = fs.readFileSync('./src/components/' + component + '/templates/examples.html');                    
+                } catch(err){
+                    // noop
+                }
                 html += '<a name="'+component+'"></a>';
                 html += '<section>';           
-                html += description;
-                html += usage;
-                html += examples;
+                if(description) html += description;
+                if(usage) html += usage;
+                if(examples) html += examples;
                 html += '</section>';
             }
         });

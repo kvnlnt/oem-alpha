@@ -5,6 +5,7 @@
     <title>OEM</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css"/>
 
     <style>
         body {
@@ -49,31 +50,9 @@
 
 <body>
     <div class="oem logo"></div>
-    <h1>Pattern Library</h1><p>The following components were auto generated from the <em>all</em> demo configuration.</p><a href="#accordion">accordion</a>  &nbsp;<a href="#button">button</a>  &nbsp;<a href="#field">field</a>  &nbsp;<a href="#form">form</a>  &nbsp;<a href="#submit-button">submit-button</a>  &nbsp;<a href="#text-input">text-input</a>  &nbsp;<a name="accordion"></a><section><!-- Card Component -->
-<h1 id="Accordion">Accordion</h1>
-<p>Accordion component</p><h2>Usage</h2>
-<h3>Html</h3>
-
-<pre>
-<code data-language="html">
-<dl data-oem-id="accordion" data-oem="Accordion">
-    <dt>Topic A</dt>
-    <dd>A Contents</dd>
-    <dt>Topic B</dt>
-    <dd class="expanded">B Contents</dd>
-    <dt>Topic C</dt>
-    <dd>C Contents</dd>
-</dl>
-</code>
-</pre><h2>Example</h2>
-<dl data-oem-id="accordion" data-oem="Accordion">
-    <dt>Topic A</dt>
-    <dd>A Contents</dd>
-    <dt>Topic B</dt>
-    <dd class="expanded">B Contents</dd>
-    <dt>Topic C</dt>
-    <dd>C Contents</dd>
-</dl></section><a name="button"></a><section><!-- Card Component -->
+    <h1>Pattern Library</h1><p>The following components were auto generated from the <em>all</em> demo configuration.</p><a href="#theme">theme</a>  &nbsp;<a href="#button">button</a>  &nbsp;<a href="#field">field</a>  &nbsp;<a href="#form">form</a>  &nbsp;<a href="#submit-button">submit-button</a>  &nbsp;<a href="#text-input">text-input</a>  &nbsp;<a href="#validator">validator</a>  &nbsp;<a name="theme"></a><section><!-- Card Component -->
+<h1 id="Theme">Theme</h1>
+<p>The Theme component</p></section><a name="button"></a><section><!-- Card Component -->
 <h1 id="Button">Button</h1>
 <p>The Button component</p><h2>Usage</h2>
 
@@ -255,7 +234,28 @@
     <label for="exampleTextInput">First Name</label>
     <div class="help">Please enter your first name</div>
     <input type="text" name="exampleTextInput" placeholder="First Name"></input>
-</div></section>
+</div></section><a name="validator"></a><section><!-- Card Component -->
+<h1 id="Validator">Validator</h1>
+<p>The Validator component</p><h2>Usage</h2>
+
+<h3>Html</h3>
+
+<pre>
+<code data-language="html">
+<div 
+    data-oem="Validator"
+    data-oem-id="exampleValidator"
+    data-oem-form="someForm"
+    data-oem-field="someField"
+    data-oem-validation="minLength"
+    data-oem-args="len:3">First name must be at least 3 chars long</div>
+</code>
+</pre><h2>Example</h2>
+<p>See the <em>Form</em> component for full example</p></section>
+    <script src="oem.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/css.min.js"></script>
 </body>
 
 </html>

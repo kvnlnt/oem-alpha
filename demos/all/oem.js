@@ -2294,169 +2294,96 @@ window.oem.Components = {};
 })(oem, oem.Core.Modules.Util, oem.Core.Modules.Prototype, oem.Core.AutoInitializer);
 (function(COMPONENTS) {
 
-    var Accordion = {};
-    
-    // exports
-    COMPONENTS.Accordion = Accordion;
+    // Main component namespace
+    var Theme = {};
+
+    oem.events.addEventListener(oem.EVENTS.CSS_RENDERED, function(){
+        var preloader = document.querySelector('[data-oem-css="Preloader"]');
+        if(preloader) preloader.parentNode.removeChild(preloader);
+    });
+
+    COMPONENTS.Theme = Theme;
     return COMPONENTS;
 
 })(oem.Components);
-(function(COMPONENTS, CORE) {
+(function(THEME) {
 
-    var Css = [
+    var Config = {};
+    Config.FONT_SIZE_SMALL = 12;
+    Config.FONT_SIZE_MEDIUM = 14;
+    Config.FORM_FIELD_BORDER_COLOR = '#CCCCCC';
+    Config.COLOR_MAIN = '#000000';
+    Config.COLOR_WHITE = '#FFFFFF';
+    Config.COLOR_ALERT = '#FF0000';
 
-        {
-            selector: '',
-            declaration: [
-                "margin:0",
-                "padding:0",
-                "border-bottom:1px solid " + CORE.Modules.Theme.COLORS.GREY
-            ]
-        },
+    // exports
+    THEME.Config = Config;
+    return THEME;
 
-        {
-            selector: 'dt',
-            declaration: [
-                "margin:0",
-                "line-height:40px",
-                "padding:10px",
-                "border-top:1px solid " + CORE.Modules.Theme.COLORS.GREY,
-                "background-color: " + CORE.Modules.Theme.COLORS.GREY,
-                "cursor:pointer"
-            ]
-        },
+})(oem.Components.Theme);
+(function(THEME) {
 
-        {
-            selector: 'dt:hover',
-            declaration: [
-                "background-color:" + CORE.Modules.Theme.COLORS.GREY
-            ]
-        },
-
-        {
-            selector: 'dd',
-            declaration: [
-                "margin:0",
-                "padding:0px 10px",
-                "height:0",
-                "overflow:hidden",
-                "transition:all 0.25s"
-            ]
-        },
-
-        {
-            selector: 'dd.expanded',
-            declaration: [
-                "padding:10px",
-                "height:auto",
-                "overflow:visible",
-                "transition:all 0.25s"
-            ]
+    THEME.BUTTON = {
+        selector: "",
+        declaration: {
+            "font-size": THEME.Config.FONT_SIZE_MEDIUM,
+            "display": "inline-block",
+            "padding": "5px 15px",
+            "background-color": THEME.Config.COLOR_MAIN,
+            "color": THEME.Config.COLOR_WHITE,
+            "border":"none",
+            "border-radius": "3px",
+            "line-height":"24px",
+            "cursor":"pointer"
         }
-
-    ];
-
-    COMPONENTS.Accordion.Css = Css;
-    return COMPONENTS;
-
-})(oem.Components, oem.Core);
-(function(COMPONENTS, PROTOTYPE, COMPONENT) {
-
-    var Prototype = PROTOTYPE(COMPONENT, {
-        type: "Accordion"
-    });
-
-    // DEFAULTS
-
-    Prototype.expandClass = "expanded";
-    Prototype.terms = [];
-    Prototype.definitions = [];
-
-    Prototype.init = function() {
-        this.registerEvents();
     };
 
-    Prototype.getTerms = function(){
-        return this.terms;
-    };
-
-    Prototype.registerEvents = function() {
-        var list = this.getEl();
-        list.terms = list.querySelectorAll('dt');
-        list.definitions = list.querySelectorAll('dd');
-        var term;
-        var definition;
-        for (var i = 0; i < list.terms.length; i = i + 1) {
-            term = list.terms[i];
-            Prototype.terms.push(term);
-            definition = list.definitions[i];
-            Prototype.definitions.push(definition);
-            term.isExpanded = definition.classList.contains(this.expandClass);
-            term.definition = list.definitions[i];
-            term.addEventListener('click', this.toggle.bind(this));
+    THEME.BUTTON_HOLLOW = {
+        selector: ".--hollow",
+        declaration: {
+            "background-color": "transparent",
+            "border":"1px solid " + THEME.Config.COLOR_MAIN,
+            "color": THEME.Config.COLOR_MAIN
         }
-        return this;
     };
 
-    Prototype.getTerm = function(i){
-        return this.terms[i];
-    };
+    return THEME;
 
-    Prototype.getDefinition = function(i){
-        return this.definitions[i];
-    };
+})(oem.Components.Theme);
+(function(THEME) {
 
-    Prototype.toggle = function(e) {
-        if (e.preventDefault) e.preventDefault(); // catch for event triggered
-        var term = e.target;
-        this.contractEverything();
-        if (term.isExpanded) {
-            this.contract(term);
-        } else {
-            this.expand(term);
+    THEME.FORM_FIELD_INPUT = {
+        selector: " > input",
+        declaration: {
+            "width":"100%",
+            "font-size": THEME.Config.FONT_SIZE_MEDIUM + "px",
+            "padding":"10px 0",
+            "text-indent":"10px",
+            "border":"1px solid " + THEME.Config.FORM_FIELD_BORDER_COLOR,
+            "border-radius": "2px"
         }
-        return this;
     };
-
-    Prototype.expand = function(term) {
-        term.definition.classList.add(this.expandClass);
-        term.isExpanded = true;
-        return this;
-    };
-
-    Prototype.contract = function(term) {
-        term.definition.classList.remove(this.expandClass);
-        term.isExpanded = false;
-        return this;
-    };
-
-    Prototype.contractEverythingBut = function(term) {
-        var list = this.getEl();
-        var currentTerm;
-        for (var i = 0; i < list.terms.length; i = i + 1) {
-            currentTerm = list.terms[i];
-            if (currentTerm != term) {
-                this.contract(currentTerm);
-            }
+    
+    THEME.FORM_FIELD_HELP = {
+        selector: " .help",
+        declaration: {
+            "font-size": THEME.Config.FONT_SIZE_SMALL + "px",
+            "opacity": 0.6,
+            "margin": "0 0 5px"
         }
-        return this;
     };
 
-    Prototype.contractEverything = function(){
-        var list = this.getEl();
-        var currentTerm;
-        for (var i = 0; i < list.terms.length; i = i + 1) {
-            currentTerm = list.terms[i];
-            this.contract(currentTerm);
+    THEME.FORM_FIELD_LABEL = {
+        selector: " label",
+        declaration: {
+            "font-size": THEME.Config.FONT_SIZE_MEDIUM + "px",
+            "margin": "10px 0"
         }
-        return this;
     };
 
-    COMPONENTS.Accordion.Prototype = Prototype;
-    return COMPONENTS;
+    return THEME;
 
-})(oem.Components, oem.Core.Modules.Prototype, oem.Core.Prototypes.Component);
-
+})(oem.Components.Theme);
 (function(Components, Core) {
 
     var Button = {};
@@ -2942,3 +2869,218 @@ window.oem.Components = {};
     oem.Core.Modules.Prototype,
     oem.Components.Field.Prototype
 );
+(function(COMPONENTS) {
+
+    // Main component namespace
+    var Validator = {
+
+        // validation methods
+
+        /**
+         * Validate field exists
+         * @method     required
+         */
+        required: function(val) {
+            var isValid = val !== null && val !== void 0 && val.length != 0 && val != false;
+            return isValid;
+        },
+
+        /**
+         * Validate string is an email and return Validator
+         * @method     email
+         */
+        email: function(val) {
+            var re = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            var isValid = re.test(val);
+            return isValid;
+        },
+
+        /**
+         * Validate string is a password and return Validator
+         * @method     password
+         */
+        password: function(val) {
+            var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}$/;
+            var isValid = re.test(val);
+            return isValid;
+        },
+
+        /**
+         * Validate that two strings match and return Validator
+         * @method     match
+         */
+        match: function(val1, val2) {
+            var isValid = val1 === val2;
+            return isValid;
+        },
+
+        /**
+         * Validate a string is mixed case and return Validator
+         * @method     mixedCase
+         */
+        mixedCase: function(val) {
+            var re = /(?:[a-z].+[A-Z])|(?:[A-Z].+[a-z])/g;
+            var isValid = re.test(val);
+            return isValid;
+        },
+
+        /**
+         * Validate stirng contains a number and return Validator
+         * @method     containsNumber
+         */
+        containsNumber: function(val) {
+            var re = /[0-9]/g;
+            var isValid = re.test(val);
+            return isValid;
+        },
+
+        /**
+         * Validate string has minimum length and return validator
+         * @method     minLength
+         */
+        minLength: function(args) {
+            var val = args.val;
+            var len = args.len;
+            var val = val === null ? '' : val;
+            var isValid = val.length >= len;
+            return isValid;
+        },
+
+        /**
+         * Validate string has maxiumum length and return validator
+         * @method     maxLength
+         */
+        maxLength: function(args) {
+            var val = args.val;
+            var len = args.len;
+            var val = val === null ? '' : val;
+            var isValid = val.length < len;
+            return isValid;
+        },
+
+        /**
+         * Validate value exists in options list and return Validator
+         * @method     option
+         */
+        option: function(val, options) {
+            var isValid = options.indexOf(val) > -1;
+            return isValid;
+        },
+
+        /**
+         * Validate against regex value
+         * @method     option
+         */
+        regex: function(val, regex) {
+            var isValid = val.match(regex);
+            return isValid;
+        }
+
+    };
+    
+    // exports
+    COMPONENTS.Validator = Validator;
+    return COMPONENTS;
+
+})(oem.Components);
+(function(COMPONENTS, THEME) {
+
+    var Css = [{
+        selector:"",
+        declaration:{
+            display:"none",
+            "font-size": THEME.Config.FONT_SIZE_SMALL + "px",
+            "margin": "10px 0",
+            color: THEME.Config.COLOR_ALERT
+        }
+    }];
+    COMPONENTS.Validator.Css = Css;
+    return COMPONENTS;
+
+})(oem.Components, oem.Components.Theme);
+(function(COMPONENTS, COMPONENT, PROTOTYPE, UTIL) {
+
+
+    // PROTOTYPE
+    // ========================================================
+    // This is the main prototype class for this component. It is meant to:
+    // 1) contain any/all functional behavior for this component.
+    // 2) be prototyped into a new instance for each component
+    var Prototype = PROTOTYPE(COMPONENT, {
+        type: "Validator"
+    });
+
+    // DEFAULTS 
+
+    Prototype.form = null;
+    Prototype.field = null;
+    Prototype.validation = null;
+    Prototype.args = [];
+
+    // INIT
+
+    Prototype.init = function(){
+        this.field = this.getEl().dataset.oemField;
+        this.validation = this.getEl().dataset.oemValidation;
+        this.args = UTIL.parseStringToObject(this.getEl().dataset.oemArgs);
+        this.message = this.getEl().innerText;
+        oem.read(this.field).addValidator(this);
+    };
+    
+    // GETTERS
+    // ========================================================
+    // Add getters for params unique to this prototype
+ 
+    Prototype.getForm = function(){
+         return this.form;
+    };
+
+    Prototype.getField = function(){
+        return this.field;
+    };
+
+    Prototype.getValidation = function(){
+        return this.validation;
+    };
+
+    Prototype.getArgs = function(kwargs){
+        return UTIL.mixin(kwargs, this.args);
+    };
+
+    Prototype.getMessage = function(){
+        return this.message;
+    };
+
+    // SETTERS
+
+    Prototype.setForm = function(form){
+        this.form = form;
+        return this;
+    };
+
+    Prototype.setField = function(field){
+        this.field = field;
+        return this;
+    };
+
+    // METHODS
+    
+    Prototype.show = function(){
+        this.getEl().style.display = 'block';
+        return this;
+    };
+
+    Prototype.hide = function(){
+        this.getEl().style.display = 'none';
+    };
+
+    // EXPORTS
+
+    COMPONENTS.Validator.Prototype = Prototype;
+    return COMPONENTS;
+
+})(
+    oem.Components,
+    oem.Core.Prototypes.Component,
+    oem.Core.Modules.Prototype,
+    oem.Core.Modules.Util);
