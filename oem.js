@@ -43,6 +43,7 @@ try {
             Help.show();
             break;
         case ARG.CREATE:
+            if(pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'component already exists';
             var newComponent = new CreateComponent(ARGS[1]);
             break;
         case ARG.INSTALL:

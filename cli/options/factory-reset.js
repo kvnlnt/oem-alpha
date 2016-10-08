@@ -21,9 +21,9 @@ FactoryReset.prototype = {
         fs.mkdirsSync(this.configurationsDirectory);
         fs.removeSync(this.customizations);
         fs.mkdirsSync(this.customizations);
-        pkg.oem.deployment = {};
+        pkg.oem.deployments = {};
+        pkg.oem.demos = {};
         pkg.oem.development = {};
-        pkg.oem.components = {};
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
 
         console.log("");

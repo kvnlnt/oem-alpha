@@ -73,8 +73,12 @@ CreateComponent.prototype = {
 
     updatePackageJson: function() {
 
-        pkg.oem.components.push(this.fileName);
-        pkg.oem.components.sort();
+        pkg.oem.development[this.fileName] = this.componentDir + '/config.json';
+        var sortedKeys = {};
+        var keys = Object.keys(pkg.oem.development);
+        keys.sort();
+        keys.forEach(function(k) { sortedKeys[k] = pkg.oem.development[k]; });
+        pkg.oem.development = sortedKeys;
 
         // save to package
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));

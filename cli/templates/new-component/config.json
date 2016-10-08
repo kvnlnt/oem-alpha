@@ -1,6 +1,6 @@
 {
     "development": {
-        "components": [],
+        "configurations": ["core"],
         "customizations": []
     },
     "files": [
@@ -9,7 +9,7 @@
         "%DIR%/prototype.js"
     ],
     "tests": [
-        "test.js"
+        "%DIR%/test.js"
     ],
     "templates": {
         "description": "%DIR%/templates/description.html",

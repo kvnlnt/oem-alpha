@@ -1,51 +1,42 @@
 {
-  "name": "oem",
-  "version": "1.0.0",
-  "description": "",
-  "main": "cli/oem.js",
-  "scripts": {
-    "start": "node ./oem",
-    "postinstall": "alias oem='node oem'"
-  },
-  "author": "Toolhouse Inc.",
-  "license": "ISC",
-  "oem": {
-    "deployments": {
-      "all": [
-          "core",
-          "accordion",
-          "button",
-          "field",
-          "form",
-          "submit-button",
-          "text-input",
-          "theme"
-        ]
+    "name": "oem",
+    "version": "1.0.0",
+    "description": "",
+    "main": "cli/oem.js",
+    "scripts": {
+        "start": "node ./oem",
+        "postinstall": "alias oem='node oem'"
     },
-    "demos": {
-      "all":{
-        "deployment":"all"
-      }
+    "author": "Toolhouse Inc.",
+    "license": "ISC",
+    "oem": {
+        "deployments": {
+            "all": []
+        },
+        "demos": {
+            "all": {
+                "deployment": "all"
+            }
+        },
+        "development": {
+            "accordion": "./src/components/accordion/config.json",
+            "button": "./src/components/button/config.json",
+            "core": "./src/core/config.json",
+            "core-lite": "./src/core/config-lite.json",
+            "field": "./src/components/field/config.json",
+            "form": "./src/components/form/config.json",
+            "submit-button": "./src/components/submit-button/config.json",
+            "text-input": "./src/components/text-input/config.json",
+            "theme": "./src/components/theme/config.json",
+            "validator": "./src/components/validator/config.json"
+        }
     },
-    "development": {
-      "core":"./src/core/config.json",
-      "core-lite":"./src/core/config-lite.json",
-      "accordion":"./src/components/accordion/config.json",
-      "button":"./src/components/button/config.json",
-      "field":"./src/components/field/config.json",
-      "form":"./src/components/form/config.json",
-      "submit-button":"./src/components/submit-button/config.json",
-      "text-input":"./src/components/text-input/config.json",
-      "theme":"./src/components/theme/config.json",
-      "validator":"./src/components/validator/config.json"
+    "devDependencies": {},
+    "dependencies": {
+        "chalk": "^1.1.3",
+        "express": "^4.13.4",
+        "fs-extra": "^0.30.0",
+        "opener": "^1.4.2",
+        "uglify-js": "^2.6.2"
     }
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "chalk": "^1.1.3",
-    "express": "^4.13.4",
-    "fs-extra": "^0.30.0",
-    "opener": "^1.4.2",
-    "uglify-js": "^2.6.2"
-  }
 }

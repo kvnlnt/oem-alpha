@@ -23,7 +23,10 @@ RemoveComponent.prototype = {
 
     updatePackageJson: function() {
         this.components.forEach(function(component){
-            pkg.oem.components.splice(pkg.oem.components.indexOf(component), 1);
+            delete pkg.oem.development[component];
+            Object.keys(pkg.oem.deployments).forEach(function(deployment){
+                pkg.oem.deployments[deployment].splice(pkg.oem.deployments[deployment].indexOf(component), 1);
+            });
         });
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
         return this;
@@ -37,7 +40,7 @@ RemoveComponent.prototype = {
         console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log('Component', chalk.bold(this.fileName), 'has been removed');
+        console.log('Components:', chalk.bold(this.components), 'removed');
         console.log("");
         console.log("");
     }
