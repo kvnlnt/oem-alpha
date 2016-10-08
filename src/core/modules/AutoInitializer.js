@@ -12,6 +12,9 @@
      */
     AutoInitializer.collect = function(component) {
 
+        // we only initialize components with a Prototype object
+        if(!component.Prototype) return false;
+
         // init vars
         var selector = '[data-oem="'+component.Prototype.type+'"]';
         var el;

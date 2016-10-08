@@ -8,8 +8,9 @@ const opener = require("opener");
 /**
  * Component Development Server
  */
-const Deployment = function (deployment) {
+const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
+    this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
     this.configs = pkg.oem.deployments[deployment];
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
@@ -88,7 +89,7 @@ Deployment.prototype = {
         fs.outputFileSync(this.directory + '/index.html', template);
 
         // launch pattern lib
-        opener(this.directory + '/index.html');
+        if(this.autoLaunch) opener(this.directory + '/index.html');
 
         return this;
 
