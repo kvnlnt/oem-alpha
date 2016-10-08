@@ -1,0 +1,20 @@
+{
+    "development": {
+        "configurations": ["core"],
+        "customizations": []
+    },
+    "files": [
+        "./src/components/responsifier/module.js",
+        "./src/components/responsifier/css.js",
+        "./src/components/responsifier/prototype.js"
+    ],
+    "tests": [
+        "./src/components/responsifier/test.js"
+    ],
+    "templates": {
+        "description": "./src/components/responsifier/templates/description.html",
+        "examples": "./src/components/responsifier/templates/examples.html",
+        "tests": "./src/components/responsifier/templates/tests.html",
+        "usage": "./src/components/responsifier/templates/usage.html"
+    }
+}

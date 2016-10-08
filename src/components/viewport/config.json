@@ -1,0 +1,20 @@
+{
+    "development": {
+        "configurations": ["core"],
+        "customizations": []
+    },
+    "files": [
+        "./src/components/viewport/module.js",
+        "./src/components/viewport/css.js",
+        "./src/components/viewport/prototype.js"
+    ],
+    "tests": [
+        "./src/components/viewport/test.js"
+    ],
+    "templates": {
+        "description": "./src/components/viewport/templates/description.html",
+        "examples": "./src/components/viewport/templates/examples.html",
+        "tests": "./src/components/viewport/templates/tests.html",
+        "usage": "./src/components/viewport/templates/usage.html"
+    }
+}

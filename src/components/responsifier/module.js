@@ -1,3 +1,14 @@
+(function(COMPONENTS) {
+
+    // Main component namespace
+    var Responsifier = {};
+    
+    // exports
+    COMPONENTS.Responsifier = Responsifier;
+    return COMPONENTS;
+
+})(oem.Components);
+
 // USAGE
 
 // Best way to use the responsifier is to use data attributes like so

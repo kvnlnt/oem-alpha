@@ -34,10 +34,12 @@
             "core-lite": "./src/core/config-lite.json",
             "field": "./src/components/field/config.json",
             "form": "./src/components/form/config.json",
+            "responsifier": "./src/components/responsifier/config.json",
             "submit-button": "./src/components/submit-button/config.json",
             "text-input": "./src/components/text-input/config.json",
             "theme": "./src/components/theme/config.json",
-            "validator": "./src/components/validator/config.json"
+            "validator": "./src/components/validator/config.json",
+            "viewport": "./src/components/viewport/config.json"
         }
     },
     "devDependencies": {},
