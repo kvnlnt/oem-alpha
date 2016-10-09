@@ -1,4 +1,7 @@
 {
+    "name": "Responsifier",
+    "version": "1.0.0",
+    "description": "Responsifier component",
     "development": {
         "configurations": ["core"],
         "customizations": []

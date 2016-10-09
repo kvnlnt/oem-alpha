@@ -64,16 +64,16 @@ CreateComponent.prototype = {
         var css = fs.readFileSync('./cli/templates/new-component/css.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
 
-        // config
-        var config = fs.readFileSync('./cli/templates/new-component/config.json', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/config.json', this.renderTemplate(config));
+        // manifest
+        var manifest = fs.readFileSync('./cli/templates/new-component/manifest.json', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/manifest.json', this.renderTemplate(manifest));
 
         return this;
     },
 
     updatePackageJson: function() {
 
-        pkg.oem.development[this.componentName] = this.componentDir + "/config.json";
+        pkg.oem.development[this.componentName] = this.componentDir + "/manifest.json";
         var sortedObject = {};
         var keys = Object.keys(pkg.oem.development);
         keys.sort();

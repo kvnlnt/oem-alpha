@@ -15,16 +15,16 @@ const FactoryReset = function(componentName){
 FactoryReset.prototype = {
     reset: function(){
 
-        fs.removeSync(this.componentsDirectory);
-        fs.mkdirsSync(this.componentsDirectory);
-        fs.removeSync(this.configurationsDirectory);
-        fs.mkdirsSync(this.configurationsDirectory);
-        fs.removeSync(this.customizations);
-        fs.mkdirsSync(this.customizations);
-        pkg.oem.deployments = {};
-        pkg.oem.demos = {};
-        pkg.oem.development = {};
-        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
+        // fs.removeSync(this.componentsDirectory);
+        // fs.mkdirsSync(this.componentsDirectory);
+        // fs.removeSync(this.configurationsDirectory);
+        // fs.mkdirsSync(this.configurationsDirectory);
+        // fs.removeSync(this.customizations);
+        // fs.mkdirsSync(this.customizations);
+        // pkg.oem.deployments = {};
+        // pkg.oem.demos = {};
+        // pkg.oem.development = {};
+        // fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
 
         console.log("");
         console.log("");
@@ -33,7 +33,7 @@ FactoryReset.prototype = {
         console.log(chalk.bgWhite("       "));
         console.log("");
         console.log("");
-        console.log("You now have no components, no configurations & no deployments.");
+        console.log("...coming soon");
         console.log("");
         console.log("");
 

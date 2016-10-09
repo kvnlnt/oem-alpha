@@ -1,4 +1,7 @@
 {
+    "name": "%CLASS%",
+    "version": "1.0.0",
+    "description": "%CLASS% component",
     "development": {
         "configurations": ["core"],
         "customizations": []

@@ -1,4 +1,7 @@
 {
+    "name": "Viewport",
+    "version": "1.0.0",
+    "description": "Viewport component",
     "development": {
         "configurations": ["core"],
         "customizations": []

@@ -28,18 +28,18 @@
             }
         },
         "development": {
-            "accordion": "./src/components/accordion/config.json",
-            "button": "./src/components/button/config.json",
-            "core": "./src/core/config.json",
-            "core-lite": "./src/core/config-lite.json",
-            "field": "./src/components/field/config.json",
-            "form": "./src/components/form/config.json",
-            "responsifier": "./src/components/responsifier/config.json",
-            "submit-button": "./src/components/submit-button/config.json",
-            "text-input": "./src/components/text-input/config.json",
-            "theme": "./src/components/theme/config.json",
-            "validator": "./src/components/validator/config.json",
-            "viewport": "./src/components/viewport/config.json"
+            "accordion": "./src/components/accordion/manifest.json",
+            "button": "./src/components/button/manifest.json",
+            "core": "./src/core/manifest.json",
+            "core-lite": "./src/core/manifest-lite.json",
+            "field": "./src/components/field/manifest.json",
+            "form": "./src/components/form/manifest.json",
+            "responsifier": "./src/components/responsifier/manifest.json",
+            "submit-button": "./src/components/submit-button/manifest.json",
+            "text-input": "./src/components/text-input/manifest.json",
+            "theme": "./src/components/theme/manifest.json",
+            "validator": "./src/components/validator/manifest.json",
+            "viewport": "./src/components/viewport/manifest.json"
         }
     },
     "devDependencies": {},

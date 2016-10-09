@@ -1,4 +1,7 @@
 {
+    "name": "SubmitButton",
+    "version": "1.0.0",
+    "description": "SubmitButton component",
     "development": {
         "configurations": [
             "core",

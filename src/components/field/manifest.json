@@ -1,4 +1,7 @@
 {
+    "name": "Field",
+    "version": "1.0.0",
+    "description": "Field component",
     "development": {
         "configurations": ["core"]
     },

@@ -1,4 +1,7 @@
 {
+    "name": "Core Lite",
+    "version": "1.0.0",
+    "description": "OEM Core Lite",
     "files": [
         "./src/core/modules/Namespacer.js",
         "./src/core/modules/Prototype.js",

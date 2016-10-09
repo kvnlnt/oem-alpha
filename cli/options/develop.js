@@ -10,10 +10,10 @@ const chalk = require('chalk');
 /**
  * Component Development Server
  */
-const DevelopComponent = function(configuration, port) {
-    this.component = configuration;
+const DevelopComponent = function(component, port) {
+    this.component = component;
     this.port = port || 7001;
-    this.config = JSON.parse(fs.readFileSync(pkg.oem.development[configuration], 'utf8'));
+    this.manifest = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
     this.jsFiles = this.getJsFiles();
     this.server;
     this.start();
@@ -68,22 +68,22 @@ DevelopComponent.prototype = {
 
         // get html partials
         try {
-            htmlDescription = fs.readFileSync(this.config.templates.description, 'utf8');
+            htmlDescription = fs.readFileSync(this.manifest.templates.description, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            htmlExamples = fs.readFileSync(this.config.templates.examples, 'utf8');
+            htmlExamples = fs.readFileSync(this.manifest.templates.examples, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            htmlTests = fs.readFileSync(this.config.templates.tests, 'utf8');
+            htmlTests = fs.readFileSync(this.manifest.templates.tests, 'utf8');
         } catch (err) {
             // noop
         }
         try {
-            htmlUsage = fs.readFileSync(this.config.templates.usage, 'utf8');
+            htmlUsage = fs.readFileSync(this.manifest.templates.usage, 'utf8');
         } catch (err) {
             // noop
         }
@@ -126,18 +126,18 @@ DevelopComponent.prototype = {
 
 
         // files from development components loaded during development
-        var devComponentFiles = this.config.development.configurations.map(function(configuration) {
+        var devComponentFiles = this.manifest.development.configurations.map(function(configuration) {
             var config = JSON.parse(fs.readFileSync(pkg.oem.development[configuration], 'utf8'));
             return config.files;
         });
 
         // source files
-        var srcFiles = this.config.files;
+        var srcFiles = this.manifest.files;
 
         // test core and component test files
         var testFiles = [];
         testFiles.push("./src/core/modules/Test.js");
-        testFiles.push(this.config.tests);
+        testFiles.push(this.manifest.tests);
 
         // flatten arrays
         var allFiles = []
@@ -146,8 +146,8 @@ DevelopComponent.prototype = {
             .concat(...testFiles);
 
         // implement customization overwrites
-        // if (this.config.development.customizations) {
-        //     var customizations = this.config.development.customizations;
+        // if (this.manifest.development.customizations) {
+        //     var customizations = this.manifest.development.customizations;
         //     var customization;
         //     var indexOfFileToReplace;
         //     for (var i = 0; i < customizations.length; i = i + 1) {

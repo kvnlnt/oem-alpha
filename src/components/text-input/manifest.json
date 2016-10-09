@@ -1,4 +1,7 @@
 {
+    "name": "TextInput",
+    "version": "1.0.0",
+    "description": "TextInput component",
     "development": {
         "configurations": ["core", "field", "theme"]
     },

@@ -1,5 +1,6 @@
 const pkg = require('../../package');
 const chalk = require('chalk');
+const fs = require('fs-extra');
 
 /**
  * Component Creator
@@ -19,9 +20,10 @@ List.prototype = {
         console.log("");
         console.log("");
 
-        if(pkg.oem.components.length){
-            pkg.oem.components.forEach(function(component){
-                console.log(component);
+        if(Object.keys(pkg.oem.development).length){
+            Object.keys(pkg.oem.development).forEach(function(component){
+                var manifest = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+                console.log(chalk.bold(manifest.name), ' ', manifest.description);
             });    
         } else {
             console.log("You have no components.");

@@ -1,4 +1,7 @@
 {
+    "name": "Button",
+    "version": "1.0.0",
+    "description": "Button component",
     "development": {
         "configurations": ["core", "theme"]
     },
