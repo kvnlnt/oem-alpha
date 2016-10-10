@@ -11,7 +11,7 @@ const opener = require("opener");
 const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
     this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
-    this.configs = pkg.oem.deployments[deployment];
+    this.manifests = pkg.oem.deployments[deployment];
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
     this.jsFile = this.directory + "/" + this.jsFileName;
@@ -47,7 +47,11 @@ Deployment.prototype = {
         // write html file
         var template = fs.readFileSync('./cli/templates/deployment/main.html', 'utf-8');
         var html = '';
-        var components = pkg.oem.deployments[this.deployment];
+        var manifests = pkg.oem.deployments[this.deployment].map(function(component){
+            var manifest = pkg.oem.development[component];
+            return JSON.parse(fs.readFileSync(manifest, 'utf-8'));
+        });
+
         var that = this;
 
         // header
@@ -71,35 +75,26 @@ Deployment.prototype = {
         html += '</tr>';
         html += '<tr>';
         html += '<td>Components</td>';
-        html += '<td>'+components.map(function(component){ return that.createAnchorLink(component) }).join(', ')+'</td>';
+        html += '<td>'+manifests.map(function(manifest){ return '<a href="#'+manifest.name+'">'+manifest.name+'</a>' }).join(', ')+'</td>';
         html += '</tr>';
         html += '</table>';
 
-        // components
-        components.forEach(function(component){
-            var componentConfig = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+        // // components
+        manifests.forEach(function(manifest){
             html += '<section>';          
-            html += fs.readFileSync(componentConfig.templates.description, 'utf8');
-            html += '<p><strong>Files</strong><br/><small>' + componentConfig.files.join('<br/>') + '</small></p>';
+            html += fs.readFileSync(manifest.templates.description, 'utf8');
+            html += '<p><strong>Files</strong><br/><small>' + manifest.files.join('<br/>') + '</small></p>';
             html += '</section>';
         });
 
-
-        template = template.replace("<!-- HTML -->", html, 'utf8')
+        // template = template.replace("<!-- HTML -->", html, 'utf8')
         fs.outputFileSync(this.directory + '/index.html', template);
 
-        // launch pattern lib
+        // // launch pattern lib
         if(this.autoLaunch) opener(this.directory + '/index.html');
 
         return this;
 
-    },
-
-    createAnchorLink: function(str){
-        var id = str.split("-").map(function(strPart){
-            return strPart.charAt(0).toUpperCase() + strPart.slice(1);
-        }).join('');
-        return '<a href="#'+id+'">'+id+'</a>';
     },
 
     getFilesizeInKB: function(filename) {
@@ -142,8 +137,8 @@ Deployment.prototype = {
     getJsFiles: function() {
 
         // files from development components loaded during development
-        var js = this.configs.map(function(config) {
-            var config = JSON.parse(fs.readFileSync(pkg.oem.development[config], 'utf8'));
+        var js = this.manifests.map(function(manifest) {
+            var config = JSON.parse(fs.readFileSync(pkg.oem.development[manifest], 'utf8'));
             return config.files;
         });
 
