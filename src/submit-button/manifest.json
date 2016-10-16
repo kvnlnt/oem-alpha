@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "SubmitButton component",
     "development": {
-        "configurations": [
+        "components": [
             "core",
             "theme"
         ]

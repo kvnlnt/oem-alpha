@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Accordion component",
     "development": {
-        "configurations": ["core"]
+        "components": ["core"]
     },
     "files": [
         "./src/components/accordion/module.js",

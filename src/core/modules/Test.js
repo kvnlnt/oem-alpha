@@ -46,32 +46,6 @@
         ul.appendChild(li);
     };
 
-    var css = [
-
-        {
-            selector: '',
-            declaration: [
-                "margin:20px 0px",
-                "font-size:14px"
-            ]
-        },
-        {
-            selector: ".test-pass",
-            declaration: [
-                "color:black"
-            ]
-        },
-        ,
-        {
-            selector: ".test-fail",
-            declaration: [
-                "color:red"
-            ]
-        }
-
-    ];
-
-    Core.Modules.Css.render('Test', css);
     Core.Modules.Test = Test;
     return Core;
 

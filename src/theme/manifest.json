@@ -3,13 +3,14 @@
     "version": "1.0.0",
     "description": "Theme component",
     "development": {
-        "configurations": ["core"]
+        "components": ["core"]
     },
-    "files": [
-        "./src/components/theme/module.js",
-        "./src/components/theme/config.js",
-        "./src/components/theme/buttons.js",
-        "./src/components/theme/forms.js"
+    "styles":[
+        "./src/components/theme/buttons.css",
+        "./src/components/theme/forms.css"
+    ],
+    "scripts": [
+        "./src/components/theme/module.js"
     ],
     "tests": [],
     "templates": {

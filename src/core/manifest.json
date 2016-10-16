@@ -2,7 +2,7 @@
     "name": "Core",
     "version": "1.0.0",
     "description": "OEM Core",
-    "files": [
+    "scripts": [
         "./src/core/polyfills/Bind.js",
         "./src/core/polyfills/Dataset.js",
         "./src/core/polyfills/QuerySelector.js",
@@ -21,14 +21,12 @@
         "./src/core/modules/Util.js",
         "./src/core/modules/EventBus.js",
         "./src/core/modules/Events.js",
-        "./src/core/modules/Css.js",
         "./src/core/modules/AutoInitializer.js",
         "./src/core/prototypes/Component.js",
         "./src/core/Oem.js"
     ],
     "tests": [
         "./src/core/modules/AutoInitializer.test.js",
-        "./src/core/modules/Css.test.js",
         "./src/core/modules/Events.test.js",
         "./src/core/modules/EventBus.test.js",
         "./src/core/modules/Util.test.js",

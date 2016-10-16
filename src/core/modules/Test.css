@@ -1,0 +1,12 @@
+[data-oem-test] {
+    margin:20px 0px;
+    font-size:14px;
+}
+
+[data-oem-test] .test-pass" {
+    color:black;
+}
+
+[data-oem-test] .test-fail" {
+    color: red;
+}

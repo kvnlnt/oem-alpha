@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "TextInput component",
     "development": {
-        "configurations": ["core", "field", "theme"]
+        "components": ["core", "field", "theme"]
     },
     "files": [
         "./src/components/text-input/module.js",

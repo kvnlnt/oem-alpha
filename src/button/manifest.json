@@ -3,12 +3,14 @@
     "version": "1.0.0",
     "description": "Button component",
     "development": {
-        "configurations": ["core", "theme"]
+        "components": ["core", "theme"]
     },
-    "files": [
+    "scripts": [
         "./src/components/button/module.js",
-        "./src/components/button/css.js",
         "./src/components/button/prototype.js"
+    ],
+    "styles": [
+        "./src/components/button/style.css"
     ],
     "tests": [
         "./src/components/button/test.js"
