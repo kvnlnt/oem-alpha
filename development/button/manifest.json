@@ -1,0 +1,24 @@
+{
+    "name": "Button",
+    "version": "1.0.0",
+    "description": "Button component",
+    "development": {
+        "components": []
+    },
+    "scripts": [
+        "./development/button/module.js",
+        "./development/button/prototype.js"
+    ],
+    "styles": [
+        "./development/button/style.css"
+    ],
+    "tests": [
+        "./development/button/test.js"
+    ],
+    "templates": {
+        "description": "./development/button/templates/description.html",
+        "examples": "./development/button/templates/examples.html",
+        "tests": "./development/button/templates/tests.html",
+        "usage": "./development/button/templates/usage.html"
+    }
+}

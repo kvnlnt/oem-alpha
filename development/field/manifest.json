@@ -1,0 +1,22 @@
+{
+    "name": "Field",
+    "version": "1.0.0",
+    "description": "Field component",
+    "development": {
+        "components": ["core"]
+    },
+    "files": [
+        "./development/field/module.js",
+        "./development/field/css.js",
+        "./development/field/prototype.js"
+    ],
+    "tests": [
+        "./development/field/test.js"
+    ],
+    "templates": {
+        "description": "./development/field/templates/description.html",
+        "examples": "./development/field/templates/examples.html",
+        "tests": "./development/field/templates/tests.html",
+        "usage": "./development/field/templates/usage.html"
+    }
+}

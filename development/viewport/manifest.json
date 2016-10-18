@@ -1,0 +1,23 @@
+{
+    "name": "Viewport",
+    "version": "1.0.0",
+    "description": "Viewport component",
+    "development": {
+        "components": ["core"],
+        "customizations": []
+    },
+    "files": [
+        "./development/viewport/module.js",
+        "./development/viewport/css.js",
+        "./development/viewport/prototype.js"
+    ],
+    "tests": [
+        "./development/viewport/test.js"
+    ],
+    "templates": {
+        "description": "./development/viewport/templates/description.html",
+        "examples": "./development/viewport/templates/examples.html",
+        "tests": "./development/viewport/templates/tests.html",
+        "usage": "./development/viewport/templates/usage.html"
+    }
+}

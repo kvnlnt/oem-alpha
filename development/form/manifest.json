@@ -1,0 +1,30 @@
+{
+    "name": "Form",
+    "version": "1.0.0",
+    "description": "Accordion component",
+    "development": {
+        "components": [
+            "core",
+            "theme",
+            "validator",
+            "submit-button",
+            "field",
+            "text-input",
+            "button"
+        ]
+    },
+    "files": [
+        "./development/form/module.js",
+        "./development/form/css.js",
+        "./development/form/prototype.js"
+    ],
+    "tests": [
+        "./development/form/test.js"
+    ],
+    "templates": {
+        "description": "./development/form/templates/description.html",
+        "examples": "./development/form/templates/examples.html",
+        "tests": "./development/form/templates/tests.html",
+        "usage": "./development/form/templates/usage.html"
+    }
+}

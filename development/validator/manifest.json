@@ -1,0 +1,22 @@
+{
+    "name": "Validator",
+    "version": "1.0.0",
+    "description": "Validator component",
+    "development": {
+        "components": ["core"]
+    },
+    "files": [
+        "./development/validator/module.js",
+        "./development/validator/css.js",
+        "./development/validator/prototype.js"
+    ],
+    "tests": [
+        "./development/validator/test.js"
+    ],
+    "templates": {
+        "description": "./development/validator/templates/description.html",
+        "examples": "./development/validator/templates/examples.html",
+        "tests": "./development/validator/templates/tests.html",
+        "usage": "./development/validator/templates/usage.html"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "SubmitButton",
+    "version": "1.0.0",
+    "description": "SubmitButton component",
+    "development": {
+        "components": [
+            "core",
+            "theme"
+        ]
+    },
+    "files": [
+        "./development/submit-button/module.js",
+        "./development/submit-button/css.js",
+        "./development/submit-button/prototype.js"
+    ],
+    "tests": [
+        "./development/submit-button/test.js"
+    ],
+    "templates": {
+        "description": "./development/submit-button/templates/description.html",
+        "examples": "./development/submit-button/templates/examples.html",
+        "tests": "./development/submit-button/templates/tests.html",
+        "usage": "./development/submit-button/templates/usage.html"
+    }
+}

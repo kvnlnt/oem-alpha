@@ -1,0 +1,22 @@
+{
+    "name": "TextInput",
+    "version": "1.0.0",
+    "description": "TextInput component",
+    "development": {
+        "components": ["core", "field", "theme"]
+    },
+    "files": [
+        "./development/text-input/module.js",
+        "./development/text-input/css.js",
+        "./development/text-input/prototype.js"
+    ],
+    "tests": [
+        "./development/text-input/test.js"
+    ],
+    "templates": {
+        "description": "./development/text-input/templates/description.html",
+        "examples": "./development/text-input/templates/examples.html",
+        "tests": "./development/text-input/templates/tests.html",
+        "usage": "./development/text-input/templates/usage.html"
+    }
+}

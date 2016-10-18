@@ -6,14 +6,14 @@
         "components": ["core"]
     },
     "styles":[
-        "./src/components/theme/buttons.css",
-        "./src/components/theme/forms.css"
+        "./development/theme/buttons.css",
+        "./development/theme/forms.css"
     ],
     "scripts": [
-        "./src/components/theme/module.js"
+        "./development/theme/module.js"
     ],
     "tests": [],
     "templates": {
-        "description": "./src/components/theme/templates/description.html"
+        "description": "./development/theme/templates/description.html"
     }
 }

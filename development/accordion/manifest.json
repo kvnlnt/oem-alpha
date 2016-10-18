@@ -1,0 +1,22 @@
+{
+    "name": "Accordion",
+    "version": "1.0.0",
+    "description": "Accordion component",
+    "development": {
+        "components": ["core"]
+    },
+    "files": [
+        "./development/accordion/module.js",
+        "./development/accordion/css.js",
+        "./development/accordion/prototype.js"
+    ],
+    "tests": [
+        "./development/accordion/test.js"
+    ],
+    "templates": {
+        "description": "./development/accordion/templates/description.html",
+        "examples": "./development/accordion/templates/examples.html",
+        "tests": "./development/accordion/templates/tests.html",
+        "usage": "./development/accordion/templates/usage.html"
+    }
+}

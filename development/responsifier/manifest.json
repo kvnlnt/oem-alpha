@@ -1,0 +1,23 @@
+{
+    "name": "Responsifier",
+    "version": "1.0.0",
+    "description": "Responsifier component",
+    "development": {
+        "components": ["core"],
+        "customizations": []
+    },
+    "files": [
+        "./development/responsifier/module.js",
+        "./development/responsifier/css.js",
+        "./development/responsifier/prototype.js"
+    ],
+    "tests": [
+        "./development/responsifier/test.js"
+    ],
+    "templates": {
+        "description": "./development/responsifier/templates/description.html",
+        "examples": "./development/responsifier/templates/examples.html",
+        "tests": "./development/responsifier/templates/tests.html",
+        "usage": "./development/responsifier/templates/usage.html"
+    }
+}
