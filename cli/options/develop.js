@@ -15,9 +15,6 @@ const DevelopComponent = function(component, port) {
     this.component = component;
     this.port = port || 7001;
     this.manifest = util.loadAndParseJson(pkg.oem.development[component]);
-    this.js = this.getJs();
-    this.html = this.getHtml();
-    this.css = this.getCss();
     this.server;
     this.start();
 };
@@ -68,9 +65,9 @@ DevelopComponent.prototype = {
         // now update the main html
         fs.readFile("./cli/templates/development/main.html", 'utf8', function(err, data) {
             data = data
-                .replace("<!-- HTML -->", that.html, 'utf8')
-                .replace("<!-- JS -->", util.createScriptTagLinks(that.js))
-                .replace("<!-- CSS -->", util.createCssTagLinks(that.css))
+                .replace("<!-- HTML -->", that.getHtml(), 'utf8')
+                .replace("<!-- JS -->", util.createScriptTagLinks(that.getJs()))
+                .replace("<!-- CSS -->", util.createCssTagLinks(that.getCss()))
             res.send(data);
             res.end();
         });

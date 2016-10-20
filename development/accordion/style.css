@@ -1,0 +1,27 @@
+[data-oem="Accordion"] {
+}
+
+[data-oem="Accordion"] label {
+  background-color: black;
+  color: white;
+  display:block;
+  cursor:pointer;
+  line-height: 34px;
+  text-indent: 13px;
+}
+
+[data-oem="Accordion"] input {
+    display: none;
+}
+
+[data-oem="Accordion"] article {
+    margin-top: -1px;
+    overflow: hidden;
+    height: 0;
+    position: relative;
+}
+
+[data-oem="Accordion"] input:checked ~ article {
+  height: auto;
+  transition: all 1s;
+}

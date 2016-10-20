@@ -5,10 +5,12 @@
     "development": {
         "components": ["core"]
     },
-    "files": [
+    "scripts": [
         "./development/accordion/module.js",
-        "./development/accordion/css.js",
         "./development/accordion/prototype.js"
+    ],
+    "styles": [
+        "./development/accordion/style.css"
     ],
     "tests": [
         "./development/accordion/test.js"
