@@ -13,7 +13,7 @@
 
     // MIXINS 
     // ========================================================
-    // Augment funciontality with mixins from ./src/core/mixins
+    // Augment funciontality with mixins from ./development/core/mixins
 
     // Core.Util.mixin(Prototype, Core.Mixins.Field);
 

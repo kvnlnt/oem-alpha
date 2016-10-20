@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Button component",
     "development": {
-        "components": []
+        "components": ["core"]
     },
     "scripts": [
         "./development/button/module.js",

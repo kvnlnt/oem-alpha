@@ -1,10 +1,20 @@
 const fs = require('fs');
 const pkg = require('../../package');
 
-function wrapInScriptTag(files) {
+function createScriptTagLinks(files) {
     var tags = '';
+    var files = files instanceof Array ? files : [files];
     files.forEach(function(file) {
         tags += '<script src="' + file + '"></script>\n';
+    });
+    return tags;
+}
+
+function createCssTagLinks(files) {
+    var tags = '';
+    var files = files instanceof Array ? files : [files];
+    files.forEach(function(file) {
+        tags += '<link rel="stylesheet" type="text/css" href="' + file + '"/>\n';
     });
     return tags;
 }
@@ -33,16 +43,16 @@ function getComponentScripts(components){
         var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
         return config.scripts;
     });
-    return files;
+    return files.filter(function(file){ return file != void 0 });
 }
 
 function getComponentStyles(components){
-    var components = components instanceof Array ? components : [components];
+     var components = components instanceof Array ? components : [components]; 
     var files = components.map(function(component) {
         var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
         return config.styles;
     });
-    return files;
+    return files.filter(function(file){ return file != void 0 });
 }
 
 function getComponentTests(components){
@@ -61,21 +71,13 @@ function getComponentTemplatesHtml(templates){
     return html;
 }
 
-function flattenList(list) {
-    var flattenedList = [];
-    list.forEach(function(item){
-        flattenedList.concat(item);
-    });
-    return flattenedList;
-}
-
 module.exports = {
-    flattenList: flattenList,
     getComponentScripts: getComponentScripts,
     getComponentStyles: getComponentStyles,
     getComponentTemplatesHtml: getComponentTemplatesHtml,
     getComponentTests: getComponentTests,
     loadAndParseJson: loadAndParseJson,
     rmDir: rmDir,
-    wrapInScriptTag: wrapInScriptTag
+    createScriptTagLinks: createScriptTagLinks,
+    createCssTagLinks: createCssTagLinks
 };

@@ -3,29 +3,29 @@
     "version": "1.0.0",
     "description": "OEM Core Lite",
     "scripts": [
-        "./src/core/modules/Namespacer.js",
-        "./src/core/modules/Prototype.js",
-        "./src/core/modules/El.js",
-        "./src/core/modules/Logger.js",
-        "./src/core/modules/Util.js",
-        "./src/core/modules/EventBus.js",
-        "./src/core/modules/Events.js",
-        "./src/core/modules/Css.js",
-        "./src/core/modules/AutoInitializer.js",
-        "./src/core/prototypes/Component.js",
-        "./src/core/Oem.js"
+        "./development/core/modules/Namespacer.js",
+        "./development/core/modules/Prototype.js",
+        "./development/core/modules/El.js",
+        "./development/core/modules/Logger.js",
+        "./development/core/modules/Util.js",
+        "./development/core/modules/EventBus.js",
+        "./development/core/modules/Events.js",
+        "./development/core/modules/Css.js",
+        "./development/core/modules/AutoInitializer.js",
+        "./development/core/prototypes/Component.js",
+        "./development/core/Oem.js"
     ],
     "tests": [
-        "./src/core/modules/AutoInitializer.test.js",
-        "./src/core/modules/Css.test.js",
-        "./src/core/modules/Events.test.js",
-        "./src/core/modules/EventBus.test.js",
-        "./src/core/modules/Util.test.js",
-        "./src/core/modules/El.test.js",
-        "./src/core/prototypes/Component.test.js"
+        "./development/core/modules/AutoInitializer.test.js",
+        "./development/core/modules/Css.test.js",
+        "./development/core/modules/Events.test.js",
+        "./development/core/modules/EventBus.test.js",
+        "./development/core/modules/Util.test.js",
+        "./development/core/modules/El.test.js",
+        "./development/core/prototypes/Component.test.js"
     ],
     "templates": {
-        "description": "./src/core/templates/description.html",
-        "tests": "./src/core/templates/tests.html"
+        "description": "./development/core/templates/description.html",
+        "tests": "./development/core/templates/tests.html"
     }
 }

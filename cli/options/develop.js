@@ -15,11 +15,9 @@ const DevelopComponent = function(component, port) {
     this.component = component;
     this.port = port || 7001;
     this.manifest = util.loadAndParseJson(pkg.oem.development[component]);
-    this.jsFiles = util.flattenList([
-        util.getComponentScripts(this.manifest.development.components),
-        this.manifest.files,
-        ["./src/core/modules/Test.js", this.manifest.tests]
-    ]);
+    this.js = this.getJs();
+    this.html = this.getHtml();
+    this.css = this.getCss();
     this.server;
     this.start();
 };
@@ -32,7 +30,7 @@ DevelopComponent.prototype = {
      * @method     start
      */
     start: function() {
-        app.use('/src', this.reportRequest, express.static('src'));
+        app.use('/development', this.reportRequest, express.static('development'));
         app.get('/', this.reportRequest, this.handleServerRequest.bind(this));
         app.listen(this.port, this.onStart.bind(this));
     },
@@ -66,16 +64,33 @@ DevelopComponent.prototype = {
     handleServerRequest: function(req, res) {
 
         var that = this;
-        var html = util.getComponentTemplatesHtml(this.manifest.templates);
 
         // now update the main html
         fs.readFile("./cli/templates/development/main.html", 'utf8', function(err, data) {
             data = data
-                .replace("<!-- HTML -->", html, 'utf8')
-                .replace("<!-- JS -->", util.wrapInScriptTag(that.jsFiles));
+                .replace("<!-- HTML -->", that.html, 'utf8')
+                .replace("<!-- JS -->", util.createScriptTagLinks(that.js))
+                .replace("<!-- CSS -->", util.createCssTagLinks(that.css))
             res.send(data);
             res.end();
         });
+    },
+
+    getJs: function(){
+        return [].concat.apply([], util.getComponentScripts(this.manifest.development.components))
+        .concat(this.manifest.scripts)
+        .concat("./development/core/modules/Test.js")
+        .concat(this.manifest.tests)
+    },
+
+    getCss: function(){
+        return [].concat.apply([], util.getComponentStyles(this.manifest.development.components))
+        .concat(this.manifest.styles)
+        .concat("./development/core/modules/Test.css")
+    },
+
+    getHtml: function(){
+        return util.getComponentTemplatesHtml(this.manifest.templates).join('');
     }
 };
 
