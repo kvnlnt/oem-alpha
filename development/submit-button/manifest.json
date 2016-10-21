@@ -8,9 +8,8 @@
             "theme"
         ]
     },
-    "files": [
+    "scripts": [
         "./development/submit-button/module.js",
-        "./development/submit-button/css.js",
         "./development/submit-button/prototype.js"
     ],
     "tests": [

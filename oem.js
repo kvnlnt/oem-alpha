@@ -39,7 +39,7 @@ try {
         case ARG.DEVELOP:
             if(ARGS[1] === void 0) throw 'please specify a component';
             if(!pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'no such component exists, check package.json';
-            var developComponent = new DevelopComponent(ARGS[1], ARGS[2]);
+            var developComponent = new DevelopComponent(ARGS[1], ARGS);
             break;
         case ARG.HELP:
             Help.show();

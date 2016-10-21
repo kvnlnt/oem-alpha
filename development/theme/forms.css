@@ -1,7 +1,16 @@
-(function(THEME) {
+input {
+    width:100%,
+    font-size: 12px;
+    padding:10px 0;
+    text-indent:10px;
+    border:1px solid  black;
+    border-radius: 2px;
+}
+
+/*(function(THEME) {
 
     THEME.FORM_FIELD_INPUT = {
-        selector: " > input",
+        selector: " > input";
         declaration: {
             "width":"100%",
             "font-size": THEME.Config.FONT_SIZE_MEDIUM + "px",
@@ -31,4 +40,4 @@
 
     return THEME;
 
-})(oem.Components.Theme);
+})(oem.Components.Theme);*/

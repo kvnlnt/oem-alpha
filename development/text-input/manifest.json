@@ -3,11 +3,13 @@
     "version": "1.0.0",
     "description": "TextInput component",
     "development": {
-        "components": ["core", "field", "theme"]
+        "components": ["core", "field"]
     },
-    "files": [
+    "styles": [
+        "./development/text-input/style.css"
+    ],
+    "scripts": [
         "./development/text-input/module.js",
-        "./development/text-input/css.js",
         "./development/text-input/prototype.js"
     ],
     "tests": [

@@ -5,9 +5,8 @@
     "development": {
         "components": ["core"]
     },
-    "files": [
+    "scripts": [
         "./development/field/module.js",
-        "./development/field/css.js",
         "./development/field/prototype.js"
     ],
     "tests": [

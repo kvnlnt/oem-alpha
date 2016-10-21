@@ -3,13 +3,30 @@
 
 <pre>
 <code data-language="html">
-<dl data-oem-id="accordion" data-oem="Accordion">
-    <dt>Topic A</dt>
-    <dd>A Contents</dd>
-    <dt>Topic B</dt>
-    <dd class="expanded">B Contents</dd>
-    <dt>Topic C</dt>
-    <dd>C Contents</dd>
-</dl>
+&lt;section 
+    data-oem-id="accordion" 
+    data-oem="Accordion"&gt;
+    <div>
+        <input id="one" name="accordion-1" type="radio" checked="">
+        <label for="one">Label one</label>
+        <article>
+            <p>Article one</p>
+        </article>
+    </div>
+    <div>
+        <input id="two" name="accordion-1" type="radio">
+        <label for="two">Label two</label>
+        <article>
+            <p>Article two</p>
+        </article>
+    </div>
+    <div>
+        <input id="three" name="accordion-1" type="radio">
+        <label for="three">Label three</label>
+        <article>
+            <p>Article three</p>
+        </article>
+    </div>
+&lt;/section&gt;
 </code>
 </pre>

@@ -31,7 +31,6 @@
             "accordion": "./development/accordion/manifest.json",
             "button": "./development/button/manifest.json",
             "core": "./development/core/manifest.json",
-            "core-lite": "./development/core/manifest-lite.json",
             "field": "./development/field/manifest.json",
             "form": "./development/form/manifest.json",
             "responsifier": "./development/responsifier/manifest.json",
