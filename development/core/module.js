@@ -1,5 +1,5 @@
 // Core oem object
-(function (OEM, UTIL, PROTOTYPE, AUTO_INITIALIZER) {
+(function (OEM, COMPONENTS, UTIL, PROTOTYPE, AUTO_INITIALIZER) {
 
     OEM.version = 1;
 
@@ -82,12 +82,18 @@
     /**
      * Proxy to internal event bus and enum
      */
-    OEM.events = OEM.Core.Modules.Events;
-    OEM.EVENTS = OEM.Core.Modules.EVENTS;
+    OEM.events = COMPONENTS.Core.Events;
+    OEM.EVENTS = COMPONENTS.Core.EVENTS;
 
     /**
-     * Return main oem namespace object
+     * Return components
      */
     return OEM;
 
-})(oem, oem.Core.Modules.Util, oem.Core.Modules.Prototype, oem.Core.AutoInitializer);
+})(
+    oem,
+    oem.Components,
+    oem.Components.Core.Util,
+    oem.Components.Core.Prototype,
+    oem.Components.Core.AutoInitializer
+);

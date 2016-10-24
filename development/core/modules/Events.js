@@ -1,35 +1,34 @@
-(function(Core) {
+(function(COMPONENTS) {
 
     var EVENTS = {
         DOCUMENT_READY: "DOCUMENT_READY",
         WINDOW_RESIZED: "WINDOW_RESIZED",
         WINDOW_SCROLLED: "WINDOW_SCROLLED",
-        COMPONENTS_COLLECTED: "COMPONENTS_COLLECTED",
-        CSS_RENDERED: "CSS_RENDERED"
+        COMPONENTS_COLLECTED: "COMPONENTS_COLLECTED"
     };
 
-    var Events = new Core.Modules.EventBus();
+    var Events = new COMPONENTS.Core.EventBus();
 
     // when all dom content is loaded
     document.addEventListener("DOMContentLoaded", function(event) {
         Events.dispatch(EVENTS.DOCUMENT_READY, this);
-        Core.Modules.Log(EVENTS.DOCUMENT_READY);
+        COMPONENTS.Core.Log(EVENTS.DOCUMENT_READY);
     });
 
     // when the window is resized
-    window.addEventListener("resize", Core.Modules.Util.debounce(function() {
+    window.addEventListener("resize", COMPONENTS.Core.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_RESIZED, this);
-        Core.Modules.Log(EVENTS.WINDOW_RESIZED);
+        COMPONENTS.Core.Log(EVENTS.WINDOW_RESIZED);
     }, 250), true);
     
     // when the window is scrolled
-    window.addEventListener("scroll", Core.Modules.Util.debounce(function() {
+    window.addEventListener("scroll", COMPONENTS.Core.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_SCROLLED, this);
-        Core.Modules.Log(EVENTS.WINDOW_SCROLLED);
+        COMPONENTS.Core.Log(EVENTS.WINDOW_SCROLLED);
     }, 250), true);
 
-    Core.Modules.EVENTS = EVENTS;
-    Core.Modules.Events = Events;
-    return Core;
+    COMPONENTS.Core.EVENTS = EVENTS;
+    COMPONENTS.Core.Events = Events;
+    return COMPONENTS;
 
-})(oem.Core);
+})(oem.Components);

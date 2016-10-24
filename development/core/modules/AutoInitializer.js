@@ -1,4 +1,4 @@
-(function(Core) {
+(function(COMPONENTS) {
 
     // Card component
     var AutoInitializer = {};
@@ -42,7 +42,7 @@
         }
 
         // go tell it on the mountain
-        Core.Modules.Events.dispatch(Core.Modules.EVENTS.COMPONENTS_COLLECTED, this);
+        COMPONENTS.Core.Events.dispatch(COMPONENTS.Core.EVENTS.COMPONENTS_COLLECTED, this);
 
         return this;
     };
@@ -54,12 +54,12 @@
     };
 
     // collect on document ready
-    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.DOCUMENT_READY, function(){
+    COMPONENTS.Core.Events.addEventListener(COMPONENTS.Core.EVENTS.DOCUMENT_READY, function(){
         AutoInitializer.collectAll(oem.Components).initializeAll();
     });
 
     // exports
-    Core.Modules.AutoInitializer = AutoInitializer;
-    return Core;
+    COMPONENTS.Core.AutoInitializer = AutoInitializer;
+    return COMPONENTS;
 
-})(oem.Core);
+})(oem.Components);

@@ -64,6 +64,16 @@ function getComponentTests(components){
     return files;
 }
 
+function getDevelopmentComponents(manifest){
+    var developmentComponents;
+    try {
+        developmentComponents = manifest.development.components;
+    } catch(err) {
+        developmentComponents = [];
+    }
+    return developmentComponents;
+}
+
 function getComponentTemplatesHtml(templates){
     var html = Object.keys(templates).map(function(template) {
         return fs.readFileSync(templates[template], 'utf8');
@@ -76,6 +86,7 @@ module.exports = {
     getComponentStyles: getComponentStyles,
     getComponentTemplatesHtml: getComponentTemplatesHtml,
     getComponentTests: getComponentTests,
+    getDevelopmentComponents: getDevelopmentComponents,
     loadAndParseJson: loadAndParseJson,
     rmDir: rmDir,
     createScriptTagLinks: createScriptTagLinks,

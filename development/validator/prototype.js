@@ -82,5 +82,5 @@
 })(
     oem.Components,
     oem.Core.Prototypes.Component,
-    oem.Core.Modules.Prototype,
-    oem.Core.Modules.Util);
+    oem.Core.Prototype,
+    oem.Core.Util);

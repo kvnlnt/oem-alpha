@@ -67,4 +67,4 @@
     COMPONENTS.Viewport.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Prototypes.Component, oem.Core.Modules.Prototype);
+})(oem.Components, oem.Core.Prototypes.Component, oem.Core.Prototype);

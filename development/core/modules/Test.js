@@ -1,4 +1,4 @@
-(function(Core) {
+(function(COMPONENTS) {
 
     var Test = {};
     Test.name = null;
@@ -46,8 +46,8 @@
         ul.appendChild(li);
     };
 
-    Core.Modules.Test = Test;
-    return Core;
+    COMPONENTS.Core.Test = Test;
+    return COMPONENTS;
 
-})(oem.Core);
+})(oem.Components);
 

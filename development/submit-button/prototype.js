@@ -45,4 +45,4 @@
 })(
     oem.Components, 
     oem.Core.Prototypes.Component, 
-    oem.Core.Modules.Prototype);
+    oem.Core.Prototype);

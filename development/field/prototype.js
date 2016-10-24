@@ -98,7 +98,7 @@
 
 })(
     oem.Components,
-    oem.Core.Modules.Prototype,
+    oem.Core.Prototype,
     oem.Core.Prototypes.Component,
     oem.Components.Validator
 );

@@ -22,8 +22,8 @@
         "./development/core/modules/EventBus.js",
         "./development/core/modules/Events.js",
         "./development/core/modules/AutoInitializer.js",
-        "./development/core/prototypes/Component.js",
-        "./development/core/Oem.js"
+        "./development/core/modules/Component.js",
+        "./development/core/module.js"
     ],
     "tests": [
         "./development/core/modules/AutoInitializer.test.js",
@@ -31,7 +31,7 @@
         "./development/core/modules/EventBus.test.js",
         "./development/core/modules/Util.test.js",
         "./development/core/modules/El.test.js",
-        "./development/core/prototypes/Component.test.js"
+        "./development/core/modules/Component.test.js"
     ],
     "templates": {
         "description": "./development/core/templates/description.html",

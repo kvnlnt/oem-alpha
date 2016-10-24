@@ -46,7 +46,7 @@
                 var breakpointType = x.replace("breakpoint", "");
                 var breakpoint = breakpointType[0].toLowerCase() + breakpointType.slice(1); // lowercase first letter
                 var args = args.split("|").map(function (arg) {
-                    return Core.Modules.Util.typeCast(arg)
+                    return Core.Util.typeCast(arg)
                 });
                 var config = {};
                 config.klass = breakpoint;
@@ -109,12 +109,12 @@
 
 
     // run after all components have been collected
-    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
-    Core.Modules.Events.addEventListener(Core.Modules.EVENTS.WINDOW_RESIZED, function () {
+    Core.Events.addEventListener(Core.EVENTS.COMPONENTS_COLLECTED, Responsifier.init);
+    Core.Events.addEventListener(Core.EVENTS.WINDOW_RESIZED, function () {
         Responsifier.responsifyAll();
     });
 
-    Core.Modules.Responsifier = Responsifier;
+    Core.Responsifier = Responsifier;
     return Core;
 
 })(oem.Core);

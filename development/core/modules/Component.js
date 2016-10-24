@@ -1,4 +1,4 @@
-(function(CORE) {
+(function(COMPONENTS) {
 
     var Component = {};
     Component.el = null;
@@ -51,9 +51,9 @@
         return this;
     };
 
-    CORE.Prototypes.Component = Component;
-    return CORE;
+    COMPONENTS.Core.Component = Component;
+    return COMPONENTS;
     
 
-})(oem.Core);
+})(oem.Components);
 

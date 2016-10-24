@@ -86,7 +86,7 @@ DevelopComponent.prototype = {
 
     getJs: function(){
         return []
-        .concat.apply([], util.getComponentScripts(this.manifest.development.components))
+        .concat.apply([], util.getComponentScripts(util.getDevelopmentComponents(this.manifest)))
         .concat.apply([], util.getComponentScripts(this.components))
         .concat(this.manifest.scripts)
         .concat("./development/core/modules/Test.js")
@@ -96,7 +96,7 @@ DevelopComponent.prototype = {
 
     getCss: function(){
         return []
-        .concat.apply([], util.getComponentStyles(this.manifest.development.components))
+        .concat.apply([], util.getComponentStyles(util.getDevelopmentComponents(this.manifest)))
         .concat.apply([], util.getComponentStyles(this.components))
         .concat(this.manifest.styles)
         .concat("./development/core/modules/Test.css")

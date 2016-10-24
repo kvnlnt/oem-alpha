@@ -29,6 +29,6 @@
 
 })(
     oem.Components,
-    oem.Core.Modules.Prototype,
+    oem.Core.Prototype,
     oem.Components.Field.Prototype
 );

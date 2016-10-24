@@ -167,8 +167,8 @@
 
 })(
     oem.Components,
-    oem.Core.Modules.Prototype, 
+    oem.Core.Prototype, 
     oem.Core.Prototypes.Component, 
-    oem.Core.Modules.Util,
-    oem.Core.Modules.Log
+    oem.Core.Util,
+    oem.Core.Log
 );

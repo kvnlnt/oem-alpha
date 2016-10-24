@@ -1,4 +1,4 @@
-(function(Core) {
+(function(COMPONENTS) {
 
     // Module
     var Util = {};
@@ -122,7 +122,7 @@
         return str;
     };
 
-    Core.Modules.Util = Util;
-    return Core;
+    COMPONENTS.Core.Util = Util;
+    return COMPONENTS;
 
-})(oem.Core);
+})(oem.Components);
