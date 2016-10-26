@@ -1,10 +1,10 @@
-(function(COMPONENTS) {
+(function(CORE) {
 
     // Card component
     var AutoInitializer = {};
 
     /**
-     * Collect a component
+     * Collect all instances of this component type
      *
      * @method     collect
      * @param      {string}     selector   - base selector text
@@ -30,7 +30,7 @@
     };
 
     /**
-     * Collect all registered components
+     * Collect all registered component types
      *
      * @method     collectAll
      */
@@ -42,7 +42,7 @@
         }
 
         // go tell it on the mountain
-        COMPONENTS.Core.Events.dispatch(COMPONENTS.Core.EVENTS.COMPONENTS_COLLECTED, this);
+        CORE.Events.dispatch(CORE.EVENTS.COMPONENTS_COLLECTED, this);
 
         return this;
     };
@@ -54,12 +54,12 @@
     };
 
     // collect on document ready
-    COMPONENTS.Core.Events.addEventListener(COMPONENTS.Core.EVENTS.DOCUMENT_READY, function(){
+    CORE.Events.addEventListener(CORE.EVENTS.DOCUMENT_READY, function(){
         AutoInitializer.collectAll(oem.Components).initializeAll();
     });
 
     // exports
-    COMPONENTS.Core.AutoInitializer = AutoInitializer;
-    return COMPONENTS;
+    CORE.AutoInitializer = AutoInitializer;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);

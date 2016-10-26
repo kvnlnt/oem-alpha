@@ -1,8 +1,8 @@
-(function(COMPONENTS){
+(function(CORE){
 
     function Log() {
         // logging enabled by the presence of the "logging" url parameter
-        if(!COMPONENTS.Core.Util.getUrlVars().logging) return false;
+        if(!CORE.Util.getUrlVars().logging) return false;
         try {
             console.log.apply(console, arguments);
         } catch(err){
@@ -11,7 +11,7 @@
         }
     };
 
-    COMPONENTS.Core.Log = Log;
-    return COMPONENTS;
+    CORE.Log = Log;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);

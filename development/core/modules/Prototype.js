@@ -1,4 +1,4 @@
-(function(COMPONENTS) { 
+(function(CORE) { 
 
     function Prototype(proto, settings) {
 
@@ -23,7 +23,7 @@
 
     };
 
-    COMPONENTS.Core.Prototype = Prototype;
-    return COMPONENTS;
+    CORE.Prototype = Prototype;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);

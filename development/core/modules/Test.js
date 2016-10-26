@@ -1,4 +1,4 @@
-(function(COMPONENTS) {
+(function(CORE) {
 
     var Test = {};
     Test.name = null;
@@ -36,18 +36,18 @@
             li = document.createElement('li');
             li.classList.add('test-pass');
             li.classList.add('oem');
-            li.innerHTML = "&#10003; " + msg;
+            li.innerHTML = msg;
         } else {
             li = document.createElement('li');
             li.classList.add('test-fail');
             li.classList.add('oem');
-            li.innerHTML = "&#10007; " + msg;
+            li.innerHTML = msg;
         }
         ul.appendChild(li);
     };
 
-    COMPONENTS.Core.Test = Test;
-    return COMPONENTS;
+    CORE.Test = Test;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);
 

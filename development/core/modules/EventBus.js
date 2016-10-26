@@ -24,7 +24,7 @@
 // EventBus.dispatch(type, target, args ...)
 
 // for debugging purpose, it just prints out the added listeners
-(function(COMPONENTS) {
+(function(CORE) {
 
     function EventBus() {
         this.listeners = {};
@@ -113,7 +113,7 @@
         }
     };
 
-    COMPONENTS.Core.EventBus = EventBus;
-    return COMPONENTS;
+    CORE.EventBus = EventBus;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);

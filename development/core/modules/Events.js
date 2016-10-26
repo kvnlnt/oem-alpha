@@ -1,4 +1,4 @@
-(function(COMPONENTS) {
+(function(CORE) {
 
     var EVENTS = {
         DOCUMENT_READY: "DOCUMENT_READY",
@@ -7,28 +7,28 @@
         COMPONENTS_COLLECTED: "COMPONENTS_COLLECTED"
     };
 
-    var Events = new COMPONENTS.Core.EventBus();
+    var Events = new CORE.EventBus();
 
     // when all dom content is loaded
     document.addEventListener("DOMContentLoaded", function(event) {
         Events.dispatch(EVENTS.DOCUMENT_READY, this);
-        COMPONENTS.Core.Log(EVENTS.DOCUMENT_READY);
+        CORE.Log(EVENTS.DOCUMENT_READY);
     });
 
     // when the window is resized
-    window.addEventListener("resize", COMPONENTS.Core.Util.debounce(function() {
+    window.addEventListener("resize", CORE.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_RESIZED, this);
-        COMPONENTS.Core.Log(EVENTS.WINDOW_RESIZED);
+        CORE.Log(EVENTS.WINDOW_RESIZED);
     }, 250), true);
     
     // when the window is scrolled
-    window.addEventListener("scroll", COMPONENTS.Core.Util.debounce(function() {
+    window.addEventListener("scroll", CORE.Util.debounce(function() {
         Events.dispatch(EVENTS.WINDOW_SCROLLED, this);
-        COMPONENTS.Core.Log(EVENTS.WINDOW_SCROLLED);
+        CORE.Log(EVENTS.WINDOW_SCROLLED);
     }, 250), true);
 
-    COMPONENTS.Core.EVENTS = EVENTS;
-    COMPONENTS.Core.Events = Events;
-    return COMPONENTS;
+    CORE.EVENTS = EVENTS;
+    CORE.Events = Events;
+    return CORE;
 
-})(oem.Components);
+})(oem.Core);
