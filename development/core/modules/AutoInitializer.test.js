@@ -2,7 +2,6 @@
 
     // AutoInitializer component
     var AutoInitializerTest = Object.create(CORE.Test); // call super constructor
-    AutoInitializerTest.name = "AutoInitializerTests";
     AutoInitializerTest.testComponent = 'AutoInitializerTest';
     var autoInitializer = Object.create(CORE.AutoInitializer);
 

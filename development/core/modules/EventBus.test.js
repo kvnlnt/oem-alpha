@@ -2,7 +2,6 @@
 
     // EventBus component
     var EventBusTest = Object.create(CORE.Test); // call super constructor
-    EventBusTest.name = "EventBusTests";
     EventBusTest.testComponent = 'EventBusTest';
     var component = Object.create(CORE.EventBus);
     component.name = "EventBusTest";

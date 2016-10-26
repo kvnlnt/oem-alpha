@@ -30,6 +30,12 @@
 
     // SETTERS
 
+    Component.setId = function(id){
+        this.id = id || CORE.Modules.UTIL.guid();
+        if(this.getEl()) this.getEl().dataset.oemId = id;            
+        return this;
+    };
+
     Component.setType = function(type){
         this.type = type;
         return this;
@@ -37,12 +43,6 @@
 
     Component.setEl = function(el){
         this.el = el;
-        return this;
-    };
-
-    Component.setId = function(id){
-        this.id = id || CORE.Modules.UTIL.guid();
-        this.getEl().dataset.oemId = id;
         return this;
     };
 

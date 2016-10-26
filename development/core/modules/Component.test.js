@@ -2,10 +2,15 @@
 
     // Component component
     var ComponentTest = Object.create(CORE.Test); // call super constructor
-    ComponentTest.name = "ComponentTests";
     ComponentTest.testComponent = 'ComponentTest';
     var component = Object.create(CORE.Component);
     component.name = "ComponentTest";
+
+    ComponentTest.canGetAndSetId = function(){
+        component.setId("TestComponentChanged");
+        var test = component.getId() === "TestComponentChanged";
+        ComponentTest.assert('Can get and set the id', test, true);
+    };
 
     ComponentTest.canGetAndSetType = function(){
         component.setType("TestComponentChanged");
@@ -21,13 +26,21 @@
         ComponentTest.assert('Can get and set the element', test, true);
     };
 
+    ComponentTest.canGetAndSetEvents = function(){
+        component.setEvents({ testEvent:"testEvent" });
+        var test = component.getEvents().testEvent === "testEvent";
+        ComponentTest.assert('Can get and set events', test, true);
+    };
+
     /**
      * Run tests
      */
     CORE.Events.addEventListener(CORE.EVENTS.DOCUMENT_READY, function(){
         ComponentTest.runTestSuite('Component', [
+            ComponentTest.canGetAndSetId,
             ComponentTest.canGetAndSetType,
-            ComponentTest.canGetAndSetElements
+            ComponentTest.canGetAndSetElements,
+            ComponentTest.canGetAndSetEvents
         ]);
     });
 

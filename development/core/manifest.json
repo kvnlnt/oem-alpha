@@ -27,11 +27,12 @@
     ],
     "tests": [
         "./development/core/modules/AutoInitializer.test.js",
-        "./development/core/modules/Events.test.js",
-        "./development/core/modules/EventBus.test.js",
-        "./development/core/modules/Util.test.js",
+        "./development/core/modules/Component.test.js",
         "./development/core/modules/El.test.js",
-        "./development/core/modules/Component.test.js"
+        "./development/core/modules/EventBus.test.js",
+        "./development/core/modules/Events.test.js",
+        "./development/core/modules/Prototype.test.js",
+        "./development/core/modules/Util.test.js"
     ],
     "templates": {
         "description": "./development/core/templates/description.html",
