@@ -2,9 +2,7 @@
     "name": "Button",
     "version": "1.0.0",
     "description": "Button component",
-    "development": {
-        "components": ["core"]
-    },
+    "components": ["core"],
     "scripts": [
         "./development/button/module.js",
         "./development/button/prototype.js"

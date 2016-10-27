@@ -2,14 +2,13 @@
     "name": "%CLASS%",
     "version": "1.0.0",
     "description": "%CLASS% component",
-    "development": {
-        "configurations": ["core"],
-        "customizations": []
-    },
-    "files": [
+    "components": ["core"],
+    "scripts": [
         "%DIR%/module.js",
-        "%DIR%/css.js",
         "%DIR%/prototype.js"
+    ],
+    "styles": [
+        "%DIR%/style.css"
     ],
     "tests": [
         "%DIR%/test.js"

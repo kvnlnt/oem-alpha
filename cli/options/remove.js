@@ -16,7 +16,7 @@ RemoveComponent.prototype = {
 
     removeDirectories: function() {
         this.components.forEach(function(component){
-            var dir = './src/components/' + component;
+            var dir = './development/' + component;
             fs.removeSync(dir);
         });
         return this;

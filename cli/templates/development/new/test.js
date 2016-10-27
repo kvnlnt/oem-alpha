@@ -26,4 +26,4 @@
     COMPONENTS.%CLASS%.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Modules.Test);
+})(oem.Components, oem.Core.Test);

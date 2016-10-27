@@ -2,9 +2,7 @@
     "name": "Theme",
     "version": "1.0.0",
     "description": "Theme component",
-    "development": {
-        "components": ["core"]
-    },
+    "components": ["core"],
     "styles":[
         "./development/theme/buttons.css",
         "./development/theme/forms.css"

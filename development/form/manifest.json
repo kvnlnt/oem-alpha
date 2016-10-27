@@ -2,16 +2,14 @@
     "name": "Form",
     "version": "1.0.0",
     "description": "Accordion component",
-    "development": {
-        "components": [
-            "core",
-            "validator",
-            "submit-button",
-            "field",
-            "text-input",
-            "button"
-        ]
-    },
+    "components": [
+        "core",
+        "validator",
+        "submit-button",
+        "field",
+        "text-input",
+        "button"
+    ],
     "styles": [
         "./development/form/style.css"
     ],

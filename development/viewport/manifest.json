@@ -2,10 +2,7 @@
     "name": "Viewport",
     "version": "1.0.0",
     "description": "Viewport component",
-    "development": {
-        "components": ["core"],
-        "customizations": []
-    },
+    "components": ["core"],
     "files": [
         "./development/viewport/module.js",
         "./development/viewport/css.js",

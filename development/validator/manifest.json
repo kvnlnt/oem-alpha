@@ -2,9 +2,7 @@
     "name": "Validator",
     "version": "1.0.0",
     "description": "Validator component",
-    "development": {
-        "components": ["core", "field"]
-    },
+    "components": ["core", "field"],
     "styles": [
         "./development/validator/style.css"
     ],

@@ -8,8 +8,8 @@ const chalk = require('chalk');
 const CreateComponent = function(componentName) {
     this.componentName = componentName;
     this.componentClass = this.convertNameToClass(componentName);
-    this.componentDir = './src/components/' + this.componentName;
-    this.templatesDir = './src/components/' + this.componentName + '/templates';
+    this.componentDir = './development/' + this.componentName;
+    this.templatesDir = './development/' + this.componentName + '/templates';
     this
         .createDirectory()
         .copyAndFormatTemplates()
@@ -28,6 +28,8 @@ CreateComponent.prototype = {
         } catch (err) {
             if (err) console.log("ERROR".bold, err);
         }
+
+        return this;
     },
 
     renderTemplate: function(str) {
@@ -39,33 +41,33 @@ CreateComponent.prototype = {
     copyAndFormatTemplates: function() {
 
         // html
-        var decription = fs.readFileSync('./cli/templates/new-component/templates/description.html', 'utf-8');
+        var decription = fs.readFileSync('./cli/templates/development/new/templates/description.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/description.html', this.renderTemplate(decription));
-        var examples = fs.readFileSync('./cli/templates/new-component/templates/examples.html', 'utf-8');
+        var examples = fs.readFileSync('./cli/templates/development/new/templates/examples.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/examples.html', this.renderTemplate(examples));
-        var tests = fs.readFileSync('./cli/templates/new-component/templates/tests.html', 'utf-8');
+        var tests = fs.readFileSync('./cli/templates/development/new/templates/tests.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/tests.html', this.renderTemplate(tests));
-        var usage = fs.readFileSync('./cli/templates/new-component/templates/usage.html', 'utf-8');
+        var usage = fs.readFileSync('./cli/templates/development/new/templates/usage.html', 'utf-8');
         fs.writeFileSync(this.templatesDir + '/usage.html', this.renderTemplate(usage));
 
         // module
-        var module = fs.readFileSync('./cli/templates/new-component/module.js', 'utf-8');
+        var module = fs.readFileSync('./cli/templates/development/new/module.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/module.js', this.renderTemplate(module));
 
         // prototype
-        var prototype = fs.readFileSync('./cli/templates/new-component/prototype.js', 'utf-8');
+        var prototype = fs.readFileSync('./cli/templates/development/new/prototype.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/prototype.js', this.renderTemplate(prototype));
 
         // test
-        var test = fs.readFileSync('./cli/templates/new-component/test.js', 'utf-8');
+        var test = fs.readFileSync('./cli/templates/development/new/test.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/test.js', this.renderTemplate(test));
 
         // css
-        var css = fs.readFileSync('./cli/templates/new-component/css.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/css.js', this.renderTemplate(css));
+        var css = fs.readFileSync('./cli/templates/development/new/style.css', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/style.css', this.renderTemplate(css));
 
         // manifest
-        var manifest = fs.readFileSync('./cli/templates/new-component/manifest.json', 'utf-8');
+        var manifest = fs.readFileSync('./cli/templates/development/new/manifest.json', 'utf-8');
         fs.writeFileSync(this.componentDir + '/manifest.json', this.renderTemplate(manifest));
 
         return this;

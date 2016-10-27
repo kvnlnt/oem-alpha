@@ -80,7 +80,7 @@ DevelopComponent.prototype = {
 
         // development components
         try {
-            this.manifest.development.components.forEach(function(component){
+            this.manifest.components.forEach(function(component){
                 components.push(component);
             });
         } catch(err) {

@@ -2,13 +2,9 @@
     "name": "Responsifier",
     "version": "1.0.0",
     "description": "Responsifier component",
-    "development": {
-        "components": ["core"],
-        "customizations": []
-    },
-    "files": [
+    "components": ["core"],
+    "scripts": [
         "./development/responsifier/module.js",
-        "./development/responsifier/css.js",
         "./development/responsifier/prototype.js"
     ],
     "tests": [
