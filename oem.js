@@ -24,9 +24,7 @@ ARG.CREATE = 'create';
 ARG.DEMO = 'demo';
 ARG.DEPLOY = 'deploy';
 ARG.DEVELOP = 'dev';
-ARG.FACTORY_RESET = 'factory-reset';
 ARG.HELP = 'help';
-ARG.INSTALL= 'install';
 ARG.LIST = 'list';
 ARG.REMOVE = 'remove';
 
@@ -48,9 +46,6 @@ try {
             if(pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'component already exists';
             var newComponent = new CreateComponent(ARGS[1]);
             break;
-        case ARG.INSTALL:
-            var installComponent = new InstallComponent(ARGS[1]);
-            break;
         case ARG.REMOVE:
             if(!pkg.oem.development.hasOwnProperty(ARGS[1])) throw 'component does not exist';
             var removeComponent = new RemoveComponent(ARGS);
@@ -64,9 +59,6 @@ try {
             if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';
             if(pkg.oem.deployments[ARGS[1]] === void 0) throw 'no such deployment exists, check package.json';
             var deployment = new Deployment(ARGS[1]);
-            break;
-        case ARG.FACTORY_RESET:
-            var factoryReset = new FactoryReset();
             break;
         default:
             Help.show();
