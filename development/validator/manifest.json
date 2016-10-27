@@ -3,11 +3,13 @@
     "version": "1.0.0",
     "description": "Validator component",
     "development": {
-        "components": ["core"]
+        "components": ["core", "field"]
     },
-    "files": [
+    "styles": [
+        "./development/validator/style.css"
+    ],
+    "scripts": [
         "./development/validator/module.js",
-        "./development/validator/css.js",
         "./development/validator/prototype.js"
     ],
     "tests": [

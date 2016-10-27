@@ -34,7 +34,6 @@
     UtilTest.canParseStringToObject = function(){
         var obj = CORE.Util.parseStringToObject("len:6, val:'test'");
         var test = obj.len === 6;
-        console.log(test, obj.len);
         UtilTest.assert('can parse strings to objects', test, true);
     };
 
@@ -49,6 +48,19 @@
 
     };
 
+    UtilTest.canSerializeUrlVars = function(){
+        var vars = CORE.Util.getUrlVars('http://localhost?var1=1&var2=2');
+        var test = vars.var1 === 1 && vars.var2 === 2;
+        UtilTest.assert('can serialize url variables', test, true);
+
+    };
+
+    UtilTest.canTypeCastPrimatives = function(){
+        var test = CORE.Util.typeCast("1") === 1;
+        UtilTest.assert('can typecast primitives', test, true);
+
+    };
+
     /**
      * Run tests
      */
@@ -57,7 +69,9 @@
             UtilTest.canMixinObjects,
             UtilTest.canDebounce,
             UtilTest.canParseStringToObject,
-            UtilTest.canGenerateGuid
+            UtilTest.canGenerateGuid,
+            UtilTest.canSerializeUrlVars,
+            UtilTest.canTypeCastPrimatives
         ]);
     });
 

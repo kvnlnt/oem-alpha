@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Field component",
     "development": {
-        "components": ["core"]
+        "components": ["core", "validator"]
     },
     "scripts": [
         "./development/field/module.js",

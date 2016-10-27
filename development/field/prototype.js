@@ -99,6 +99,6 @@
 })(
     oem.Components,
     oem.Core.Prototype,
-    oem.Core.Prototypes.Component,
+    oem.Core.Component,
     oem.Components.Validator
 );

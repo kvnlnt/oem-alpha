@@ -38,12 +38,12 @@ function loadAndParseJson(file){
 }
 
 function getComponentScripts(components){
-    var components = components instanceof Array ? components : [components]; 
+    var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
         var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
         return config.scripts;
     });
-    return files.filter(function(file){ return file != void 0 });
+    return files;
 }
 
 function getComponentStyles(components){
@@ -64,16 +64,6 @@ function getComponentTests(components){
     return files;
 }
 
-function getDevelopmentComponents(manifest){
-    var developmentComponents;
-    try {
-        developmentComponents = manifest.development.components;
-    } catch(err) {
-        developmentComponents = [];
-    }
-    return developmentComponents;
-}
-
 function getComponentTemplatesHtml(templates){
     var html = Object.keys(templates).map(function(template) {
         return fs.readFileSync(templates[template], 'utf8');
@@ -81,14 +71,23 @@ function getComponentTemplatesHtml(templates){
     return html;
 }
 
+function getOptions(args){
+    var options = {};
+    var flags = args.filter(function(arg){ return arg.substring(0,2) === "--" });
+    flags.forEach(function(flag){
+        options[flag.replace("--", "").split("=")[0]] = flag.split("=")[1];
+    });
+    return options;
+}
+
 module.exports = {
     getComponentScripts: getComponentScripts,
     getComponentStyles: getComponentStyles,
     getComponentTemplatesHtml: getComponentTemplatesHtml,
     getComponentTests: getComponentTests,
-    getDevelopmentComponents: getDevelopmentComponents,
     loadAndParseJson: loadAndParseJson,
     rmDir: rmDir,
     createScriptTagLinks: createScriptTagLinks,
-    createCssTagLinks: createCssTagLinks
+    createCssTagLinks: createCssTagLinks,
+    getOptions: getOptions
 };

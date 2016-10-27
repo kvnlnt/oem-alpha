@@ -1,11 +1,11 @@
-(function(Components, Core) {
+(function(CORE, COMPONENTS) {
 
-    var Prototype = Core.Prototype(Core.Prototypes.Component, {
+    var Prototype = CORE.Prototype(CORE.Component, {
         type: "Button"
     });
     
     // exports
-    Components.Button.Prototype = Prototype;
-    return Components;
+    COMPONENTS.Button.Prototype = Prototype;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Core, oem.Components);

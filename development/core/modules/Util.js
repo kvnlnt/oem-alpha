@@ -96,12 +96,11 @@
     /**
      * Get URL variables
      */
-    Util.getUrlVars = function() {
+    Util.getUrlVars = function(urlVars) {
+        var urlVars = urlVars || window.location.href;
         var vars = {};
-        var search = function(m, key, value) {
-            vars[key] = value;
-        };
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, search);
+        var search = function(m, key, value) { vars[key] = Util.typeCast(value); };
+        var parts = urlVars.replace(/[?&]+([^=&]+)=([^&]*)/gi, search);
         return vars;
     };
 

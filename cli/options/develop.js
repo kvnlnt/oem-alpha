@@ -12,11 +12,11 @@ const util = require('../helpers/util');
  * Component Development Server
  */
 const DevelopComponent = function(component, args) {
-    this.options = this.getOptions(args);
+    this.options = util.getOptions(args);
     this.component = component;
-    this.components = this.options.components || [];
     this.port = this.options.port || 7001;
     this.manifest = util.loadAndParseJson(pkg.oem.development[component]);
+    this.components = this.getComponentList();
     this.server;
     this.start();
 };
@@ -75,20 +75,36 @@ DevelopComponent.prototype = {
         });
     },
 
-    getOptions: function(args){
-        var options = {};
-        var flags = args.filter(function(arg){ return arg.substring(0,2) === "--" });
-        flags.forEach(function(flag){
-            options[flag.replace("--", "").split("=")[0]] = flag.split("=")[1];
-        });
-        return options;
+    getComponentList: function(){
+        var components = [];
+
+        // development components
+        try {
+            this.manifest.development.components.forEach(function(component){
+                components.push(component);
+            });
+        } catch(err) {
+            // noop
+        }
+
+        // argument option components
+        if(this.options.components) {
+            this.options.components.split(',')
+            .forEach(function(component){
+                components.push(component);
+            });
+        }
+
+        // add component being dev'd
+        components.push(this.component);
+
+        return components;
+
     },
 
     getJs: function(){
         return []
-        .concat.apply([], util.getComponentScripts(util.getDevelopmentComponents(this.manifest)))
         .concat.apply([], util.getComponentScripts(this.components))
-        .concat(this.manifest.scripts)
         .concat("./development/core/modules/Test.js")
         .concat(this.manifest.tests)
         .filter(function(file){ return file != void 0});
@@ -96,9 +112,7 @@ DevelopComponent.prototype = {
 
     getCss: function(){
         return []
-        .concat.apply([], util.getComponentStyles(util.getDevelopmentComponents(this.manifest)))
         .concat.apply([], util.getComponentStyles(this.components))
-        .concat(this.manifest.styles)
         .concat("./development/core/modules/Test.css")
         .filter(function(file){ return file != void 0})
     },
