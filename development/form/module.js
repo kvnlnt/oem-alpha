@@ -1,9 +1,9 @@
-(function(Components, Core) {
+(function(COMPONENTS) {
 
     var Form = {};
     
     // exports
-    Components.Form = Form;
-    return Components;
+    COMPONENTS.Form = Form;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components);

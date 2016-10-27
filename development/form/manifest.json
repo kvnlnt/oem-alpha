@@ -5,7 +5,6 @@
     "development": {
         "components": [
             "core",
-            "theme",
             "validator",
             "submit-button",
             "field",
@@ -13,9 +12,11 @@
             "button"
         ]
     },
-    "files": [
+    "styles": [
+        "./development/form/style.css"
+    ],
+    "scripts": [
         "./development/form/module.js",
-        "./development/form/css.js",
         "./development/form/prototype.js"
     ],
     "tests": [

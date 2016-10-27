@@ -10,8 +10,8 @@
      *
      * @method     
      */
-    Test.exampleIsWorking = function(){
-        Test.assert('Tests are working', true, true);
+    Test.sanity = function(){
+        Test.assert('Tests are covered by the Field component', true, true);
     };    
 
     /**
@@ -19,7 +19,7 @@
      */
     CORE.Events.addEventListener(CORE.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('TextInput', [
-            Test.exampleIsWorking
+            Test.sanity
         ]);
     });
 
@@ -27,4 +27,4 @@
     COMPONENTS.TextInput.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.CORE);
+})(oem.Components, oem.Core);
