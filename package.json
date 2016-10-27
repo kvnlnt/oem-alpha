@@ -1,52 +1,56 @@
 {
-    "name": "oem",
-    "version": "1.0.0",
-    "description": "",
-    "main": "cli/oem.js",
-    "scripts": {
-        "start": "node ./oem",
-        "postinstall": "alias oem='node oem'"
+  "name": "oem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli/oem.js",
+  "scripts": {
+    "start": "node ./oem",
+    "postinstall": "alias oem='node oem'"
+  },
+  "author": "Toolhouse Inc.",
+  "license": "ISC",
+  "oem": {
+    "deployments": {
+      "all": [
+        "core",
+        "button",
+        "field",
+        "form",
+        "submit-button",
+        "text-input",
+        "validator"
+      ]
     },
-    "author": "Toolhouse Inc.",
-    "license": "ISC",
-    "oem": {
-        "deployments": {
-            "all": [
-                "core",
-                "theme",
-                "button",
-                "field",
-                "form",
-                "submit-button",
-                "text-input",
-                "validator"
-            ]
-        },
-        "demos": {
-            "all": {
-                "deployment": "all"
-            }
-        },
-        "development": {
-            "accordion": "./development/accordion/manifest.json",
-            "button": "./development/button/manifest.json",
-            "core": "./development/core/manifest.json",
-            "field": "./development/field/manifest.json",
-            "form": "./development/form/manifest.json",
-            "responsifier": "./development/responsifier/manifest.json",
-            "submit-button": "./development/submit-button/manifest.json",
-            "text-input": "./development/text-input/manifest.json",
-            "theme": "./development/theme/manifest.json",
-            "validator": "./development/validator/manifest.json",
-            "viewport": "./development/viewport/manifest.json"
-        }
+    "demos": {
+      "all": {
+        "deployment": "all",
+        "components": [
+          "accordion",
+          "form"
+        ]
+      }
     },
-    "devDependencies": {},
-    "dependencies": {
-        "chalk": "^1.1.3",
-        "express": "^4.13.4",
-        "fs-extra": "^0.30.0",
-        "opener": "^1.4.2",
-        "uglify-js": "^2.6.2"
+    "development": {
+      "accordion": "./development/accordion/manifest.json",
+      "button": "./development/button/manifest.json",
+      "core": "./development/core/manifest.json",
+      "field": "./development/field/manifest.json",
+      "form": "./development/form/manifest.json",
+      "responsifier": "./development/responsifier/manifest.json",
+      "submit-button": "./development/submit-button/manifest.json",
+      "text-input": "./development/text-input/manifest.json",
+      "theme": "./development/theme/manifest.json",
+      "validator": "./development/validator/manifest.json",
+      "viewport": "./development/viewport/manifest.json"
     }
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "express": "^4.13.4",
+    "fs-extra": "^0.30.0",
+    "opener": "^1.4.2",
+    "uglify-js": "^2.6.2",
+    "uglifycss": "0.0.25"
+  }
 }

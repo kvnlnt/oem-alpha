@@ -9,7 +9,7 @@ const Deployment = require('./deploy').Deployment;
 /**
  * Component Development Server
  */
-const Demo = function (demo) {
+const Demo = function (demo, options) {
     this.demo = demo;
     this.components = pkg.oem.deployments[pkg.oem.demos[this.demo].deployment];
     this.directory = './demos/'+demo;
@@ -78,7 +78,7 @@ Demo.prototype = {
             }
         });
 
-        template = template.replace("<!-- HTML -->", html, 'utf8')
+        template = template.replace("<!-- HTML -->", html, 'utf8');
         fs.outputFileSync(this.directory + '/index.html', template);
 
         // launch pattern lib

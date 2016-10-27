@@ -1,9 +1,11 @@
 const pkg = require('../../package');
 const fs = require('fs-extra');
 const UglifyJS = require("uglify-js");
+const UglifyCss = require("uglifycss");
 const chalk = require('chalk');
 const exec = require('child_process').exec;
 const opener = require("opener");
+const util = require('../helpers/util');
 
 /**
  * Component Development Server
@@ -11,13 +13,18 @@ const opener = require("opener");
 const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
     this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
-    this.manifests = pkg.oem.deployments[deployment];
+    this.components = pkg.oem.deployments[deployment];
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
     this.jsFile = this.directory + "/" + this.jsFileName;
     this.jsFileMinifiedName = "oem.min.js";
     this.jsFileMinified = this.directory + "/" + this.jsFileMinifiedName;
-    this.jsFiles = this.getJsFiles();
+    this.jsFiles = this.getJs();
+    this.cssFileName = "oem.css";
+    this.cssFile = this.directory + "/" + this.cssFileName;
+    this.cssFileMinifiedName = "oem.min.css";
+    this.cssFileMinified = this.directory + "/" + this.cssFileMinifiedName;
+    this.cssFiles = this.getCss();
     this.deploy().reply();
 };
 
@@ -30,26 +37,27 @@ Deployment.prototype = {
      */
     deploy: function () {
 
-        // concat file contents
-        var concatedFileContents = this.concatFiles(this.jsFiles);
-
         // recreate directory
         fs.removeSync(this.directory);
         fs.mkdirsSync(this.directory);
 
-        // write javascript file
-        fs.outputFileSync(this.jsFile, concatedFileContents);
+        // js
+        var concatJs = this.concatFiles(this.jsFiles);
+        fs.outputFileSync(this.jsFile, concatJs);
+        var minifiedJs = UglifyJS.minify(this.jsFile);
+        fs.writeFileSync(this.jsFileMinified, minifiedJs.code);
 
-        // write minified version
-        var minifiedFileContents = UglifyJS.minify(this.jsFile);
-        fs.writeFileSync(this.jsFileMinified, minifiedFileContents.code);
+        // css
+        var concatCss = this.concatFiles(this.cssFiles);
+        fs.outputFileSync(this.cssFile, concatCss);
+        var minifiedCss = UglifyCss.processString(concatCss);
+        fs.writeFileSync(this.cssFileMinified, minifiedCss);
 
         // write html file
         var template = fs.readFileSync('./cli/templates/deployment/main.html', 'utf-8');
         var html = '';
         var manifests = pkg.oem.deployments[this.deployment].map(function(component){
-            var manifest = pkg.oem.development[component];
-            return JSON.parse(fs.readFileSync(manifest, 'utf-8'));
+            return util.loadAndParseJson(pkg.oem.development[component]);
         });
 
         var that = this;
@@ -66,28 +74,35 @@ Deployment.prototype = {
         html += '<td>'+this.getDateTime()+'</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Artifact</td>';
-        html += '<td><a target="_blank" href="'+this.jsFileName+'">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb)</td>';
+        html += '<td>Js Artifacts</td>';
+        html += '<td>';
+        html += '<a target="_blank" href="'+this.jsFileName+'">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb), ';
+        html += '<a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb) ';
+        html += '</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Artifact Minified</td>';
-        html += '<td><a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb)</td>';
+        html += '<td>Css Artifacts</td>';
+        html += '<td>';
+        html += '<a target="_blank" href="'+this.cssFileName+'">'+this.cssFileName+'</a> ('+this.getFilesizeInKB(this.cssFile)+'kb), ';
+        html += '<a target="_blank" href="'+this.cssFileMinifiedName+'">'+this.cssFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.cssFileMinified)+'kb)';
+        html += '</td>';
         html += '</tr>';
         html += '<tr>';
         html += '<td>Components</td>';
-        html += '<td>'+manifests.map(function(manifest){ return '<a href="#'+manifest.name+'">'+manifest.name+'</a>' }).join(', ')+'</td>';
+        html += '<td>'+manifests.map(function(manifest){ 
+            return '<a href="#'+manifest.name+'">'+manifest.name+'</a>' }).join(', ')+'</td>';
         html += '</tr>';
         html += '</table>';
 
         // // components
         manifests.forEach(function(manifest){
-            html += '<section>';          
+            html += '<section id="'+manifest.name+'">';
             html += fs.readFileSync(manifest.templates.description, 'utf8');
-            html += '<p><strong>Files</strong><br/><small>' + manifest.files.join('<br/>') + '</small></p>';
+            html += '<p><strong>Scripts</strong><br/><small>' + manifest.scripts.join('<br/>') + '</small></p>';
             html += '</section>';
         });
 
-        // template = template.replace("<!-- HTML -->", html, 'utf8')
+        template = template.replace("<!-- HTML -->", html, 'utf8')
         fs.outputFileSync(this.directory + '/index.html', template);
 
         // // launch pattern lib
@@ -134,30 +149,32 @@ Deployment.prototype = {
      * @method     startDevelopingComponent
      * @param      {<type>}  answers  { description }
      */
-    getJsFiles: function() {
+    getJs: function() {
 
         // files from development components loaded during development
-        var js = this.manifests.map(function(manifest) {
-            var config = JSON.parse(fs.readFileSync(pkg.oem.development[manifest], 'utf8'));
-            return config.files;
+        var scripts = this.components.map(function(component) {
+            var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+            return config.scripts;
         });
 
         // flatten arrays
-        var allFiles = []
-            .concat(...js);
+        var scripts = [].concat(...scripts);
 
-        // implement customization overwrites
-        // if (this.config.customizations) {
-        //     var customizations = this.config.customizations;
-        //     var customization;
-        //     var indexOfFileToReplace;
-        //     for (var i = 0; i < customizations.length; i = i + 1) {
-        //         customization = customizations[i];
-        //         indexOfFileToReplace = allFiles.indexOf(customization.replace);
-        //         if (indexOfFileToReplace > -1) allFiles.splice(indexOfFileToReplace, 1, customization.with);
-        //     }
-        // }
-        return allFiles;
+        return scripts;
+    },
+
+    getCss: function() {
+
+        // files from development components loaded during development
+        var styles = this.components.map(function(component) {
+            var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+            return config.styles;
+        }).filter(function(style){ return style != void 0});
+
+        // flatten arrays
+        var styles = [].concat(...styles);
+
+        return styles;
     },
 
     reply: function(){

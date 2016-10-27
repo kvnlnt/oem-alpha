@@ -57,12 +57,6 @@ function show(){
     console.log("      Arguments:", "  [Deployment Name]");
     console.log("      Example:", "    node oem deploy all");
     console.log("");
-    console.log(chalk.bold("   factory-reset"));
-    console.log("");
-    console.log("      Purpose:", "    remove all components");
-    console.log("      Arguments:", "  n/a");
-    console.log("      Example:", "    node oem factory-reset");
-    console.log("");
     console.log("");
     console.log("");
     console.log("");
