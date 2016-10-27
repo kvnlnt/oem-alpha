@@ -12,7 +12,7 @@
  * 3) explicitly manage the field's value using setValue
  */
 
-(function(COMPONENTS, PROTOTYPE, COMPONENT, VALIDATOR) {
+(function(COMPONENTS, PROTOTYPE, COMPONENT) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Field"
@@ -78,7 +78,7 @@
         var isValid = true;
         this.getValidators().forEach(function(validator){
             var args = validator.getArgs({val: that.getValue()});
-            if(!VALIDATOR[validator.getValidation()](args)) {
+            if(!oem.Components.Validator[validator.getValidation()](args)) {
                 validator.show();
                 isValid = false;
             }
@@ -99,6 +99,5 @@
 })(
     oem.Components,
     oem.Core.Prototype,
-    oem.Core.Component,
-    oem.Components.Validator
+    oem.Core.Component
 );

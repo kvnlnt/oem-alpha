@@ -16,6 +16,7 @@
     Prototype.field = null;
     Prototype.validation = null;
     Prototype.args = [];
+    Prototype.isShowing = false;
 
     // INIT
 
@@ -31,10 +32,6 @@
     // ========================================================
     // Add getters for params unique to this prototype
  
-    Prototype.getForm = function(){
-         return this.form;
-    };
-
     Prototype.getField = function(){
         return this.field;
     };
@@ -53,11 +50,6 @@
 
     // SETTERS
 
-    Prototype.setForm = function(form){
-        this.form = form;
-        return this;
-    };
-
     Prototype.setField = function(field){
         this.field = field;
         return this;
@@ -67,11 +59,13 @@
     
     Prototype.show = function(){
         this.getEl().style.display = 'block';
+        this.isShowing = true;
         return this;
     };
 
     Prototype.hide = function(){
         this.getEl().style.display = 'none';
+        this.isShowing = false;
     };
 
     // EXPORTS

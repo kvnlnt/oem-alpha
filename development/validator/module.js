@@ -91,8 +91,10 @@
          * Validate value exists in options list and return Validator
          * @method     option
          */
-        option: function(val, options) {
-            var isValid = options.indexOf(val) > -1;
+        optionInList: function(args) {
+            var val = args.val;
+            var list = args.list;
+            var isValid = list.indexOf(val) > -1;
             return isValid;
         },
 
@@ -100,8 +102,10 @@
          * Validate against regex value
          * @method     option
          */
-        regex: function(val, regex) {
-            var isValid = val.match(regex);
+        regex: function(args) {
+            var val = args.val;
+            var regex = new RegExp(args.pattern);
+            var isValid = regex.test(val);
             return isValid;
         }
 
