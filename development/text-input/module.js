@@ -1,10 +1,10 @@
-(function(Components, Core) {
+(function(COMPONENTS) {
 
     // Card component
     var TextInput = {};
     
     // exports
-    Components.TextInput = TextInput;
-    return Components;
+    COMPONENTS.TextInput = TextInput;
+    return COMPONENTS;
 
-})(oem.Components, oem.Core);
+})(oem.Components);

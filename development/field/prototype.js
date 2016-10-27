@@ -40,7 +40,12 @@
     
     Prototype.getLabel = function(){
         return this.getEl().querySelector("label");
-    }
+    };
+
+    Prototype.getField = function(){
+        var input = this.getEl().querySelector('input');
+        return input;
+    };
 
     Prototype.getName = function(){
         return this.getField().name;

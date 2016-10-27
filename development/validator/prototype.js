@@ -12,7 +12,6 @@
 
     // DEFAULTS 
 
-    Prototype.form = null;
     Prototype.field = null;
     Prototype.validation = null;
     Prototype.args = [];
