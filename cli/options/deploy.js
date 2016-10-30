@@ -66,29 +66,29 @@ Deployment.prototype = {
         html += '<h1>Deployment</h1>';
         html += '<table>'
         html += '<tr>';
-        html += '<td>Configuration</td>';
+        html += '<th>Configuration</th>';
         html += '<td>'+this.deployment+'</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Generated</td>';
+        html += '<th>Generated</th>';
         html += '<td>'+this.getDateTime()+'</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Js Artifacts</td>';
+        html += '<th>Js Artifacts</th>';
         html += '<td>';
         html += '<a target="_blank" href="'+this.jsFileName+'">'+this.jsFileName+'</a> ('+this.getFilesizeInKB(this.jsFile)+'kb), ';
         html += '<a target="_blank" href="'+this.jsFileMinifiedName+'">'+this.jsFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.jsFileMinified)+'kb) ';
         html += '</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Css Artifacts</td>';
+        html += '<th>Css Artifacts</v>';
         html += '<td>';
         html += '<a target="_blank" href="'+this.cssFileName+'">'+this.cssFileName+'</a> ('+this.getFilesizeInKB(this.cssFile)+'kb), ';
         html += '<a target="_blank" href="'+this.cssFileMinifiedName+'">'+this.cssFileMinifiedName+'</a> ('+this.getFilesizeInKB(this.cssFileMinified)+'kb)';
         html += '</td>';
         html += '</tr>';
         html += '<tr>';
-        html += '<td>Components</td>';
+        html += '<th>Components</th>';
         html += '<td>'+manifests.map(function(manifest){ 
             return '<a href="#'+manifest.name+'">'+manifest.name+'</a>' }).join(', ')+'</td>';
         html += '</tr>';

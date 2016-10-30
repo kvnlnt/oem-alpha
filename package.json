@@ -17,6 +17,7 @@
         "field",
         "form",
         "submit-button",
+        "theme",
         "text-input",
         "validator"
       ]
@@ -25,7 +26,6 @@
       "all": {
         "deployment": "all",
         "components": [
-          "accordion",
           "form"
         ]
       }

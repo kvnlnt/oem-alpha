@@ -5,13 +5,14 @@ const chalk = require('chalk');
 const exec = require('child_process').exec;
 const opener = require("opener");
 const Deployment = require('./deploy').Deployment;
+const util = require('../helpers/util');
 
 /**
  * Component Development Server
  */
 const Demo = function (demo, options) {
     this.demo = demo;
-    this.components = pkg.oem.deployments[pkg.oem.demos[this.demo].deployment];
+    this.components = pkg.oem.demos[this.demo].components;
     this.directory = './demos/'+demo;
     this.deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
     this.createDemo().reply();
@@ -32,7 +33,9 @@ Demo.prototype = {
 
         // copy deployed files
         fs.copySync(this.deployment.jsFile, this.directory + '/' + this.deployment.jsFileName);
-        fs.copySync(this.deployment.jsFileMinified, this.directory + '/' + this.deployment.jsFileMinified);
+        fs.copySync(this.deployment.jsFileMinified, this.directory + '/' + this.deployment.jsFileMinifiedName);
+        fs.copySync(this.deployment.cssFile, this.directory + '/' + this.deployment.cssFileName);
+        fs.copySync(this.deployment.cssFileMinified, this.directory + '/' + this.deployment.cssFileMinifiedName);
 
         // write html file
         var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8');
@@ -40,42 +43,28 @@ Demo.prototype = {
         var usage = null;
         var examples = null;
         var html = '';
+        var manifests = this.components.map(function(component){
+            return util.loadAndParseJson(pkg.oem.development[component]);
+        });
 
-        html += '<h1>Pattern Library</h1>';
+        html += '<h1>Demo</h1>';
         html += '<p>The following components were auto generated from the <em>'+this.demo+'</em> demo configuration.</p>';
 
         // menu
-        this.components.forEach(function(component){
-            if(component != 'core'){
-                html += '<a href="#'+component+'">'+component+'</a>  &nbsp;';
-            }
+        manifests.forEach(function(manifest){
+            html += '<a href="#'+manifest.name+'">'+manifest.name+'</a>  &nbsp;';
         });
 
         // components
-        this.components.forEach(function(component){
-            if(component != 'core'){
-                try {
-                    description = fs.readFileSync('./src/components/' + component + '/templates/description.html');
-                } catch (err) {
-                    // noop
-                }
-                try {
-                    usage = fs.readFileSync('./src/components/' + component + '/templates/usage.html');                    
-                } catch(err) {
-                    // noop
-                }
-                try {
-                    examples = fs.readFileSync('./src/components/' + component + '/templates/examples.html');                    
-                } catch(err){
-                    // noop
-                }
-                html += '<a name="'+component+'"></a>';
-                html += '<section>';           
-                if(description) html += description;
-                if(usage) html += usage;
-                if(examples) html += examples;
-                html += '</section>';
+        manifests.forEach(function(manifest){
+            html += '<a name="'+manifest.name+'"></a>';
+            html += '<section>';  
+            if(manifest.templates){
+                if(manifest.templates.description) html += fs.readFileSync(manifest.templates.description, 'utf-8');
+                if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
+                if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
             }
+            html += '</section>';
         });
 
         template = template.replace("<!-- HTML -->", html, 'utf8');
