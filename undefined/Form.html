@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OEM</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/blackboard.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        body {
+            padding:30px;
+            background-color: #FFFFFF;
+            max-width: 1200px;
+            margin:0 auto;
+            font-family: Arial, sans-serif;
+        } 
+
+        img.oem.logo {
+            position: absolute;
+            right: 0;
+        }
+
+        section.oem {
+            margin:0 0 100px;
+        }
+
+        pre {
+            overflow:scroll;
+        }
+        
+        .oem.logo {
+            width:80px;
+            background-color: black;
+            color:white;
+            font-family: Courier;
+            text-align: center;
+        }
+
+        .oem.logo:after {
+            content:"OEM";
+            color:white;
+            font-weight: normal;
+            line-height: 50px;
+            font-size: 24px;
+        }
+    </style>
+    <link href="oem.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+    <div class="oem logo"></div>
+    <h1>Form demo</h1><!-- Card Component -->
+<h1 id="Form">Form</h1>
+<p>The Form component</p>
+
+<pre>
+<code data-language="html">
+&lt;form 
+    data-oem="Form"
+    data-oem-id="basicFormExample">
+
+    &lt;div
+        data-oem="TextInput"
+        data-oem-id="firstNameExample"
+        data-oem-form="basicFormExample">
+        <label for="firstName">First Name</label>
+        <div class="help">This is an example of a text input field</div>
+        <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
+    &lt;/div&gt;
+
+    &lt;div
+        data-oem="Validator"
+        data-oem-id="valMinExample"
+        data-oem-field="firstNameExample"
+        data-oem-validation="minLength"
+        data-oem-args="len:3">First name must be at least 3 chars long&lt;/div&gt;
+
+    &lt;div
+        data-oem="Validator"
+        data-oem-id="valMaxExample"
+        data-oem-field="firstNameExample"
+        data-oem-validation="maxLength"
+        data-oem-args="len:6">First name must be less than 6 chars long&lt;/div&gt;
+
+    &lt;button 
+        data-oem-id="submitBasicFormExample" 
+        data-oem="SubmitButton"
+        data-oem-form="basicFormExample"
+        type="submit">Submit&lt;/button&gt;
+
+    &lt;button 
+        data-oem-id="resetBasicFormExample" 
+        data-oem="Button" 
+        data-oem-style="normal" 
+        type="reset">Reset&lt;/button&gt;
+    
+&lt;/form&gt;
+</code>
+</pre>
+<h2>Example</h2>
+
+<div data-oem="Theme" data-oem-id="Theme"></div>
+
+<form 
+    data-oem="Form"
+    data-oem-id="basicForm">
+
+    <fieldset>
+        <div 
+            data-oem="TextInput"
+            data-oem-id="firstName"
+            data-oem-form="basicForm">
+            <label for="firstName">First Name</label>
+            <div class="help">This is an example of a text input field</div>
+            <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
+            <div 
+                data-oem="Validator"
+                data-oem-id="valMin"
+                data-oem-field="firstName"
+                data-oem-validation="minLength"
+                data-oem-args="len:3">First name must be at least 3 chars long</div>
+            <div 
+                data-oem="Validator"
+                data-oem-id="valMax"
+                data-oem-field="firstName"
+                data-oem-validation="maxLength"
+                data-oem-args="len:6">First name must be less than 6 chars long</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <button 
+            data-oem="SubmitButton"
+            data-oem-class="Button"
+            data-oem-id="submitBasicForm" 
+            data-oem-form="basicForm"
+            type="submit">Submit</button>
+
+        <button 
+            data-oem="Button" 
+            data-oem-id="resetBasicForm" 
+            class="--hollow"
+            type="reset">Reset</button>
+
+    </fieldset>
+</form>
+    <script src="oem.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/css.min.js"></script>
+</body>
+
+</html>

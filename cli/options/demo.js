@@ -12,61 +12,56 @@ const util = require('../helpers/util');
  */
 const Demo = function (demo, options) {
     this.demo = demo;
-    this.components = pkg.oem.demos[this.demo].components;
+    this.components = pkg.oem.deployments[this.demo];
     this.directory = './demos/'+demo;
-    this.deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
-    this.createDemo().reply();
+    this.manifests = this.components.map(function(component){
+        return util.loadAndParseJson(pkg.oem.development[component]);
+    });
+    this
+    .reset()
+    .copyDeploymentFiles()
+    .createDemoMenu()
+    .createDemoPages()
+    .reply();
 };
 
 Demo.prototype = {
+
+    reset: function(){
+        // recreate directory
+        fs.removeSync(this.directory);
+        fs.mkdirsSync(this.directory);
+        return this;
+    },
+
+    copyDeploymentFiles: function(){
+        // copy deployed files
+        var deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
+        fs.copySync(deployment.jsFile, this.directory + '/' + deployment.jsFileName);
+        fs.copySync(deployment.jsFileMinified, this.directory + '/' + deployment.jsFileMinifiedName);
+        fs.copySync(deployment.cssFile, this.directory + '/' + deployment.cssFileName);
+        fs.copySync(deployment.cssFileMinified, this.directory + '/' + deployment.cssFileMinifiedName);
+        return this;
+    },
 
     /**
      * Main CLI prompt
      *
      * @method     start
      */
-    createDemo: function () {
+    createDemoMenu: function () {
 
-        // recreate directory
-        fs.removeSync(this.directory);
-        fs.mkdirsSync(this.directory);
-
-        // copy deployed files
-        fs.copySync(this.deployment.jsFile, this.directory + '/' + this.deployment.jsFileName);
-        fs.copySync(this.deployment.jsFileMinified, this.directory + '/' + this.deployment.jsFileMinifiedName);
-        fs.copySync(this.deployment.cssFile, this.directory + '/' + this.deployment.cssFileName);
-        fs.copySync(this.deployment.cssFileMinified, this.directory + '/' + this.deployment.cssFileMinifiedName);
-
-        // write html file
-        var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8');
-        var description = null;
-        var usage = null;
-        var examples = null;
         var html = '';
-        var manifests = pkg.oem.deployments[this.demo].map(function(component){
-            return util.loadAndParseJson(pkg.oem.development[component]);
-        });
-
-        html += '<h1>Demo</h1>';
-        html += '<p>The following components were auto generated from the <em>'+this.demo+'</em> demo configuration.</p>';
+        html += '<h1>'+this.demo+' demo</h1>';
 
         // menu
-        manifests.forEach(function(manifest){
-            html += '<a href="#'+manifest.name+'">'+manifest.name+'</a>  &nbsp;';
+        html += '<ul>';
+        this.manifests.forEach(function(manifest){
+            html += '<li><a href="'+manifest.name+'.html">'+manifest.name+'</a></li>';
         });
+        html += '</ul>';
 
-        // components
-        manifests.forEach(function(manifest){
-            html += '<a name="'+manifest.name+'"></a>';
-            html += '<section>';  
-            if(manifest.templates){
-                if(manifest.templates.description) html += fs.readFileSync(manifest.templates.description, 'utf-8');
-                if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
-                if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
-            }
-            html += '</section>';
-        });
-
+        var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8');
         template = template.replace("<!-- HTML -->", html, 'utf8');
         fs.outputFileSync(this.directory + '/index.html', template);
 
@@ -77,6 +72,33 @@ Demo.prototype = {
 
     },
 
+    createDemoPages: function(){
+
+         // write html file
+        var description = null;
+        var usage = null;
+        var examples = null;
+        var html = null;
+        var that = this;
+
+        // components
+        this.manifests.forEach(function(manifest){
+            html = '';
+            html += '<h1>'+that.demo+' demo</h1>'; 
+            html += '<a href="index.html">&#8592; back</a>';
+            if(manifest.templates){
+                if(manifest.templates.description) html += fs.readFileSync(manifest.templates.description, 'utf-8');
+                if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
+                if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
+            }
+            var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8')
+            template = template.replace("<!-- HTML -->", html, 'utf8');
+            fs.outputFileSync(that.directory + '/' + manifest.name + '.html', template);
+        });
+
+        return this;
+
+    },
 
     reply: function(){
         console.log("");
