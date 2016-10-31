@@ -24,10 +24,7 @@
     },
     "demos": {
       "all": {
-        "deployment": "all",
-        "components": [
-          "form"
-        ]
+        "deployment": "all"
       }
     },
     "development": {

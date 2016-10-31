@@ -43,7 +43,7 @@ Demo.prototype = {
         var usage = null;
         var examples = null;
         var html = '';
-        var manifests = this.components.map(function(component){
+        var manifests = pkg.oem.deployments[this.demo].map(function(component){
             return util.loadAndParseJson(pkg.oem.development[component]);
         });
 

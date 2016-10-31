@@ -5,7 +5,8 @@
     "components": ["core"],
     "styles":[
         "./development/theme/buttons.css",
-        "./development/theme/forms.css"
+        "./development/theme/forms.css",
+        "./development/theme/typography.css"
     ],
     "scripts": [
         "./development/theme/module.js"
