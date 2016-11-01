@@ -1,10 +1,7 @@
 const fs = require("fs-extra");
-const pkg = require('../../package');
+const pkg = require('../package');
 const chalk = require('chalk');
 
-/**
- * Component Creator
- */
 const RemoveComponent = function(components) {
     components.shift();
     this.components = components;
@@ -13,14 +10,6 @@ const RemoveComponent = function(components) {
 };
 
 RemoveComponent.prototype = {
-
-    removeDirectories: function() {
-        this.components.forEach(function(component){
-            var dir = './development/' + component;
-            fs.removeSync(dir);
-        });
-        return this;
-    },
 
     updatePackageJson: function() {
         var that = this;
@@ -35,6 +24,14 @@ RemoveComponent.prototype = {
             });
         });
         fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
+        return this;
+    },
+
+    removeDirectories: function() {
+        this.components.forEach(function(component){
+            var dir = './development/' + component;
+            fs.removeSync(dir);
+        });
         return this;
     },
 

@@ -1,16 +1,13 @@
 const express = require('express');
 const app = express();
-const pkg = require('../../package');
+const pkg = require('../package');
 const fs = require("fs");
 const http = require('http');
 const exec = require('child_process').exec;
 const path = require('path');
 const chalk = require('chalk');
-const util = require('../helpers/util');
+const util = require('./util');
 
-/**
- * Component Development Server
- */
 const DevelopComponent = function(component, args) {
     this.options = util.getOptions(args);
     this.component = component;
@@ -23,43 +20,6 @@ const DevelopComponent = function(component, args) {
 
 DevelopComponent.prototype = {
 
-    /**
-     * Main CLI prompt
-     *
-     * @method     start
-     */
-    start: function() {
-        app.use('/development', this.reportRequest, express.static('development'));
-        app.get('/', this.reportRequest, this.handleServerRequest.bind(this));
-        app.listen(this.port, this.onStart.bind(this));
-    },
-
-    onStart: function() {
-        console.log("");
-        console.log("");
-        console.log(chalk.bgWhite("       "));
-        console.log(chalk.black.bgWhite("  OEM  "), " DEVELOP ");
-        console.log(chalk.bgWhite("       "));
-        console.log("");
-        console.log("");
-        console.log("Component:", this.component);
-        console.log("Server:", "http://localhost:" + this.port);
-        exec('open http://localhost:' + this.port);
-        console.log("");
-        console.log("");
-    },
-
-    reportRequest: function(req, res, next) {
-        console.log(chalk.gray("Served: "), req.url);
-        next();
-    },
-
-    /**
-     * Handle http requests
-     * @param  {[type]} req [description]
-     * @param  {[type]} res [description]
-     * @return {[type]}     [description]
-     */
     handleServerRequest: function(req, res) {
 
         var that = this;
@@ -99,7 +59,6 @@ DevelopComponent.prototype = {
         components.push(this.component);
 
         return components;
-
     },
 
     getJs: function(){
@@ -119,7 +78,34 @@ DevelopComponent.prototype = {
 
     getHtml: function(){
         return util.getComponentTemplatesHtml(this.manifest.templates).join('');
+    },
+
+    onStart: function() {
+        console.log("");
+        console.log("");
+        console.log(chalk.bgWhite("       "));
+        console.log(chalk.black.bgWhite("  OEM  "), " DEVELOP ");
+        console.log(chalk.bgWhite("       "));
+        console.log("");
+        console.log("");
+        console.log("Component:", this.component);
+        console.log("Server:", "http://localhost:" + this.port);
+        exec('open http://localhost:' + this.port);
+        console.log("");
+        console.log("");
+    },
+
+    reportRequest: function(req, res, next) {
+        console.log(chalk.gray("Served: "), req.url);
+        next();
+    },
+
+    start: function() {
+        app.use('/development', this.reportRequest, express.static('development'));
+        app.get('/', this.reportRequest, this.handleServerRequest.bind(this));
+        app.listen(this.port, this.onStart.bind(this));
     }
+    
 };
 
 module.exports = {

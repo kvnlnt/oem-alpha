@@ -1,17 +1,14 @@
-const pkg = require('../../package');
+const pkg = require('../package');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 
-/**
- * Component Creator
- */
 const List = function(componentName){
     this.list();
 };
 
 List.prototype = {
-    list: function(){
 
+    list: function(){
         console.log("");
         console.log("");
         console.log(chalk.bgWhite("       "));
@@ -32,8 +29,8 @@ List.prototype = {
         console.log("");
         console.log("");
         console.log("");
-
     }
+
 };
 
 module.exports = {

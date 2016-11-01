@@ -1,41 +1,21 @@
 const fs = require("fs");
-const pkg = require('../../package');
+const pkg = require('../package');
 const chalk = require('chalk');
 
-/**
- * Component Creator
- */
 const CreateComponent = function(componentName) {
     this.componentName = componentName;
     this.componentClass = this.convertNameToClass(componentName);
     this.componentDir = './development/' + this.componentName;
     this.templatesDir = './development/' + this.componentName + '/templates';
-    this
-        .createDirectory()
-        .copyAndFormatTemplates()
-        .updatePackageJson()
-        .launch();
+    this.createDirectory().copyAndFormatTemplates().updatePackageJson().launch();
 };
 
 CreateComponent.prototype = {
 
-    createDirectory: function() {
-        // console.log('create component', this.componentName, this.componentClass);
-        try {
-            fs.mkdirSync(this.componentDir);
-            fs.mkdirSync(this.templatesDir);
-            return this;
-        } catch (err) {
-            if (err) console.log("ERROR".bold, err);
-        }
-
-        return this;
-    },
-
-    renderTemplate: function(str) {
-        str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
-        str = str.replace(new RegExp('%DIR%', 'g'), this.componentDir);
-        return str;
+    convertNameToClass: function(name) {
+        return name.split('-').map(function(segment) {
+            return segment.charAt(0).toUpperCase() + segment.slice(1);
+        }).join('');
     },
 
     copyAndFormatTemplates: function() {
@@ -73,6 +53,19 @@ CreateComponent.prototype = {
         return this;
     },
 
+    createDirectory: function() {
+        // console.log('create component', this.componentName, this.componentClass);
+        try {
+            fs.mkdirSync(this.componentDir);
+            fs.mkdirSync(this.templatesDir);
+            return this;
+        } catch (err) {
+            if (err) console.log("ERROR".bold, err);
+        }
+
+        return this;
+    },
+
     updatePackageJson: function() {
 
         pkg.oem.development[this.componentName] = this.componentDir + "/manifest.json";
@@ -103,11 +96,12 @@ CreateComponent.prototype = {
         console.log("");
     },
 
-    convertNameToClass: function(name) {
-        return name.split('-').map(function(segment) {
-            return segment.charAt(0).toUpperCase() + segment.slice(1);
-        }).join('');
+    renderTemplate: function(str) {
+        str = str.replace(new RegExp('%CLASS%', 'g'), this.componentClass);
+        str = str.replace(new RegExp('%DIR%', 'g'), this.componentDir);
+        return str;
     }
+    
 };
 
 module.exports = {

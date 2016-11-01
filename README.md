@@ -54,7 +54,7 @@ Oem has two parts: `core` and `components`. The Core *is* the OEM framework whil
 OEM also provides a command line utility that streamlines a "conventional" workflow. It relies on the `package.json` file to manage configurations for development, deployment and the creation and destruction of components. The command line utility can be lauched with `node oem`. See the `Command Line API` for details.
 
 ### Command Line API
-OEM's command line utility facilitates basic workflows for creating, developing and deploying components. The cli can be reached via `node oem [command]`. Each command run's a corresponding script in the `./cli/options/` folder.
+OEM's command line utility facilitates basic workflows for creating, developing and deploying components. The cli can be reached via `node oem [command]`. Each command run's a corresponding script in the `./cli` folder.
 
 ### Client Side API
 OEM's final artifact is a single javascript file. That includes all js, css, images, etc. Each component has an individual markup structure and implements various abilities exposed by the core as well as their own unique functionality. All components and code are protected under the `oem` namespace. Open up the console in your browser and type in `oem`. All component lifecycle management and core functionality for oem can be controlled programmatically via the namespace.

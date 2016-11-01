@@ -1,54 +1,22 @@
-const pkg = require('../../package');
+const pkg = require('../package');
 const fs = require('fs-extra');
 const UglifyJS = require("uglify-js");
 const chalk = require('chalk');
 const exec = require('child_process').exec;
 const opener = require("opener");
 const Deployment = require('./deploy').Deployment;
-const util = require('../helpers/util');
+const util = require('./util');
 
-/**
- * Component Development Server
- */
 const Demo = function (demo, options) {
     this.demo = demo;
     this.components = pkg.oem.deployments[this.demo];
     this.directory = './demos/'+demo;
-    this.manifests = this.components.map(function(component){
-        return util.loadAndParseJson(pkg.oem.development[component]);
-    });
-    this
-    .reset()
-    .copyDeploymentFiles()
-    .createDemoMenu()
-    .createDemoPages()
-    .reply();
+    util.getManifests(this.components);
+    this.reset().copyDeploymentFiles().createDemoMenu().createDemoPages().reply();
 };
 
 Demo.prototype = {
 
-    reset: function(){
-        // recreate directory
-        fs.removeSync(this.directory);
-        fs.mkdirsSync(this.directory);
-        return this;
-    },
-
-    copyDeploymentFiles: function(){
-        // copy deployed files
-        var deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
-        fs.copySync(deployment.jsFile, this.directory + '/' + deployment.jsFileName);
-        fs.copySync(deployment.jsFileMinified, this.directory + '/' + deployment.jsFileMinifiedName);
-        fs.copySync(deployment.cssFile, this.directory + '/' + deployment.cssFileName);
-        fs.copySync(deployment.cssFileMinified, this.directory + '/' + deployment.cssFileMinifiedName);
-        return this;
-    },
-
-    /**
-     * Main CLI prompt
-     *
-     * @method     start
-     */
     createDemoMenu: function () {
 
         var html = '';
@@ -69,7 +37,16 @@ Demo.prototype = {
         opener(this.directory + '/index.html');
 
         return this;
+    },
 
+    copyDeploymentFiles: function(){
+        // copy deployed files
+        var deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
+        fs.copySync(deployment.jsFile, this.directory + '/' + deployment.jsFileName);
+        fs.copySync(deployment.jsFileMinified, this.directory + '/' + deployment.jsFileMinifiedName);
+        fs.copySync(deployment.cssFile, this.directory + '/' + deployment.cssFileName);
+        fs.copySync(deployment.cssFileMinified, this.directory + '/' + deployment.cssFileMinifiedName);
+        return this;
     },
 
     createDemoPages: function(){
@@ -97,7 +74,6 @@ Demo.prototype = {
         });
 
         return this;
-
     },
 
     reply: function(){
@@ -111,6 +87,13 @@ Demo.prototype = {
         console.log('Demo', chalk.bold(this.demo), 'created, see files in ./demos/'+this.demo + ' folder');
         console.log("");
         console.log("");
+    },
+
+    reset: function(){
+        // recreate directory
+        fs.removeSync(this.directory);
+        fs.mkdirsSync(this.directory);
+        return this;
     }
 
 };
