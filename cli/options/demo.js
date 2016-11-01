@@ -52,7 +52,7 @@ Demo.prototype = {
     createDemoMenu: function () {
 
         var html = '';
-        html += '<h1>'+this.demo+' demo</h1>';
+        html += '<h1>'+this.demo+'</h1>';
 
         // menu
         html += '<ul>';
@@ -84,12 +84,12 @@ Demo.prototype = {
         // components
         this.manifests.forEach(function(manifest){
             html = '';
-            html += '<h1>'+that.demo+' demo</h1>'; 
+            html += '<h1>'+that.demo+'</h1>'; 
             html += '<a href="index.html">&#8592; back</a>';
             if(manifest.templates){
                 if(manifest.templates.description) html += fs.readFileSync(manifest.templates.description, 'utf-8');
-                if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
                 if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
+                if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
             }
             var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8')
             template = template.replace("<!-- HTML -->", html, 'utf8');

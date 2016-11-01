@@ -11,7 +11,7 @@
   "license": "ISC",
   "oem": {
     "deployments": {
-      "all": [
+      "foo.com": [
         "core",
         "button",
         "field",
@@ -23,8 +23,8 @@
       ]
     },
     "demos": {
-      "all": {
-        "deployment": "all"
+      "foo.com": {
+        "deployment": "foo.com"
       }
     },
     "development": {
