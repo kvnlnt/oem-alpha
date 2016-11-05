@@ -11,7 +11,7 @@ const Demo = function (demo, options) {
     this.demo = demo;
     this.components = pkg.oem.deployments[this.demo];
     this.directory = './demos/'+demo;
-    util.getManifests(this.components);
+    this.manifests = util.getManifests(this.components);
     this.reset().copyDeploymentFiles().createDemoMenu().createDemoPages().reply();
 };
 

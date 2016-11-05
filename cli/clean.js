@@ -10,7 +10,7 @@ Clean.prototype = {
 
     clean: function(){
         fs.removeSync('./deploy');
-        fs.removeSync('./demo');
+        fs.removeSync('./demos');
         return this;
     },
 
