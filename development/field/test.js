@@ -1,8 +1,16 @@
-(function(COMPONENTS, TEST) {
+(function(COMPONENTS, TEST, EL) {
 
     var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'FieldTest';
+
+    function createTestElement () {
+        var label = EL("label", { for:"inputField"}, "First Name");
+        var help = EL("div", { "class":"help"}, "Please enter your first name");
+        var input = EL("input", {"type":"text", "name":"inputField", "placeholder":"First Name"});
+        var field = EL("div", { "data-oem": "Field", "data-oem-id":"Field" }, [label, help, input] );
+        return field;
+    }
 
     /**
      * Test example
@@ -10,7 +18,9 @@
      * @method     
      */
     Test.canGetAndSetValue = function(){
-        var component = oem.read("Field");
+        var component = oem.create(oem.Components.Field.Prototype, {
+            el: createTestElement()
+        });
         component.setValue('newValue');
         var test = component.getValue() === "newValue";
         Test.assert('can get and set value', test, true);
@@ -79,4 +89,4 @@
     COMPONENTS.Field.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Test);
+})(oem.Components, oem.Core.Test, oem.Core.El);

@@ -1,8 +1,14 @@
-(function(COMPONENTS, TEST) {
+(function(COMPONENTS, TEST, EL) {
 
     var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'ValidatorTest';
+
+    function createTestFieldElement () {
+        var input = EL("input", {"type":"text", "name":"firstNameTest", "placeholder":"First Name", "value":"k"});
+        var field = EL("div", { "data-oem": "Field", "data-oem-id":"firstNameTest" }, [input] );
+        return field;
+    }
 
     /**
      * Test example
@@ -10,8 +16,19 @@
      * @method     
      */
     Test.canDoBasicValidation = function(){
-        oem.read("firstName").validate();
-        var test = oem.read("valMin").isShowing === true;
+        var field = oem.create(oem.Components.Field.Prototype, {
+            el: createTestFieldElement()
+        }); 
+        var validator = oem.create(oem.Components.Validator.Prototype, {
+            el: EL("div"),
+            id: "valMinTest",
+            field: "firstNameTest",
+            "validation": "minLength",
+            "args": "len:3",
+            "message": "First name must be at least 3 chars long"
+        }); 
+        oem.read("firstNameTest").validate();
+        var test = validator.isShowing === true;
         Test.assert('can do basic validation', test, true);
     };
 
@@ -73,16 +90,16 @@
     oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('Validator', [
             Test.canDoBasicValidation,
-            Test.validatesRequired,
-            Test.validatesEmail,
-            Test.validatesPassword,
-            Test.validatesMatch,
-            Test.validatesMixedCase,
-            Test.validatesContainsNumber,
-            Test.validatesMinLength,
-            Test.validatesMaxLength,
-            Test.validatesOptionInList,
-            Test.validatesRegexPatterns
+            // Test.validatesRequired,
+            // Test.validatesEmail,
+            // Test.validatesPassword,
+            // Test.validatesMatch,
+            // Test.validatesMixedCase,
+            // Test.validatesContainsNumber,
+            // Test.validatesMinLength,
+            // Test.validatesMaxLength,
+            // Test.validatesOptionInList,
+            // Test.validatesRegexPatterns
         ]);
     });
 
@@ -90,4 +107,4 @@
     COMPONENTS.Validator.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Test);
+})(oem.Components, oem.Core.Test, oem.Core.El);

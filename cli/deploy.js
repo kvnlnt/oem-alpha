@@ -23,7 +23,20 @@ const Deployment = function (deployment, autoLaunch) {
     this.cssFileMinifiedName = "oem.min.css";
     this.cssFileMinified = this.directory + "/" + this.cssFileMinifiedName;
     this.cssFiles = this.getCss();
-    this.reset().deployJs().deployCss().createReport().reply();
+    this.testJsFileName = "oem.tests.js";
+    this.testJsFile = this.directory + "/" + this.testJsFileName;
+    this.testJsFiles = this.getJsTests();
+    this.testCssFileName = "oem.tests.css";
+    this.testCssFile = this.directory + "/" + this.testCssFileName;
+    this.testCssFiles = this.getCssTests();
+    this
+    .reset()
+    .deployJs()
+    .deployCss()
+    .deployJsTests()
+    .deployCssTests()
+    .createReport()
+    .reply();
 };
 
 Deployment.prototype = {
@@ -77,7 +90,8 @@ Deployment.prototype = {
         this.manifests.forEach(function(manifest){
             html += '<section id="'+manifest.name+'">';
             html += fs.readFileSync(manifest.templates.description, 'utf8');
-            html += '<p><strong>Scripts</strong><br/><small>' + manifest.scripts.join('<br/>') + '</small></p>';
+            if(manifest.templates.tests) html += fs.readFileSync(manifest.templates.tests, 'utf8');
+            html += '<p><h3>Scripts</h3><br/><small>' + manifest.scripts.join('<br/>') + '</small></p>';
             html += '</section>';
         });
 
@@ -98,6 +112,12 @@ Deployment.prototype = {
         return this;
     },
 
+    deployCssTests: function(){
+        var files = this.concatFiles(this.testCssFiles);
+        fs.outputFileSync(this.testCssFile, files);
+        return this;
+    },
+
     deployJs: function(){
         var concatJs = this.concatFiles(this.jsFiles);
         fs.outputFileSync(this.jsFile, concatJs);
@@ -106,33 +126,42 @@ Deployment.prototype = {
         return this;
     },
 
+    deployJsTests: function(){
+        var concatTests = this.concatFiles(this.testJsFiles);
+        fs.outputFileSync(this.testJsFile, concatTests);
+        return this;
+    },
+
     getCss: function() {
-
-        // files from development components loaded during development
-        var styles = this.components.map(function(component) {
-            var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
-            return config.styles;
+        var styles = this.manifests.map(function(manifest) {
+            return manifest.styles;
         }).filter(function(style){ return style != void 0});
-
-        // flatten arrays
         var styles = [].concat(...styles);
-
         return styles;
     },
 
+    getCssTests: function() {
+        return ["./development/core/modules/Test.css"];
+    },
+
     getJs: function() {
-
-        // files from development components loaded during development
-        var scripts = this.components.map(function(component) {
-            var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
-            return config.scripts;
+        var scripts = this.manifests.map(function(manifest) {
+            return manifest.scripts;
         });
-
-        // flatten arrays
         var scripts = [].concat(...scripts);
-
         return scripts;
     },
+
+    getJsTests: function() {
+        var tests = this.manifests.map(function(manifest) {
+            return manifest.tests;
+        });
+        var tests = []
+        .concat("./development/core/modules/Test.js")
+        .concat(...tests);
+        return tests;
+    },
+
 
     reply: function(){
         console.log("");
