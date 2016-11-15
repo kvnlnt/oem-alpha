@@ -1,4 +1,4 @@
-const pkg = require('../package');
+const oem = require('../oem.json');
 const fs = require('fs-extra');
 const UglifyJS = require("uglify-js");
 const chalk = require('chalk');
@@ -9,7 +9,7 @@ const util = require('./util');
 
 const Demo = function (demo, options) {
     this.demo = demo;
-    this.components = pkg.oem.deployments[this.demo];
+    this.components = oem.deployments[this.demo];
     this.directory = './demos/'+demo;
     this.manifests = util.getManifests(this.components);
     this.reset().copyDeploymentFiles().createDemoMenu().createDemoPages().reply();
@@ -41,7 +41,7 @@ Demo.prototype = {
 
     copyDeploymentFiles: function(){
         // copy deployed files
-        var deployment = new Deployment(pkg.oem.demos[this.demo].deployment, false);
+        var deployment = new Deployment(oem.demos[this.demo].deployment, false);
         fs.copySync(deployment.jsFile, this.directory + '/' + deployment.jsFileName);
         fs.copySync(deployment.jsFileMinified, this.directory + '/' + deployment.jsFileMinifiedName);
         fs.copySync(deployment.cssFile, this.directory + '/' + deployment.cssFileName);

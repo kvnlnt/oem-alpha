@@ -31,8 +31,8 @@
         this.min = this.getEl().dataset.oemMin;
         this.max = this.getEl().dataset.oemMax;
 
-        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify.bind(this));
-        oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify.bind(this));
+        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify, this);
+        oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify, this);
     };
 
     // GETTERS
@@ -103,6 +103,11 @@
         var isOverMin = height >= this.getMin();
         var isUnderMax = (height <= this.getMax() || this.getMax() === '*');
         if (isHeightCalc && isOverMin && isUnderMax) el.classList.add(this.getResponsiveClass());
+    };
+
+    Prototype.destroy = function(){
+        oem.events.removeEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify, this);
+        oem.events.removeEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify, this);
     };
     
     

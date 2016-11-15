@@ -1,5 +1,5 @@
 const fs = require('fs');
-const pkg = require('../package');
+const oem = require('../oem.json');
 
 function createCssTagLinks(files) {
     var tags = '';
@@ -22,7 +22,7 @@ function createScriptTagLinks(files) {
 function getComponentScripts(components){
     var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
-        var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+        var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
         return config.scripts;
     });
     return files;
@@ -31,7 +31,7 @@ function getComponentScripts(components){
 function getComponentStyles(components){
      var components = components instanceof Array ? components : [components]; 
     var files = components.map(function(component) {
-        var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+        var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
         return config.styles;
     });
     return files.filter(function(file){ return file != void 0 });
@@ -47,7 +47,7 @@ function getComponentTemplatesHtml(templates){
 function getComponentTests(components){
     var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
-        var config = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
+        var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
         return config.tests;
     });
     return files;
@@ -85,7 +85,7 @@ function getFilesizeInKB(filename) {
 
 function getManifests(components){
     return components.map(function(component){
-        return loadAndParseJson(pkg.oem.development[component]);
+        return loadAndParseJson(oem.development[component]);
     })
 }
 

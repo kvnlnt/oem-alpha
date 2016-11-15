@@ -63,9 +63,15 @@
      */
     OEM.destroy = function (componentId) {
         var component = OEM.read(componentId);
+        // call the component's own destroy method
+        if(typeof component.destroy === "function") component.destroy();
+        // remove any DOM elements
         var node = component.getEl();
         if (node.parentNode) node.parentNode.removeChild(node);
+        // remove reference to component object
         delete oem.list.all[componentId];
+        // remove component object
+        delete component;
         return component;
     };
 

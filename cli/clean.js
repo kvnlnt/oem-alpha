@@ -1,4 +1,4 @@
-const pkg = require('../package');
+const oem = require('../oem.json');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 

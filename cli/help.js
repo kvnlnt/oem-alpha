@@ -24,7 +24,7 @@ function show(){
     console.log("");
     console.log(chalk.bold("   list"));
     console.log("");
-    console.log("      Purpose:", "    lists all components in package.oem.development");
+    console.log("      Purpose:", "    lists all components in oem.development");
     console.log("      Example:", "    node oem list");
     console.log("");
     console.log(chalk.bold("   dev"));
@@ -51,11 +51,17 @@ function show(){
     console.log("      Arguments:", "  [Component Name]");
     console.log("      Example:", "    node oem remove component-name");
     console.log("");
+    console.log(chalk.bold("   demo"));
+    console.log("");
+    console.log("      Purpose:", "    creates a demo from a deployment in oem.demos");
+    console.log("      Arguments:", "  [Deployment Name]");
+    console.log("      Example:", "    node oem demo foo.com");
+    console.log("");
     console.log(chalk.bold("   deploy"));
     console.log("");
-    console.log("      Purpose:", "    deploys a configuration from package.oem.deployments");
+    console.log("      Purpose:", "    deploys a configuration from oem.deployments");
     console.log("      Arguments:", "  [Deployment Name]");
-    console.log("      Example:", "    node oem deploy all");
+    console.log("      Example:", "    node oem deploy foo.com");
     console.log("");
     console.log("");
     console.log("");

@@ -1,0 +1,33 @@
+{
+    "deployments": {
+        "foo.com": [
+            "core",
+            "accordion",
+            "button",
+            "field",
+            "form",
+            "responsify",
+            "submit-button",
+            "text-input",
+            "theme",
+            "validator"
+        ]
+    },
+    "demos": {
+        "foo.com": {
+            "deployment": "foo.com"
+        }
+    },
+    "development": {
+        "accordion": "./development/accordion/manifest.json",
+        "button": "./development/button/manifest.json",
+        "core": "./development/core/manifest.json",
+        "field": "./development/field/manifest.json",
+        "form": "./development/form/manifest.json",
+        "responsify": "./development/responsify/manifest.json",
+        "submit-button": "./development/submit-button/manifest.json",
+        "text-input": "./development/text-input/manifest.json",
+        "theme": "./development/theme/manifest.json",
+        "validator": "./development/validator/manifest.json"
+    }
+}

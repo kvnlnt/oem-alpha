@@ -1,4 +1,4 @@
-const pkg = require('../package');
+const oem = require('../oem.json');
 const fs = require('fs-extra');
 const UglifyJS = require("uglify-js");
 const UglifyCss = require("uglifycss");
@@ -10,8 +10,8 @@ const util = require('./util');
 const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
     this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
-    this.components = pkg.oem.deployments[deployment];
-    this.manifests = util.getManifests(pkg.oem.deployments[this.deployment]);
+    this.components = oem.deployments[deployment];
+    this.manifests = util.getManifests(oem.deployments[this.deployment]);
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
     this.jsFile = this.directory + "/" + this.jsFileName;

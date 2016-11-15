@@ -1,5 +1,5 @@
 const fs = require("fs");
-const pkg = require('../package');
+const oem = require('../oem.json');
 const chalk = require('chalk');
 
 const CreateComponent = function(componentName) {
@@ -68,17 +68,17 @@ CreateComponent.prototype = {
 
     updatePackageJson: function() {
 
-        pkg.oem.development[this.componentName] = this.componentDir + "/manifest.json";
+        oem.development[this.componentName] = this.componentDir + "/manifest.json";
         var sortedObject = {};
-        var keys = Object.keys(pkg.oem.development);
+        var keys = Object.keys(oem.development);
         keys.sort();
         keys.forEach(function(key){
-            sortedObject[key] = pkg.oem.development[key];
+            sortedObject[key] = oem.development[key];
         });
-        pkg.oem.development = sortedObject;
+        oem.development = sortedObject;
 
         // save to package
-        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
+        fs.writeFileSync('./oem.json', JSON.stringify(oem, null, 4));
 
         return this;
     },

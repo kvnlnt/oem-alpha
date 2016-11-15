@@ -1,5 +1,5 @@
 const fs = require("fs-extra");
-const pkg = require('../package');
+const oem = require('../oem.json');
 const chalk = require('chalk');
 
 const RemoveComponent = function(components) {
@@ -14,16 +14,16 @@ RemoveComponent.prototype = {
     updatePackageJson: function() {
         var that = this;
         this.components.forEach(function(component){
-            delete pkg.oem.development[component];
-            Object.keys(pkg.oem.deployments).forEach(function(deployment){
-                var indexInList = pkg.oem.deployments[deployment].indexOf(component);
+            delete oem.development[component];
+            Object.keys(oem.deployments).forEach(function(deployment){
+                var indexInList = oem.deployments[deployment].indexOf(component);
                 var existInDeployment = indexInList  > -1;
                 if(!existInDeployment) return;
                 that.deploymentsRemovedFrom.push(deployment);
-                pkg.oem.deployments[deployment].splice(indexInList, 1);
+                oem.deployments[deployment].splice(indexInList, 1);
             });
         });
-        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 4));
+        fs.writeFileSync('./oem.json', JSON.stringify(oem, null, 4));
         return this;
     },
 

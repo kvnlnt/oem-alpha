@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const pkg = require('../package');
+const oem = require('../oem.json');
 const fs = require("fs");
 const http = require('http');
 const exec = require('child_process').exec;
@@ -12,7 +12,7 @@ const DevelopComponent = function(component, args) {
     this.options = util.getOptions(args);
     this.component = component;
     this.port = this.options.port || 7001;
-    this.manifest = util.loadAndParseJson(pkg.oem.development[component]);
+    this.manifest = util.loadAndParseJson(oem.development[component]);
     this.components = this.getComponentList();
     this.server;
     this.start();

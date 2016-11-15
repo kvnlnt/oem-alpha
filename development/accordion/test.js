@@ -1,6 +1,6 @@
 (function(COMPONENTS, CORE) {
 
-    var Test = Object.create(Core.Test); // call super constructor
+    var Test = Object.create(CORE.Test); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'Accordion';
 

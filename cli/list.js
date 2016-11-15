@@ -1,4 +1,4 @@
-const pkg = require('../package');
+const oem = require('../oem.json');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 
@@ -9,6 +9,7 @@ const List = function(componentName){
 List.prototype = {
 
     list: function(){
+        var that = this;
         console.log("");
         console.log("");
         console.log(chalk.bgWhite("       "));
@@ -17,10 +18,10 @@ List.prototype = {
         console.log("");
         console.log("");
 
-        if(Object.keys(pkg.oem.development).length){
-            Object.keys(pkg.oem.development).forEach(function(component){
-                var manifest = JSON.parse(fs.readFileSync(pkg.oem.development[component], 'utf8'));
-                console.log(chalk.bold(manifest.name), ' ', manifest.description);
+        if(Object.keys(oem.development).length){
+            Object.keys(oem.development).forEach(function(component){
+                var manifest = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
+                console.log(chalk.bold(manifest.name), that.calcSpaces(manifest.name), manifest.description);
             });    
         } else {
             console.log("You have no components.");
@@ -29,6 +30,15 @@ List.prototype = {
         console.log("");
         console.log("");
         console.log("");
+    },
+
+    calcSpaces: function(name){
+        var spaces = 15 - name.length;
+        var space = '';
+        for(i = 0; i < spaces; i++){
+            space += ' ';
+        }
+        return space;
     }
 
 };
