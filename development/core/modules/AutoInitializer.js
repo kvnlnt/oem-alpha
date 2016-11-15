@@ -41,9 +41,6 @@
             AutoInitializer.collect(component);
         }
 
-        // go tell it on the mountain
-        CORE.Events.dispatch(CORE.EVENTS.COMPONENTS_COLLECTED, this);
-
         return this;
     };
 
@@ -51,6 +48,9 @@
         for(var component in oem.list.all){
             oem.read(component).init();
         }
+
+        // go tell it on the mountain
+        oem.events.dispatch(CORE.EVENTS.COMPONENTS_INITIALIZED, this);
     };
 
     // collect on document ready

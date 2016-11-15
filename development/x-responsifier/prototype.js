@@ -30,7 +30,7 @@
     // ========================================================
     // 1. Use this area to run setup functions.
     // 2. The init function from the Core.Component prototype will be called automatically. 
-    // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_COLLECTED):
+    // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_INITIALIZED):
     //      1. register that event in the init function
     //      2. then call an internal "init" function (see form component for example)
 

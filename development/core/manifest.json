@@ -21,9 +21,9 @@
         "./development/core/modules/Util.js",
         "./development/core/modules/EventBus.js",
         "./development/core/modules/Events.js",
-        "./development/core/modules/AutoInitializer.js",
         "./development/core/modules/Component.js",
-        "./development/core/module.js"
+        "./development/core/module.js",
+        "./development/core/modules/AutoInitializer.js"
     ],
     "tests": [
         "./development/core/modules/AutoInitializer.test.js",
