@@ -91,7 +91,7 @@ Deployment.prototype = {
             html += '<section id="'+manifest.name+'">';
             html += fs.readFileSync(manifest.templates.description, 'utf8');
             if(manifest.templates.tests) html += fs.readFileSync(manifest.templates.tests, 'utf8');
-            html += '<p><h3>Scripts</h3><br/><small>' + manifest.scripts.join('<br/>') + '</small></p>';
+            html += '<p><h3>Scripts</h3><small>' + manifest.scripts.join('<br/>') + '</small></p>';
             html += '</section>';
         });
 

@@ -13,12 +13,13 @@
     "deployments": {
       "foo.com": [
         "core",
+        "accordion",
         "button",
         "field",
         "form",
         "submit-button",
-        "theme",
         "text-input",
+        "theme",
         "validator"
       ]
     },
