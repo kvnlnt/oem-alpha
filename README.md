@@ -1,6 +1,6 @@
 # OEM
 
-> Create tomorrow's components today and that will work today and tomorrow.
+> Create tomorrow's components for today and tomorrow.
 
 OEM is a small web component framework that puts a premium on component-to-component communication and native web technologies. Should you reach a point where you decide you no longer want/need OEM, you are left with well abstracted code that is semantic, native, and has little to do with OEM itself.
 
@@ -90,8 +90,8 @@ A pattern library can be genereted with the `deploy` command. Example: `node oem
 
 <a name="Tutorials"></a>
 ## Tutorials
-- [How to create a component](./docs/development.md)
-- [How to test](./docs/testing.md)
-- [How to debug](./docs/debugging.md)
+- [How to develop components](./docs/development.md)
+- [How to test components](./docs/testing.md)
+- [How to debug components](./docs/debugging.md)
 - [How to deploy](./docs/deployment.md)
 - [How to create a demo](./docs/deployment.md)

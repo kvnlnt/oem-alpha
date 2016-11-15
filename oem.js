@@ -17,6 +17,7 @@ const Help = require('./cli/help');
 const List = require('./cli/list').List;
 const oem = require('./oem.json');
 const RemoveComponent = require('./cli/remove').RemoveComponent;
+const Test = require('./cli/test').Test;
 
 const ARG = {};
 ARG.CLEAN = 'clean';
@@ -27,6 +28,7 @@ ARG.DEVELOP = 'dev';
 ARG.HELP = 'help';
 ARG.LIST = 'list';
 ARG.REMOVE = 'remove';
+ARG.TEST = 'test';
 
 // actions
 try {
@@ -62,6 +64,10 @@ try {
         case ARG.REMOVE:
             if(!oem.development.hasOwnProperty(ARGS[1])) throw 'component does not exist';
             var removeComponent = new RemoveComponent(ARGS);
+            break;
+        case ARG.TEST:
+            if(ARGS[1] === void 0) throw 'please specify a deployment';
+            var test = new Test(ARGS[1]);
             break;
         default:
             Help.show();

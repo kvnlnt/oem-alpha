@@ -30,17 +30,16 @@
 
     Test.assert = function(msg, a, b){
         var ul = document.querySelector('[data-oem-test="'+this.testComponent+'"]' + ' ul');
-        ul.classList.add('oem');
         var li;
         if(a === b){
             li = document.createElement('li');
             li.classList.add('test-pass');
-            li.classList.add('oem');
+            li.classList.add('test');
             li.innerHTML = msg;
         } else {
             li = document.createElement('li');
             li.classList.add('test-fail');
-            li.classList.add('oem');
+            li.classList.add('test');
             li.innerHTML = msg;
         }
         ul.appendChild(li);
