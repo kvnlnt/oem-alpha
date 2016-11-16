@@ -44,11 +44,8 @@ Test.prototype = {
                 });
                 console.log("");
                 console.log(chalk.green(testsPassed), "passed");
-                if(isValid) {
-                    console.log(chalk.red(testsFailed), "failed");
-                } else {
-                    console.error(chalk.red(testsFailed), "failed");
-                }
+                console.log(chalk.red(testsFailed), "failed");
+                if(!isValid) process.exit(1);
                 console.log("");
                 program.kill() // quits PhantomJS
                 return;             
