@@ -3,16 +3,13 @@
     var Test = {};
     Test.name = null;
     Test.testComponent = null;
+    Test.testSuiteName = 'Test';
 
     Test.runTestSuite = function(testSuiteName, testSuite){
 
         // create container
-        var testSuiteName = testSuiteName || '';
+        this.testSuiteName = testSuiteName || '';
         var el = document.querySelector('[data-oem-test="'+this.testComponent+'"]');
-        var h3 = document.createElement('h3');
-        h3.classList.add('oem');
-        h3.innerText = testSuiteName;
-        el.appendChild(h3);
         var ul = document.createElement('ul');
         el.appendChild(ul);
         function noop(){ return false; }
@@ -35,12 +32,12 @@
             li = document.createElement('li');
             li.classList.add('test-pass');
             li.classList.add('test');
-            li.innerHTML = msg;
+            li.innerHTML = this.testSuiteName + ": " + msg;
         } else {
             li = document.createElement('li');
             li.classList.add('test-fail');
             li.classList.add('test');
-            li.innerHTML = msg;
+            li.innerHTML = this.testSuiteName + ": " + msg;
         }
         ul.appendChild(li);
     };

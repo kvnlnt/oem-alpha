@@ -4,10 +4,21 @@
     Test.name = "Tests";
     Test.testComponent = 'ValidatorTest';
 
-    function createTestFieldElement () {
-        var input = EL("input", {"type":"text", "name":"firstNameTest", "placeholder":"First Name", "value":"k"});
-        var field = EL("div", { "data-oem": "Field", "data-oem-id":"firstNameTest" }, [input] );
+    function createTestFieldComponent () {
+        var input = EL("input", {"type":"text", "name":"testFirstName", "placeholder":"First Name", "value":"k"});
+        var field = EL("div", { "data-oem": "Field", "data-oem-id":"testFirstName" }, [input] );
         return field;
+    }
+
+    function createTestValidatorComponent () {
+        var validator = EL("div", {
+            "data-oem":"Validator",
+            "data-oem-id":"testValMin",
+            "data-oem-field":"testFirstName",
+            "data-oem-validation":"minLength",
+            "data-oem-args":"len:3"
+        }, "First name must be at least 3 chars long");
+        return validator;
     }
 
     /**
@@ -17,17 +28,13 @@
      */
     Test.canDoBasicValidation = function(){
         var field = oem.create(oem.Components.Field.Prototype, {
-            el: createTestFieldElement()
-        }); 
+            el: createTestFieldComponent()
+        }).setValue('k'); 
         var validator = oem.create(oem.Components.Validator.Prototype, {
-            el: EL("div"),
-            id: "valMinTest",
-            field: "firstNameTest",
-            "validation": "minLength",
-            "args": "len:3",
-            "message": "First name must be at least 3 chars long"
-        }); 
-        oem.read("firstNameTest").validate();
+            el: createTestValidatorComponent(),
+        });; 
+        validator.init();
+        oem.read("testFirstName").validate();
         var test = validator.isShowing === true;
         Test.assert('can do basic validation', test, true);
     };
@@ -90,16 +97,16 @@
     oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('Validator', [
             Test.canDoBasicValidation,
-            // Test.validatesRequired,
-            // Test.validatesEmail,
-            // Test.validatesPassword,
-            // Test.validatesMatch,
-            // Test.validatesMixedCase,
-            // Test.validatesContainsNumber,
-            // Test.validatesMinLength,
-            // Test.validatesMaxLength,
-            // Test.validatesOptionInList,
-            // Test.validatesRegexPatterns
+            Test.validatesRequired,
+            Test.validatesEmail,
+            Test.validatesPassword,
+            Test.validatesMatch,
+            Test.validatesMixedCase,
+            Test.validatesContainsNumber,
+            Test.validatesMinLength,
+            Test.validatesMaxLength,
+            Test.validatesOptionInList,
+            Test.validatesRegexPatterns
         ]);
     });
 

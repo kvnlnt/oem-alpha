@@ -1,6 +1,13 @@
 [data-oem-test] {
-    margin:20px 0px;
+    margin:0px;
     font-size:14px;
+}
+
+[data-oem-test] li, 
+[data-oem-test] ul {
+    list-style: none;
+    margin:0;
+    padding:0;
 }
 
 [data-oem-test] .test-pass:before {
