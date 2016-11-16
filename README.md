@@ -1,4 +1,4 @@
-https://travis-ci.org/kvnlnt/oem.svg?branch=master
+![travis-ci](https://travis-ci.org/kvnlnt/oem.svg?branch=master)
 
 # OEM
 
