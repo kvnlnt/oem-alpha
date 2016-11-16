@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const Deployment = require('./deploy').Deployment;
 var phantomjs = require('phantomjs-prebuilt');
 var webdriverio = require('webdriverio');
-var options = { desiredCapabilities: { browserName: 'chrome', ensureCleanSession: true, applicationCacheEnabled: false } };
+var options = { desiredCapabilities: { browserName: 'chrome', ensureCleanSession: true } };
 var client = webdriverio.remote(options);
 
 const Test = function(deployment){
