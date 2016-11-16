@@ -32,7 +32,7 @@ Test.prototype = {
                 var testsFailed = 0;
                 results.forEach(function(result){
                     var resultText = result.replace(regex, "");
-                    var passed = result.indexOf("test-pass");
+                    var passed = result.indexOf("test-pass") != -1;
                     if(passed){
                         console.log(chalk.green('\u2713'), resultText);
                         testsPassed += 1;                     
@@ -43,8 +43,12 @@ Test.prototype = {
                     }
                 });
                 console.log("");
-                console.log(chalk.green("Passed"), testsPassed);
-                console.log(chalk.red("Failed"), testsFailed);
+                console.log(chalk.green(testsPassed), "passed");
+                if(isValid) {
+                    console.log(chalk.red(testsFailed), "failed");
+                } else {
+                    console.error(chalk.red(testsFailed), "failed");
+                }
                 console.log("");
                 program.kill() // quits PhantomJS
                 return;             
