@@ -4,6 +4,7 @@
     Test.name = null;
     Test.testComponent = null;
     Test.testSuiteName = 'Test';
+    Test.isComplete = false;
 
     Test.runTestSuite = function(testSuiteName, testSuite){
 
@@ -22,7 +23,7 @@
             if(this.hasOwnProperty('afterEach')) this.afterEach();
         }
         if(this.hasOwnProperty('afterAll')) this.afterAll();
-        
+        this.isComplete = true;
     };
 
     Test.assert = function(msg, a, b){

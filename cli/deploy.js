@@ -84,6 +84,12 @@ Deployment.prototype = {
         html += '<th>Components</th>';
         html += '<td>'+this.manifests.map(function(manifest){ return '<a href="#'+manifest.name+'">'+manifest.name+'</a>' }).join(', ')+'</td>';
         html += '</tr>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<th>Tests</th>';
+        html += '<td>Passed: <span class="tests-passed"></span><br/>';
+        html += ' Failed: <span class="tests-failed"></span></td>';
+        html += '</tr>';
         html += '</table>';
 
         // components
