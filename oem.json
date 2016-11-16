@@ -1,18 +1,6 @@
 {
     "deployments": {
-        "kitchen-sink": [
-            "core",
-            "accordion",
-            "button",
-            "field",
-            "form",
-            "responsify",
-            "submit-button",
-            "text-input",
-            "theme",
-            "validator"
-        ],
-        "foo.com": [
+        "all": [
             "core",
             "accordion",
             "button",
@@ -27,7 +15,7 @@
     },
     "demos": {
         "foo.com": {
-            "deployment": "foo.com"
+            "deployment": "all"
         }
     },
     "development": {
