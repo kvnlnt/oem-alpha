@@ -5,7 +5,7 @@
     Test.testComponent = 'Accordion';
 
     Test.sanityCheck = function(){
-        Test.assert('Tests are working', true, true);
+        Test.assert('Tests are working', false, true);
     };
 
     Test.afterAll = function(){

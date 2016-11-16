@@ -1,3 +1,5 @@
+https://travis-ci.org/kvnlnt/oem.svg?branch=master
+
 # OEM
 
 > Create tomorrow's components for today and tomorrow.
