@@ -5,6 +5,7 @@
   "main": "cli/oem.js",
   "scripts": {
     "start": "node ./oem",
+    "test": "node oem test kitchen-sink", 
     "postinstall": "alias oem='node oem'"
   },
   "author": "Toolhouse Inc.",
