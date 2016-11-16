@@ -95,7 +95,9 @@ Deployment.prototype = {
             html += '</section>';
         });
 
-        template = template.replace("<!-- HTML -->", html, 'utf8')
+        var ts = Date.now();
+        template = template.replace(/<!-- TS -->/g, ts, 'utf8');
+        template = template.replace("<!-- HTML -->", html, 'utf8');
         fs.outputFileSync(this.directory + '/index.html', template);
 
         // launch pattern lib
