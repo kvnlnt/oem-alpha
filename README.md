@@ -27,8 +27,8 @@ OEM is a small web component framework that allows you to write and maintain you
 <a name="features"></a>
 ## Features
 
-  &nbsp; |
- ------ |
+*include...* |
+ :------ |
 &#x2713; Conventional and Frustration Free Workflow |
 &#x2713; 100% Native Javascript, Html and Css |
 &#x2713; Unit and Integration Test Coverage |
