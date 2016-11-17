@@ -2,40 +2,54 @@ const oem = require('../oem.json');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const Deployment = require('./deploy').Deployment;
-var phantomjs = require('phantomjs-prebuilt');
 var webdriverio = require('webdriverio');
-var options = { desiredCapabilities: { browserName: 'chrome', ensureCleanSession: true } };
+var options = {
+    desiredCapabilities: {
+        browserName: 'chrome',
+        ensureCleanSession: true
+    }
+};
 var client = webdriverio.remote(options);
 
-const Test = function(deployment){
+const Test = function (deployment) {
     this.deployment = deployment;
     this.deploy().test().reply();
 };
 
 Test.prototype = {
 
-    deploy: function(){
+    deploy: function () {
         new Deployment(this.deployment, false);
         return this;
     },
 
-    test: function(){
+    test: function () {
+
         var regex = /(<([^>]+)>)/ig;
-        phantomjs.run('--webdriver=4444').then(program => {
-          client
+
+        client
             .init()
-            .url('./deploy/'+this.deployment+'/index.html')
+            .url('./deploy/' + this.deployment + '/index.html')
+            .waitForExist('html.tests-completed', 5000)
+            .then(function(res){
+              console.log('Testing complete:');
+              console.log("");
+            })
+            .catch(function(err){
+              console.log('Tests did not complete succesfully', err);
+              process.exit(1);
+            })
             .getHTML('li.test')
             .then(results => {
                 var isValid = true;
                 var testsPassed = 0;
                 var testsFailed = 0;
-                results.forEach(function(result){
+                results.forEach(function (result) {
                     var resultText = result.replace(regex, "");
                     var passed = result.indexOf("test-pass") != -1;
-                    if(passed){
+                    if (passed) {
                         console.log(chalk.green('\u2713'), resultText);
-                        testsPassed += 1;                     
+                        testsPassed += 1;
                     } else {
                         isValid = false;
                         testsFailed += 1;
@@ -45,17 +59,20 @@ Test.prototype = {
                 console.log("");
                 console.log(chalk.green(testsPassed), "passed");
                 console.log(chalk.red(testsFailed), "failed");
-                if(!isValid) process.exit(1);
+                if (!isValid) process.exit(1);
                 console.log("");
-                program.kill() // quits PhantomJS
-                return;             
+                return;
+            }).
+            catch(function(err){
+                console.log('No tests found');
+                process.exit(1);
             })
             .end();
-        });
+
         return this;
     },
 
-    reply: function(){
+    reply: function () {
         console.log("");
         console.log("");
         console.log(chalk.bgWhite("       "));
