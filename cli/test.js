@@ -7,7 +7,9 @@ var options = {
     desiredCapabilities: {
         browserName: 'chrome',
         ensureCleanSession: true
-    }
+    },
+    host: 'localhost',
+    port: 4444
 };
 var client = webdriverio.remote(options);
 
