@@ -1,6 +1,6 @@
-(function(COMPONENTS, CORE, EL) {
+(function(COMPONENTS, TEST, EL) {
 
-    var Test = Object.create(CORE.Test); // call super constructor
+    var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'Accordion';
 
@@ -11,14 +11,10 @@
         var dd2 = EL("dd", {"class":"expanded"}, "dd2");
         var dd3 = EL("dd", {}, "dd3");
         var dt3 = EL("dt", {}, "dt3");
-        var testEl = EL("dl", 
-            {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, 
-            [dt1, dd1, dt2, dd2, dt3, dd3]
-        );
-        document.body.appendChild(testEl);
-        oem.create(COMPONENTS.Accordion.Prototype, {
-            el: testEl
-        });
+        var testEl = EL("dl", {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
+        var testComponent = document.querySelector('[data-oem-test="Accordion"]');
+        testComponent.appendChild(testEl);
+        oem.create(COMPONENTS.Accordion.Prototype, { el: testEl });
         oem.read("testAccordion").init();
     }
 
@@ -68,12 +64,12 @@
         firstItem.getDt().click();
         var test = secondItem.isExpanded() === false;
         Test.assert('Can contract non target item', test, true);
-    };
+    };   
 
     /**
      * Run tests
      */
-    CORE.Events.addEventListener(CORE.EVENTS.DOCUMENT_READY, function(){
+    oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
         Test.runTestSuite('Accordion', [
             Test.canExpandItemByDefault,
             Test.canExpandAndContractTargetItem,
@@ -86,4 +82,4 @@
     COMPONENTS.Accordion.Test = Test;
     return COMPONENTS;
 
-})(oem.Components, oem.Core, oem.Core.El);
+})(oem.Components, oem.Core.Test, oem.Core.El);

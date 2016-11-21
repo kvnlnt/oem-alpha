@@ -5,11 +5,25 @@
     });
 
     Prototype.init = function () {
+
         var that = this;
         this.items = [];
         this.dts = this.getEl().querySelectorAll('dt');
         this.dds = this.getEl().querySelectorAll('dd');
-        this.getDts().forEach(this.addAllItems.bind(this));
+
+        // add items (use for loop to accomodate array like object collection)
+        for(var i = 0; i < this.dts.length; i = i + 1 ){
+            var item = new this.Item({
+                term: this.getDts()[i].innerHTML,
+                definition: this.getDts()[i].innerHTML,
+                dt: this.getDts()[i],
+                dd: this.getDds()[i],
+                expanded: this.getDds()[i].classList.contains("expanded"),
+                list: this
+            });
+            this.addItem(item);
+        }
+
         return this;
     };
 
@@ -89,18 +103,6 @@
     Prototype.addItem = function (item) {
         this.getItems().push(item);
         return this;
-    };
-
-    Prototype.addAllItems = function (item, i) {
-        var newItem = new this.Item({
-            term: this.getDts()[i].innerHTML,
-            definition: this.getDts()[i].innerHTML,
-            dt: this.getDts()[i],
-            dd: this.getDds()[i],
-            expanded: this.getDds()[i].classList.contains("expanded"),
-            list: this
-        });
-        this.addItem(newItem);
     };
 
     Prototype.collapseAll = function (item) {
