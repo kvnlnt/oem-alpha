@@ -1,3 +1,9 @@
+/**
+ *
+ * @class   Component
+ * @desc    Core prototype that all components should be prototyped from
+ */
+
 (function(CORE) {
 
     var Component = {};

@@ -1,3 +1,10 @@
+/**
+ *
+ * @module     AutoInitializer
+ * @desc       Onload searches the DOM for any instances of components present in oem.Components
+ *
+ */
+
 (function(CORE) {
 
     // Card component

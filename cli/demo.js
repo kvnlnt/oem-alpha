@@ -9,7 +9,7 @@ const util = require('./util');
 
 const Demo = function (demo, options) {
     this.demo = demo;
-    this.components = oem.deployments[this.demo];
+    this.components = oem.deployments[oem.demos[this.demo].deployment];
     this.directory = './demos/'+demo;
     this.manifests = util.getManifests(this.components);
     this.reset().copyDeploymentFiles().createDemoMenu().createDemoPages().reply();

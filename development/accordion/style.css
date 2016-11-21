@@ -1,27 +1,33 @@
 [data-oem="Accordion"] {
+  margin:0;
+  padding:0;
 }
 
-[data-oem="Accordion"] label {
-  background-color: black;
-  color: white;
-  display:block;
+[data-oem="Accordion"] dt {
+  margin:0;
+  line-height:40px;
+  padding:10px;
+  background-color: #000000;
+  color: #FFF;
   cursor:pointer;
-  line-height: 34px;
-  text-indent: 13px;
 }
 
-[data-oem="Accordion"] input {
-    display: none;
+[data-oem="Accordion"] dt:hover {
+  background-color: #000000;
 }
 
-[data-oem="Accordion"] article {
-    margin-top: -1px;
-    overflow: hidden;
-    height: 0;
-    position: relative;
+[data-oem="Accordion"] dd {
+  margin:0;
+  padding:0px 10px;
+  height:0;
+  overflow:hidden;
+  transition:all 0.25s;
+  border-bottom:1px solid #FFFFFF;
 }
 
-[data-oem="Accordion"] input:checked ~ article {
-  height: auto;
-  transition: all 1s;
+[data-oem="Accordion"] dd.expanded {
+  padding:10px;
+  height:auto;
+  overflow:visible;
+  transition:all 0.25s;
 }

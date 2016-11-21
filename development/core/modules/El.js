@@ -1,24 +1,29 @@
-// USAGE
-// =====
-// var grandchild = el("div", {class:"subchild"}, "grandchild");
-// var child1 = el("div", { class:"child"}, ["child1", grandchild]);
-// var child2 = el("div", { class:"child"}, "child2");
-// var parent = el("div", { class: "parent" }, ["parents just don't understand", child1, child2]);
-// 
-// RESULT
-// ======
-// <div class="parent">
-//     parents just don't understand
-//     <div class="child">
-//         child1
-//         <div class="subchild">
-//             grandchild
-//         </div>
-//     </div>
-//     <div class="child">
-//         child2
-//     </div>
-// </div>
+/**
+ *
+ * @class   El
+ * @desc    Simple DOM element tool
+ * example
+ * var grandchild = el("div", {class:"subchild"}, "grandchild");
+ * var child1 = el("div", { class:"child"}, ["child1", grandchild]);
+ * var child2 = el("div", { class:"child"}, "child2");
+ * var parent = el("div", { class: "parent" }, ["parents just don't understand", child1, child2]);
+ * 
+ * // result
+ * <div class="parent">
+ *     parents just don't understand
+ *    <div class="child">
+ *        child1
+ *        <div class="subchild">
+ *            grandchild
+ *        </div>
+ *    </div>
+ *   <div class="child">
+ *       child2
+ *   </div>
+ * </div>
+ */
+
+
 
 (function(CORE) { 
 
