@@ -4,59 +4,70 @@
     Test.name = "Tests";
     Test.testComponent = 'Accordion';
 
-    // test element
-    // tests everything in memory
-    var dt1 = EL("dt", {}, "dt1");
-    var dd1 = EL("dd", {}, "dd1");
-    var dt2 = EL("dt", {}, "dt2");
-    var dd2 = EL("dd", {"class":"expanded"}, "dd2");
-    var dd3 = EL("dd", {}, "dd3");
-    var dt3 = EL("dt", {}, "dt3");
-    var testEl = EL("dl", {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
+    function createAndInitializeTestComponent () {
+        var dt1 = EL("dt", {}, "dt1");
+        var dd1 = EL("dd", {}, "dd1");
+        var dt2 = EL("dt", {}, "dt2");
+        var dd2 = EL("dd", {"class":"expanded"}, "dd2");
+        var dd3 = EL("dd", {}, "dd3");
+        var dt3 = EL("dt", {}, "dt3");
+        var testEl = EL("dl", 
+            {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, 
+            [dt1, dd1, dt2, dd2, dt3, dd3]
+        );
+        document.body.appendChild(testEl);
+        oem.create(COMPONENTS.Accordion.Prototype, {
+            el: testEl
+        });
+        oem.read("testAccordion").init();
+    }
 
-    var testAccordion = oem.create(COMPONENTS.Accordion.Prototype, {
-        el: testEl
-    });
+    Test.beforeEach = function() {
+        return createAndInitializeTestComponent();
+    };
+
+    Test.afterEach = function() {
+        return oem.destroy('testAccordion');
+    };
 
     /**
      * Run this test first before we start interacting with the component
      */
     Test.canExpandItemByDefault = function(){
-        var term = testAccordion.getTerm(1);
-        var test = term.isExpanded === true;
+        var testAccordion = oem.read('testAccordion');
+        var item = testAccordion.getItem(1);
+        var test = item.isExpanded() === true;
         Test.assert('Can expand target by default', test, true);
     };
 
     Test.canExpandAndContractTargetItem = function(){
-        var term = testAccordion.getTerm(0);
-        term.click();
-        var test1 = term.isExpanded === true;
-        term.click();
-        var test2 = term.isExpanded === false;
+        var testAccordion = oem.read('testAccordion');
+        var item = testAccordion.getItem(0);
+        item.getDt().click();
+        var test1 = item.isExpanded() === true;
+        item.getDt().click();
+        var test2 = item.isExpanded() === false;
         var test = test1 && test2;
         Test.assert('Can expand and contract target item', test, true);
     };
 
     Test.canContractNonTargetItems = function(){
-        var term = testAccordion.getTerm(1);
-        var firstTerm = testAccordion.getTerm(0);
-        term.click();
-        var test = firstTerm.isExpanded === false;
+        var testAccordion = oem.read('testAccordion');
+        var item = testAccordion.getItem(1);
+        var firstItem = testAccordion.getItem(0);
+        item.getDt().click();
+        var test = firstItem.isExpanded() === false;
         Test.assert('Can contract non target items', test, true);
     };
 
     Test.canContractNonTargetItem = function(){
-        var firstTerm = testAccordion.getTerm(0);
-        var secondTerm = testAccordion.getTerm(1);
-        secondTerm.click();
-        firstTerm.click();
-        var test = secondTerm.isExpanded === false;
-        testAccordion.contractAll(); // cleanup
+        var testAccordion = oem.read('testAccordion');
+        var firstItem = testAccordion.getItem(0);
+        var secondItem = testAccordion.getItem(1);
+        secondItem.getDt().click();
+        firstItem.getDt().click();
+        var test = secondItem.isExpanded() === false;
         Test.assert('Can contract non target item', test, true);
-    };
-
-    Test.afterAll = function(){
-        oem.destroy(testAccordion.id);
     };
 
     /**
@@ -66,8 +77,8 @@
         Test.runTestSuite('Accordion', [
             Test.canExpandItemByDefault,
             Test.canExpandAndContractTargetItem,
-            Test.canContractNonTargetItem,
-            Test.canContractNonTargetItems
+            Test.canContractNonTargetItems,
+            Test.canContractNonTargetItem
         ]);
     });
 

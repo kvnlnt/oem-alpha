@@ -1,81 +1,112 @@
-(function(COMPONENTS, PROTOTYPE, COMPONENT) {
+(function (COMPONENTS, PROTOTYPE, COMPONENT) {
 
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Accordion"
     });
 
-    Prototype.expandClass = "expanded";
-    Prototype.terms = [];
-    Prototype.definitions = [];
-
-    Prototype.init = function() {
-        this.registerEvents();
-    };
-
-    Prototype.getTerms = function(){
-        return this.terms;
-    };
-
-    Prototype.registerEvents = function() {
-        var list = this.getEl();
-        list.terms = list.querySelectorAll('dt');
-        list.definitions = list.querySelectorAll('dd');
-        var term;
-        var definition;
-        for (var i = 0; i < list.terms.length; i = i + 1) {
-            term = list.terms[i];
-            Prototype.terms.push(term);
-            definition = list.definitions[i];
-            Prototype.definitions.push(definition);
-            term.isExpanded = definition.classList.contains(this.expandClass);
-            term.definition = list.definitions[i];
-            term.addEventListener('click', this.toggle.bind(this));
-        }
+    Prototype.init = function () {
+        var that = this;
+        this.items = [];
+        this.dts = this.getEl().querySelectorAll('dt');
+        this.dds = this.getEl().querySelectorAll('dd');
+        this.getDts().forEach(this.addAllItems.bind(this));
         return this;
     };
 
-    Prototype.getTerm = function(i){
-        return this.terms[i];
-    };
-
-    Prototype.getDefinition = function(i){
-        return this.definitions[i];
-    };
-
-    Prototype.toggle = function(e) {
-        if (e.preventDefault) e.preventDefault(); // catch for event triggered
-        var term = e.target;
-        this.contractAll(term);
-        if (term.isExpanded) {
-            this.contract(term);
-        } else {
-            this.expand(term);
-        }
+    Prototype.Item = function (options) {
+        this.list = options.list;
+        this.term = options.term;
+        this.definition = options.definition;
+        this.dt = options.dt;
+        this.dd = options.dd;
+        this.expanded = options.expanded;
+        this.init();
         return this;
     };
 
-    Prototype.expand = function(term) {
-        term.definition.classList.add(this.expandClass);
-        term.isExpanded = true;
-        return this;
-    };
-
-    Prototype.contract = function(term) {
-        term.definition.classList.remove(this.expandClass);
-        term.isExpanded = false;
-        return this;
-    };
-
-    Prototype.contractAll = function(term) {
-        var term = term || null;
-        var list = this.getEl();
-        var currentTerm;
-        for (var i = 0; i < list.terms.length; i = i + 1) {
-            currentTerm = list.terms[i];
-            if (currentTerm != term) {
-                this.contract(currentTerm);
+    Prototype.Item.prototype = {
+        init: function () {
+            this.getDt().addEventListener('click', this.toggle.bind(this));
+        },
+        getTerm: function () {
+            return this.term;
+        },
+        getDefinition: function () {
+            return this.definition;
+        },
+        getDt: function () {
+            return this.dt;
+        },
+        getDd: function () {
+            return this.dd;
+        },
+        getList: function () {
+            return this.list;
+        },
+        isExpanded: function () {
+            return this.expanded;
+        },
+        setExpanded: function (expanded) {
+            this.expanded = expanded;
+        },
+        toggle: function () {
+            this.getList().collapseAll(this);
+            if (this.isExpanded()) {
+                this.collapse();
+            } else {
+                this.expand();
             }
+            return this;
+        },
+        expand: function () {
+            this.getDd().classList.add("expanded");
+            this.setExpanded(true);
+            return this;
+        },
+        collapse: function () {
+            this.getDd().classList.remove("expanded");
+            this.setExpanded(false);
+            return this;
         }
+    };
+
+    Prototype.getDds = function () {
+        return this.dds;
+    };
+
+    Prototype.getDts = function () {
+        return this.dts;
+    };
+
+    Prototype.getItems = function () {
+        return this.items;
+    };
+
+    Prototype.getItem = function (i) {
+        return this.getItems()[i];
+    };
+
+    Prototype.addItem = function (item) {
+        this.getItems().push(item);
+        return this;
+    };
+
+    Prototype.addAllItems = function (item, i) {
+        var newItem = new this.Item({
+            term: this.getDts()[i].innerHTML,
+            definition: this.getDts()[i].innerHTML,
+            dt: this.getDts()[i],
+            dd: this.getDds()[i],
+            expanded: this.getDds()[i].classList.contains("expanded"),
+            list: this
+        });
+        this.addItem(newItem);
+    };
+
+    Prototype.collapseAll = function (item) {
+        this.getItems().forEach(function (currItem) {
+            if (item.getTerm() != currItem.getTerm()) currItem.collapse();
+        });
         return this;
     };
 

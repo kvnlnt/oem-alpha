@@ -7,9 +7,7 @@ const webdriverio = require('webdriverio');
 const options = {
     desiredCapabilities: {
         browserName: 'chrome'
-    },
-    host: 'localhost',
-    port: 4444
+    }
 };
 const client = webdriverio.remote(options);
 
