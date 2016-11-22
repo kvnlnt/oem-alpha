@@ -24,6 +24,7 @@
         "core": "./development/core/manifest.json",
         "field": "./development/field/manifest.json",
         "form": "./development/form/manifest.json",
+        "my-component": "./development/my-component/manifest.json",
         "responsify": "./development/responsify/manifest.json",
         "submit-button": "./development/submit-button/manifest.json",
         "text-input": "./development/text-input/manifest.json",

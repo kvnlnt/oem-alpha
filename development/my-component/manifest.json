@@ -1,0 +1,22 @@
+{
+    "name": "MyComponent",
+    "version": "1.0.0",
+    "description": "MyComponent component",
+    "components": ["core"],
+    "scripts": [
+        "./development/my-component/module.js",
+        "./development/my-component/prototype.js"
+    ],
+    "styles": [
+        "./development/my-component/style.css"
+    ],
+    "tests": [
+        "./development/my-component/test.js"
+    ],
+    "templates": {
+        "description": "./development/my-component/templates/description.html",
+        "examples": "./development/my-component/templates/examples.html",
+        "tests": "./development/my-component/templates/tests.html",
+        "usage": "./development/my-component/templates/usage.html"
+    }
+}
