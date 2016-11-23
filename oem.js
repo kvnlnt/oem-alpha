@@ -43,7 +43,7 @@ try {
         case ARG.DEMO:
             if(ARGS[1] === void 0) throw 'please specify a demo configuration. See package.oem.demos';
             if(oem.demos[ARGS[1]] === void 0) throw 'no such demo exists, check package.json';
-            var demo = new Demo(ARGS[1]);
+            var demo = new Demo(ARGS[1], ARGS);
             break;
         case ARG.DEPLOY:
             if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';

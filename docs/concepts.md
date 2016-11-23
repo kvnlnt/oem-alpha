@@ -1,6 +1,6 @@
 # OEM
 
-[&larr; README](../README.md)
+[&larr; Guide](./guide.md)
 
 ## Concepts
 The following concepts are helpful to keep in mind when building components with Oem. 

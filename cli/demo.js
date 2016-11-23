@@ -7,7 +7,9 @@ const opener = require("opener");
 const Deployment = require('./deploy').Deployment;
 const util = require('./util');
 
-const Demo = function (demo, options) {
+const Demo = function (demo, args) {
+    this.options = util.getOptions(args);
+    this.autolaunch = this.options.autolaunch === "false" ? false : true;
     this.demo = demo;
     this.components = oem.deployments[oem.demos[this.demo].deployment];
     this.directory = './demos/'+demo;
@@ -34,7 +36,7 @@ Demo.prototype = {
         fs.outputFileSync(this.directory + '/index.html', template);
 
         // launch pattern lib
-        opener(this.directory + '/index.html');
+        if(this.autolaunch) opener(this.directory + '/index.html');
 
         return this;
     },

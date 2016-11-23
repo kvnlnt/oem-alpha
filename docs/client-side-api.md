@@ -1,6 +1,6 @@
 # OEM
 
-[&larr; README](../README.md)
+[&larr; Guide](./guide.md)
 
 ## Client-side Api
 The Oem Client-side Api is component library you're creating. All components utilizing the lifecycle methods made available by the api in order to facilitate component to component communcation and composition. The entire api is defined in the `./development/core/module.js` module.

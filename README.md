@@ -19,7 +19,7 @@ OEM is a small web component framework that allows you to write and maintain you
 1. [Demos](#demo-pattern-library-)
 1. [Deployment](#deployment)
 1. [Testing](#testing)
-1. [Tutorials](#tutorials)
+1. [Guide](./docs/guide.md)
 
 <br/>
 
@@ -111,14 +111,3 @@ When you run a deployment, you can see your test results output to the autogener
 The testing "framework" provided by Oem is incredibly simple. Follow the link below to learn out to write tests.
 
 [More on testing](./docs/testing.md)
-
-<br/>
-
-## Tutorials
-- [Concepts](./docs/concepts.md)
-- [Client-side Api](./docs/client-side-api.md)
-- [Development](./docs/development.md)
-- [Debugging](./docs/debugging.md)
-- [Demo](./docs/demo.md)
-- [Deployment](./docs/deployment.md)
-- [Testing](./docs/testing.md)
