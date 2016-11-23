@@ -49,16 +49,6 @@
     };
 
     /**
-     * TODO: Update component
-     *
-     * @param      {<type>}  component  The component
-     * @param      {<type>}  settings   The settings
-     */
-    OEM.update = function (componentId, settings) {
-        return component;
-    };
-
-    /**
      * Delete component instance and element from DOM
      */
     OEM.destroy = function (componentId) {
