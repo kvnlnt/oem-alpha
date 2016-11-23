@@ -2,12 +2,6 @@
 
 [&larr; Guide](./guide.md)
 
-## Testing
-
-### Table of contents
-1. [Run A Test](#run-a-test)
-1. [Testing](#testing)
-
 ### Run A Test
 To run a test, use the test cli tool and provide the name of a deployment like so:
 
