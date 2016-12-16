@@ -16,16 +16,33 @@
             <input type="text" name="firstName" placeholder="First Name" value="Kevin"></input>
             <div 
                 data-oem="Validator"
-                data-oem-id="valMin"
+                data-oem-id="valMinFirstName"
                 data-oem-field="firstName"
                 data-oem-validation="minLength"
                 data-oem-args="len:3">First name must be at least 3 chars long</div>
             <div 
                 data-oem="Validator"
-                data-oem-id="valMax"
+                data-oem-id="valMaxFirstName"
                 data-oem-field="firstName"
                 data-oem-validation="maxLength"
                 data-oem-args="len:6">First name must be less than 6 chars long</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div 
+            data-oem="Textarea" 
+            data-oem-id="textarea"
+            data-oem-form="basicForm">
+            <label for="exampleTextarea">Biography</label>
+            <div class="help">Please enter the story of your life</div>
+            <textarea name="exampleTextarea" placeholder="...text..."></textarea>
+            <div 
+                data-oem="Validator"
+                data-oem-id="valMinTextarea"
+                data-oem-field="textarea"
+                data-oem-validation="minLength"
+                data-oem-args="len:3">Sorry, you're life story must be greater than 3 characters long!</div>
         </div>
     </fieldset>
 

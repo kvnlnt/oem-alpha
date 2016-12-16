@@ -21,7 +21,7 @@ List.prototype = {
         if(Object.keys(oem.development).length){
             Object.keys(oem.development).forEach(function(component){
                 var manifest = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
-                console.log(chalk.bold(manifest.name), that.calcSpaces(manifest.name), manifest.description);
+                console.log(chalk.bold(component), that.calcSpaces(component), manifest.description);
             });    
         } else {
             console.log("You have no components.");

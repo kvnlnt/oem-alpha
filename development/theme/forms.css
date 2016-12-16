@@ -1,4 +1,5 @@
-[data-oem="TextInput"] > input {
+[data-oem="TextInput"] > input,
+[data-oem="Textarea"] > textarea {
     width:100%;
     font-size: 12px;
     padding:10px 0;
@@ -7,13 +8,15 @@
     border-radius: 2px;
 }
 
-[data-oem="TextInput"] .help  {
+[data-oem="TextInput"] .help,
+[data-oem="Textarea"] .help  {
     font-size: 12px;
     opacity: 0.6;
     margin: 0 0 5px;
 }
 
-[data-oem="TextInput"] label {
+[data-oem="TextInput"] label,
+[data-oem="Textarea"] label {
     font-size: 14px;
     margin: 10px 0;
 }

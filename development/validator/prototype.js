@@ -24,7 +24,7 @@
         this.validation = this.getEl().dataset.oemValidation;
         this.args = UTIL.parseStringToObject(this.getEl().dataset.oemArgs);
         this.message = this.getEl().innerText;
-        oem.read(this.field).addValidator(this);
+        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.setup.bind(this));
     };
     
     // GETTERS
@@ -55,6 +55,10 @@
     };
 
     // METHODS
+    
+    Prototype.setup = function(){
+        oem.read(this.getField()).addValidator(this);
+    };
     
     Prototype.show = function(){
         this.getEl().style.display = 'block';

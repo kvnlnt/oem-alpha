@@ -20,16 +20,14 @@
 
     // DEFAULTS
 
-    Prototype.form = null;
-    Prototype.value = null;
-    Prototype.validators = [];
-
     Prototype.setupField = function(){
+        this.validators = [];
         this.form = this.getEl().dataset.oemForm;
         if(oem.read(this.form)) oem.read(this.form).addField(this);
-        this.setEvents({
-            changed: this.getId() + ":changed"
-        });
+        var events = {};
+        events.changed = this.getId() + ":changed";
+        this.setEvents(events);
+        this.setValue(this.getField().value);
     };
 
     // GETTERS

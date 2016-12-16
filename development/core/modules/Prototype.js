@@ -5,10 +5,10 @@
         // default settins
         var settings = settings || {};
 
-        // loop and collect Object.create overwrite settings
-        // only applies to pre-existing properties on prototype
+        // init properties object
         var propertiesObject = {};
 
+        // apply overwrites
         for (var setting in settings) {
             propertiesObject[setting] = {
                 value: settings[setting]

@@ -28,6 +28,7 @@
         "responsify": "./development/responsify/manifest.json",
         "submit-button": "./development/submit-button/manifest.json",
         "text-input": "./development/text-input/manifest.json",
+        "textarea": "./development/textarea/manifest.json",
         "theme": "./development/theme/manifest.json",
         "validator": "./development/validator/manifest.json"
     }

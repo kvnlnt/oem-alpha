@@ -21,14 +21,15 @@
     // DEFAULTS 
     // ========================================================
     // 1. Use this area to set parameters and defaults on the prototype not part of the original Core.Component prototype.
-    // 2. Be sure to use getters/setters for each param
+    // Reminder: If you plan to use this component as a prototype for other components, this parameter will be "global" to those components
+    // in that case, maybe try and set up your "local" parameters inside the init function.
 
     // Prototype.newProperty = someValue;
 
 
     // INIT
     // ========================================================
-    // 1. Use this area to run setup functions.
+    // 1. Use this area to run setup functions and initialize params
     // 2. The init function from the Core.Component prototype will be called automatically. 
     // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_COLLECTED):
     //      1. register that event in the init function

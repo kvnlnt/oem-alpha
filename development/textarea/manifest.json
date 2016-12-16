@@ -1,0 +1,22 @@
+{
+    "name": "Textarea",
+    "version": "1.0.0",
+    "description": "Textarea component",
+    "components": ["core", "field"],
+    "scripts": [
+        "./development/textarea/module.js",
+        "./development/textarea/prototype.js"
+    ],
+    "styles": [
+        "./development/textarea/style.css"
+    ],
+    "tests": [
+        "./development/textarea/test.js"
+    ],
+    "templates": {
+        "description": "./development/textarea/templates/description.html",
+        "examples": "./development/textarea/templates/examples.html",
+        "tests": "./development/textarea/templates/tests.html",
+        "usage": "./development/textarea/templates/usage.html"
+    }
+}

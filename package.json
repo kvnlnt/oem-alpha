@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./oem",
     "test": "node oem test all",
+    "setup": "alias oem=\"node oem\"",
     "postinstall": "alias oem='node oem'"
   },
   "author": "Toolhouse Inc.",
