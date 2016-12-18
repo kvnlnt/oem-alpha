@@ -14,8 +14,8 @@
     };
 
     Prototype.getField = function(){
-        var input = this.getEl().querySelector('input');
-        return input;
+        var field = this.getEl().querySelector('input');
+        return field;
     };
 
     Prototype.handleInputChange = function(){

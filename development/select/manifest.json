@@ -1,0 +1,22 @@
+{
+    "name": "Select",
+    "version": "1.0.0",
+    "description": "Select component",
+    "components": ["core", "field"],
+    "scripts": [
+        "./development/select/module.js",
+        "./development/select/prototype.js"
+    ],
+    "styles": [
+        "./development/select/style.css"
+    ],
+    "tests": [
+        "./development/select/test.js"
+    ],
+    "templates": {
+        "description": "./development/select/templates/description.html",
+        "examples": "./development/select/templates/examples.html",
+        "tests": "./development/select/templates/tests.html",
+        "usage": "./development/select/templates/usage.html"
+    }
+}

@@ -7,8 +7,10 @@
         "validator",
         "submit-button",
         "field",
+        "select",
         "text-input",
         "textarea",
+        "theme",
         "button"
     ],
     "styles": [

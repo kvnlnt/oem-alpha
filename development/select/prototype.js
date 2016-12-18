@@ -1,7 +1,10 @@
 (function(COMPONENTS, FIELD, PROTOTYPE) {
 
+
+    // PROTOTYPE
+
     var Prototype = PROTOTYPE(FIELD, {
-        type: "Textarea"
+        type: "Select"
     });
 
     Prototype.init = function(){
@@ -12,7 +15,7 @@
     };
 
     Prototype.getField = function(){
-        var field = this.getEl().querySelector('textarea');
+        var field = this.getEl().querySelector('select');
         return field;
     };
 
@@ -22,11 +25,12 @@
         oem.events.dispatch(this.getEvents().changed, this, currValue);
     };
 
-
-    COMPONENTS.Textarea.Prototype = Prototype;
+   
+    COMPONENTS.Select.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components,
+})(
+    oem.Components,
     oem.Components.Field.Prototype,
     oem.Core.Prototype
 );
