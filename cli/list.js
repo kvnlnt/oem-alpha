@@ -1,6 +1,7 @@
 const oem = require('../oem.json');
 const chalk = require('chalk');
 const fs = require('fs-extra');
+const exec = require('child_process').execSync;
 
 const List = function(componentName){
     this.list();
@@ -20,8 +21,10 @@ List.prototype = {
 
         if(Object.keys(oem.development).length){
             Object.keys(oem.development).forEach(function(component){
+                var gitRelativeTime = "git log -n 1 --date=relative --pretty=format:%cd -- " + oem.development[component].replace('/manifest.json', '');
+                var stdoutTime = exec(gitRelativeTime).toString();
                 var manifest = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
-                console.log(chalk.bold(component), that.calcSpaces(component), manifest.description);
+                console.log(chalk.bold(component), that.calcSpaces(component), manifest.description, '-', stdoutTime);
             });    
         } else {
             console.log("You have no components.");
