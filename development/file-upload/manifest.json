@@ -1,0 +1,22 @@
+{
+    "name": "FileUpload",
+    "version": "1.0.0",
+    "description": "FileUpload component",
+    "components": ["core"],
+    "scripts": [
+        "./development/file-upload/module.js",
+        "./development/file-upload/prototype.js"
+    ],
+    "styles": [
+        "./development/file-upload/style.css"
+    ],
+    "tests": [
+        "./development/file-upload/test.js"
+    ],
+    "templates": {
+        "description": "./development/file-upload/templates/description.html",
+        "examples": "./development/file-upload/templates/examples.html",
+        "tests": "./development/file-upload/templates/tests.html",
+        "usage": "./development/file-upload/templates/usage.html"
+    }
+}

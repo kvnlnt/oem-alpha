@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var Radio = {};
+    
+    // exports
+    COMPONENTS.Radio = Radio;
     return COMPONENTS;
 
 })(oem.Components);

@@ -1,0 +1,22 @@
+{
+    "name": "Badge",
+    "version": "1.0.0",
+    "description": "Badge component",
+    "components": ["core"],
+    "scripts": [
+        "./development/badge/module.js",
+        "./development/badge/prototype.js"
+    ],
+    "styles": [
+        "./development/badge/style.css"
+    ],
+    "tests": [
+        "./development/badge/test.js"
+    ],
+    "templates": {
+        "description": "./development/badge/templates/description.html",
+        "examples": "./development/badge/templates/examples.html",
+        "tests": "./development/badge/templates/tests.html",
+        "usage": "./development/badge/templates/usage.html"
+    }
+}

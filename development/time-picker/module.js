@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var TimePicker = {};
+    
+    // exports
+    COMPONENTS.TimePicker = TimePicker;
     return COMPONENTS;
 
 })(oem.Components);

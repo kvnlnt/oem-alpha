@@ -1,0 +1,22 @@
+{
+    "name": "ContextMenu",
+    "version": "1.0.0",
+    "description": "ContextMenu component",
+    "components": ["core"],
+    "scripts": [
+        "./development/context-menu/module.js",
+        "./development/context-menu/prototype.js"
+    ],
+    "styles": [
+        "./development/context-menu/style.css"
+    ],
+    "tests": [
+        "./development/context-menu/test.js"
+    ],
+    "templates": {
+        "description": "./development/context-menu/templates/description.html",
+        "examples": "./development/context-menu/templates/examples.html",
+        "tests": "./development/context-menu/templates/tests.html",
+        "usage": "./development/context-menu/templates/usage.html"
+    }
+}

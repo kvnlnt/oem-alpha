@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var FileUpload = {};
+    
+    // exports
+    COMPONENTS.FileUpload = FileUpload;
     return COMPONENTS;
 
 })(oem.Components);

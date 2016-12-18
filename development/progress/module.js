@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var Progress = {};
+    
+    // exports
+    COMPONENTS.Progress = Progress;
     return COMPONENTS;
 
 })(oem.Components);

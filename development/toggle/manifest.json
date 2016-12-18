@@ -1,0 +1,22 @@
+{
+    "name": "Toggle",
+    "version": "1.0.0",
+    "description": "Toggle component",
+    "components": ["core"],
+    "scripts": [
+        "./development/toggle/module.js",
+        "./development/toggle/prototype.js"
+    ],
+    "styles": [
+        "./development/toggle/style.css"
+    ],
+    "tests": [
+        "./development/toggle/test.js"
+    ],
+    "templates": {
+        "description": "./development/toggle/templates/description.html",
+        "examples": "./development/toggle/templates/examples.html",
+        "tests": "./development/toggle/templates/tests.html",
+        "usage": "./development/toggle/templates/usage.html"
+    }
+}

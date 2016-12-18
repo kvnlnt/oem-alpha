@@ -1,0 +1,22 @@
+{
+    "name": "Tabs",
+    "version": "1.0.0",
+    "description": "Tabs component",
+    "components": ["core"],
+    "scripts": [
+        "./development/tabs/module.js",
+        "./development/tabs/prototype.js"
+    ],
+    "styles": [
+        "./development/tabs/style.css"
+    ],
+    "tests": [
+        "./development/tabs/test.js"
+    ],
+    "templates": {
+        "description": "./development/tabs/templates/description.html",
+        "examples": "./development/tabs/templates/examples.html",
+        "tests": "./development/tabs/templates/tests.html",
+        "usage": "./development/tabs/templates/usage.html"
+    }
+}

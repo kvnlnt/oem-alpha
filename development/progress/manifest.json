@@ -1,0 +1,22 @@
+{
+    "name": "Progress",
+    "version": "1.0.0",
+    "description": "Progress component",
+    "components": ["core"],
+    "scripts": [
+        "./development/progress/module.js",
+        "./development/progress/prototype.js"
+    ],
+    "styles": [
+        "./development/progress/style.css"
+    ],
+    "tests": [
+        "./development/progress/test.js"
+    ],
+    "templates": {
+        "description": "./development/progress/templates/description.html",
+        "examples": "./development/progress/templates/examples.html",
+        "tests": "./development/progress/templates/tests.html",
+        "usage": "./development/progress/templates/usage.html"
+    }
+}

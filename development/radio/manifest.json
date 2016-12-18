@@ -1,0 +1,22 @@
+{
+    "name": "Radio",
+    "version": "1.0.0",
+    "description": "Radio component",
+    "components": ["core"],
+    "scripts": [
+        "./development/radio/module.js",
+        "./development/radio/prototype.js"
+    ],
+    "styles": [
+        "./development/radio/style.css"
+    ],
+    "tests": [
+        "./development/radio/test.js"
+    ],
+    "templates": {
+        "description": "./development/radio/templates/description.html",
+        "examples": "./development/radio/templates/examples.html",
+        "tests": "./development/radio/templates/tests.html",
+        "usage": "./development/radio/templates/usage.html"
+    }
+}

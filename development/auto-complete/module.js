@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var AutoComplete = {};
+    
+    // exports
+    COMPONENTS.AutoComplete = AutoComplete;
     return COMPONENTS;
 
 })(oem.Components);

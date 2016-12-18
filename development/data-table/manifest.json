@@ -1,0 +1,22 @@
+{
+    "name": "DataTable",
+    "version": "1.0.0",
+    "description": "DataTable component",
+    "components": ["core"],
+    "scripts": [
+        "./development/data-table/module.js",
+        "./development/data-table/prototype.js"
+    ],
+    "styles": [
+        "./development/data-table/style.css"
+    ],
+    "tests": [
+        "./development/data-table/test.js"
+    ],
+    "templates": {
+        "description": "./development/data-table/templates/description.html",
+        "examples": "./development/data-table/templates/examples.html",
+        "tests": "./development/data-table/templates/tests.html",
+        "usage": "./development/data-table/templates/usage.html"
+    }
+}

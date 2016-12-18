@@ -1,0 +1,22 @@
+{
+    "name": "AutoComplete",
+    "version": "1.0.0",
+    "description": "AutoComplete component",
+    "components": ["core"],
+    "scripts": [
+        "./development/auto-complete/module.js",
+        "./development/auto-complete/prototype.js"
+    ],
+    "styles": [
+        "./development/auto-complete/style.css"
+    ],
+    "tests": [
+        "./development/auto-complete/test.js"
+    ],
+    "templates": {
+        "description": "./development/auto-complete/templates/description.html",
+        "examples": "./development/auto-complete/templates/examples.html",
+        "tests": "./development/auto-complete/templates/tests.html",
+        "usage": "./development/auto-complete/templates/usage.html"
+    }
+}

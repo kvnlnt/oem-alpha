@@ -1,0 +1,22 @@
+{
+    "name": "Dialog",
+    "version": "1.0.0",
+    "description": "Dialog component",
+    "components": ["core"],
+    "scripts": [
+        "./development/dialog/module.js",
+        "./development/dialog/prototype.js"
+    ],
+    "styles": [
+        "./development/dialog/style.css"
+    ],
+    "tests": [
+        "./development/dialog/test.js"
+    ],
+    "templates": {
+        "description": "./development/dialog/templates/description.html",
+        "examples": "./development/dialog/templates/examples.html",
+        "tests": "./development/dialog/templates/tests.html",
+        "usage": "./development/dialog/templates/usage.html"
+    }
+}

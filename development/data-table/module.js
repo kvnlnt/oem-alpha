@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var DataTable = {};
+    
+    // exports
+    COMPONENTS.DataTable = DataTable;
     return COMPONENTS;
 
 })(oem.Components);

@@ -1,0 +1,22 @@
+{
+    "name": "Slider",
+    "version": "1.0.0",
+    "description": "Slider component",
+    "components": ["core"],
+    "scripts": [
+        "./development/slider/module.js",
+        "./development/slider/prototype.js"
+    ],
+    "styles": [
+        "./development/slider/style.css"
+    ],
+    "tests": [
+        "./development/slider/test.js"
+    ],
+    "templates": {
+        "description": "./development/slider/templates/description.html",
+        "examples": "./development/slider/templates/examples.html",
+        "tests": "./development/slider/templates/tests.html",
+        "usage": "./development/slider/templates/usage.html"
+    }
+}

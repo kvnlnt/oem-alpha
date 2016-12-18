@@ -1,0 +1,22 @@
+{
+    "name": "Drawer",
+    "version": "1.0.0",
+    "description": "Drawer component",
+    "components": ["core"],
+    "scripts": [
+        "./development/drawer/module.js",
+        "./development/drawer/prototype.js"
+    ],
+    "styles": [
+        "./development/drawer/style.css"
+    ],
+    "tests": [
+        "./development/drawer/test.js"
+    ],
+    "templates": {
+        "description": "./development/drawer/templates/description.html",
+        "examples": "./development/drawer/templates/examples.html",
+        "tests": "./development/drawer/templates/tests.html",
+        "usage": "./development/drawer/templates/usage.html"
+    }
+}

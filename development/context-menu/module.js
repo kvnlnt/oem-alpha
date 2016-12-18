@@ -1,9 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Theme = {};
-
-    COMPONENTS.Theme = Theme;
+    var ContextMenu = {};
+    
+    // exports
+    COMPONENTS.ContextMenu = ContextMenu;
     return COMPONENTS;
 
 })(oem.Components);

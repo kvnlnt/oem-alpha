@@ -1,0 +1,22 @@
+{
+    "name": "TimePicker",
+    "version": "1.0.0",
+    "description": "TimePicker component",
+    "components": ["core"],
+    "scripts": [
+        "./development/time-picker/module.js",
+        "./development/time-picker/prototype.js"
+    ],
+    "styles": [
+        "./development/time-picker/style.css"
+    ],
+    "tests": [
+        "./development/time-picker/test.js"
+    ],
+    "templates": {
+        "description": "./development/time-picker/templates/description.html",
+        "examples": "./development/time-picker/templates/examples.html",
+        "tests": "./development/time-picker/templates/tests.html",
+        "usage": "./development/time-picker/templates/usage.html"
+    }
+}

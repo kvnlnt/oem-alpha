@@ -1,0 +1,22 @@
+{
+    "name": "Checkbox",
+    "version": "1.0.0",
+    "description": "Checkbox component",
+    "components": ["core"],
+    "scripts": [
+        "./development/checkbox/module.js",
+        "./development/checkbox/prototype.js"
+    ],
+    "styles": [
+        "./development/checkbox/style.css"
+    ],
+    "tests": [
+        "./development/checkbox/test.js"
+    ],
+    "templates": {
+        "description": "./development/checkbox/templates/description.html",
+        "examples": "./development/checkbox/templates/examples.html",
+        "tests": "./development/checkbox/templates/tests.html",
+        "usage": "./development/checkbox/templates/usage.html"
+    }
+}
