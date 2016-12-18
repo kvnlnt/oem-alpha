@@ -6,29 +6,31 @@
         type: "Form"
     });
 
-    // DEFAULTS
-
-    Prototype.fields = {};
-    Prototype.submitButton = null;
-    Prototype.validated = false;
-    Prototype.valid = false;
-    Prototype.clean = {};
-    Prototype.errors = {};
-
     // INIT
 
     Prototype.init = function(){
 
+        this.fields = {};
+        this.submitButton = null;
+        this.validated = false;
+        this.valid = false;
+        this.clean = {};
+        this.errors = {};
+
         // register events
-        this.setEvents({
-            submitted: this.getId() + ":submitted"
-        });
+        var events = {};
+        events.submitted = this.getId() + ":submitted";
+        events.initialized = this.getId() + ":initialized";
+        this.setEvents(events);
 
         // config reset button
         this
         .getEl()
         .querySelector('[type="reset"]')
         .addEventListener('click', this.reset.bind(this));
+
+        // tell the world
+        oem.events.dispatch(events.initialized, this);
     };
 
     // GETTERS

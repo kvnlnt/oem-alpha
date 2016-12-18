@@ -2,10 +2,7 @@
 
 
     // PROTOTYPE
-    // ========================================================
-    // This is the main prototype class for this component. It is meant to:
-    // 1) contain any/all functional behavior for this component.
-    // 2) be prototyped into a new instance for each component
+
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Responsify"
     });
@@ -16,12 +13,6 @@
 
     };
 
-    Prototype.component = null;
-    Prototype.responsiveClass = null;
-    Prototype.dimension = Prototype.DIMENSIONS.width;
-    Prototype.min = 0;
-    Prototype.max = 0;
-
     // INIT
     // ========================================================
     Prototype.init = function(){
@@ -30,7 +21,6 @@
         this.dimension = this.getEl().dataset.oemDimension;
         this.min = this.getEl().dataset.oemMin;
         this.max = this.getEl().dataset.oemMax;
-
         oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify, this);
         oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify, this);
     };

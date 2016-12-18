@@ -20,14 +20,20 @@
 
     // DEFAULTS
 
-    Prototype.setupField = function(){
+    Prototype.init = function(){
+        var that = this;
         this.validators = [];
         this.form = this.getEl().dataset.oemForm;
-        if(oem.read(this.form)) oem.read(this.form).addField(this);
+        this.setValue(this.getField().value);
+        // register events
         var events = {};
         events.changed = this.getId() + ":changed";
+        events.initialized = this.getId() + ":initialized";
         this.setEvents(events);
-        this.setValue(this.getField().value);
+        // if defined, register to form
+        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.setup.bind(this));
+        // tell the world this has been initialized
+        oem.events.dispatch(events.initialized, this);
     };
 
     // GETTERS
@@ -66,6 +72,11 @@
 
     Prototype.setValue = function(value) {
         this.value = value;
+        return this;
+    };
+
+    Prototype.setup = function(){
+        if(oem.read(this.form)) oem.read(this.form).addField(this);
         return this;
     };
 

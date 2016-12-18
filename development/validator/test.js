@@ -29,11 +29,14 @@
     Test.canDoBasicValidation = function(){
         var field = oem.create(oem.Components.Field.Prototype, {
             el: createTestFieldComponent()
-        }).setValue('k'); 
+        }); 
+        field.init();
+        field.setValue('k');
         var validator = oem.create(oem.Components.Validator.Prototype, {
             el: createTestValidatorComponent(),
-        });; 
+        });
         validator.init();
+        validator.setup();
         oem.read("testFirstName").validate();
         var test = validator.isShowing === true;
         Test.assert('can do basic validation', test, true);

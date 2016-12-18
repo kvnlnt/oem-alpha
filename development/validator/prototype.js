@@ -2,34 +2,25 @@
 
 
     // PROTOTYPE
-    // ========================================================
-    // This is the main prototype class for this component. It is meant to:
-    // 1) contain any/all functional behavior for this component.
-    // 2) be prototyped into a new instance for each component
+
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Validator"
     });
 
-    // DEFAULTS 
-
-    Prototype.field = null;
-    Prototype.validation = null;
-    Prototype.args = [];
-    Prototype.isShowing = false;
-
     // INIT
 
     Prototype.init = function(){
+        var that = this;
+        this.isShowing = false;
         this.field = this.getEl().dataset.oemField;
         this.validation = this.getEl().dataset.oemValidation;
         this.args = UTIL.parseStringToObject(this.getEl().dataset.oemArgs);
         this.message = this.getEl().innerText;
+        // add after field initialization
         oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.setup.bind(this));
     };
     
     // GETTERS
-    // ========================================================
-    // Add getters for params unique to this prototype
  
     Prototype.getField = function(){
         return this.field;

@@ -9,7 +9,9 @@
         var help = EL("div", { "class":"help"}, "Please enter your first name");
         var input = EL("input", {"type":"text", "name":"inputField", "placeholder":"First Name"});
         var field = EL("div", { "data-oem": "Field", "data-oem-id":"Field" }, [label, help, input] );
-        return field;
+        return oem.create(oem.Components.Field.Prototype, {
+            el: field
+        });
     }
 
     /**
@@ -18,34 +20,40 @@
      * @method     
      */
     Test.canGetAndSetValue = function(){
-        var component = oem.create(oem.Components.Field.Prototype, {
-            el: createTestElement()
-        });
+        var component = createTestElement();
+        component.init();
         component.setValue('newValue');
         var test = component.getValue() === "newValue";
         Test.assert('can get and set value', test, true);
     };   
 
     Test.canGetLabel = function(){
-        var component = oem.read("Field");
+        var component = createTestElement();
+        component.init();
+        component.setValue('newValue');
         var test = component.getLabel().innerText === "First Name";
         Test.assert('can get label', test, true);
     };
 
     Test.canGetField = function(){
-        var component = oem.read("Field");
+        var component = createTestElement();
+        component.init();
+        component.setValue('newValue');
         var test = component.getField().name === "inputField";
         Test.assert('can get field', test, true);
     }; 
 
     Test.canGetName = function(){
-        var component = oem.read("Field");
+        var component = createTestElement();
+        component.init();
+        component.setValue('newValue');
         var test = component.getName() === "inputField";
         Test.assert('can get field name', test, true);
     };
 
     Test.canAddandRunValidator = function(){
-        var component = oem.read("Field");
+        var component = createTestElement();
+        component.init();
         var el = document.createElement("div");
         el.id = "validator";
         var validator = oem.create(oem.Components.Validator.Prototype, {
@@ -65,7 +73,20 @@
     };
 
     Test.canResetField = function(){
-        var component = oem.read("Field");
+        var component = createTestElement();
+        component.init();
+        component.setValue('newValue');
+        var el = document.createElement("div");
+        el.id = "validator";
+        var validator = oem.create(oem.Components.Validator.Prototype, {
+            id: 'validator',
+            field:'Field',
+            validation:'minLength',
+            args:'len:3',
+            message:'not long enough',
+            el: el
+        });
+        component.addValidator(validator);
         component.reset();
         var test = component.getValidators()[0].isShowing === false;
         Test.assert("can reset field", test, true);

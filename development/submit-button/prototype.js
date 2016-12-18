@@ -7,10 +7,6 @@
         type: "SubmitButton"
     });
 
-    // DEFAULTS 
-
-    Prototype.form = null;
-
     // INIT
 
     Prototype.init = function(){

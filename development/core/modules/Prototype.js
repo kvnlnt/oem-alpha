@@ -18,6 +18,9 @@
         // create Object of component and apply overwrite object (propertiesObject)
         var componentObject = Object.create(proto, propertiesObject);
 
+        // create a super object for super calling yo
+        componentObject.super = proto.__proto__;
+
         // attach instance to element
         return componentObject;
 
