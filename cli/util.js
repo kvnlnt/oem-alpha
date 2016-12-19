@@ -19,6 +19,15 @@ function createScriptTagLinks(files) {
     return tags;
 }
 
+function columnizedSpacing(text, longestText){
+    var spaces = longestText - text.length;
+    var space = '';
+    for(i = 0; i < spaces; i++){
+        space += ' ';
+    }
+    return space;
+}
+
 function getComponentScripts(components){
     var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
@@ -117,6 +126,7 @@ function rmDir(path) {
 }
 
 module.exports = {
+    columnizedSpacing: columnizedSpacing,
     createCssTagLinks: createCssTagLinks,
     createScriptTagLinks: createScriptTagLinks,
     getComponentScripts: getComponentScripts,
