@@ -4,7 +4,10 @@
 
 > If you don’t have time to do it right you must have time to do it over.
 
-OEM is a small web component framework that allows you to write and maintain your own custom web component library. It puts a premium on component-to-component communication and native web technologies and aims to be frustration free by eliminating the reliance on tools such as transpilers, file watchers, bundlers, superset javascript, etc. Should you reach a point where you decide you no longer want/need OEM, you are left with well abstracted code that is semantic, native, and has little to do with OEM itself.
+OEM is a small web component framework that allows you to write and maintain your own custom web component library. It puts a premium on component-to-component communication and native web technologies and aims to be frustration free by eliminating the reliance on tools such as transpilers, file watchers, bundlers, superset javascript, etc. Should you reach a point where you decide you no longer want/need OEM, you are left with well abstracted code that is semantic, native, and has little to do with OEM itself. 
+
+Recommended Reading:
+* [A Change Is As Good As Rest](#https://medium.com/@kvnlnt/a-change-is-as-good-as-rest-31e29b277f28#.wl2aeyiqd)
 
 *Note*: OEM web components are not to be confused with [W3C Web Components](https://www.w3.org/TR/components-intro/).
 
