@@ -19,8 +19,10 @@
     };
 
     Prototype.handleInputChange = function(){
-        var currValue = this.getField().value;
+        var fieldValue = this.getField().value;
+        var currValue = this.mask ? this.maskValue(fieldValue, this.mask) : fieldValue;
         this.setValue(currValue);
+        if(this.mask) this.getField().value = currValue;
         oem.events.dispatch(this.getEvents().changed, this, currValue);
     };
 

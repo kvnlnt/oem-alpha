@@ -23,7 +23,6 @@
     "development": {
         "accordion": "./development/accordion/manifest.json",
         "auto-complete": "./development/auto-complete/manifest.json",
-        "badge": "./development/badge/manifest.json",
         "button": "./development/button/manifest.json",
         "checkbox": "./development/checkbox/manifest.json",
         "context-menu": "./development/context-menu/manifest.json",
@@ -35,7 +34,6 @@
         "field": "./development/field/manifest.json",
         "file-upload": "./development/file-upload/manifest.json",
         "form": "./development/form/manifest.json",
-        "mask": "./development/mask/manifest.json",
         "progress": "./development/progress/manifest.json",
         "radio": "./development/radio/manifest.json",
         "responsify": "./development/responsify/manifest.json",
@@ -46,7 +44,6 @@
         "text-input": "./development/text-input/manifest.json",
         "textarea": "./development/textarea/manifest.json",
         "theme": "./development/theme/manifest.json",
-        "time-picker": "./development/time-picker/manifest.json",
         "toggle": "./development/toggle/manifest.json",
         "validator": "./development/validator/manifest.json"
     }

@@ -20,10 +20,11 @@
 
     // DEFAULTS
 
-    Prototype.init = function(){
+    Prototype.init = function() {
         var that = this;
         this.validators = [];
         this.form = this.getEl().dataset.oemForm;
+        this.mask = this.getEl().dataset.oemMask;
         this.setValue(this.getField().value);
         // register events
         var events = {};
@@ -37,21 +38,21 @@
     };
 
     // GETTERS
-    
-    Prototype.getForm = function(){
+
+    Prototype.getForm = function() {
         return this.form;
     };
-    
-    Prototype.getLabel = function(){
+
+    Prototype.getLabel = function() {
         return this.getEl().querySelector("label");
     };
 
-    Prototype.getField = function(){
+    Prototype.getField = function() {
         var input = this.getEl().querySelector('input');
         return input;
     };
 
-    Prototype.getName = function(){
+    Prototype.getName = function() {
         return this.getField().name;
     };
 
@@ -59,13 +60,13 @@
         return this.value;
     };
 
-    Prototype.getValidators = function(){
+    Prototype.getValidators = function() {
         return this.validators;
     };
 
     // SETTERS
 
-    Prototype.setForm = function(form){
+    Prototype.setForm = function(form) {
         this.form = form;
         return this;
     };
@@ -75,24 +76,58 @@
         return this;
     };
 
-    Prototype.setup = function(){
-        if(oem.read(this.form)) oem.read(this.form).addField(this);
+    Prototype.setup = function() {
+        if (oem.read(this.form)) oem.read(this.form).addField(this);
         return this;
     };
 
     // METHODS
-    
-    Prototype.addValidator = function(validator){
+
+    Prototype.addValidator = function(validator) {
         this.validators.push(validator);
         return this;
     };
 
-    Prototype.validate = function(){
+    Prototype.maskValue = function(value, mask) {
+        try {
+
+            var literalPattern = /[0\*]/;
+            var numberPattern = /[0-9]/;
+            var newValue = "";
+
+            for (var vId = 0, mId = 0; mId < mask.length;) {
+                if (mId >= value.length)
+                    break;
+
+                // Number expected but got a different value, store only the valid portion
+                if (mask[mId] == '0' && value[vId].match(numberPattern) == null) {
+                    break;
+                }
+
+                // Found a literal
+                while (mask[mId].match(literalPattern) == null) {
+                    if (value[vId] == mask[mId])
+                        break;
+
+                    newValue += mask[mId++];
+                }
+
+                newValue += value[vId++];
+                mId++;
+            }
+
+            return newValue;
+        } catch (e) {
+            return '';
+        }
+    };
+
+    Prototype.validate = function() {
         var that = this;
         var isValid = true;
-        this.getValidators().forEach(function(validator){
-            var args = validator.getArgs({val: that.getValue()});
-            if(!oem.Components.Validator[validator.getValidation()](args)) {
+        this.getValidators().forEach(function(validator) {
+            var args = validator.getArgs({ val: that.getValue() });
+            if (!oem.Components.Validator[validator.getValidation()](args)) {
                 validator.show();
                 isValid = false;
             }
@@ -101,8 +136,8 @@
     };
 
     // TODO
-    Prototype.reset = function(){
-        this.getValidators().forEach(function(validator){
+    Prototype.reset = function() {
+        this.getValidators().forEach(function(validator) {
             validator.hide();
         });
     };
