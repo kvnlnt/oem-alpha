@@ -74,11 +74,13 @@
         },
         expand: function () {
             this.getDd().classList.add("expanded");
+            this.getDt().classList.add("expanded");
             this.setExpanded(true);
             return this;
         },
         collapse: function () {
             this.getDd().classList.remove("expanded");
+            this.getDt().classList.remove("expanded");
             this.setExpanded(false);
             return this;
         }

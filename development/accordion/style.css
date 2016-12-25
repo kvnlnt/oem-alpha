@@ -5,11 +5,35 @@
 
 [data-oem="Accordion"] dt {
   margin:0;
-  line-height:40px;
   padding:10px;
   background-color: #000000;
   color: #FFF;
   cursor:pointer;
+}
+
+[data-oem="Accordion"] dt:before {
+  content:"";
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid white;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+[data-oem="Accordion"] dt.expanded:before {
+  content:"";
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid white;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: bottom;
 }
 
 [data-oem="Accordion"] dt:hover {
