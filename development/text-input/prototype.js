@@ -20,7 +20,7 @@
 
     Prototype.handleInputChange = function(){
         var fieldValue = this.getField().value;
-        var currValue = this.mask ? this.maskValue(fieldValue, this.mask) : fieldValue;
+        var currValue = this.mask ? this.maskValue(fieldValue, this.getMask(), this.getPattern()) : fieldValue;
         this.setValue(currValue);
         if(this.mask) this.getField().value = currValue;
         oem.events.dispatch(this.getEvents().changed, this, currValue);

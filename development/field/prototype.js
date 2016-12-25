@@ -25,6 +25,7 @@
         this.validators = [];
         this.form = this.getEl().dataset.oemForm;
         this.mask = this.getEl().dataset.oemMask;
+        this.pattern = this.getEl().dataset.oemPattern;
         this.setValue(this.getField().value);
         // register events
         var events = {};
@@ -54,6 +55,14 @@
 
     Prototype.getName = function() {
         return this.getField().name;
+    };
+
+    Prototype.getMask = function(){
+        return this.mask;
+    };
+
+    Prototype.getPattern = function(){
+        return this.pattern;
     };
 
     Prototype.getValue = function() {
@@ -88,27 +97,24 @@
         return this;
     };
 
-    Prototype.maskValue = function(value, mask) {
+    Prototype.maskValue = function(value, mask, maskPattern) {
         try {
 
-            var literalPattern = /[0\*]/;
-            var numberPattern = /[0-9]/;
+            var maskLiteralPattern = /[X\*]/;
+            var maskPattern = new RegExp(maskPattern || /[0-9]/);
             var newValue = "";
 
             for (var vId = 0, mId = 0; mId < mask.length;) {
-                if (mId >= value.length)
-                    break;
+                if (mId >= value.length) break;
 
-                // Number expected but got a different value, store only the valid portion
-                if (mask[mId] == '0' && value[vId].match(numberPattern) == null) {
-                    break;
-                }
+                // Pattern character expected but got a different value, store only the valid portion
+                var isMaskChar = mask[mId] == 'X';
+                var isNotValidChar = value[vId].match(maskPattern) == null;
+                if (isMaskChar && isNotValidChar) break;
 
-                // Found a literal
-                while (mask[mId].match(literalPattern) == null) {
-                    if (value[vId] == mask[mId])
-                        break;
-
+                // Found a literal characteer, store that too
+                while (mask[mId].match(maskLiteralPattern) == null) {
+                    if (value[vId] == mask[mId]) break;
                     newValue += mask[mId++];
                 }
 
