@@ -28,7 +28,6 @@
         "context-menu": "./development/context-menu/manifest.json",
         "core": "./development/core/manifest.json",
         "data-table": "./development/data-table/manifest.json",
-        "date-picker": "./development/date-picker/manifest.json",
         "dialog": "./development/dialog/manifest.json",
         "drawer": "./development/drawer/manifest.json",
         "field": "./development/field/manifest.json",
