@@ -1,3 +1,36 @@
 [data-oem="Drawer"] {
-    
+    width:360px;
+    position: fixed;
+    top:0px;
+    left: -360px;
+    right: auto;
+    background-color: #FFFFFF;
+    height: 100%;
+    box-shadow: 0px 0px 0px #000000;
+    transition: all 0.5s;
+}
+
+[data-oem="Drawer"].--open {
+    box-shadow: -10px 0px 30px #000000;    
+    left: 0;
+    right: auto;
+    transition: all 0.5s;
+}
+
+[data-oem="Drawer"].--right {
+    width:360px;
+    position: fixed;
+    top:0px;
+    right: -360px;
+    left: auto;
+    background-color: #FFFFFF;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+[data-oem="Drawer"].--right.--open {
+    right: 0;
+    left: auto;
+    box-shadow: 10px 0px 30px #000000;
+    transition: all 0.5s;
 }

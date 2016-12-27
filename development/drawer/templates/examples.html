@@ -1,2 +1,12 @@
 <h2>Example</h2>
-<div data-oem="Drawer"></div>
+
+<button onclick="oem.read('testDrawer').open()">Show Left Drawer</button>
+<button onclick="oem.read('testDrawerRight').open()">Show Right Drawer</button>
+
+<div data-oem="Drawer" data-oem-id="testDrawer">
+    <button onclick="oem.read('testDrawer').close()">Close Drawer</button>
+</div>
+
+<div data-oem="Drawer" data-oem-id="testDrawerRight" class="--right">
+    <button onclick="oem.read('testDrawerRight').close()">Close Drawer</button>
+</div>
