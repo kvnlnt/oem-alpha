@@ -4,6 +4,7 @@
             "core",
             "accordion",
             "button",
+            "drawer",
             "field",
             "form",
             "responsify",

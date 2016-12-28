@@ -11,14 +11,29 @@
     });
 
     Prototype.init = function(){
+        this._isOpen = false;
+        return this;
     };
 
     Prototype.open = function(){
         this.getEl().classList.add('--open');
+        this.setIsOpen(true);
+        return this;
     };
 
     Prototype.close = function(){
         this.getEl().classList.remove('--open');
+        this.setIsOpen(false);
+        return this;
+    };
+
+    Prototype.isOpen = function(){
+        return this._isOpen;
+    };
+
+    Prototype.setIsOpen = function(isOpen){
+        this._isOpen = isOpen;
+        return this;
     };
 
     COMPONENTS.Drawer.Prototype = Prototype;
