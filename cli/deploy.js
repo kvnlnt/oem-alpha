@@ -11,7 +11,7 @@ const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
     this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
     this.components = oem.deployments[deployment];
-    this.manifests = util.getManifests(oem.deployments[this.deployment]);
+    this.manifests = util.getManifests(this.components);
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
     this.jsFile = this.directory + "/" + this.jsFileName;

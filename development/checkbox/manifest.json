@@ -2,7 +2,7 @@
     "name": "Checkbox",
     "version": "1.0.0",
     "description": "Checkbox component",
-    "components": ["core"],
+    "components": ["core", "field"],
     "scripts": [
         "./development/checkbox/module.js",
         "./development/checkbox/prototype.js"

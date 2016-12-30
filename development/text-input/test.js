@@ -11,7 +11,7 @@
      * @method     
      */
     Test.sanity = function(){
-        Test.assert('Tests are covered by the Field component', true, true);
+        Test.assert('Tests covered by Field component', true, true);
     };    
 
     /**

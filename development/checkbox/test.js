@@ -10,7 +10,7 @@
      * @method     
      */
     Test.exampleIsWorking = function(){
-        Test.assert('Test example is working', true, true);
+        Test.assert('Tests covered by Field component', true, true);
     };    
 
     /**
@@ -23,7 +23,7 @@
     });
 
     // exports
-    COMPONENTS.Checkbox.Test = Test;
+    COMPONENTS.Select.Test = Test;
     return COMPONENTS;
 
 })(oem.Components, oem.Core.Test);

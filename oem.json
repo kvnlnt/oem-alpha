@@ -5,15 +5,16 @@
             "accordion",
             "button",
             "drawer",
+            "validator",
             "field",
+            "checkbox",
             "form",
             "responsify",
             "select",
             "submit-button",
             "text-input",
             "textarea",
-            "theme",
-            "validator"
+            "theme"
         ]
     },
     "demos": {
