@@ -2,7 +2,8 @@
     "name": "%CLASS%",
     "version": "1.0.0",
     "description": "%CLASS% component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "%DIR%/module.js",
         "%DIR%/prototype.js"

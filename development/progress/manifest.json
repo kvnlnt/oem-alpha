@@ -2,7 +2,8 @@
     "name": "Progress",
     "version": "1.0.0",
     "description": "Progress component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/progress/module.js",
         "./development/progress/prototype.js"

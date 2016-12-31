@@ -2,8 +2,8 @@
     "name": "Form",
     "version": "1.0.0",
     "description": "Accordion component",
+    "dependencies": ["core"],
     "components": [
-        "core",
         "validator",
         "submit-button",
         "field",

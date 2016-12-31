@@ -2,7 +2,8 @@
     "name": "Drawer",
     "version": "1.0.0",
     "description": "Drawer component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/drawer/module.js",
         "./development/drawer/prototype.js"

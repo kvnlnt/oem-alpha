@@ -2,7 +2,8 @@
     "name": "Select",
     "version": "1.0.0",
     "description": "Select component",
-    "components": ["core", "field"],
+    "dependencies": ["core","field"],
+    "components": [],
     "scripts": [
         "./development/select/module.js",
         "./development/select/prototype.js"

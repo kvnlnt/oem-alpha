@@ -2,7 +2,8 @@
     "name": "DataTable",
     "version": "1.0.0",
     "description": "DataTable component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/data-table/module.js",
         "./development/data-table/prototype.js"

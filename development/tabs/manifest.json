@@ -2,7 +2,8 @@
     "name": "Tabs",
     "version": "1.0.0",
     "description": "Tabs component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/tabs/module.js",
         "./development/tabs/prototype.js"

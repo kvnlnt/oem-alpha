@@ -2,7 +2,8 @@
     "name": "Field",
     "version": "1.0.0",
     "description": "Field component",
-    "components": ["core", "validator"],
+    "dependencies": ["core"],
+    "components": ["validator"],
     "scripts": [
         "./development/field/module.js",
         "./development/field/prototype.js"

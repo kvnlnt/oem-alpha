@@ -94,7 +94,9 @@ function getFilesizeInKB(filename) {
 
 function getManifests(components){
     return components.map(function(component){
-        return loadAndParseJson(oem.development[component]);
+        var json = loadAndParseJson(oem.development[component]);
+        json.component = component;
+        return json;
     })
 }
 
@@ -125,6 +127,22 @@ function rmDir(path) {
   }
 }
 
+function sortDependencies(manifests){
+    var that = this;
+    manifests.forEach(function(manifest, m){
+        if(manifest.dependencies){
+            manifest.dependencies.forEach(function(dependency, d){
+                var dependencyIndex = manifests.findIndex(function(manifest){ return manifest.component === dependency});
+                if(m <= dependencyIndex) {
+                    var item = manifests.splice(dependencyIndex, 1)[0];
+                    manifests.splice(m-1, 0, item);
+                }
+            });
+        }
+    });
+    return manifests;
+}
+
 module.exports = {
     columnizedSpacing: columnizedSpacing,
     createCssTagLinks: createCssTagLinks,
@@ -138,5 +156,6 @@ module.exports = {
     getManifests: getManifests,
     getOptions: getOptions,
     loadAndParseJson: loadAndParseJson,
-    rmDir: rmDir
+    rmDir: rmDir,
+    sortDependencies: sortDependencies
 };

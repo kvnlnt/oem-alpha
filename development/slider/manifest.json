@@ -2,7 +2,8 @@
     "name": "Slider",
     "version": "1.0.0",
     "description": "Slider component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/slider/module.js",
         "./development/slider/prototype.js"

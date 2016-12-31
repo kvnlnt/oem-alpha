@@ -2,7 +2,8 @@
     "name": "Responsify",
     "version": "1.0.0",
     "description": "Responsify component",
-    "components": ["core","field"],
+    "dependencies": ["core"],
+    "components": ["field"],
     "scripts": [
         "./development/responsify/module.js",
         "./development/responsify/prototype.js"

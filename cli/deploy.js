@@ -11,7 +11,7 @@ const Deployment = function (deployment, autoLaunch) {
     this.deployment = deployment;
     this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
     this.components = oem.deployments[deployment];
-    this.manifests = util.getManifests(this.components);
+    this.manifests = util.sortDependencies(util.getManifests(this.components));
     this.directory = './deploy/'+deployment;
     this.jsFileName = "oem.js";
     this.jsFile = this.directory + "/" + this.jsFileName;
@@ -169,7 +169,6 @@ Deployment.prototype = {
         .concat(...tests);
         return tests;
     },
-
 
     reply: function(){
         console.log("");

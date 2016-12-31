@@ -2,7 +2,8 @@
     "name": "Radio",
     "version": "1.0.0",
     "description": "Radio component",
-    "components": ["core"],
+    "dependencies": ["core","field"],
+    "components": [],
     "scripts": [
         "./development/radio/module.js",
         "./development/radio/prototype.js"

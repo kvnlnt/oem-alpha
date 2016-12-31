@@ -2,7 +2,8 @@
     "name": "Accordion",
     "version": "1.0.0",
     "description": "Accordion component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/accordion/module.js",
         "./development/accordion/prototype.js"

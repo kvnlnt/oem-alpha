@@ -2,7 +2,8 @@
     "name": "Dialog",
     "version": "1.0.0",
     "description": "Dialog component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/dialog/module.js",
         "./development/dialog/prototype.js"

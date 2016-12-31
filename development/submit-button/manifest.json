@@ -2,10 +2,8 @@
     "name": "SubmitButton",
     "version": "1.0.0",
     "description": "SubmitButton component",
-    "components": [
-        "core",
-        "theme"
-    ],
+    "dependencies": ["core"],
+    "components": ["theme"],
     "scripts": [
         "./development/submit-button/module.js",
         "./development/submit-button/prototype.js"

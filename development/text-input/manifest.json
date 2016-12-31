@@ -2,7 +2,8 @@
     "name": "TextInput",
     "version": "1.0.0",
     "description": "TextInput component",
-    "components": ["core", "field"],
+    "dependencies": ["core", "field"],
+    "components": [],
     "styles": [
         "./development/text-input/style.css"
     ],

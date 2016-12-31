@@ -2,7 +2,8 @@
     "name": "FileUpload",
     "version": "1.0.0",
     "description": "FileUpload component",
-    "components": ["core"],
+    "dependencies": ["core"],
+    "components": [],
     "scripts": [
         "./development/file-upload/module.js",
         "./development/file-upload/prototype.js"

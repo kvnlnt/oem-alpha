@@ -38,6 +38,15 @@ DevelopComponent.prototype = {
     getComponentList: function(){
         var components = [];
 
+        // load dependencies first
+        try {
+            this.manifest.dependencies.forEach(function(component){
+                components.push(component);
+            });
+        } catch(err) {
+            // noop
+        }
+
         // development components
         try {
             this.manifest.components.forEach(function(component){
