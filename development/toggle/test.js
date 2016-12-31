@@ -10,7 +10,7 @@
      * @method     
      */
     Test.exampleIsWorking = function(){
-        Test.assert('Test example is working', true, true);
+        Test.assert('Tests covered by Field component', true, true);
     };    
 
     /**

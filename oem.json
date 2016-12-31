@@ -12,6 +12,7 @@
             "responsify",
             "select",
             "submit-button",
+            "toggle",
             "text-input",
             "textarea",
             "theme"

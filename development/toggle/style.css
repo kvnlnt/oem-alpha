@@ -1,3 +1,64 @@
-[data-oem="Toggle"] {
-    
+[data-oem="Toggle"] label {
+    line-height: 20px;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 80px;
+    border: 1px solid #000000;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 10px;
+    margin:0;
+    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]:after {
+    content: 'off';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    left: auto;
+    color: #000000;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]:before {
+    content: '';
+    height: 20px;
+    width: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    position: absolute;
+    top: 0px;
+    left: -1px;
+    right: auto;
+    color: #000000;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]:checked:after {
+    content: 'on';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    right: auto;
+    color: #000000;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]:checked:before {
+    content: '';
+    height: 20px;
+    width: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    left: auto;
+    color: #000000;
 }
