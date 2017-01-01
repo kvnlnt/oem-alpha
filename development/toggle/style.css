@@ -1,5 +1,5 @@
 [data-oem="Toggle"] label {
-    line-height: 20px;
+    line-height: 20px
 }
 
 [data-oem="Toggle"] input[type="checkbox"]{
@@ -10,55 +10,61 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
     padding: 10px;
     margin:0;
-    border-radius: 10px;
+    border-radius: 20px;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     cursor: pointer;
+    background-color: #000000;
+    color: #FFFFFF;
+    transition: all 0.5s;
 }
 
-[data-oem="Toggle"] input[type="checkbox"]:after {
+[data-oem="Toggle"] input[type="checkbox"]:checked {
+    background-color: #FFFFFF;
+    color:#000000;
+    transition: all 0.5s;
+}
+
+
+[data-oem="Toggle"] input[type="checkbox"]:before {
     content: 'off';
     font-size: 14px;
     position: absolute;
     top: 0px;
     right: 8px;
     left: auto;
-    color: #000000;
 }
 
-[data-oem="Toggle"] input[type="checkbox"]:before {
-    content: '';
-    height: 20px;
-    width: 30px;
-    border-radius: 10px;
-    background-color: #000000;
-    position: absolute;
-    top: 0px;
-    left: -1px;
-    right: auto;
-    color: #000000;
-}
-
-[data-oem="Toggle"] input[type="checkbox"]:checked:after {
+[data-oem="Toggle"] input[type="checkbox"]:checked:before {
     content: 'on';
     font-size: 14px;
     position: absolute;
     top: 0px;
     left: 8px;
-    right: auto;
-    color: #000000;
 }
 
-[data-oem="Toggle"] input[type="checkbox"]:checked:before {
+[data-oem="Toggle"] input[type="checkbox"]:after {
     content: '';
-    height: 20px;
-    width: 30px;
+    height: 16px;
+    width: 35px;
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #666666;
     position: absolute;
-    top: 0px;
-    right: -1px;
-    left: auto;
-    color: #000000;
+    top: 2px;
+    left: 2px;
+    right: auto;
+    transition: all 0.5s;
+}
+
+[data-oem="Toggle"] input[type="checkbox"]:checked:after {
+    content: '';
+    height: 16px;
+    width: 35px;
+    border-radius: 10px;
+    background-color: #666666;
+    position: absolute;
+    top: 2px;
+    left: 39px;
+    transition: all 0.5s;
 }

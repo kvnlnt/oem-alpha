@@ -26,7 +26,7 @@
     };
 
    
-    COMPONENTS.Checkbox.Prototype = Prototype;
+    COMPONENTS.Toggle.Prototype = Prototype;
     return COMPONENTS;
 
 })(
