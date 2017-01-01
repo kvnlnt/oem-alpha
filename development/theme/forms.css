@@ -19,7 +19,10 @@
 
 [data-oem="TextInput"] label,
 [data-oem="Select"] label,
-[data-oem="Textarea"] label {
+[data-oem="Textarea"] label,
+[data-oem="Toggle"] label,
+[data-oem="Radio"] label,
+[data-oem="Checkbox"] label {
     font-size: 14px;
     margin: 10px 0;
 }

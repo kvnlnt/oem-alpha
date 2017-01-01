@@ -11,6 +11,9 @@
         "text-input",
         "textarea",
         "theme",
+        "checkbox",
+        "radio",
+        "toggle",
         "button"
     ],
     "styles": [
