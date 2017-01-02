@@ -1,3 +1,52 @@
-[data-oem="DataTable"] {
-    
+[data-oem="DataTable"] table {
+    border-collapse: collapse;
+    border-top: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2;
+    width:100%;
+}
+
+[data-oem="DataTable"] table th {
+    background-color: #e2e2e2;
+    cursor: pointer;
+    position: relative;
+    line-height: 40px;
+    text-align: left;
+    padding:0 40px 0 10px;
+    border-left:1px solid #d2d2d2;
+}
+
+[data-oem="DataTable"] table th[data-oem-sort-by]:after {
+  content:"";
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid black;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  display: inline-block;
+  position: absolute;
+  top:17px;
+  right: 10px;
+  opacity: 0.25;
+}
+
+[data-oem="DataTable"] table th[data-oem-sort-by]:hover:after,
+[data-oem="DataTable"] table th[data-oem-sort-by].--sorted:after
+{
+    opacity: 1;
+}
+
+[data-oem="DataTable"] table th[data-oem-sort-by]:before {
+  content:"";
+  border-left:1px solid #eeeeee;
+  height: 40px;
+  width: 30px;
+  position: absolute;
+  right:0px;
+}
+
+[data-oem="DataTable"] table td {
+    padding: 10px;
+    border-left: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
 }

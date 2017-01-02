@@ -1,71 +1,115 @@
-(function(COMPONENTS, COMPONENT, PROTOTYPE) {
+(function(COMPONENTS, COMPONENT, PROTOTYPE, UTIL) {
 
-
-    // PROTOTYPE
-    // ========================================================
-    // This is the main prototype class for this component. It is meant to:
-    // 1) contain any/all functional behavior for this component.
-    // 2) be prototyped into a new instance for each component
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "DataTable"
     });
 
+    Prototype.DIRECTION = {};
+    Prototype.DIRECTION.DESC = "DESC";
+    Prototype.DIRECTION.ASC = "ASC";
+    Prototype.DIRECTION.NONE = "NONE";
 
-    // MIXINS 
-    // ========================================================
-    // Augment funciontality with mixins from ./src/core/mixins
+    Prototype.init = function(){
+        var that = this;
+        this.columns = this.getColumnsFromDOM();
+        this.records = this.getRecordsFromDOM();
 
-    // Core.Util.mixin(Prototype, Core.Mixins.Field);
+        // events
+        UTIL.arrayFrom(this.getHeader().querySelectorAll('th')).forEach(function(th, i){
+            th.addEventListener('click', function(){
+                that.handleClick(i);
+            });
+        });
+    };
 
+    Prototype.handleClick = function(col){
 
-    // DEFAULTS 
-    // ========================================================
-    // 1. Use this area to set parameters and defaults on the prototype not part of the original Core.Component prototype.
-    // Reminder: If you plan to use this component as a prototype for other components, this parameter will be "global" to those components
-    // in that case, maybe try and set up your "local" parameters inside the init function.
+        var that = this;
+        var column = this.columns[col];
+        var columnTh = this.getHeader().querySelectorAll('th')[col];
 
-    // Prototype.newProperty = someValue;
+        // remove sort classes
+        UTIL
+        .arrayFrom(this.getHeader().querySelectorAll('th'))
+        .forEach(function(th, i){
+            th.classList.remove('--sorted');
+            th.classList.remove('--asc');
+            th.classList.remove('--desc');
+        });
 
+        // determine or flip sort direction
+        if(column.direction === Prototype.DIRECTION.NONE){
+            column.direction = Prototype.DIRECTION.ASC;
+        } else {
+            if(column.direction === Prototype.DIRECTION.ASC){
+                column.direction = Prototype.DIRECTION.DESC;
+            } else {
+                column.direction = Prototype.DIRECTION.ASC;
+            }
+        }
+        
+        // add the right classes
+        columnTh.classList.add('--sorted');
+        if(column.direction === Prototype.DIRECTION.ASC) columnTh.classList.add('--asc');
+        if(column.direction === Prototype.DIRECTION.DESC) columnTh.classList.add('--desc');
+        // redraw the records
 
-    // INIT
-    // ========================================================
-    // 1. Use this area to run setup functions and initialize params
-    // 2. The init function from the Core.Component prototype will be called automatically. 
-    // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_COLLECTED):
-    //      1. register that event in the init function
-    //      2. then call an internal "init" function (see form component for example)
+    };
 
-    // Initialize component
-    // Prototype.init = function(){
-    // };
+    Prototype.getColumns = function(){
+        return this.columns;
+    };
 
-    // GETTERS
-    // ========================================================
-    // Add getters for params unique to this prototype
- 
-    // Prototype.getNewProperty = function(){
-    //      return this.newProperty;
-    // };
+    Prototype.getColumnsFromDOM = function(){
+        var that = this;
+        return UTIL
+        .arrayFrom(this.getHeader().querySelectorAll('th'))
+        .map(function(th){
+            var direction;
+            return {
+                name: th.innerText,
+                sortBy: th.dataset.oemSortBy || null,
+                direction: that.DIRECTION.NONE
+            }
+        });
+    };
 
+    Prototype.getHeader = function(){
+        return this.getEl().querySelectorAll('tr:first-child')[0];
+    };
 
-    // SETTERS
-    // ========================================================
-    // Add setters for params unique to this prototype
+    Prototype.getRecords = function(){
+        return this.records;
+    };
 
-    // Prototype.setNewProperty = function(newProperty){
-    //     return this.newProperty;
-    // };
+    Prototype.getRecordsFromDOM = function(){
+        var that = this;
+        var record, isRecord;
+        var records = [];
+        var trs = UTIL.arrayFrom(this.getEl().querySelectorAll('tr'));
+        for(var i = 0; i < trs.length; i++){
+            isRecord = !trs[i].querySelectorAll('th').length;
+            if(isRecord){
+                record = {};
+                UTIL.arrayFrom(trs[i].querySelectorAll('td')).forEach(function(td, col){
+                    record[that.columns[col].name] = UTIL.typeCast(td.innerHTML);
+                });
+                records.push(record);
+            }
+        }
+        return records;
+    };
 
+    Prototype.getTrs = function(){
+        return this.getEl().querySelectorAll('tr');
+    };
 
-    // METHODS
-    // ========================================================
-    // Add methods unique to this prototype
-    
-    
-    // EXPORTS
-    // ========================================================
-    // Probably only want to export the prototype
     COMPONENTS.DataTable.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Component, oem.Core.Prototype);
+})(
+    oem.Components,
+    oem.Core.Component,
+    oem.Core.Prototype,
+    oem.Core.Util
+);
