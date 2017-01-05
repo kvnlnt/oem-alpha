@@ -106,13 +106,21 @@
     Prototype.redrawDOM = function(records){
         var that = this;
         var tr, td;
-        UTIL.arrayFrom(this.getEl().querySelectorAll('tbody tr')).forEach(function(tr, i){
+        var tbody = this.getEl().querySelectorAll('tbody')[0];
+
+        // remove record rows from DOM
+        UTIL.arrayFrom(tbody.querySelectorAll('tr')).forEach(function(tr, i){
             tr.parentNode.removeChild(tr);
         });
-        records.forEach(function(record recordIndex){
-            tr = EL("tr", {}, that.columns.forEach(function(column, columnIndex){
-
+        
+        records
+        .map(function(record, recordIndex){
+            return new EL("tr", {}, that.columns.map(function(column, columnIndex){
+                return new EL("td", {}, record[column.name].toString());
             }));
+        })
+        .map(function(recordEl, recordElIndex){
+            tbody.appendChild(recordEl);
         });
     };
 
