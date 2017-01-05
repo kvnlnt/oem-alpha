@@ -1,2 +1,19 @@
-[data-oem="TextInput"]  {
+[data-oem="TextInput"] > input {
+    width:100%;
+    font-size: 12px;
+    padding:10px 0;
+    text-indent:10px;
+    border:1px solid  black;
+    border-radius: 2px;
+}
+
+[data-oem="TextInput"] .help {
+    font-size: 12px;
+    opacity: 0.6;
+    margin: 0 0 5px;
+}
+
+[data-oem="TextInput"] label {
+    font-size: 14px;
+    margin: 10px 0;
 }

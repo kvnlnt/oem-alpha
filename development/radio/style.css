@@ -1,5 +1,7 @@
 [data-oem="Radio"] label {
     line-height: 20px;
+    font-size: 14px;
+    margin: 10px 0;
 }
 
 [data-oem="Radio"] input[type="checkbox"]{
