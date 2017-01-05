@@ -26,7 +26,11 @@ Demo.prototype = {
 
         // menu
         html += '<ul>';
-        this.manifests.forEach(function(manifest){
+        this.manifests.sort(function(a, b){
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+        }).forEach(function(manifest){
             html += '<li><a href="'+manifest.name+'.html">'+manifest.name+'</a></li>';
         });
         html += '</ul>';
