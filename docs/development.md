@@ -39,6 +39,10 @@ The manifest file provides the necessary metadata needed by the Oem CLI tool in 
         "tests": [
             "./development/my-component/test.js"
         ],
+        // any code you want run on your examples goes here
+        "examples": [
+            "./development/my-component/example.js"
+        ],
         // templates are specified here
         "templates": {
             "description": "./development/my-component/templates/description.html",
@@ -79,7 +83,7 @@ This contains the name and description of your component like so:
 Note: This snippet is used by both the deployment and demo generators.
 
 #### ./templates/examples.html
-This where you put all the html of your component you're working on.
+This where you put all the html of your component you're working on. There's also a `example.js` script that can be used to manipulate your example.
 
 #### ./templates/tests.html
 This is where you put the test component used by your tests scripts, ie: your `test.js` script.
