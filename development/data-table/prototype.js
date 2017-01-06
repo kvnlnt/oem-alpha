@@ -113,13 +113,14 @@
             tr.parentNode.removeChild(tr);
         });
         
+        // create DOM els and attach 
         records
         .map(function(record, recordIndex){
-            return new EL("tr", {}, that.columns.map(function(column, columnIndex){
-                return new EL("td", {}, record[column.name].toString());
+            return EL("tr", {}, that.columns.map(function(column, columnIndex){
+                return EL("td", {}, record[column.name].toString());
             }));
         })
-        .map(function(recordEl, recordElIndex){
+        .forEach(function(recordEl, recordElIndex){
             tbody.appendChild(recordEl);
         });
     };
