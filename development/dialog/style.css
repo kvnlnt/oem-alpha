@@ -1,3 +1,31 @@
 [data-oem="Dialog"] {
-    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    display: none;
+    z-index: 1000;
+}
+
+[data-oem="Dialog"].--showing {
+    display: block;
+}
+
+[data-oem="Dialog"] .__content {
+    width: 0;
+    height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #f2f2f2;
+    position: fixed;
+}
+
+[data-oem="Dialog"] .__backdrop {
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: #000000;
 }

@@ -14,6 +14,9 @@
     "tests": [
         "./development/dialog/test.js"
     ],
+    "examples":[
+        "./development/dialog/examples.js"
+    ],
     "templates": {
         "description": "./development/dialog/templates/description.html",
         "examples": "./development/dialog/templates/examples.html",
