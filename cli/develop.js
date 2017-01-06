@@ -75,6 +75,7 @@ DevelopComponent.prototype = {
         .concat.apply([], util.getComponentScripts(this.components))
         .concat("./development/core/modules/Test.js")
         .concat(this.manifest.tests)
+        .concat(this.manifest.examples)
         .filter(function(file){ return file != void 0});
     },
 

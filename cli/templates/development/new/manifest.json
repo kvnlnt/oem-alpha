@@ -14,6 +14,9 @@
     "tests": [
         "%DIR%/test.js"
     ],
+    "examples":[
+        "%DIR%/example.js"
+    ],
     "templates": {
         "description": "%DIR%/templates/description.html",
         "examples": "%DIR%/templates/examples.html",
