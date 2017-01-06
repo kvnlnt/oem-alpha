@@ -20,16 +20,25 @@
         oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.positionContentWindow.bind(this));
     };
 
+    Prototype.close = function(){
+        this.getEl().classList.remove('--showing');
+        return this;
+    };
+
     Prototype.getBackdropEl = function(){
         return this.backdropEl;
     };
 
-    Prototype.close = function(){
-        this.getEl().classList.remove('--showing');
-    };
-
     Prototype.getContentEl = function(){
         return this.contentEl;
+    };
+
+    Prototype.getFullscreenAt = function(){
+        return this.fullScreenAt;
+    };
+
+    Prototype.getHeight = function(){
+        return this.height;
     };
 
     Prototype.getOverflowY = function(){
@@ -40,14 +49,6 @@
         return this.width;
     };
 
-    Prototype.getHeight = function(){
-        return this.height;
-    };
-
-    Prototype.getFullscreenAt = function(){
-        return this.fullScreenAt;
-    };
-
     Prototype.handleBackdropClick = function(e){
         e.preventDefault();
         this.close();
@@ -56,6 +57,7 @@
     Prototype.open = function(){
         this.positionContentWindow();
         this.getEl().classList.add('--showing');
+        return this;
     };
 
     Prototype.positionContentWindow = function(){
@@ -71,8 +73,14 @@
         return this;
     };
 
+    Prototype.setFullscreenAt = function(fullScreenAt) {
+        this.fullScreenAt = fullScreenAt;
+        return this;
+    }
+
     Prototype.setOverflowY = function(){
         this.getContentEl().style.overflowY = this.getOverflowY();
+        return this;
     };
 
     COMPONENTS.Dialog.Prototype = Prototype;

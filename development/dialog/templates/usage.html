@@ -4,7 +4,16 @@
 
 <pre>
 <code data-language="html">
-&lt;div data-oem="Dialog"&gt;
+&lt;div
+    data-oem="Dialog" 
+    data-oem-id="exampleDialog" 
+    data-oem-width="500" 
+    data-oem-height="360"&gt;
+    &lt;div class="__backdrop"&gt;&lt;/div&gt;
+    &lt;div class="__content"&gt;
+    // content goes here, something like this:
+    &lt;button onclick='oem.read("exampleDialog").close();'&gt;close&lt;/button&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 </code>
 </pre>
