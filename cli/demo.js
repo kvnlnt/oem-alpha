@@ -74,12 +74,29 @@ Demo.prototype = {
                 if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
                 if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
             }
+
+            var js = '';
+            var hasExamples = typeof manifest.examples != "undefined";
+            if(hasExamples){
+                manifest.examples.forEach(function(example){
+                    js += fs.readFileSync(example, 'utf-8');
+                });
+            }
             var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8')
-            template = template.replace("<!-- HTML -->", html, 'utf8');
+            template = template
+            .replace("<!-- HTML -->", html, 'utf8')
+            .replace("<!-- JS -->", util.wrapInScriptTag(js), 'utf8');
+
             fs.outputFileSync(that.directory + '/' + manifest.name + '.html', template);
         });
 
         return this;
+    },
+
+    getJs: function(files){
+        return []
+        .concat(files)
+        .filter(function(file){ return file != void 0});
     },
 
     reply: function(){

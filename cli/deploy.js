@@ -148,8 +148,8 @@ Deployment.prototype = {
     },
 
     deployJsTests: function() {
-        var concatTests = this.concatFiles(this.testJsFiles);
-        fs.outputFileSync(this.testJsFile, concatTests);
+        var concat = this.concatFiles(this.testJsFiles);
+        fs.outputFileSync(this.testJsFile, concat);
         return this;
     },
 
@@ -176,13 +176,13 @@ Deployment.prototype = {
     },
 
     getJsTests: function() {
-        var tests = this.manifests.map(function(manifest) {
+        var scripts = this.manifests.map(function(manifest) {
             return manifest.tests;
         });
-        var tests = []
+        var scripts = []
             .concat("./development/core/modules/Test.js")
-            .concat(...tests);
-        return tests;
+            .concat(...scripts);
+        return scripts;
     },
 
     reply: function() {

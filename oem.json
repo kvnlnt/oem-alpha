@@ -4,6 +4,7 @@
             "core",
             "accordion",
             "button",
+            "progress",
             "data-table",
             "drawer",
             "validator",

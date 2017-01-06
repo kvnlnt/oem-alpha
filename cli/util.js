@@ -143,6 +143,10 @@ function sortDependencies(manifests){
     return manifests;
 }
 
+function wrapInScriptTag(code) {
+    return '<script type="text/javascript">'+code+'</script>';
+}
+
 module.exports = {
     columnizedSpacing: columnizedSpacing,
     createCssTagLinks: createCssTagLinks,
@@ -157,5 +161,6 @@ module.exports = {
     getOptions: getOptions,
     loadAndParseJson: loadAndParseJson,
     rmDir: rmDir,
-    sortDependencies: sortDependencies
+    sortDependencies: sortDependencies,
+    wrapInScriptTag: wrapInScriptTag
 };
