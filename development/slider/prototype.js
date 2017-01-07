@@ -1,71 +1,70 @@
-(function(COMPONENTS, COMPONENT, PROTOTYPE) {
+(function(COMPONENTS, COMPONENT, PROTOTYPE, UTIL) {
 
 
-    // PROTOTYPE
-    // ========================================================
-    // This is the main prototype class for this component. It is meant to:
-    // 1) contain any/all functional behavior for this component.
-    // 2) be prototyped into a new instance for each component
     var Prototype = PROTOTYPE(COMPONENT, {
         type: "Slider"
     });
 
 
-    // MIXINS 
-    // ========================================================
-    // Augment funciontality with mixins from ./src/core/mixins
+    Prototype.init = function(){
+        this.slideIndex = 1;
+        this.slides = this.getEl().querySelectorAll('.__slide');
+        this.nextEl = this.getEl().querySelectorAll('.__next')[0];
+        this.prevEl = this.getEl().querySelectorAll('.__prev')[0];
+        this.showSlides(this.slideIndex);
+        this.nextEl.addEventListener("click", this.handleNextElClick.bind(this));
+        this.prevEl.addEventListener("click", this.handlePrevElClick.bind(this));
+    };
 
-    // Core.Util.mixin(Prototype, Core.Mixins.Field);
+    Prototype.getSlides = function(){
+        return this.slides;
+    };
 
+    Prototype.getSlideIndex = function(){
+        return this.slideIndex;
+    };
 
-    // DEFAULTS 
-    // ========================================================
-    // 1. Use this area to set parameters and defaults on the prototype not part of the original Core.Component prototype.
-    // Reminder: If you plan to use this component as a prototype for other components, this parameter will be "global" to those components
-    // in that case, maybe try and set up your "local" parameters inside the init function.
+    Prototype.handleNextElClick = function(){
+        this.moveIndex(1);
+        return this;
+    };
 
-    // Prototype.newProperty = someValue;
+    Prototype.moveIndex = function(n){
+        this.setSlideIndex(this.getSlideIndex()+n);
+        this.showSlides(this.getSlideIndex());
+        return this;
+    };
 
+    Prototype.handlePrevElClick = function(){
+        this.moveIndex(-1);
+        return this;
+    };
 
-    // INIT
-    // ========================================================
-    // 1. Use this area to run setup functions and initialize params
-    // 2. The init function from the Core.Component prototype will be called automatically. 
-    // 3. Sometimes you may want to set things up after an event (ie: COMPONENTS_COLLECTED):
-    //      1. register that event in the init function
-    //      2. then call an internal "init" function (see form component for example)
+    Prototype.setSlideIndex = function(slideIndex){
+        this.slideIndex = slideIndex;
+        return this;
+    };
 
-    // Initialize component
-    // Prototype.init = function(){
-    // };
+    Prototype.showSlides = function(n) {
+      var i;
+      var slides = this.getSlides();
+      if (n > slides.length) this.setSlideIndex(1);  
+      if (n < 1) this.setSlideIndex(slides.length);
 
-    // GETTERS
-    // ========================================================
-    // Add getters for params unique to this prototype
- 
-    // Prototype.getNewProperty = function(){
-    //      return this.newProperty;
-    // };
+      // hide all
+      UTIL.arrayFrom(slides).forEach(function(slide){
+        slide.style.display = "none";
+      });
 
+      // show current
+      slides[this.getSlideIndex()-1].style.display = "block";  
+    }
 
-    // SETTERS
-    // ========================================================
-    // Add setters for params unique to this prototype
-
-    // Prototype.setNewProperty = function(newProperty){
-    //     return this.newProperty;
-    // };
-
-
-    // METHODS
-    // ========================================================
-    // Add methods unique to this prototype
-    
-    
-    // EXPORTS
-    // ========================================================
-    // Probably only want to export the prototype
     COMPONENTS.Slider.Prototype = Prototype;
     return COMPONENTS;
 
-})(oem.Components, oem.Core.Component, oem.Core.Prototype);
+})(
+    oem.Components,
+    oem.Core.Component,
+    oem.Core.Prototype,
+    oem.Core.Util);

@@ -1,0 +1,26 @@
+{
+    "name": "Range",
+    "version": "1.0.0",
+    "description": "Range component",
+    "dependencies": ["core"],
+    "components": [],
+    "scripts": [
+        "./development/range/module.js",
+        "./development/range/prototype.js"
+    ],
+    "styles": [
+        "./development/range/style.css"
+    ],
+    "tests": [
+        "./development/range/test.js"
+    ],
+    "examples":[
+        "./development/range/examples.js"
+    ],
+    "templates": {
+        "description": "./development/range/templates/description.html",
+        "examples": "./development/range/templates/examples.html",
+        "tests": "./development/range/templates/tests.html",
+        "usage": "./development/range/templates/usage.html"
+    }
+}
