@@ -28,6 +28,7 @@
     },
     "development": {
         "accordion": "./development/accordion/manifest.json",
+        "api": "./development/api/manifest.json",
         "auto-complete": "./development/auto-complete/manifest.json",
         "button": "./development/button/manifest.json",
         "checkbox": "./development/checkbox/manifest.json",

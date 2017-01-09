@@ -17,6 +17,7 @@
     // ========================================================
     Prototype.init = function(){
         this.component = this.getEl().dataset.oemComponent;
+        this.watch = this.getEl().dataset.watch || null;
         this.responsiveClass = this.getEl().dataset.oemResponsiveClass;
         this.dimension = this.getEl().dataset.oemDimension;
         this.min = this.getEl().dataset.oemMin;
@@ -47,6 +48,21 @@
         return this.max;
     };
 
+    Prototype.getWatch = function(){
+        return this.watch;
+    };
+
+    Prototype.getWatchEl = function(){
+        if(this.getWatch() === null) return this.getComponent().getEl();
+        var isOemComponent = oem.read(this.getWatch());
+        if(isOemComponent){
+            return isOemComponent.getEl();
+        } else {
+            return document.getElementById(this.getWatch());
+        }
+        return this.watch;
+    };
+
     // SETTERS
     // ========================================================
     Prototype.setComponent = function(component){
@@ -74,12 +90,18 @@
         return this;
     };
 
+    Prototype.setWatch = function(watch){
+        this.watch = watch;
+        return this;
+    };
+
     // METHODS
     // ========================================================
     Prototype.responsify = function(){
         var el = this.getComponent().getEl();
-        var width = el.offsetWidth;
-        var height = el.offsetHeight;
+        var watch = this.getWatchEl();
+        var width = watch.offsetWidth;
+        var height = watch.offsetHeight;
         el.classList.remove(this.getResponsiveClass());
 
         // apply width ranges

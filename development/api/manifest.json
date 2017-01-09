@@ -1,0 +1,26 @@
+{
+    "name": "Api",
+    "version": "1.0.0",
+    "description": "Api component",
+    "dependencies": ["core"],
+    "components": [],
+    "scripts": [
+        "./development/api/module.js",
+        "./development/api/prototype.js"
+    ],
+    "styles": [
+        "./development/api/style.css"
+    ],
+    "tests": [
+        "./development/api/test.js"
+    ],
+    "examples":[
+        "./development/api/examples.js"
+    ],
+    "templates": {
+        "description": "./development/api/templates/description.html",
+        "examples": "./development/api/templates/examples.html",
+        "tests": "./development/api/templates/tests.html",
+        "usage": "./development/api/templates/usage.html"
+    }
+}
