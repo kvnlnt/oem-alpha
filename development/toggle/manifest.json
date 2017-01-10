@@ -11,6 +11,10 @@
     "styles": [
         "./development/toggle/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/toggle/test.js"
     ],

@@ -11,6 +11,10 @@
         "./development/text-input/module.js",
         "./development/text-input/prototype.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/text-input/test.js"
     ],

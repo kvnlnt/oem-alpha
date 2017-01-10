@@ -66,27 +66,38 @@ Demo.prototype = {
 
         // components
         this.manifests.forEach(function(manifest){
+
             html = '';
             html += '<h1>'+that.demo+'</h1>'; 
             html += '<a href="index.html">&#8592; back</a>';
+
+            // main template
             if(manifest.templates){
                 if(manifest.templates.description) html += fs.readFileSync(manifest.templates.description, 'utf-8');
                 if(manifest.templates.examples) html += fs.readFileSync(manifest.templates.examples, 'utf-8');
                 if(manifest.templates.usage) html += fs.readFileSync(manifest.templates.usage, 'utf-8');
             }
 
+            // js
             var js = '';
-            var hasExamples = typeof manifest.examples != "undefined";
-            if(hasExamples){
-                manifest.examples.forEach(function(example){
-                    js += fs.readFileSync(example, 'utf-8');
-                });
-            }
+            manifest.examples.scripts.forEach(function(script){
+                js += fs.readFileSync(script, 'utf-8');
+            });
+
+            // css
+            var css = '';
+            manifest.examples.styles.forEach(function(style){
+                css += fs.readFileSync(style, 'utf-8');
+            });
+
+            // main template
             var template = fs.readFileSync('./cli/templates/demo/main.html', 'utf-8')
             template = template
             .replace("<!-- HTML -->", html, 'utf8')
-            .replace("<!-- JS -->", util.wrapInScriptTag(js), 'utf8');
+            .replace("<!-- JS -->", util.wrapInScriptTag(js), 'utf8')
+            .replace("<!-- CSS -->", util.wrapInScriptTag(css), 'utf8');
 
+            // output template
             fs.outputFileSync(that.directory + '/' + manifest.name + '.html', template);
         });
 

@@ -11,6 +11,10 @@
     "tests": [
         "./development/field/test.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/field/templates/description.html",
         "examples": "./development/field/templates/examples.html",

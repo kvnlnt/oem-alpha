@@ -11,6 +11,10 @@
     "styles": [
         "./development/data-table/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/data-table/test.js"
     ],

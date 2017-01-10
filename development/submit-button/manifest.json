@@ -8,6 +8,10 @@
         "./development/submit-button/module.js",
         "./development/submit-button/prototype.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/submit-button/test.js"
     ],

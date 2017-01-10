@@ -11,6 +11,10 @@
     "styles": [
         "./development/context-menu/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/context-menu/test.js"
     ],

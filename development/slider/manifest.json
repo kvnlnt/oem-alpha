@@ -11,6 +11,10 @@
     "styles": [
         "./development/slider/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/slider/test.js"
     ],

@@ -14,9 +14,10 @@
     "tests": [
         "./development/range/test.js"
     ],
-    "examples":[
-        "./development/range/examples.js"
-    ],
+    "examples":{
+        "scripts":["./development/range/examples.js"],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/range/templates/description.html",
         "examples": "./development/range/templates/examples.html",

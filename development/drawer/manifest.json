@@ -14,9 +14,10 @@
     "tests": [
         "./development/drawer/test.js"
     ],
-    "examples":[
-        "./development/drawer/examples.js"
-    ],
+    "examples":{
+        "scripts":["./development/drawer/examples.js"],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/drawer/templates/description.html",
         "examples": "./development/drawer/templates/examples.html",

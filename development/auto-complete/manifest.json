@@ -11,6 +11,10 @@
     "styles": [
         "./development/auto-complete/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/auto-complete/test.js"
     ],

@@ -11,6 +11,10 @@
     "styles": [
         "./development/textarea/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/textarea/test.js"
     ],

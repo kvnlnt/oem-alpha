@@ -12,6 +12,10 @@
     "scripts": [
         "./development/theme/module.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [],
     "templates": {
         "description": "./development/theme/templates/description.html"

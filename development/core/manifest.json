@@ -25,6 +25,10 @@
         "./development/core/module.js",
         "./development/core/modules/AutoInitializer.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/core/modules/AutoInitializer.test.js",
         "./development/core/modules/Component.test.js",

@@ -12,7 +12,8 @@
         "./development/responsifier/style.css"
     ],
     "examples":{
-        "styles":["./development/responsifier/examples.css"]
+        "scripts":[],
+        "styles":[]
     },
     "tests": [
         "./development/responsifier/test.js"

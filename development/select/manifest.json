@@ -11,6 +11,10 @@
     "styles": [
         "./development/select/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/select/test.js"
     ],

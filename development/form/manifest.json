@@ -23,6 +23,10 @@
         "./development/form/module.js",
         "./development/form/prototype.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/form/test.js"
     ],

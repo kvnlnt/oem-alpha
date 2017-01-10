@@ -11,6 +11,10 @@
     "styles": [
         "./development/api/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/api/test.js"
     ],

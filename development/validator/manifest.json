@@ -11,6 +11,10 @@
         "./development/validator/module.js",
         "./development/validator/prototype.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/validator/test.js"
     ],

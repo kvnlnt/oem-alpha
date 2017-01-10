@@ -14,6 +14,10 @@
     "tests": [
         "./development/radio/test.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/radio/templates/description.html",
         "examples": "./development/radio/templates/examples.html",

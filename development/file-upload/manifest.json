@@ -14,6 +14,10 @@
     "tests": [
         "./development/file-upload/test.js"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/file-upload/templates/description.html",
         "examples": "./development/file-upload/templates/examples.html",

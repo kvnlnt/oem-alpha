@@ -11,6 +11,10 @@
     "styles": [
         "./development/checkbox/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/checkbox/test.js"
     ],

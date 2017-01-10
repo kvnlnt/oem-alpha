@@ -14,9 +14,10 @@
     "tests": [
         "./development/progress/test.js"
     ],
-    "examples": [
-        "./development/progress/examples.js"
-    ],
+    "examples":{
+        "scripts":["./development/progress/examples.js"],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/progress/templates/description.html",
         "examples": "./development/progress/templates/examples.html",

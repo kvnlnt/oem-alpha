@@ -11,6 +11,10 @@
     "styles": [
         "./development/tabs/style.css"
     ],
+    "examples":{
+        "scripts":[],
+        "styles":[]
+    },
     "tests": [
         "./development/tabs/test.js"
     ],
