@@ -1,0 +1,26 @@
+{
+    "name": "Responsifier",
+    "version": "1.0.0",
+    "description": "Responsifier component",
+    "dependencies": ["core"],
+    "components": ["button"],
+    "scripts": [
+        "./development/responsifier/module.js",
+        "./development/responsifier/prototype.js"
+    ],
+    "styles": [
+        "./development/responsifier/style.css"
+    ],
+    "examples":{
+        "styles":["./development/responsifier/examples.css"]
+    },
+    "tests": [
+        "./development/responsifier/test.js"
+    ],
+    "templates": {
+        "description": "./development/responsifier/templates/description.html",
+        "examples": "./development/responsifier/templates/examples.html",
+        "tests": "./development/responsifier/templates/tests.html",
+        "usage": "./development/responsifier/templates/usage.html"
+    }
+}

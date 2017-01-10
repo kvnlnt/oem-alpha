@@ -4,7 +4,7 @@
     // PROTOTYPE
 
     var Prototype = PROTOTYPE(COMPONENT, {
-        type: "Responsify"
+        type: "Responsifier"
     });
 
     Prototype.DIMENSIONS = {
@@ -17,13 +17,13 @@
     // ========================================================
     Prototype.init = function(){
         this.component = this.getEl().dataset.oemComponent;
-        this.watch = this.getEl().dataset.watch || null;
+        this.container = this.getEl().dataset.oemContainer || this.component;
         this.responsiveClass = this.getEl().dataset.oemResponsiveClass;
         this.dimension = this.getEl().dataset.oemDimension;
         this.min = this.getEl().dataset.oemMin;
         this.max = this.getEl().dataset.oemMax;
-        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify, this);
-        oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify, this);
+        oem.events.addEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsifier, this);
+        oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsifier, this);
     };
 
     // GETTERS
@@ -48,17 +48,17 @@
         return this.max;
     };
 
-    Prototype.getWatch = function(){
-        return this.watch;
+    Prototype.getContainer = function(){
+        return this.container;
     };
 
-    Prototype.getWatchEl = function(){
-        if(this.getWatch() === null) return this.getComponent().getEl();
-        var isOemComponent = oem.read(this.getWatch());
+    Prototype.getContainerEl = function(){
+        var isOemComponent = oem.read(this.getContainer());
         if(isOemComponent){
             return isOemComponent.getEl();
         } else {
-            return document.getElementById(this.getWatch());
+            // if we didn't find it, it should at least be a valid DOM id
+            return document.getElementById(this.getContainer());
         }
         return this.watch;
     };
@@ -97,11 +97,11 @@
 
     // METHODS
     // ========================================================
-    Prototype.responsify = function(){
+    Prototype.responsifier = function(){
         var el = this.getComponent().getEl();
-        var watch = this.getWatchEl();
-        var width = watch.offsetWidth;
-        var height = watch.offsetHeight;
+        var container = this.getContainerEl();
+        var width = container.offsetWidth;
+        var height = container.offsetHeight;
         el.classList.remove(this.getResponsiveClass());
 
         // apply width ranges
@@ -118,15 +118,14 @@
     };
 
     Prototype.destroy = function(){
-        oem.events.removeEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsify, this);
-        oem.events.removeEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsify, this);
+        oem.events.removeEventListener(oem.EVENTS.COMPONENTS_INITIALIZED, this.responsifier, this);
+        oem.events.removeEventListener(oem.EVENTS.WINDOW_RESIZED, this.responsifier, this);
     };
-    
     
     // EXPORTS
     // ========================================================
     // Probably only want to export the prototype
-    COMPONENTS.Responsify.Prototype = Prototype;
+    COMPONENTS.Responsifier.Prototype = Prototype;
     return COMPONENTS;
 
 })(oem.Components, oem.Core.Component, oem.Core.Prototype);

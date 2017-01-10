@@ -1,0 +1,62 @@
+<h2>Usage</h2>
+<p>The Responsifier's queries only fire when component initilization (which is automatic) is complete or on a page resize.</p>
+
+<p>There are two elements to consider: 1) the element that is being watched (aka the container) and 2) the element that the classes are being applied to (has to be an Oem Component).</p>
+
+<p>Note: Components can be their own "containers" if the classes you add don't affect the same dimension you're using to apply those same classes!</p>
+
+<h3>Attributes</h3>
+<table>
+    <tr>
+        <th>attr</th>
+        <th>desc</th>
+    </tr>
+    <tr>
+        <td>data-oem-component</td>
+        <td>Oem component classes are to be applied to</td>
+    </tr>
+    <tr>
+        <td>data-oem-container</td>
+        <td>Component/Element to watch. If not defined, the component will be considered it's own container. Can be an Oem Component id or basic DOM id here.</td>
+    </tr>
+    <tr>
+        <td>data-oem-responsive-class</td>
+        <td>Class to be applied</td>
+    </tr>
+    <tr>
+        <td>data-oem-dimension</td>
+        <td>Dimension to watch ("width" or "height")</td>
+    </tr>
+    <tr>
+        <td>data-oem-min</td>
+        <td>Minimum dimension</td>
+    </tr>
+    <tr>
+        <td>data-oem-max</td>
+        <td>Maximum dimension (use "*" for no max)</td>
+    </tr>
+</table>
+
+<h3>Html</h3>
+
+<pre>
+<code data-language="html">
+&lt;div id="exampleContainer"&gt;
+    &lt;button 
+        data-oem="Button" 
+        data-oem-id="ExampleComponent"&gt;
+        Normal
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div 
+    data-oem="Responsifier" 
+    data-oem-id="responsifierExample"
+    data-oem-component="ExampleComponent"
+    data-oem-container="exampleContainer"
+    data-oem-responsive-class="--hollow"
+    data-oem-dimension="width"
+    data-oem-min="0"
+    data-oem-max="360"&gt;&lt;/div&gt;
+</code>
+</pre>

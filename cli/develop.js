@@ -75,7 +75,7 @@ DevelopComponent.prototype = {
         .concat.apply([], util.getComponentScripts(this.components))
         .concat("./development/core/modules/Test.js")
         .concat(this.manifest.tests)
-        .concat(this.manifest.examples)
+        .concat(this.manifest.examples.scripts)
         .filter(function(file){ return file != void 0});
     },
 
@@ -83,7 +83,8 @@ DevelopComponent.prototype = {
         return []
         .concat.apply([], util.getComponentStyles(this.components))
         .concat("./development/core/modules/Test.css")
-        .filter(function(file){ return file != void 0})
+        .concat(this.manifest.examples.styles)
+        .filter(function(file){ return file != void 0});
     },
 
     getHtml: function(){

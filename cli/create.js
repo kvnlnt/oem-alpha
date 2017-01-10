@@ -42,9 +42,13 @@ CreateComponent.prototype = {
         var test = fs.readFileSync('./cli/templates/development/new/test.js', 'utf-8');
         fs.writeFileSync(this.componentDir + '/test.js', this.renderTemplate(test));
 
-        // example
-        var example = fs.readFileSync('./cli/templates/development/new/examples.js', 'utf-8');
-        fs.writeFileSync(this.componentDir + '/examples.js', this.renderTemplate(example));
+        // example js
+        var exampleJs = fs.readFileSync('./cli/templates/development/new/examples.js', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/examples.js', this.renderTemplate(exampleJs));
+
+        // example css
+        var exampleCss = fs.readFileSync('./cli/templates/development/new/examples.css', 'utf-8');
+        fs.writeFileSync(this.componentDir + '/examples.css', this.renderTemplate(exampleCss));
 
         // css
         var css = fs.readFileSync('./cli/templates/development/new/style.css', 'utf-8');

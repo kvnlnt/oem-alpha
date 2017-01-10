@@ -1,10 +1,10 @@
 (function(COMPONENTS) {
 
     // Main component namespace
-    var Responsify = {};
+    var Responsifier = {};
     
     // exports
-    COMPONENTS.Responsify = Responsify;
+    COMPONENTS.Responsifier = Responsifier;
     return COMPONENTS;
 
 })(oem.Components);

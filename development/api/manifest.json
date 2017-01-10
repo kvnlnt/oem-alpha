@@ -14,9 +14,10 @@
     "tests": [
         "./development/api/test.js"
     ],
-    "examples":[
-        "./development/api/examples.js"
-    ],
+    "examples":{
+        "scripts":[ "./development/api/examples.js" ],
+        "styles":[]
+    },
     "templates": {
         "description": "./development/api/templates/description.html",
         "examples": "./development/api/templates/examples.html",
