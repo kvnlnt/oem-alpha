@@ -7,7 +7,7 @@
     Prototype.init = function(){
         this.width = this.getEl().dataset.oemWidth || 500;
         this.height = this.getEl().dataset.oemHeight || 360;
-        this.fullScreenAt = Number.parseInt(this.getEl().dataset.oemFullscreenAt) || 800;
+        this.fullScreenAt = parseInt(this.getEl().dataset.oemFullscreenAt) || 800;
         this.overflowY = this.getEl().dataset.oemOverflowY || "auto";
         this.contentEl = this.getEl().querySelectorAll('.__content')[0];
         this.backdropEl = this.getEl().querySelectorAll('.__backdrop')[0];
@@ -61,9 +61,11 @@
     };
 
     Prototype.positionContentWindow = function(){
-        var shouldBeFullScreen = this.getFullscreenAt() >= window.innerWidth;
-        var left = shouldBeFullScreen ? 0 : (window.innerWidth - this.getWidth())/2 + "px";
-        var top = shouldBeFullScreen ? 0 : (window.innerHeight - this.getHeight())/2 + "px";
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
+        var shouldBeFullScreen = this.getFullscreenAt() >= winWidth;
+        var left = shouldBeFullScreen ? 0 : (winWidth - this.getWidth())/2 + "px";
+        var top = shouldBeFullScreen ? 0 : (winHeight - this.getHeight())/2 + "px";
         var width = shouldBeFullScreen ? "100%" : this.getWidth() + "px";
         var height = shouldBeFullScreen ? "100%" : this.getHeight() + "px";
         this.getContentEl().style.left = left;
