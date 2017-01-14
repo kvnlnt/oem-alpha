@@ -5,7 +5,7 @@
     Test.testComponent = 'FieldTest';
 
     function createTestElement () {
-        var label = EL("label", { for:"inputField"}, "First Name");
+        var label = EL("label", { "for":"inputField"}, "First Name");
         var help = EL("div", { "class":"help"}, "Please enter your first name");
         var input = EL("input", {"type":"text", "name":"inputField", "placeholder":"First Name"});
         var field = EL("div", { "data-oem": "Field", "data-oem-id":"Field" }, [label, help, input] );

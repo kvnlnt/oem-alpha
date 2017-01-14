@@ -14,6 +14,7 @@
         "./development/core/polyfills/ArrayForEach.js",
         "./development/core/polyfills/ObjectCreate.js",
         "./development/core/polyfills/ObjectKeys.js",
+        "./development/core/polyfills/ObjectGetPrototypeOf.js",
         "./development/core/modules/Namespacer.js",
         "./development/core/modules/Prototype.js",
         "./development/core/modules/El.js",

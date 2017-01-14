@@ -19,7 +19,7 @@
         var componentObject = Object.create(proto, propertiesObject);
 
         // create a super object for super calling yo
-        componentObject.super = proto.__proto__;
+        componentObject.super = Object.getPrototypeOf(proto);
 
         // attach instance to element
         return componentObject;
