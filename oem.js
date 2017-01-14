@@ -48,7 +48,7 @@ try {
         case ARG.DEPLOY:
             if(ARGS[1] === void 0) throw 'please specify a deployment configuration. See package.oem.deployments';
             if(oem.deployments[ARGS[1]] === void 0) throw 'no such deployment exists, check package.json';
-            var deployment = new Deployment(ARGS[1]);
+            var deployment = new Deployment(ARGS[1], ARGS);
             break;
         case ARG.DEVELOP:
             if(ARGS[1] === void 0) throw 'please specify a component';
