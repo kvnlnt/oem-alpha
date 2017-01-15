@@ -40,6 +40,7 @@
         "field": "./development/field/manifest.json",
         "file-upload": "./development/file-upload/manifest.json",
         "form": "./development/form/manifest.json",
+        "hamburger": "./development/hamburger/manifest.json",
         "progress": "./development/progress/manifest.json",
         "radio": "./development/radio/manifest.json",
         "range": "./development/range/manifest.json",
