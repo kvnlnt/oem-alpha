@@ -36,6 +36,11 @@
         return this;
     };
 
+    Prototype.toggle = function(){
+        this.isOpen() ? this.close() : this.open();
+        return this;
+    };
+
     COMPONENTS.Drawer.Prototype = Prototype;
     return COMPONENTS;
 
