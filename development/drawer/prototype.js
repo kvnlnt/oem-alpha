@@ -12,23 +12,54 @@
 
     Prototype.init = function(){
         this._isOpen = false;
-        return this;
-    };
+        this.fullScreenAt = parseInt(this.getEl().dataset.oemFullScreenAt) || 0;
 
-    Prototype.open = function(){
-        this.getEl().classList.add('--open');
-        this.setIsOpen(true);
+        var events = {};
+        events.opened = this.getId() + ":opened";
+        events.closed = this.getId() + ":closed";
+        this.setEvents(events);
+
+        oem.events.addEventListener(oem.EVENTS.WINDOW_RESIZED, this.manageFullScreen.bind(this));
+
         return this;
     };
 
     Prototype.close = function(){
         this.getEl().classList.remove('--open');
+        oem.events.dispatch(this.getEvents().closed, this);
         this.setIsOpen(false);
+        return this;
+    };
+
+    Prototype.getFullScreenAt = function(){
+        return this.fullScreenAt;
+    };
+
+    Prototype.manageFullScreen = function(){
+        var isFullScreen = window.innerWidth <= this.getFullScreenAt();
+        if(isFullScreen) {
+             this.getEl().classList.add('--fullscreen')
+        } else {
+             this.getEl().classList.remove('--fullscreen')
+        }
         return this;
     };
 
     Prototype.isOpen = function(){
         return this._isOpen;
+    };
+
+    Prototype.open = function(){
+        this.manageFullScreen();
+        this.getEl().classList.add('--open');
+        oem.events.dispatch(this.getEvents().opened, this);
+        this.setIsOpen(true);
+        return this;
+    };
+
+    Prototype.setFullScreenAt = function(fullscreenAt){
+        this.fullScreenAt = fullScreenAt;
+        return this;
     };
 
     Prototype.setIsOpen = function(isOpen){
