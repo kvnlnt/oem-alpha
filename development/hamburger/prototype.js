@@ -5,19 +5,17 @@
     });
 
     Prototype.init = function(){
-        this.isActive = false;
+        this._isActive = false;
         this.getEl().addEventListener('click', this.handleClick.bind(this));
     };
 
     Prototype.activate = function(){
-        this.isActive = true;
-        this.getEl().classList.add('--active');
+        this.setIsActive(true).getEl().classList.add('--active');
         return this;
     };
 
     Prototype.deactivate = function(){
-        this.isActive = false;
-        this.getEl().classList.remove('--active');
+        this.setIsActive(false).getEl().classList.remove('--active');
         return this;
     };
 
@@ -26,8 +24,17 @@
         return this;
     };
 
+    Prototype.isActive = function(){
+        return this._isActive;
+    };
+
+    Prototype.setIsActive = function(isActive) {
+        this._isActive = isActive;
+        return this;
+    };
+
     Prototype.toggle = function(){
-        if(this.isActive){
+        if(this.isActive()){
             this.deactivate();
         } else {
             this.activate();
