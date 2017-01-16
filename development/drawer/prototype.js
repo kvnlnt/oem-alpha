@@ -58,6 +58,10 @@
         return this;
     };
 
+    Prototype.isFullScreen = function(){
+        return this.getEl().classList.contains('--fullscreen');
+    };
+
     Prototype.isOpen = function(){
         return this._isOpen;
     };

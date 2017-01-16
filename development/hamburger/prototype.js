@@ -5,25 +5,29 @@
     });
 
     Prototype.init = function(){
-        this.getEl().addEventListener('click', this.toggle.bind(this));
+        this.isActive = false;
+        this.getEl().addEventListener('click', this.handleClick.bind(this));
     };
 
     Prototype.activate = function(){
+        this.isActive = true;
         this.getEl().classList.add('--active');
         return this;
     };
 
     Prototype.deactivate = function(){
+        this.isActive = false;
         this.getEl().classList.remove('--active');
         return this;
     };
 
-    Prototype.isActive = function(){
-        return this.getEl().classList.contains('--active');
+    Prototype.handleClick = function(){
+        this.toggle();
+        return this;
     };
 
     Prototype.toggle = function(){
-        if(this.isActive()){
+        if(this.isActive){
             this.deactivate();
         } else {
             this.activate();
