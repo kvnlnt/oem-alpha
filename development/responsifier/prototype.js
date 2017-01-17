@@ -29,7 +29,17 @@
     // GETTERS
     // ========================================================
     Prototype.getComponent = function(){
-         return oem.read(this.component);
+         return this.component;
+    };
+
+    Prototype.getComponentEl = function(){
+        var isOemComponent = oem.read(this.getComponent());
+        if(isOemComponent){
+            return isOemComponent.getEl();
+        } else {
+            // if we didn't find it, it should at least be a valid DOM id
+            return document.getElementById(this.getComponent());
+        }
     };
 
     Prototype.getResponsiveClass = function(){
@@ -60,7 +70,6 @@
             // if we didn't find it, it should at least be a valid DOM id
             return document.getElementById(this.getContainer());
         }
-        return this.watch;
     };
 
     // SETTERS
@@ -98,7 +107,7 @@
     // METHODS
     // ========================================================
     Prototype.responsifier = function(){
-        var el = this.getComponent().getEl();
+        var el = this.getComponentEl();
         var container = this.getContainerEl();
         var width = container.offsetWidth;
         var height = container.offsetHeight;
