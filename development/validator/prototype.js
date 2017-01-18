@@ -53,12 +53,14 @@
     
     Prototype.show = function(){
         this.getEl().style.display = 'block';
+        oem.read(this.getField()).getEl().classList.add('--has-error');
         this.isShowing = true;
         return this;
     };
 
     Prototype.hide = function(){
         this.getEl().style.display = 'none';
+        oem.read(this.getField()).getEl().classList.remove('--has-error');
         this.isShowing = false;
     };
 

@@ -4,7 +4,7 @@
     font-size: 12px;
     padding:10px 0;
     text-indent:10px;
-    border:1px solid  black;
+    border:1px solid black;
     border-radius: 2px;
 }
 
@@ -17,4 +17,8 @@
 [data-oem="Textarea"] label {
     font-size: 14px;
     margin: 10px 0;
+}
+
+[data-oem="Textarea"].--has-error textarea {
+    border:1px solid red;
 }
