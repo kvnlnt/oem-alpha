@@ -33,9 +33,9 @@
     };
 
     Prototype.close = function(){
+        this.setIsOpen(false);
         this.getEl().classList.remove('--open');
         oem.events.dispatch(this.getEvents().closed, this);
-        this.setIsOpen(false);
         return this;
     };
 
@@ -67,10 +67,10 @@
     };
 
     Prototype.open = function(){
+        this.setIsOpen(true);
         this.manageFullScreen();
         this.getEl().classList.add('--open');
         oem.events.dispatch(this.getEvents().opened, this);
-        this.setIsOpen(true);
         return this;
     };
 
