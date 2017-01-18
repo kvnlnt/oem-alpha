@@ -9,8 +9,8 @@
          * Validate field exists
          * @method     required
          */
-        required: function(val) {
-            var isValid = val !== null && val !== void 0 && val.length != 0 && val != false;
+        required: function(args) {
+            var isValid = args.val != null && args.val != void 0 && args.val.length != 0 && args.val != false;
             return isValid;
         },
 

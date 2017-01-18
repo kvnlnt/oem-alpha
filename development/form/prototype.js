@@ -23,11 +23,14 @@
         events.initialized = this.getId() + ":initialized";
         this.setEvents(events);
 
-        // config reset button
-        this
-        .getEl()
-        .querySelector('[type="reset"]')
-        .addEventListener('click', this.reset.bind(this));
+        // config reset button if exists
+        var resetButton = this.getEl().querySelector('[type="reset"]');
+        if(resetButton){
+            this
+            .getEl()
+            .querySelector('[type="reset"]')
+            .addEventListener('click', this.reset.bind(this));
+        }
 
         // tell the world
         oem.events.dispatch(events.initialized, this);
