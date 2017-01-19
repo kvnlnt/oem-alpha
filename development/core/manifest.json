@@ -23,8 +23,8 @@
         "./development/core/modules/EventBus.js",
         "./development/core/modules/Events.js",
         "./development/core/modules/Component.js",
-        "./development/core/module.js",
-        "./development/core/modules/AutoInitializer.js"
+        "./development/core/modules/AutoInitializer.js",
+        "./development/core/module.js"
     ],
     "examples":{
         "scripts":[],
