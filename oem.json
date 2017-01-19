@@ -48,6 +48,7 @@
         "responsifier": "./development/responsifier/manifest.json",
         "select": "./development/select/manifest.json",
         "slider": "./development/slider/manifest.json",
+        "spinner": "./development/spinner/manifest.json",
         "submit-button": "./development/submit-button/manifest.json",
         "tabs": "./development/tabs/manifest.json",
         "text-input": "./development/text-input/manifest.json",

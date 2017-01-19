@@ -1,0 +1,27 @@
+{
+    "name": "Spinner",
+    "version": "1.0.0",
+    "description": "Spinner component",
+    "dependencies": ["core"],
+    "components": [],
+    "scripts": [
+        "./development/spinner/module.js",
+        "./development/spinner/prototype.js"
+    ],
+    "styles": [
+        "./development/spinner/style.css"
+    ],
+    "tests": [
+        "./development/spinner/test.js"
+    ],
+    "examples":{
+        "scripts":["./development/spinner/examples.js"],
+        "styles":["./development/spinner/examples.css"]
+    },
+    "templates": {
+        "description": "./development/spinner/templates/description.html",
+        "examples": "./development/spinner/templates/examples.html",
+        "tests": "./development/spinner/templates/tests.html",
+        "usage": "./development/spinner/templates/usage.html"
+    }
+}
