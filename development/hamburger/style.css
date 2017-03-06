@@ -1,0 +1,94 @@
+[data-oem="Hamburger"] {
+}
+
+[data-oem="Hamburger"] {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    font-size: 0;
+    text-indent: -9999px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s
+}
+
+[data-oem="Hamburger"]:focus {
+    outline: none;
+}
+
+[data-oem="Hamburger"] span {
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 9px;
+    right: 9px;
+    height: 4px;
+    background: white
+}
+
+[data-oem="Hamburger"] span::before,
+[data-oem="Hamburger"] span::after {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    content: "";
+}
+
+[data-oem="Hamburger"] span::before {
+    top: -10px;
+}
+
+[data-oem="Hamburger"] span::after {
+    bottom: -10px;
+}
+
+[data-oem="Hamburger"] {
+    background-color: #000000;
+}
+
+[data-oem="Hamburger"] span {
+    transition: background 0s 0.3s
+}
+
+[data-oem="Hamburger"] span::before,
+[data-oem="Hamburger"] span::after {
+    transition-duration: 0.3s, 0.3s;
+    transition-delay: 0.3s, 0s
+}
+
+[data-oem="Hamburger"] span::before {
+    transition-property: top, transform;
+}
+
+[data-oem="Hamburger"] span::after {
+    transition-property: bottom, transform;
+}
+
+[data-oem="Hamburger"].--active span {
+    background: none;
+}
+
+[data-oem="Hamburger"].--active span::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+[data-oem="Hamburger"].--active span::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+[data-oem="Hamburger"].--active span::before,
+[data-oem="Hamburger"].--active span::after {
+    transition-delay: 0s, 0.3s;
+}

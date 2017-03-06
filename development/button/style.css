@@ -11,6 +11,11 @@
     cursor:pointer;
 }
 
+[data-oem-class="Button"] +
+[data-oem-class="Button"] {
+    margin-left:5px;
+}
+
 [data-oem="Button"].--hollow,
 [data-oem-class="Button"].--hollow {
     background-color: transparent;;

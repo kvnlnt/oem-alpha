@@ -1,0 +1,27 @@
+{
+    "name": "Hamburger",
+    "version": "1.0.0",
+    "description": "Hamburger component",
+    "dependencies": ["core"],
+    "components": [],
+    "scripts": [
+        "./development/hamburger/module.js",
+        "./development/hamburger/prototype.js"
+    ],
+    "styles": [
+        "./development/hamburger/style.css"
+    ],
+    "tests": [
+        "./development/hamburger/test.js"
+    ],
+    "examples":{
+        "scripts":["./development/hamburger/examples.js"],
+        "styles":["./development/hamburger/examples.css"]
+    },
+    "templates": {
+        "description": "./development/hamburger/templates/description.html",
+        "examples": "./development/hamburger/templates/examples.html",
+        "tests": "./development/hamburger/templates/tests.html",
+        "usage": "./development/hamburger/templates/usage.html"
+    }
+}

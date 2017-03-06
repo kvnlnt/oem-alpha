@@ -2,7 +2,7 @@
   "name": "oem",
   "version": "1.0.0",
   "description": "",
-  "main": "cli/oem.js",
+  "main": "oem.js",
   "scripts": {
     "start": "node ./oem",
     "test": "node oem test all",

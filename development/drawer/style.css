@@ -1,27 +1,32 @@
 [data-oem="Drawer"] {
-    width:360px;
+    width: 360px;
     position: fixed;
-    top:0px;
-    left: -360px;
+    top: 0px;
+    left: -100%;
     right: auto;
     background-color: #FFFFFF;
     height: 100%;
     box-shadow: 0px 0px 0px #000000;
     transition: all 0.5s;
+    z-index: 100;
+}
+
+[data-oem="Drawer"].--fullscreen {
+    width: 100%;
 }
 
 [data-oem="Drawer"].--open {
-    box-shadow: -10px 0px 30px #000000;    
+    box-shadow: -10px 0px 30px #000000;
     left: 0;
     right: auto;
     transition: all 0.5s;
 }
 
 [data-oem="Drawer"].--right {
-    width:360px;
+    width: 360px;
     position: fixed;
-    top:0px;
-    right: -360px;
+    top: 0px;
+    right: -100%;
     left: auto;
     background-color: #FFFFFF;
     height: 100%;
@@ -33,4 +38,56 @@
     left: auto;
     box-shadow: 10px 0px 30px #000000;
     transition: all 0.5s;
+}
+
+[data-oem="Drawer"] .__closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: block;
+}
+
+[data-oem="Drawer"].--close-btn-never .__closeBtn {
+    display: none;
+}
+
+[data-oem="Drawer"].--close-btn-only-fullscreen .__closeBtn {
+    display: none;
+}
+
+[data-oem="Drawer"].--fullscreen.--close-btn-only-fullscreen .__closeBtn {
+    display: inline-block;
+}
+
+[data-oem="Drawer"] .__closeBtn span::before,
+[data-oem="Drawer"] .__closeBtn  span::after {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000000;
+    content: "";
+}
+
+[data-oem="Drawer"] .__closeBtn span {
+    background-color: #999999;
+    position: relative;
+    display: block;
+}
+
+[data-oem="Drawer"] .__closeBtn span::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+[data-oem="Drawer"] .__closeBtn span::after {
+    bottom: 0;
+    transform: rotate(-45deg);
 }

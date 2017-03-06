@@ -7,9 +7,10 @@ const exec = require('child_process').exec;
 const opener = require("opener");
 const util = require('./util');
 
-const Deployment = function(deployment, autoLaunch) {
+const Deployment = function(deployment, args) {
+    this.options = util.getOptions(args);
     this.deployment = deployment;
-    this.autoLaunch = typeof autoLaunch === "undefined" ? true : autoLaunch;
+    this.autoLaunch = typeof this.options.autolaunch === "undefined" ? true : (this.options.autolaunch === "false" ? false : true);
     this.components = oem.deployments[deployment];
     this.manifests = util.sortDependencies(util.getManifests(this.components));
     this.directory = './deploy/' + deployment;
