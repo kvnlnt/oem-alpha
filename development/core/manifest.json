@@ -19,6 +19,7 @@
         "./development/core/modules/Namespacer.js",
         "./development/core/modules/Prototype.js",
         "./development/core/modules/El.js",
+        "./development/core/modules/Template.js",
         "./development/core/modules/Logger.js",
         "./development/core/modules/Util.js",
         "./development/core/modules/EventBus.js",
