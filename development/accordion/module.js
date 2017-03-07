@@ -17,7 +17,7 @@
     Accordion.Template += '<dl data-oem-id="<% this.id %>" data-oem="Accordion">';
     Accordion.Template += '<%for(var item in this.list) {%>';
     Accordion.Template += '<dt><% this.list[item].term %></dt>';
-    Accordion.Template += '<dd><% this.list[item].definition %></dd>';
+    Accordion.Template += '<dd <% if(this.list[item].expanded){%>class="expanded"<%}%>><% this.list[item].definition %></dd>';
     Accordion.Template += '<%}%>';
     Accordion.Template += '</dl>';
 

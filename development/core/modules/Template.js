@@ -16,7 +16,8 @@
 
 (function(CORE) { 
 
-    var Template = function(html, options) {
+    var Template = function(html, data, parse) {
+        var parse = parse === true ? true : false;
         var re = /<%([^%>]+)?%>/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0, match;
         var add = function(line, js) {
             js? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
@@ -29,7 +30,14 @@
         }
         add(html.substr(cursor, html.length - cursor));
         code += 'return r.join("");';
-        return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
+
+        var result = new Function(code.replace(/[\r\t\n]/g, '')).apply(data);
+
+        if(parse){
+            return CORE.Util.HTMLParser(result);
+        } else {
+            return result;
+        }
     }
 
     CORE.Template = Template;

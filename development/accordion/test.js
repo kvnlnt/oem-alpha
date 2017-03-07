@@ -5,13 +5,30 @@
     Test.testComponent = 'Accordion';
 
     function createAndInitializeTestComponent () {
-        var dt1 = EL("dt", {}, "dt1");
-        var dd1 = EL("dd", {}, "dd1");
-        var dt2 = EL("dt", {}, "dt2");
-        var dd2 = EL("dd", {"class":"expanded"}, "dd2");
-        var dd3 = EL("dd", {}, "dd3");
-        var dt3 = EL("dt", {}, "dt3");
-        var testEl = EL("dl", {"data-oem-id":"testAccordion", "data-oem":"Accordion"}, [dt1, dd1, dt2, dd2, dt3, dd3]);
+
+        var data = {
+            id: "testAccordion",
+            title: "testAccordion",
+            list: [
+                {
+                    term:"1",
+                    definition:"1",
+                    expanded: false
+                },
+                {
+                    term:"2",
+                    definition:"2",
+                    expanded: true
+                },
+                {
+                    term:"3",
+                    definition:"3",
+                    expanded: false
+                }
+            ]
+        };
+
+        var testEl = oem.Core.Template(COMPONENTS.Accordion.Template, data, true);
         var testComponent = document.querySelector('[data-oem-test="Accordion"]');
         testComponent.appendChild(testEl);
         oem.create(COMPONENTS.Accordion.Prototype, { el: testEl });
