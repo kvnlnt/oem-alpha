@@ -19,16 +19,16 @@ function createScriptTagLinks(files) {
     return tags;
 }
 
-function columnizedSpacing(text, longestText){
+function columnizedSpacing(text, longestText) {
     var spaces = longestText - text.length;
     var space = '';
-    for(i = 0; i < spaces; i++){
+    for (i = 0; i < spaces; i++) {
         space += ' ';
     }
     return space;
 }
 
-function getComponentScripts(components){
+function getComponentScripts(components) {
     var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
         var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
@@ -37,23 +37,23 @@ function getComponentScripts(components){
     return files;
 }
 
-function getComponentStyles(components){
-     var components = components instanceof Array ? components : [components]; 
+function getComponentStyles(components) {
+    var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
         var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
         return config.styles;
     });
-    return files.filter(function(file){ return file != void 0 });
+    return files.filter(function(file) { return file != void 0 });
 }
 
-function getComponentTemplatesHtml(templates){
+function getComponentTemplatesHtml(templates) {
     var html = Object.keys(templates).map(function(template) {
         return fs.readFileSync(templates[template], 'utf8');
     });
     return html;
 }
 
-function getComponentTests(components){
+function getComponentTests(components) {
     var components = components instanceof Array ? components : [components];
     var files = components.map(function(component) {
         var config = JSON.parse(fs.readFileSync(oem.development[component], 'utf8'));
@@ -69,10 +69,10 @@ function getDateTime() {
     var hour = date.getHours();
     hour = (hour < 10 ? "0" : "") + hour;
 
-    var min  = date.getMinutes();
+    var min = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
 
-    var sec  = date.getSeconds();
+    var sec = date.getSeconds();
     sec = (sec < 10 ? "0" : "") + sec;
 
     var year = date.getFullYear();
@@ -80,7 +80,7 @@ function getDateTime() {
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
 
-    var day  = date.getDate();
+    var day = date.getDate();
     day = (day < 10 ? "0" : "") + day;
 
     return month + '/' + day + '/' + year + " @ " + hour + ":" + min + ":" + sec;
@@ -92,50 +92,51 @@ function getFilesizeInKB(filename) {
     return Math.ceil(fileSizeInBytes / 1024);
 }
 
-function getManifests(components){
-    return components.map(function(component){
+function getManifests(components) {
+    return components.map(function(component) {
         var json = loadAndParseJson(oem.development[component]);
         json.component = component;
         return json;
     })
 }
 
-function getOptions(args){
+function getOptions(args) {
     var options = {};
-    var flags = args.filter(function(arg){ return arg.substring(0,2) === "--" });
-    flags.forEach(function(flag){
+    if (!args) return options;
+    var flags = args.filter(function(arg) { return arg.substring(0, 2) === "--" });
+    flags.forEach(function(flag) {
         options[flag.replace("--", "").split("=")[0]] = flag.split("=")[1];
     });
     return options;
 }
 
-function loadAndParseJson(file){
+function loadAndParseJson(file) {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
 function rmDir(path) {
-  if( fs.existsSync(path) ) {
-    fs.readdirSync(path).forEach(function(file,index){
-      var curPath = path + "/" + file;
-      if(fs.lstatSync(curPath).isDirectory()) { // recurse
-        rmDir(curPath);
-      } else { // delete file
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
+    if (fs.existsSync(path)) {
+        fs.readdirSync(path).forEach(function(file, index) {
+            var curPath = path + "/" + file;
+            if (fs.lstatSync(curPath).isDirectory()) { // recurse
+                rmDir(curPath);
+            } else { // delete file
+                fs.unlinkSync(curPath);
+            }
+        });
+        fs.rmdirSync(path);
+    }
 }
 
-function sortDependencies(manifests){
+function sortDependencies(manifests) {
     var that = this;
-    manifests.forEach(function(manifest, m){
-        if(manifest.dependencies){
-            manifest.dependencies.forEach(function(dependency, d){
-                var dependencyIndex = manifests.findIndex(function(manifest){ return manifest.component === dependency});
-                if(m <= dependencyIndex) {
+    manifests.forEach(function(manifest, m) {
+        if (manifest.dependencies) {
+            manifest.dependencies.forEach(function(dependency, d) {
+                var dependencyIndex = manifests.findIndex(function(manifest) { return manifest.component === dependency });
+                if (m <= dependencyIndex) {
                     var item = manifests.splice(dependencyIndex, 1)[0];
-                    manifests.splice(m-1, 0, item);
+                    manifests.splice(m - 1, 0, item);
                 }
             });
         }
@@ -144,7 +145,7 @@ function sortDependencies(manifests){
 }
 
 function wrapInScriptTag(code) {
-    return '<script type="text/javascript">'+code+'</script>';
+    return '<script type="text/javascript">' + code + '</script>';
 }
 
 module.exports = {
