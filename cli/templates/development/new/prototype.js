@@ -1,4 +1,4 @@
-(function(COMPONENTS, COMPONENT, PROTOTYPE) {
+(function (COMPONENTS, COMPONENT, PROTOTYPE) {
 
 
     // PROTOTYPE
@@ -13,7 +13,7 @@
 
     // MIXINS 
     // ========================================================
-    // Augment funciontality with mixins from ./src/core/mixins
+    // Augment functionality with mixins from ./src/core/mixins
 
     // Core.Util.mixin(Prototype, Core.Mixins.Field);
 
@@ -42,7 +42,7 @@
     // GETTERS
     // ========================================================
     // Add getters for params unique to this prototype
- 
+
     // Prototype.getNewProperty = function(){
     //      return this.newProperty;
     // };
@@ -60,12 +60,12 @@
     // METHODS
     // ========================================================
     // Add methods unique to this prototype
-    
-    
+
+
     // EXPORTS
     // ========================================================
     // Probably only want to export the prototype
-    COMPONENTS.%CLASS%.Prototype = Prototype;
+    COMPONENTS. % CLASS % .Prototype = Prototype;
     return COMPONENTS;
 
 })(oem.Components, oem.Core.Component, oem.Core.Prototype);

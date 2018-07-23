@@ -4,7 +4,7 @@ const chalk = require('chalk');
  * Show help
  * @return {[type]} [description]
  */
-function show(){
+function show() {
     console.log("");
     console.log("");
     console.log(chalk.bgWhite("       "));
@@ -14,7 +14,7 @@ function show(){
     console.log("");
     console.log("Usage:");
     console.log("");
-    console.log("   ", chalk.bold("node oem"),"[option] [arguments]");
+    console.log("   ", chalk.bold("node oem"), "[option] [arguments]");
     console.log("");
     console.log("Options:");
     console.log("");
@@ -24,7 +24,7 @@ function show(){
     console.log("");
     console.log(chalk.bold("   list"));
     console.log("");
-    console.log("      Purpose:", "    List all components.");
+    console.log("      Purpose:", "    List all deployments, demos and components.");
     console.log("      Example:", "    node oem list");
     console.log("");
     console.log(chalk.bold("   dev"));
@@ -69,5 +69,5 @@ function show(){
 }
 
 module.exports = {
-    show:show
+    show: show
 };
