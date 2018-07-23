@@ -1,15 +1,26 @@
-(function(COMPONENTS, TEST, EL) {
+(function (COMPONENTS, TEST, EL) {
 
     var Test = Object.create(TEST); // call super constructor
     Test.name = "Tests";
     Test.testComponent = 'FieldTest';
 
-    function createTestElement () {
-        var label = EL("label", { "for":"inputField"}, "First Name");
-        var help = EL("div", { "class":"help"}, "Please enter your first name");
-        var input = EL("input", {"type":"text", "name":"inputField", "placeholder":"First Name"});
-        var field = EL("div", { "data-oem": "Field", "data-oem-id":"Field" }, [label, help, input] );
-        return oem.create(oem.Components.Field.Prototype, {
+    function createTestElement() {
+        var label = EL("label", {
+            "for": "inputField"
+        }, "First Name");
+        var help = EL("div", {
+            "class": "help"
+        }, "Please enter your first name");
+        var input = EL("input", {
+            "type": "text",
+            "name": "inputField",
+            "placeholder": "First Name"
+        });
+        var field = EL("div", {
+            "data-oem": "Field",
+            "data-oem-id": "Field"
+        }, [label, help, input]);
+        return oem.create(COMPONENTS.Field.Prototype, {
             el: field
         });
     }
@@ -19,15 +30,15 @@
      *
      * @method     
      */
-    Test.canGetAndSetValue = function(){
+    Test.canGetAndSetValue = function () {
         var component = createTestElement();
         component.init();
         component.setValue('newValue');
         var test = component.getValue() === "newValue";
         Test.assert('can get and set value', test, true);
-    };   
+    };
 
-    Test.canGetLabel = function(){
+    Test.canGetLabel = function () {
         var component = createTestElement();
         component.init();
         component.setValue('newValue');
@@ -35,15 +46,15 @@
         Test.assert('can get label', test, true);
     };
 
-    Test.canGetField = function(){
+    Test.canGetField = function () {
         var component = createTestElement();
         component.init();
         component.setValue('newValue');
         var test = component.getField().name === "inputField";
         Test.assert('can get field', test, true);
-    }; 
+    };
 
-    Test.canGetName = function(){
+    Test.canGetName = function () {
         var component = createTestElement();
         component.init();
         component.setValue('newValue');
@@ -51,17 +62,17 @@
         Test.assert('can get field name', test, true);
     };
 
-    Test.canAddandRunValidator = function(){
+    Test.canAddandRunValidator = function () {
         var component = createTestElement();
         component.init();
         var el = document.createElement("div");
         el.id = "validator";
         var validator = oem.create(oem.Components.Validator.Prototype, {
             id: 'validator',
-            field:'Field',
-            validation:'minLength',
-            args:'len:3',
-            message:'not long enough',
+            field: 'Field',
+            validation: 'minLength',
+            args: 'len:3',
+            message: 'not long enough',
             el: el
         });
         component.addValidator(validator);
@@ -72,7 +83,7 @@
         Test.assert('can add and run validators', test, true);
     };
 
-    Test.canResetField = function(){
+    Test.canResetField = function () {
         var component = createTestElement();
         component.init();
         component.setValue('newValue');
@@ -80,10 +91,10 @@
         el.id = "validator";
         var validator = oem.create(oem.Components.Validator.Prototype, {
             id: 'validator',
-            field:'Field',
-            validation:'minLength',
-            args:'len:3',
-            message:'not long enough',
+            field: 'Field',
+            validation: 'minLength',
+            args: 'len:3',
+            message: 'not long enough',
             el: el
         });
         component.addValidator(validator);
@@ -95,7 +106,7 @@
     /**
      * Run tests
      */
-    oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function(){
+    oem.events.addEventListener(oem.EVENTS.DOCUMENT_READY, function () {
         Test.runTestSuite('Field', [
             Test.canGetAndSetValue,
             Test.canGetLabel,

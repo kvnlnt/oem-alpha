@@ -3,6 +3,7 @@
         "all": [
             "core",
             "accordion",
+            "auto-complete",
             "button",
             "progress",
             "data-table",
