@@ -23,7 +23,7 @@ List.prototype = {
         console.log("DEPLOYMENTS");
         console.log("");
         if (Object.keys(oem.deployments).length) {
-            Object.entries(oem.deployments).forEach(([k, v]) => {
+            Object.entries(oem.deployments).forEach((k, v) => {
                 console.log(`- ${k} (components = ${v.sort().join(',')})`)
             });
         }
@@ -32,7 +32,7 @@ List.prototype = {
         console.log("DEMOS");
         console.log("");
         if (Object.keys(oem.demos).length) {
-            Object.entries(oem.demos).forEach(([k, v]) => {
+            Object.entries(oem.demos).forEach((k, v) => {
                 console.log(`- ${k} (deployment = ${v.deployment})`)
             });
         }
