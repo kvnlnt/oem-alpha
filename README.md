@@ -1,4 +1,6 @@
-![travis-ci](https://travis-ci.org/kvnlnt/oem.svg?branch=master)
+# !!! DEPRECATED - DO NOT USE !!!
+
+OEM has been modernized and reenvisioned => [OEM.js.org](http://oem.js.org)
 
 # OEM
 
